@@ -66,6 +66,7 @@ GEM
     ffi (1.13.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    graphql (1.11.6)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     listen (3.3.3)
@@ -90,6 +91,8 @@ GEM
     puma (4.3.7)
       nio4r (~> 2.0)
     rack (2.2.3)
+    rack-cors (1.1.1)
+      rack (>= 2.0.0)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.0.3.4)
@@ -145,11 +148,12 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
+  graphql
   listen (~> 3.2)
   puma (~> 4.1)
+  rack-cors
   rails (~> 6.0.3, >= 6.0.3.4)
   sqlite3 (~> 1.4)
-  tzinfo-data
 
 RUBY VERSION
    ruby 2.7.1p83
