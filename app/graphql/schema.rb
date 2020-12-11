@@ -1,6 +1,6 @@
-class RailsApiSchema < GraphQL::Schema
-  mutation(Types::MutationType)
-  query(Types::QueryType)
+class Schema < GraphQL::Schema
+  mutation(Types::Mutations)
+  query(Types::Queries)
 
   # Opt in to the new runtime (default in future graphql-ruby versions)
   use GraphQL::Execution::Interpreter

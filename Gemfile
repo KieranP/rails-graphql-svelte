@@ -3,22 +3,33 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
 
-gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
-
-gem 'sqlite3', '~> 1.4'
-
-gem 'puma', '~> 4.1'
-
-gem 'bootsnap', '>= 1.4.2', require: false
-
+# Core
+gem 'rails'
+gem 'sqlite3'
+gem 'puma'
+gem 'bootsnap', require: false
 gem 'rack-cors'
+gem 'dotenv-rails'
 
+# API
 gem 'graphql'
+gem 'bcrypt'
+gem 'jwt'
+
+# App
+gem 'pundit'
+gem 'kaminari'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'byebug'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'database_cleaner-active_record'
+  gem 'simplecov', require: false
 end
 
 group :development do
-  gem 'listen', '~> 3.2'
+  gem 'listen'
+  gem 'annotate'
 end
