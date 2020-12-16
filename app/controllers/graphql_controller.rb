@@ -16,7 +16,8 @@ class GraphqlController < ApplicationController
       operation_name: params[:operationName],
       variables: prepare_variables(params[:variables]),
       context: {
-        current_user: current_user
+        current_user: current_user,
+        cookies: cookies
       }
     }
   end

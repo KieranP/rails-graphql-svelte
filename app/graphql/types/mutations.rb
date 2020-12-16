@@ -2,7 +2,8 @@ module Types
   class Mutations < Object
     field :create_user, mutation: ::Mutations::User::Create
     field :update_user, mutation: ::Mutations::User::Update
-    field :authenticate_user, mutation: ::Mutations::User::Authenticate
+    field :login_user, mutation: ::Mutations::User::Login
+    field :logout_user, mutation: ::Mutations::User::Logout
 
     field :create_post, mutation: ::Mutations::Post::Create
     field :update_post, mutation: ::Mutations::Post::Update

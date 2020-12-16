@@ -1,6 +1,6 @@
 module Mutations::User
-  class Authenticate < Types::Mutation
-    graphql_name "UserAuthenticate"
+  class Login < Types::Mutation
+    graphql_name "UserLogin"
 
     argument :email, String, required: true
     argument :password, String, required: true
@@ -15,6 +15,15 @@ module Mutations::User
 
       session = user.sessions.create!
       token = JwtToken.generate(user, session)
+
+      # Used by Web UI, prevents XSS attacks
+      cookies.signed['jwt_token'] = {
+        value: token,
+        httponly: true,
+        domain: ENV['COOKIE_DOMAIN'],
+        expires: 1.year.from_now
+      }
+
       { user: user, token: token }
     end
   end

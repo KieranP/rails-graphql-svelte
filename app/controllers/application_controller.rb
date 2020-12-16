@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::API
+  include ActionController::Cookies
+
   before_action :update_session
 
   # rescue_from(JWT::InvalidIatError) {} # TODO
@@ -16,9 +18,10 @@ class ApplicationController < ActionController::API
   def jwt_token
     @jwt_token ||= begin
       auth_token = request.headers['Authorization']
+      auth_token ||= cookies.signed['jwt_token']
       return unless auth_token
 
-      jwt_token = auth_token.split(' ').last
+      jwt_token = auth_token.remove('Bearer ')
       JwtToken.decode(jwt_token)
     end
   end

@@ -5,6 +5,10 @@ module Helpers
     context[:current_user]
   end
 
+  def cookies
+    context[:cookies]
+  end
+
   def logged_in?
     current_user.present?
   end
