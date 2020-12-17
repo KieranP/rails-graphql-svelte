@@ -29,3 +29,6 @@
 /config/master.key
 
 /coverage
+
+/node_modules
+/public/*
