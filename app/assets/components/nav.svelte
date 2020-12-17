@@ -1,5 +1,5 @@
 <script>
-  import { session } from '../libs/stores'
+  import { session } from '@libs/stores'
   import { Link } from 'svelte-navigator'
 </script>
 

@@ -1,6 +1,6 @@
 <script>
-  import Nav from '../components/nav'
-  import Errors from '../components/errors'
+  import Nav from '@components/nav'
+  import Errors from '@components/errors'
 </script>
 
 <div class="container">

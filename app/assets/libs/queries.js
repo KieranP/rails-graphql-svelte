@@ -1,4 +1,4 @@
-import request from './graphql'
+import request from '@libs/graphql'
 
 export let loginUser = (data, fields) => (
   request(`

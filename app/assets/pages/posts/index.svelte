@@ -1,7 +1,7 @@
 <script>
-  import { allPosts } from '../../libs/queries'
-  import { session } from '../../libs/stores'
-  import Loader from '../../components/loader'
+  import { allPosts } from '@libs/queries'
+  import { session } from '@libs/stores'
+  import Loader from '@components/loader'
   import { Link } from 'svelte-navigator'
 
   let posts

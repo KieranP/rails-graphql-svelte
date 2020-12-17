@@ -1,5 +1,5 @@
 <script>
-  import { errors } from '../libs/stores'
+  import { errors } from '@libs/stores'
   import { useLocation } from 'svelte-navigator'
 
   // Clear errors when page location changes

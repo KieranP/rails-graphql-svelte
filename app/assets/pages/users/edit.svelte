@@ -1,8 +1,8 @@
 <script>
-  import { findUser, updateUser } from '../../libs/queries'
-  import { errors } from '../../libs/stores'
+  import { findUser, updateUser } from '@libs/queries'
+  import { errors } from '@libs/stores'
   import { navigate } from 'svelte-navigator'
-  import Loader from '../../components/loader'
+  import Loader from '@components/loader'
 
   export let id
 

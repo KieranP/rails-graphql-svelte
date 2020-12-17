@@ -1,9 +1,9 @@
 <script>
-  import { findPost, destroyPost } from '../../libs/queries'
-  import { session, errors } from '../../libs/stores'
+  import { findPost, destroyPost } from '@libs/queries'
+  import { session, errors } from '@libs/stores'
   import { Link, navigate } from 'svelte-navigator'
-  import Loader from '../../components/loader'
-  import Confirm from '../../components/confirm'
+  import Loader from '@components/loader'
+  import Confirm from '@components/confirm'
 
   export let id
 

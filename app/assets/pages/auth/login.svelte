@@ -1,6 +1,6 @@
 <script>
-  import { loginUser } from '../../libs/queries'
-  import { session, errors } from '../../libs/stores'
+  import { loginUser } from '@libs/queries'
+  import { session, errors } from '@libs/stores'
   import { navigate } from 'svelte-navigator'
 
   let email

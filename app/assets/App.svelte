@@ -1,21 +1,21 @@
 <script>
   import { Router, Route } from 'svelte-navigator'
 
-  import Layout from './layouts/main'
-  import HomeIndex from './pages/home/index'
-  import AboutIndex from './pages/about/index'
+  import Layout from '@layouts/main'
+  import HomeIndex from '@pages/home/index'
+  import AboutIndex from '@pages/about/index'
 
-  import UsersShow from './pages/users/show'
-  import UsersEdit from './pages/users/edit'
+  import UsersShow from '@pages/users/show'
+  import UsersEdit from '@pages/users/edit'
 
-  import PostsIndex from './pages/posts/index'
-  import PostsShow from './pages/posts/show'
-  import PostsNew from './pages/posts/new'
-  import PostsEdit from './pages/posts/edit'
+  import PostsIndex from '@pages/posts/index'
+  import PostsShow from '@pages/posts/show'
+  import PostsNew from '@pages/posts/new'
+  import PostsEdit from '@pages/posts/edit'
 
-  import Login from './pages/auth/login'
-  import Logout from './pages/auth/logout'
-  import NotFound from './pages/errors/404'
+  import Login from '@pages/auth/login'
+  import Logout from '@pages/auth/logout'
+  import NotFound from '@pages/errors/404'
 </script>
 
 <Router>

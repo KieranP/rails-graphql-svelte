@@ -25,6 +25,9 @@ module.exports = {
     /* ... */
   },
   alias: {
-    /* ... */
+    '@components': './app/assets/components',
+    '@layouts': './app/assets/layouts',
+    '@libs': './app/assets/libs',
+    '@pages': './app/assets/pages'
   },
 }

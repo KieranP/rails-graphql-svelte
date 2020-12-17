@@ -1,6 +1,6 @@
 <script>
-  import { createPost } from '../../libs/queries'
-  import { errors } from '../../libs/stores'
+  import { createPost } from '@libs/queries'
+  import { errors } from '@libs/stores'
   import { navigate } from 'svelte-navigator'
   import Form from './_form'
 

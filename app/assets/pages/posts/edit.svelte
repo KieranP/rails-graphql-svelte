@@ -1,8 +1,8 @@
 <script>
-  import { findPost, updatePost } from '../../libs/queries'
-  import { errors } from '../../libs/stores'
+  import { findPost, updatePost } from '@libs/queries'
+  import { errors } from '@libs/stores'
   import { navigate } from 'svelte-navigator'
-  import Loader from '../../components/loader'
+  import Loader from '@components/loader'
   import Form from './_form'
 
   export let id

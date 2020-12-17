@@ -1,8 +1,8 @@
 <script>
-  import { findUser } from '../../libs/queries'
-  import { session } from '../../libs/stores'
+  import { findUser } from '@libs/queries'
+  import { session } from '@libs/stores'
   import { Link } from 'svelte-navigator'
-  import Loader from '../../components/loader'
+  import Loader from '@components/loader'
 
   export let id
 
