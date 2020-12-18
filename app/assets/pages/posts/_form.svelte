@@ -11,12 +11,12 @@
 <form on:submit|preventDefault={submit}>
   <div class="mb-3">
     <label for="title" class="form-label">Title</label>
-    <input type="text" class="form-control" id="title" bind:value={title} />
+    <input type="text" class="form-control" id="title" bind:value={title} required />
   </div>
 
   <div class="mb-3">
     <label for="body" class="form-label">Body</label>
-    <textarea class="form-control" id="body" rows="5" bind:value={body} />
+    <textarea class="form-control" id="body" rows="5" bind:value={body} required />
   </div>
 
   <div class="mb-3">

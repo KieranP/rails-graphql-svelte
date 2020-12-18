@@ -26,12 +26,12 @@
 <form on:submit|preventDefault={submit}>
   <div class="mb-3">
     <label for="email" class="form-label">Email</label>
-    <input type="email" class="form-control" id="email" bind:value={email} />
+    <input type="email" class="form-control" id="email" bind:value={email} required />
   </div>
 
   <div class="mb-3">
     <label for="password" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password" bind:value={password} />
+    <input type="password" class="form-control" id="password" bind:value={password} required />
   </div>
 
   <div class="mb-3">

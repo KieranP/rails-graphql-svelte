@@ -6,7 +6,7 @@
 
   let posts
 
-  allPosts({}, `id title`).then(res => {
+  allPosts({}, `id title user { id name }`).then(res => {
     posts = res.data.allPosts
   })
 </script>
@@ -23,6 +23,10 @@
       <li>
         <Link to="/posts/{post.id}">
           {post.title}
+        </Link>
+        by
+        <Link to="/users/{post.user.id}">
+          {post.user.name}
         </Link>
       </li>
     {/each}

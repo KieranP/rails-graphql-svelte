@@ -91,6 +91,9 @@ GEM
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     graphql (1.11.6)
+    graphql-batch (0.4.3)
+      graphql (>= 1.3, < 2)
+      promise.rb (~> 0.7.2)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     jwt (2.2.2)
@@ -125,6 +128,7 @@ GEM
     nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    promise.rb (0.7.4)
     puma (5.1.1)
       nio4r (~> 2.0)
     pundit (2.1.0)
@@ -220,6 +224,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   graphql
+  graphql-batch
   jwt
   kaminari
   listen

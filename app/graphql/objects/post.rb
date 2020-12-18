@@ -5,6 +5,6 @@ module Objects
     field :body, String, null: false
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
 
-    field :user, Objects::User, null: false
+    association :user, Objects::User, null: false
   end
 end

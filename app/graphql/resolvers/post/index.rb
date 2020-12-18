@@ -4,7 +4,7 @@ module Resolvers::Post
 
     type [Objects::Post], null: false
 
-    def ready?(**args)
+    def authorized?(**args)
       raise forbidden_error unless policy.index?
       true
     end

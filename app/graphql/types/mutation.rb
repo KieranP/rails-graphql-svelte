@@ -5,6 +5,6 @@ module Types
     input_object_class Input
     object_class Object
 
-    include Helpers
+    include QueryHelpers
   end
 end

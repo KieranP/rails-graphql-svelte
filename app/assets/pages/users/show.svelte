@@ -1,6 +1,6 @@
 <script>
   import { findUser } from '@libs/queries'
-  import { session } from '@libs/stores'
+  import { session, errors } from '@libs/stores'
   import { Link } from 'svelte-navigator'
   import Loader from '@components/loader'
 
@@ -9,7 +9,11 @@
   let user
 
   findUser({id}, `id name email posts { id title }`).then(res => {
-    user = res.data.findUser
+    if (res.errors) {
+      errors.set(res.errors)
+    } else {
+      user = res.data.findUser
+    }
   })
 </script>
 

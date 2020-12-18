@@ -6,8 +6,8 @@ module Resolvers::User
 
     argument :id, ID, required: true
 
-    def ready?(**args)
-      raise not_found_error unless find_user(**args)
+    def authorized?(**args)
+      raise not_found_error('User Not Found') unless find_user(**args)
       raise forbidden_error unless policy.show?
       true
     end

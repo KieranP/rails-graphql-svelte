@@ -6,9 +6,9 @@ module Mutations::Post
 
     field :post, Objects::Post, null: true
 
-    def ready?(**args)
+    def authorized?(**args)
       raise unauthorised_error unless logged_in?
-      raise not_found_error unless find_post(**args)
+      raise not_found_error('Post Not Found') unless find_post(**args)
       raise forbidden_error unless policy.destroy?
       true
     end
@@ -18,7 +18,7 @@ module Mutations::Post
         { post: @post }
       else
         errors = @post.errors.full_messages
-        execution_error(errors.join(', '))
+        unprocessable_error(errors.join(', '))
       end
     end
 

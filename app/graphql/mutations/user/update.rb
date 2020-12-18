@@ -8,9 +8,9 @@ module Mutations::User
 
     field :user, Objects::User, null: true
 
-    def ready?(**args)
+    def authorized?(**args)
       raise unauthorised_error unless logged_in?
-      raise not_found_error unless find_user(**args)
+      raise not_found_error('User Not Found') unless find_user(**args)
       raise forbidden_error unless policy.update?
       true
     end
@@ -20,7 +20,7 @@ module Mutations::User
         { user: @user }
       else
         errors = @user.errors.full_messages
-        execution_error(errors.join(', '))
+        unprocessable_error(errors.join(', '))
       end
     end
 

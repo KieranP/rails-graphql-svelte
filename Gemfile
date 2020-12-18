@@ -13,6 +13,7 @@ gem 'dotenv-rails'
 
 # API
 gem 'graphql'
+gem 'graphql-batch'
 gem 'bcrypt'
 gem 'jwt'
 

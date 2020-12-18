@@ -6,8 +6,8 @@ module Resolvers::Post
 
     argument :id, ID, required: true
 
-    def ready?(**args)
-      raise not_found_error unless find_post(**args)
+    def authorized?(**args)
+      raise not_found_error('Post Not Found') unless find_post(**args)
       raise forbidden_error unless policy.show?
       true
     end

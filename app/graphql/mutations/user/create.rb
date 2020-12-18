@@ -9,7 +9,7 @@ module Mutations::User
 
     field :user, Objects::User, null: true
 
-    def ready?(**args)
+    def authorized?(**args)
       raise forbidden_error unless policy.create?
       true
     end
@@ -20,7 +20,7 @@ module Mutations::User
         { user: user }
       else
         errors = user.errors.full_messages
-        execution_error(errors.join(', '))
+        unprocessable_error(errors.join(', '))
       end
     end
 

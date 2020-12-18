@@ -7,7 +7,7 @@ module Mutations::Post
 
     field :post, Objects::Post, null: true
 
-    def ready?(**args)
+    def authorized?(**args)
       raise unauthorised_error unless logged_in?
       raise forbidden_error unless policy.create?
       true
@@ -19,7 +19,7 @@ module Mutations::Post
         { post: post }
       else
         errors = post.errors.full_messages
-        execution_error(errors.join(', '))
+        unprocessable_error(errors.join(', '))
       end
     end
 
