@@ -2,12 +2,20 @@
   import { allPosts } from '@libs/queries'
   import { session } from '@libs/stores'
   import Loader from '@components/loader'
-  import { Link } from 'svelte-navigator'
+  import { Link, useLocation } from 'svelte-navigator'
+  import Pager from '@components/pager'
+  import pager from '@libs/pager'
 
   let posts
+  let pageInfo
 
-  allPosts({}, `id title user { id name }`).then(res => {
-    posts = res.data.allPosts
+  const location = useLocation()
+  $: allPosts(
+    pager($location),
+    `nodes { id title user { id name } }`
+  ).then(res => {
+    posts = res.data.allPosts.nodes
+    pageInfo = res.data.allPosts.pageInfo
   })
 </script>
 
@@ -31,6 +39,8 @@
       </li>
     {/each}
   </ul>
+
+  <Pager pageInfo={pageInfo} />
 {:else}
   <Loader />
 {/if}

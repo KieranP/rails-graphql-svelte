@@ -49,8 +49,14 @@ export let updateUser = (data, fields) => (
 
 export let allPosts = (data, fields) => (
   request(`
-    query {
-      allPosts {
+    query($before: String, $after: String, $first: Int, $last: Int) {
+      allPosts(before: $before, after: $after, first: $first, last: $last) {
+        pageInfo {
+          startCursor
+          endCursor
+          hasPreviousPage
+          hasNextPage
+        }
         ${fields}
       }
     }

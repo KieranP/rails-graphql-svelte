@@ -2,7 +2,7 @@ module Resolvers::Post
   class Index < Types::Resolver
     graphql_name "PostIndex"
 
-    type [Objects::Post], null: false
+    type Objects::Post.connection_type, null: false
 
     def authorized?(**args)
       raise forbidden_error unless policy.index?
