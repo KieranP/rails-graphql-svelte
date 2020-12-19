@@ -11,9 +11,13 @@
   let email
 
   findUser({id}, `id name email`).then(res => {
-    user = res.data.findUser
-    name = user.name
-    email = user.email
+    if (res.errors) {
+      errors.set(res.errors)
+    } else {
+      user = res.data.findUser
+      name = user.name
+      email = user.email
+    }
   })
 
   function submit() {

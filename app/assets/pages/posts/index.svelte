@@ -1,6 +1,6 @@
 <script>
   import { allPosts } from '@libs/queries'
-  import { session } from '@libs/stores'
+  import { session, errors } from '@libs/stores'
   import Loader from '@components/loader'
   import { Link, useLocation } from 'svelte-navigator'
   import Pager from '@components/pager'
@@ -14,8 +14,12 @@
     pager($location),
     `nodes { id title user { id name } }`
   ).then(res => {
-    posts = res.data.allPosts.nodes
-    pageInfo = res.data.allPosts.pageInfo
+    if (res.errors) {
+      errors.set(res.errors)
+    } else {
+      posts = res.data.allPosts.nodes
+      pageInfo = res.data.allPosts.pageInfo
+    }
   })
 </script>
 

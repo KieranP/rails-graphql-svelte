@@ -10,7 +10,11 @@
   let post
 
   findPost({id}, `id title body`).then(res => {
-    post = res.data.findPost
+    if (res.errors) {
+      errors.set(res.errors)
+    } else {
+      post = res.data.findPost
+    }
   })
 
   function submit(event) {

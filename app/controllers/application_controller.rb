@@ -3,8 +3,7 @@ class ApplicationController < ActionController::API
 
   before_action :update_session
 
-  # rescue_from(JWT::InvalidIatError) {} # TODO
-  # rescue_from(JWT::InvalidJtiError) {} # TODO
+  rescue_from JWT::InvalidIatError, JWT::InvalidJtiError, with: :invalid_jwt
 
   def current_user
     @current_user ||= begin
@@ -40,6 +39,15 @@ class ApplicationController < ActionController::API
   end
 
   private
+
+  def invalid_jwt
+    render json: {
+      errors: [{
+        code: 401,
+        message: 'Invalid JWT Token'
+      }]
+    }
+  end
 
   def update_session
     return unless current_session
