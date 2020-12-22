@@ -11,24 +11,23 @@
   let email
 
   findUser({id}, `id name email`).then(res => {
-    if (res.errors) {
-      errors.set(res.errors)
-    } else {
-      user = res.data.findUser
-      name = user.name
-      email = user.email
-    }
+    user = res.data.findUser
+    name = user.name
+    email = user.email
+  }).catch(error => {
+    errors.set(error.graphQLErrors)
   })
 
   function submit() {
-    updateUser({id, name, email}, `user { id }`).then(res => {
-      if (res.errors) {
-        errors.set(res.errors)
-      } else {
-        let data = res.data
-        let id = data.updateUser.user.id
-        navigate('/users/'+id)
-      }
+    updateUser(
+      {id, name, email},
+      `user { id name email }`
+    ).then(res => {
+      let data = res.data
+      let id = data.updateUser.user.id
+      navigate('/users/'+id)
+    }).catch(error => {
+      errors.set(error.graphQLErrors)
     })
   }
 </script>

@@ -1,5 +1,5 @@
 <script>
-  import { findUser } from '@libs/queries'
+  import { findUser, watchUser } from '@libs/queries'
   import { session, errors } from '@libs/stores'
   import { Link } from 'svelte-navigator'
   import Loader from '@components/loader'
@@ -7,14 +7,18 @@
   export let id
 
   let user
+  const fields = `id name email posts { id title }`
 
-  findUser({id}, `id name email posts { id title }`).then(res => {
-    if (res.errors) {
-      errors.set(res.errors)
-    } else {
-      user = res.data.findUser
-    }
+  findUser({id}, fields).then(res => {
+    user = res.data.findUser
+  }).catch(error => {
+    errors.set(error.graphQLErrors)
   })
+
+  watchUser({id}, fields).subscribe(
+    (res) => { if(res.data.userUpdated) user = res.data.userUpdated },
+    (err) => { errors.set(err.graphQLErrors) }
+  )
 </script>
 
 {#if user}

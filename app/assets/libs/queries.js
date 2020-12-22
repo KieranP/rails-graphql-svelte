@@ -1,54 +1,64 @@
-import request from '@libs/graphql'
+import { query, mutation, subscribe } from '@libs/graphql'
 
-export let loginUser = (data, fields) => (
-  request(`
+export const loginUser = (variables, graphql) => (
+  mutation(`
     mutation($email: String!, $password: String!) {
       loginUser(input: {
         email: $email,
         password: $password
       }) {
-        ${fields}
+        ${graphql}
       }
     }
-  `, data)
+  `, variables)
 )
 
-export let logoutUser = (data, fields) => (
-  request(`
+export const logoutUser = (variables, graphql) => (
+  mutation(`
     mutation {
       logoutUser(input: {}) {
-        ${fields}
+        ${graphql}
       }
     }
-  `, data)
+  `, variables)
 )
 
-export let findUser = (data, fields) => (
-  request(`
+export const findUser = (variables, graphql) => (
+  query(`
     query($id: ID!) {
       findUser(id: $id) {
-        ${fields}
+        ${graphql}
       }
     }
-  `, data)
+  `, variables)
 )
 
-export let updateUser = (data, fields) => (
-  request(`
+export const watchUser = (variables, graphql) => (
+  subscribe(`
+    subscription($id: ID!) {
+      userUpdated(id: $id) {
+        ${graphql}
+      }
+    }
+  `, variables)
+)
+
+export const updateUser = (variables, graphql) => (
+  mutation(`
     mutation($id: ID!, $name: String, $email: String) {
       updateUser(input: {
         id: $id,
         name: $name,
         email: $email
       }) {
-        ${fields}
+        ${graphql}
       }
     }
-  `, data)
+  `, variables)
 )
 
-export let allPosts = (data, fields) => (
-  request(`
+export const allPosts = (variables, graphql) => (
+  query(`
     query($before: String, $after: String, $first: Int, $last: Int) {
       allPosts(before: $before, after: $after, first: $first, last: $last) {
         pageInfo {
@@ -57,57 +67,67 @@ export let allPosts = (data, fields) => (
           hasPreviousPage
           hasNextPage
         }
-        ${fields}
+        ${graphql}
       }
     }
-  `, data)
+  `, variables)
 )
 
-export let findPost = (data, fields) => (
-  request(`
+export const findPost = (variables, graphql) => (
+  query(`
     query($id: ID!) {
       findPost(id: $id) {
-        ${fields}
+        ${graphql}
       }
     }
-  `, data)
+  `, variables)
 )
 
-export let createPost = (data, fields) => (
-  request(`
+export const watchPost = (variables, graphql) => (
+  subscribe(`
+    subscription($id: ID!) {
+      postUpdated(id: $id) {
+        ${graphql}
+      }
+    }
+  `, variables)
+)
+
+export const createPost = (variables, graphql) => (
+  mutation(`
     mutation($title: String, $body: String) {
       createPost(input: {
         title: $title,
         body: $body
       }) {
-        ${fields}
+        ${graphql}
       }
     }
-  `, data)
+  `, variables)
 )
 
-export let updatePost = (data, fields) => (
-  request(`
+export const updatePost = (variables, graphql) => (
+  mutation(`
     mutation($id: ID!, $title: String, $body: String) {
       updatePost(input: {
         id: $id,
         title: $title,
         body: $body
       }) {
-        ${fields}
+        ${graphql}
       }
     }
-  `, data)
+  `, variables)
 )
 
-export let destroyPost = (data, fields) => (
-  request(`
+export const destroyPost = (variables, graphql) => (
+  mutation(`
     mutation($id: ID!) {
       destroyPost(input: {
         id: $id
       }) {
-        ${fields}
+        ${graphql}
       }
     }
-  `, data)
+  `, variables)
 )

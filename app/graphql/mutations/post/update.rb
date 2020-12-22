@@ -17,6 +17,7 @@ module Mutations::Post
 
     def resolve(**args)
       if @post.update(args.except(:id))
+        trigger(:post_updated, {id: @post.id}, @post)
         { post: @post }
       else
         errors = @post.errors.full_messages

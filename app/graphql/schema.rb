@@ -1,5 +1,6 @@
 
 class Schema < GraphQL::Schema
+  subscription Types::Subscriptions
   mutation Types::Mutations
   query Types::Queries
 
@@ -17,6 +18,8 @@ class Schema < GraphQL::Schema
 
   # Add built-in connections for pagination
   use GraphQL::Pagination::Connections
+
+  use GraphQL::Subscriptions::ActionCableSubscriptions, redis: Redis.new
 
   # query_analyzer Analyzers::QueryComplexity
   # query_analyzer Analyzers::QueryDepth

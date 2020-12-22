@@ -14,12 +14,10 @@
     pager($location),
     `nodes { id title user { id name } }`
   ).then(res => {
-    if (res.errors) {
-      errors.set(res.errors)
-    } else {
-      posts = res.data.allPosts.nodes
-      pageInfo = res.data.allPosts.pageInfo
-    }
+    posts = res.data.allPosts.nodes
+    pageInfo = res.data.allPosts.pageInfo
+  }).catch(error => {
+    errors.set(error.graphQLErrors)
   })
 </script>
 

@@ -4,12 +4,10 @@
   import { navigate } from 'svelte-navigator'
 
   logoutUser({}, `user { id }`).then(res => {
-    if (res.errors) {
-      errors.set(res.errors)
-    } else {
-      localStorage.clear()
-      session.set({})
-      navigate('/')
-    }
+    localStorage.clear()
+    session.set({})
+    navigate('/')
+  }).catch(error => {
+    errors.set(error.graphQLErrors)
   })
 </script>

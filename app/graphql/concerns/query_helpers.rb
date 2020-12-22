@@ -13,6 +13,10 @@ module QueryHelpers
     current_user.present?
   end
 
+  def trigger(*args)
+    Schema.subscriptions.trigger(*args)
+  end
+
   def execution_error(message, code = 500)
     msg ||= "Execution Error"
     GraphQL::ExecutionError.new(message, options: { code: code })

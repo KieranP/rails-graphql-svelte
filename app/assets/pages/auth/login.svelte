@@ -8,15 +8,13 @@
 
   function submit() {
     loginUser({email, password}, `user { id email name }`).then(res => {
-      if (res.errors) {
-        errors.set(res.errors)
-      } else {
-        let data = res.data
-        session.set(data.loginUser)
-        localStorage.setItem('session',
-          JSON.stringify(data.loginUser))
-        navigate('/')
-      }
+      let data = res.data
+      session.set(data.loginUser)
+      localStorage.setItem('session',
+        JSON.stringify(data.loginUser))
+      navigate('/')
+    }).catch(error => {
+      errors.set(error.graphQLErrors)
     })
   }
 </script>

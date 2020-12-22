@@ -10,22 +10,21 @@
   let post
 
   findPost({id}, `id title body`).then(res => {
-    if (res.errors) {
-      errors.set(res.errors)
-    } else {
-      post = res.data.findPost
-    }
+    post = res.data.findPost
+  }).catch(error => {
+    errors.set(error.graphQLErrors)
   })
 
   function submit(event) {
-    updatePost({id, ...event.detail}, `post { id }`).then(res => {
-      if (res.errors) {
-        errors.set(res.errors)
-      } else {
-        let data = res.data
-        let id = data.updatePost.post.id
-        navigate('/posts/'+id)
-      }
+    updatePost(
+      {id, ...event.detail},
+      `post { id title body }`
+    ).then(res => {
+      let data = res.data
+      let id = data.updatePost.post.id
+      navigate('/posts/'+id)
+    }).catch(error => {
+      errors.set(error.graphQLErrors)
     })
   }
 </script>

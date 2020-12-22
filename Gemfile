@@ -10,6 +10,7 @@ gem 'puma'
 gem 'bootsnap', require: false
 gem 'rack-cors'
 gem 'dotenv-rails'
+gem 'redis'
 
 # API
 gem 'graphql'

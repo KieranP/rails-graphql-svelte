@@ -6,13 +6,11 @@
 
   function submit(event) {
     createPost(event.detail, `post { id }`).then(res => {
-      if (res.errors) {
-        errors.set(res.errors)
-      } else {
-        let data = res.data
-        let id = data.createPost.post.id
-        navigate('/posts/'+id)
-      }
+      let data = res.data
+      let id = data.createPost.post.id
+      navigate('/posts/'+id)
+    }).catch(error => {
+      errors.set(error.graphQLErrors)
     })
   }
 </script>

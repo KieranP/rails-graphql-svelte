@@ -17,6 +17,7 @@ module Mutations::User
 
     def resolve(**args)
       if @user.update(args.except(:id))
+        trigger(:user_updated, {id: @user.id}, @user)
         { user: @user }
       else
         errors = @user.errors.full_messages
@@ -27,7 +28,7 @@ module Mutations::User
     private
 
     def find_user(**args)
-      @user ||= User.find(args[:id])
+      @user ||= User.find_by_id(args[:id])
     end
 
     def policy

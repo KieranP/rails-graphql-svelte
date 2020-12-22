@@ -1,13 +1,54 @@
-export default async function request(query, variables = {}) {
-  const endpoint = import.meta.env.SNOWPACK_PUBLIC_API_ENDPOINT
+import {
+  ApolloClient,
+  ApolloLink,
+  InMemoryCache,
+  createHttpLink,
+  gql
+} from '@apollo/client/core'
 
-  return fetch(endpoint, {
-    method: 'POST',
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json'
-    },
-    body: JSON.stringify({ query, variables })
-  }).then(r => r.json())
+import ActionCable from '@rails/actioncable'
+import { ActionCableLink } from 'graphql-ruby-client'
+
+const cable = ActionCable.createConsumer(
+  import.meta.env.SNOWPACK_PUBLIC_CABLE_ENDPOINT
+)
+
+const hasSubscriptionOperation = ({ query: { definitions } }) => {
+  return definitions.some(
+    ({ kind, operation }) => kind === 'OperationDefinition' && operation === 'subscription'
+  )
 }
+
+const link = ApolloLink.split(
+  hasSubscriptionOperation,
+  new ActionCableLink({cable}),
+  createHttpLink({
+    uri: import.meta.env.SNOWPACK_PUBLIC_API_ENDPOINT,
+    credentials: 'include'
+  })
+)
+
+const cache = new InMemoryCache()
+
+const client = new ApolloClient({ link, cache })
+
+export const query = (graphql, variables) => (
+  client.query({
+    query: gql`${graphql}`,
+    variables
+  })
+)
+
+export const mutation = (graphql, variables) => (
+  client.mutate({
+    mutation: gql`${graphql}`,
+    variables
+  })
+)
+
+export const subscribe = (graphql, variables) => (
+  client.subscribe({
+    query: gql`${graphql}`,
+    variables
+  })
+)

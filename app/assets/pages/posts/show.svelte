@@ -1,5 +1,5 @@
 <script>
-  import { findPost, destroyPost } from '@libs/queries'
+  import { findPost, watchPost, destroyPost } from '@libs/queries'
   import { session, errors } from '@libs/stores'
   import { Link, navigate } from 'svelte-navigator'
   import Loader from '@components/loader'
@@ -9,21 +9,24 @@
 
   let post
 
-  findPost({id}, `id title body user { id }`).then(res => {
-    if (res.errors) {
-      errors.set(res.errors)
-    } else {
-      post = res.data.findPost
-    }
+  const fields = `id title body user { id }`
+
+  findPost({id}, fields).then(res => {
+    post = res.data.findPost
+  }).catch(error => {
+    errors.set(error.graphQLErrors)
   })
+
+  watchPost({id}, fields).subscribe(
+    (res) => { if(res.data.postUpdated) post = res.data.postUpdated },
+    (err) => { errors.set(err.graphQLErrors) }
+  )
 
   function destroy() {
     destroyPost({id}, `post { id }`).then(res => {
-      if (res.errors) {
-        errors.set(res.errors)
-      } else {
-        navigate('/posts')
-      }
+      navigate('/posts')
+    }).catch(error => {
+      errors.set(error.graphQLErrors)
     })
   }
 </script>

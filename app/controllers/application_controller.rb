@@ -14,6 +14,10 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def jwt_payload
+    @jwt_payload ||= jwt_token&.first
+  end
+
   def jwt_token
     @jwt_token ||= begin
       auth_token = request.headers['Authorization']
@@ -23,10 +27,6 @@ class ApplicationController < ActionController::API
       jwt_token = auth_token.remove('Bearer ')
       JwtToken.decode(jwt_token)
     end
-  end
-
-  def jwt_payload
-    @jwt_payload ||= jwt_token&.first
   end
 
   def current_session
