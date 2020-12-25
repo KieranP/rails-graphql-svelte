@@ -1,1 +1,7 @@
-<h1>404 Not Found</h1>
+<script>
+  import { _ } from '@libs/i18n'
+</script>
+
+<h1>
+  {$_('pages.errors.404.heading')}
+</h1>

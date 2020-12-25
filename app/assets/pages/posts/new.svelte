@@ -3,6 +3,7 @@
   import { errors } from '@libs/stores'
   import { navigate } from 'svelte-navigator'
   import Form from './_form'
+  import { _ } from '@libs/i18n'
 
   function submit(event) {
     createPost(event.detail, `post { id }`).then(res => {
@@ -15,6 +16,8 @@
   }
 </script>
 
-<h1>New Post</h1>
+<h1>
+  {$_('pages.posts.new.heading')}
+</h1>
 
 <Form on:submit={submit} />

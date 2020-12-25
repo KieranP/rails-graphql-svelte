@@ -1,5 +1,6 @@
 <script>
   import { navigate } from 'svelte-navigator'
+  import { _ } from '@libs/i18n'
 
   export let pageInfo
 
@@ -19,9 +20,13 @@
 </script>
 
 {#if pageInfo.hasPreviousPage}
-  <button on:click={prev} class="btn btn-outline-secondary btn-sm">Prev</button>
+  <button on:click={prev} class="btn btn-outline-secondary btn-sm">
+    {$_('components.pager.prev')}
+  </button>
 {/if}
 
 {#if pageInfo.hasNextPage}
-  <button on:click={next} class="btn btn-outline-secondary btn-sm">Next</button>
+  <button on:click={next} class="btn btn-outline-secondary btn-sm">
+    {$_('components.pager.next')}
+  </button>
 {/if}

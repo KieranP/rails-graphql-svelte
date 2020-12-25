@@ -3,6 +3,7 @@
   import { errors } from '@libs/stores'
   import { navigate } from 'svelte-navigator'
   import Loader from '@components/loader'
+  import { _ } from '@libs/i18n'
 
   export let id
 
@@ -32,23 +33,29 @@
   }
 </script>
 
-<h1>Edit User</h1>
+<h1>
+  {$_('pages.users.edit.heading')}
+</h1>
 
 {#if user}
   <form on:submit|preventDefault={submit}>
     <div class="mb-3">
-      <label for="name" class="form-label">Name</label>
+      <label for="name" class="form-label">
+        {$_('pages.users.edit.name')}
+      </label>
       <input type="text" class="form-control" id="name" bind:value={name} required />
     </div>
 
     <div class="mb-3">
-      <label for="email" class="form-label">Email</label>
+      <label for="email" class="form-label">
+        {$_('pages.users.edit.email')}
+      </label>
       <input type="email" class="form-control" id="email" bind:value={email} required />
     </div>
 
     <div class="mb-3">
       <button type="submit" class="btn btn-primary">
-        Update
+        {$_('common.update')}
       </button>
     </div>
   </form>

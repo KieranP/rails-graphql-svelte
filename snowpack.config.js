@@ -26,6 +26,7 @@ module.exports = {
   },
   alias: {
     '@components': './app/assets/components',
+    '@i18n': './app/assets/i18n',
     '@layouts': './app/assets/layouts',
     '@libs': './app/assets/libs',
     '@pages': './app/assets/pages'

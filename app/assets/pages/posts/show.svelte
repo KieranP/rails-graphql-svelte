@@ -4,6 +4,7 @@
   import { Link, navigate } from 'svelte-navigator'
   import Loader from '@components/loader'
   import Confirm from '@components/confirm'
+  import { _ } from '@libs/i18n'
 
   export let id
 
@@ -37,8 +38,13 @@
 
   {#if $session.user && $session.user.id == post.user.id}
     <p>
-      <Link to="/posts/{post.id}/edit" class="btn btn-outline-primary">Edit</Link>
-      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#confirmDialog">Delete</button>
+      <Link to="/posts/{post.id}/edit" class="btn btn-outline-primary">
+        {$_('common.edit')}
+      </Link>
+
+      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#confirmDialog">
+        {$_('common.delete')}
+      </button>
     </p>
   {/if}
 {:else}

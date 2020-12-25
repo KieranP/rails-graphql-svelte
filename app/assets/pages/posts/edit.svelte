@@ -4,6 +4,7 @@
   import { navigate } from 'svelte-navigator'
   import Loader from '@components/loader'
   import Form from './_form'
+  import { _ } from '@libs/i18n'
 
   export let id
 
@@ -29,7 +30,9 @@
   }
 </script>
 
-<h1>Edit Post</h1>
+<h1>
+  {$_('pages.posts.edit.heading')}
+</h1>
 
 {#if post}
   <Form post={post} on:submit={submit} />

@@ -2,6 +2,7 @@
   import { Modal } from 'bootstrap/dist/js/bootstrap.esm'
   import { createEventDispatcher } from 'svelte'
   const dispatch = createEventDispatcher()
+  import { _ } from '@libs/i18n'
 
   function confirm() {
     var dialog = document.getElementById('confirmDialog')
@@ -11,7 +12,7 @@
     dispatch('confirm')
   }
 
-  export let title = 'Are you sure?'
+  export let title = $_('components.confirm.title')
 </script>
 
 <div class="modal fade" id="confirmDialog">
@@ -22,8 +23,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-danger" on:click={confirm}>Proceed</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          {$_('components.confirm.cancel')}
+        </button>
+        <button type="button" class="btn btn-danger" on:click={confirm}>
+          {$_('components.confirm.proceed')}
+        </button>
       </div>
     </div>
   </div>

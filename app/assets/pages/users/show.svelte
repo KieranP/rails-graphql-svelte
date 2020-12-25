@@ -3,6 +3,7 @@
   import { session, errors } from '@libs/stores'
   import { Link } from 'svelte-navigator'
   import Loader from '@components/loader'
+  import { _ } from '@libs/i18n'
 
   export let id
 
@@ -39,7 +40,9 @@
 
   {#if $session.user && $session.user.id == user.id}
     <p>
-      <Link to="/users/{user.id}/edit" class="btn btn-outline-primary">Edit</Link>
+      <Link to="/users/{user.id}/edit" class="btn btn-outline-primary">
+        {$_('common.edit')}
+      </Link>
     </p>
   {/if}
 {:else}

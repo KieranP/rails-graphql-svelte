@@ -1,0 +1,77 @@
+{
+  "common": {
+    "create": "Create",
+    "delete": "Delete",
+    "edit": "Edit",
+    "update": "Update"
+  },
+  "components": {
+    "confirm": {
+      "cancel": "Cancel",
+      "proceed": "Proceed",
+      "title": "Are you sure?"
+    },
+    "loader": {
+      "loading": "Loading..."
+    },
+    "nav": {
+      "about": "About",
+      "home": "Home",
+      "login": "Login",
+      "logout": "Logout",
+      "posts": "Posts"
+    },
+    "pager": {
+      "next": "Next",
+      "prev": "Prev"
+    }
+  },
+  "pages": {
+    "about": {
+      "index": {
+        "heading": "About"
+      }
+    },
+    "auth": {
+      "login": {
+        "button": "Login",
+        "email": "Email",
+        "heading": "Login",
+        "password": "Password"
+      }
+    },
+    "errors": {
+      "404": {
+        "heading": "404 Not Found"
+      }
+    },
+    "home": {
+      "index": {
+        "heading": "Home"
+      }
+    },
+    "posts": {
+      "_form": {
+        "body": "Body",
+        "title": "Title"
+      },
+      "edit": {
+        "heading": "Edit Post"
+      },
+      "index": {
+        "heading": "All Posts",
+        "create": "New Post"
+      },
+      "new": {
+        "heading": "New Post"
+      }
+    },
+    "users": {
+      "edit": {
+        "email": "Email",
+        "heading": "Edit User",
+        "name": "Name"
+      }
+    }
+  }
+}

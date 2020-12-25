@@ -5,6 +5,7 @@
   import { Link, useLocation } from 'svelte-navigator'
   import Pager from '@components/pager'
   import pager from '@libs/pager'
+  import { _ } from '@libs/i18n'
 
   let posts
   let pageInfo
@@ -21,10 +22,14 @@
   })
 </script>
 
-<h1>All Posts</h1>
+<h1>
+  {$_('pages.posts.index.heading')}
+</h1>
 
 {#if $session.user}
-  <Link to="/posts/new" class="btn btn-outline-primary">New Post</Link>
+  <Link to="/posts/new" class="btn btn-outline-primary">
+    {$_('pages.posts.index.create')}
+  </Link>
 {/if}
 
 {#if posts}
