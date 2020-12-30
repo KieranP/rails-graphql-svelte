@@ -1,7 +1,7 @@
 <script>
   import { createPost } from '@libs/queries'
   import { errors } from '@libs/stores'
-  import { navigate } from 'svelte-navigator'
+  import { goto } from '@roxi/routify'
   import Form from './_form'
   import { _ } from '@libs/i18n'
 
@@ -9,7 +9,7 @@
     createPost(event.detail, `post { id }`).then(res => {
       let data = res.data
       let id = data.createPost.post.id
-      navigate('/posts/'+id)
+      $goto('/posts/:id', {id})
     }).catch(error => {
       errors.set(error.graphQLErrors)
     })

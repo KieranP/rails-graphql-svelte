@@ -1,5 +1,5 @@
 <script>
-  import { navigate } from 'svelte-navigator'
+  import { goto } from '@roxi/routify'
   import { _ } from '@libs/i18n'
 
   export let pageInfo
@@ -8,14 +8,14 @@
     let queryParams = new URLSearchParams(window.location.search)
     queryParams.set('before', pageInfo.startCursor)
     queryParams.delete('after')
-    navigate(`${window.location.pathname}?${queryParams.toString()}`)
+    $goto(`${window.location.pathname}?${queryParams.toString()}`)
   }
 
   function next() {
     let queryParams = new URLSearchParams(window.location.search)
     queryParams.set('after', pageInfo.endCursor)
     queryParams.delete('before')
-    navigate(`${window.location.pathname}?${queryParams.toString()}`)
+    $goto(`${window.location.pathname}?${queryParams.toString()}`)
   }
 </script>
 

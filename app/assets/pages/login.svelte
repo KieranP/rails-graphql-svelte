@@ -1,7 +1,7 @@
 <script>
   import { loginUser } from '@libs/queries'
   import { session, errors } from '@libs/stores'
-  import { navigate } from 'svelte-navigator'
+  import { goto } from '@roxi/routify'
   import { _ } from '@libs/i18n'
 
   let email
@@ -13,7 +13,7 @@
       session.set(data.loginUser)
       localStorage.setItem('session',
         JSON.stringify(data.loginUser))
-      navigate('/')
+      $goto('/')
     }).catch(error => {
       errors.set(error.graphQLErrors)
     })

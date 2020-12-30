@@ -1,20 +1,16 @@
 {
   "scripts": {
-    "start": "snowpack dev",
-    "build": "snowpack build",
-    "test": "echo \"This template does not include a test runner by default.\" && exit 1",
-    "format": "prettier --write \"src/**/*.js\"",
-    "lint": "prettier --check \"src/**/*.js\""
+    "build": "routify run -b && snowpack build"
   },
   "dependencies": {
     "@apollo/client": "^3.3.6",
     "@popperjs/core": "^2.6.0",
     "@rails/actioncable": "^6.1.0",
+    "@roxi/routify": "^2.7.3",
     "bootstrap": "^5.0.0-beta1",
     "graphql-ruby-client": "^1.8.1",
     "svelte": "^3.29.7",
-    "svelte-i18n": "^3.3.0",
-    "svelte-navigator": "^3.1.3"
+    "svelte-i18n": "^3.3.0"
   },
   "devDependencies": {
     "@snowpack/plugin-dotenv": "^2.0.5",

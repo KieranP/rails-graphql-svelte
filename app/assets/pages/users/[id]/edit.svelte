@@ -1,7 +1,7 @@
 <script>
   import { findUser, updateUser } from '@libs/queries'
   import { errors } from '@libs/stores'
-  import { navigate } from 'svelte-navigator'
+  import { goto } from '@roxi/routify'
   import Loader from '@components/loader'
   import { _ } from '@libs/i18n'
 
@@ -26,7 +26,7 @@
     ).then(res => {
       let data = res.data
       let id = data.updateUser.user.id
-      navigate('/users/'+id)
+      $goto('/users/:id', {id})
     }).catch(error => {
       errors.set(error.graphQLErrors)
     })

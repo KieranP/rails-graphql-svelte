@@ -1,9 +1,9 @@
 <script>
   import { findPost, updatePost } from '@libs/queries'
   import { errors } from '@libs/stores'
-  import { navigate } from 'svelte-navigator'
+  import { goto } from '@roxi/routify'
   import Loader from '@components/loader'
-  import Form from './_form'
+  import Form from '../_form'
   import { _ } from '@libs/i18n'
 
   export let id
@@ -23,7 +23,7 @@
     ).then(res => {
       let data = res.data
       let id = data.updatePost.post.id
-      navigate('/posts/'+id)
+      $goto('/posts/:id', {id})
     }).catch(error => {
       errors.set(error.graphQLErrors)
     })

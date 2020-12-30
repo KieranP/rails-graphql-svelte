@@ -1,8 +1,6 @@
-export default function(location) {
-  let search = location.search
-  let params = new URLSearchParams(search)
-  let before = params.get('before')
-  let after = params.get('after')
+export default function(params) {
+  let before = params['before']
+  let after = params['after']
 
   let first, last
   if (!!before) {

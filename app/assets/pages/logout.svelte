@@ -1,12 +1,12 @@
 <script>
   import { logoutUser } from '@libs/queries'
   import { session, errors } from '@libs/stores'
-  import { navigate } from 'svelte-navigator'
+  import { goto } from '@roxi/routify'
 
   logoutUser({}, `user { id }`).then(res => {
     localStorage.clear()
     session.set({})
-    navigate('/')
+    $goto('/')
   }).catch(error => {
     errors.set(error.graphQLErrors)
   })

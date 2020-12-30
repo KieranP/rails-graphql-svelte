@@ -1,7 +1,7 @@
 <script>
   import { findPost, watchPost, destroyPost } from '@libs/queries'
   import { session, errors } from '@libs/stores'
-  import { Link, navigate } from 'svelte-navigator'
+  import { url, goto } from '@roxi/routify'
   import Loader from '@components/loader'
   import Confirm from '@components/confirm'
   import { _ } from '@libs/i18n'
@@ -25,7 +25,7 @@
 
   function destroy() {
     destroyPost({id}, `post { id }`).then(res => {
-      navigate('/posts')
+      $goto('/posts')
     }).catch(error => {
       errors.set(error.graphQLErrors)
     })
@@ -38,9 +38,9 @@
 
   {#if $session.user && $session.user.id == post.user.id}
     <p>
-      <Link to="/posts/{post.id}/edit" class="btn btn-outline-primary">
+      <a href={$url('/posts/:id/edit', { id: post.id })} class="btn btn-outline-primary">
         {$_('common.edit')}
-      </Link>
+      </a>
 
       <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#confirmDialog">
         {$_('common.delete')}

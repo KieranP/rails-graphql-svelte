@@ -1,7 +1,7 @@
 <script>
   import { findUser, watchUser } from '@libs/queries'
   import { session, errors } from '@libs/stores'
-  import { Link } from 'svelte-navigator'
+  import { url } from '@roxi/routify'
   import Loader from '@components/loader'
   import { _ } from '@libs/i18n'
 
@@ -30,9 +30,9 @@
     <ul>
       {#each user.posts as post (post.id)}
         <li>
-          <Link to="/posts/{post.id}">
+          <a href={$url('/posts/:id', { id: post.id })}>
             {post.title}
-          </Link>
+          </a>
         </li>
       {/each}
     </ul>
@@ -40,9 +40,9 @@
 
   {#if $session.user && $session.user.id == user.id}
     <p>
-      <Link to="/users/{user.id}/edit" class="btn btn-outline-primary">
+      <a href={$url('/users/:id/edit', { id: user.id })} class="btn btn-outline-primary">
         {$_('common.edit')}
-      </Link>
+      </a>
     </p>
   {/if}
 {:else}

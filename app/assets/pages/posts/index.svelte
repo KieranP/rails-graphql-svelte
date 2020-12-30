@@ -2,7 +2,7 @@
   import { allPosts } from '@libs/queries'
   import { session, errors } from '@libs/stores'
   import Loader from '@components/loader'
-  import { Link, useLocation } from 'svelte-navigator'
+  import { url, params } from '@roxi/routify'
   import Pager from '@components/pager'
   import pager from '@libs/pager'
   import { _ } from '@libs/i18n'
@@ -10,9 +10,8 @@
   let posts
   let pageInfo
 
-  const location = useLocation()
   $: allPosts(
-    pager($location),
+    pager($params),
     `nodes { id title user { id name } }`
   ).then(res => {
     posts = res.data.allPosts.nodes
@@ -27,22 +26,22 @@
 </h1>
 
 {#if $session.user}
-  <Link to="/posts/new" class="btn btn-outline-primary">
+  <a href={$url('/posts/new')} class="btn btn-outline-primary">
     {$_('pages.posts.index.create')}
-  </Link>
+  </a>
 {/if}
 
 {#if posts}
   <ul>
     {#each posts as post (post.id)}
       <li>
-        <Link to="/posts/{post.id}">
+        <a href={$url('/posts/:id', { id: post.id })}>
           {post.title}
-        </Link>
+        </a>
         by
-        <Link to="/users/{post.user.id}">
+        <a href={$url('/users/:id', { id: post.user.id })}>
           {post.user.name}
-        </Link>
+        </a>
       </li>
     {/each}
   </ul>
