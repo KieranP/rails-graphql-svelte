@@ -1,6 +1,6 @@
 <script>
   import { session } from '@libs/stores'
-  import { url } from '@roxi/routify'
+  import { url, isActive } from '@roxi/routify'
   import { _ } from '@libs/i18n'
 </script>
 
@@ -8,19 +8,19 @@
   <div class="container-fluid">
     <ul class="navbar-nav me-auto">
       <li class="nav-item">
-        <a href={$url('/')} class="nav-link">
+        <a href={$url('/')} class="nav-link" class:active={$isActive('/index')}>
           {$_('components.nav.home')}
         </a>
       </li>
 
       <li class="nav-item">
-        <a href={$url('/about')} class="nav-link">
+        <a href={$url('/about')} class="nav-link" class:active={$isActive('/about')}>
           {$_('components.nav.about')}
         </a>
       </li>
 
       <li class="nav-item">
-        <a href={$url('/posts')} class="nav-link">
+        <a href={$url('/posts')} class="nav-link" class:active={$isActive('/posts')}>
           {$_('components.nav.posts')}
         </a>
       </li>
@@ -29,7 +29,7 @@
     <ul class="navbar-nav">
       {#if $session.user}
         <li class="nav-item">
-          <a href={$url('/users/:id', { id: $session.user.id })} class="nav-link">
+          <a href={$url('/users/:id', { id: $session.user.id })} class="nav-link" class:active={$isActive('/users')}>
             {$session.user.name}
           </a>
         </li>
@@ -41,7 +41,7 @@
         </li>
       {:else}
         <li class="nav-item">
-          <a href={$url('/login')} class="nav-link">
+          <a href={$url('/login')} class="nav-link" class:active={$isActive('/login')}>
             {$_('components.nav.login')}
           </a>
         </li>
