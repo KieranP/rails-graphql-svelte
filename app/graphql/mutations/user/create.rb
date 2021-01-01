@@ -8,6 +8,7 @@ module Mutations::User
     argument :password_confirmation, String, required: true
 
     field :user, Objects::User, null: true
+    field :token, String, null: true
 
     def authorized?(**args)
       raise forbidden_error unless policy.create?
@@ -17,7 +18,10 @@ module Mutations::User
     def resolve(**args)
       user = User.new(args)
       if user.save
-        { user: user }
+        session = user.sessions.create!
+        token = generate_jwt(user, session)
+
+        { user: user, token: token }
       else
         errors = user.errors.full_messages
         unprocessable_error(errors.join(', '))

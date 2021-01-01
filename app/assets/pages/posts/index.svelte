@@ -1,6 +1,7 @@
 <script>
   import { allPosts } from '@libs/queries'
-  import { session, errors } from '@libs/stores'
+  import { session } from '@libs/session'
+  import { errors } from '@libs/stores'
   import Loader from '@components/loader'
   import { url, params } from '@roxi/routify'
   import Pager from '@components/pager'

@@ -1,18 +1,21 @@
 <script>
   import { loginUser } from '@libs/queries'
-  import { session, errors } from '@libs/stores'
+  import { setSession } from '@libs/session'
+  import { errors } from '@libs/stores'
+  import { setLocale, _ } from '@libs/i18n'
   import { goto } from '@roxi/routify'
-  import { _ } from '@libs/i18n'
 
   let email
   let password
 
   function submit() {
-    loginUser({email, password}, `user { id email name }`).then(res => {
-      let data = res.data
-      session.set(data.loginUser)
-      localStorage.setItem('session',
-        JSON.stringify(data.loginUser))
+    loginUser({email, password}, `user { id email name locale }`).then(res => {
+      let data = res.data.loginUser
+      let user = data.user
+
+      setSession(data)
+      setLocale.set(user.locale)
+
       $goto('/')
     }).catch(error => {
       errors.set(error.graphQLErrors)

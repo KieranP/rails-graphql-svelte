@@ -1,0 +1,78 @@
+{
+  "common": {
+    "create": "Createz",
+    "delete": "Deletez",
+    "edit": "Editz",
+    "update": "Updatez"
+  },
+  "components": {
+    "confirm": {
+      "cancel": "Cancelz",
+      "proceed": "Proceedz",
+      "title": "Are you surez?"
+    },
+    "loader": {
+      "loading": "Loadingz..."
+    },
+    "nav": {
+      "about": "Aboutz",
+      "home": "Homez",
+      "login": "Loginz",
+      "logout": "Logoutz",
+      "posts": "Postsz"
+    },
+    "pager": {
+      "next": "Nextz",
+      "prev": "Prevz"
+    }
+  },
+  "pages": {
+    "about": {
+      "index": {
+        "heading": "Aboutz"
+      }
+    },
+    "auth": {
+      "login": {
+        "button": "Loginz",
+        "email": "Emailz",
+        "heading": "Loginz",
+        "password": "Passwordz"
+      }
+    },
+    "errors": {
+      "404": {
+        "heading": "404 Not Foundz"
+      }
+    },
+    "home": {
+      "index": {
+        "heading": "Homez"
+      }
+    },
+    "posts": {
+      "_form": {
+        "body": "Bodyz",
+        "title": "Titlez"
+      },
+      "edit": {
+        "heading": "Edit Postz"
+      },
+      "index": {
+        "heading": "All Postsz",
+        "create": "New Postz"
+      },
+      "new": {
+        "heading": "New Postz"
+      }
+    },
+    "users": {
+      "edit": {
+        "email": "Emailz",
+        "heading": "Edit Userz",
+        "locale": "Localez",
+        "name": "Namez"
+      }
+    }
+  }
+}

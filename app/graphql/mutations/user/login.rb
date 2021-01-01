@@ -14,15 +14,7 @@ module Mutations::User
       raise forbidden_error unless valid
 
       session = user.sessions.create!
-      token = JwtToken.generate(user, session)
-
-      # Used by Web UI, prevents XSS attacks
-      cookies.signed['jwt_token'] = {
-        value: token,
-        httponly: true,
-        domain: ENV['COOKIE_DOMAIN'],
-        expires: 1.year.from_now
-      }
+      token = generate_jwt(user, session)
 
       { user: user, token: token }
     end

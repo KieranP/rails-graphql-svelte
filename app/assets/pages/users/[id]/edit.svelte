@@ -1,31 +1,39 @@
 <script>
   import { findUser, updateUser } from '@libs/queries'
+  import { setSession } from '@libs/session'
   import { errors } from '@libs/stores'
   import { goto } from '@roxi/routify'
   import Loader from '@components/loader'
-  import { _ } from '@libs/i18n'
+  import { allLocales, setLocale, _ } from '@libs/i18n'
 
   export let id
 
   let user
   let name
   let email
+  let locale
 
-  findUser({id}, `id name email`).then(res => {
+  findUser({id}, `id name email locale`).then(res => {
     user = res.data.findUser
     name = user.name
     email = user.email
+    locale = user.locale
   }).catch(error => {
     errors.set(error.graphQLErrors)
   })
 
   function submit() {
     updateUser(
-      {id, name, email},
-      `user { id name email }`
+      {id, name, email, locale},
+      `user { id name email locale }`
     ).then(res => {
-      let data = res.data
-      let id = data.updateUser.user.id
+      let data = res.data.updateUser
+      let user = data.user
+      let id = user.id
+
+      setSession(data)
+      setLocale.set(user.locale)
+
       $goto('/users/:id', {id})
     }).catch(error => {
       errors.set(error.graphQLErrors)
@@ -51,6 +59,20 @@
         {$_('pages.users.edit.email')}
       </label>
       <input type="email" class="form-control" id="email" bind:value={email} required />
+    </div>
+
+    <div class="mb-3">
+      <label for="locale" class="form-label">
+        {$_('pages.users.edit.locale')}
+      </label>
+
+      <select class="form-select" bind:value={locale}>
+        {#each $allLocales as _locale}
+          <option value={_locale} selected={_locale == locale}>
+            {_locale}
+          </option>
+        {/each}
+      </select>
     </div>
 
     <div class="mb-3">

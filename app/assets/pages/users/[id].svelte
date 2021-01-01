@@ -1,6 +1,7 @@
 <script>
   import { findUser, watchUser } from '@libs/queries'
-  import { session, errors } from '@libs/stores'
+  import { session } from '@libs/session'
+  import { errors } from '@libs/stores'
   import { url } from '@roxi/routify'
   import Loader from '@components/loader'
   import { _ } from '@libs/i18n'

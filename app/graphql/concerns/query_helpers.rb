@@ -5,8 +5,18 @@ module QueryHelpers
     context[:current_user]
   end
 
+  def session
+    context[:session]
+  end
+
   def cookies
     context[:cookies]
+  end
+
+  def generate_jwt(user, session)
+    token = JwtToken.generate(user, session)
+    JwtToken.set_cookie(cookies, token)
+    token
   end
 
   def logged_in?

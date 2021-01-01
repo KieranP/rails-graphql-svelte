@@ -15,6 +15,7 @@ class GraphqlController < ApplicationController
       variables: ensure_hash(params[:variables]),
       context: {
         current_user: current_user,
+        session: current_session,
         cookies: cookies
       }
     }

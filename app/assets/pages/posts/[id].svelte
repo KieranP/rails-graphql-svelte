@@ -1,6 +1,7 @@
 <script>
   import { findPost, watchPost, destroyPost } from '@libs/queries'
-  import { session, errors } from '@libs/stores'
+  import { session } from '@libs/session'
+  import { errors } from '@libs/stores'
   import { url, goto } from '@roxi/routify'
   import Loader from '@components/loader'
   import Confirm from '@components/confirm'

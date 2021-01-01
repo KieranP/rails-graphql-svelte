@@ -4,6 +4,7 @@
 #
 #  id              :integer          not null, primary key
 #  email           :string
+#  locale          :string           default("en")
 #  name            :string
 #  password_digest :string
 #  created_at      :datetime         not null

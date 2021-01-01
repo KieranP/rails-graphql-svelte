@@ -6,7 +6,8 @@ class JwtToken
       jti: session.jwt_id,
       user: {
         id: user.id,
-        name: user.name
+        name: user.name,
+        locale: user.locale
       }
     }
 
@@ -20,5 +21,15 @@ class JwtToken
         Session.find_by_jwt_id(jti)
       }
     })
+  end
+
+  def self.set_cookie(cookies, token)
+    # Used by Web UI, prevents XSS attacks
+    cookies.signed['jwt_token'] = {
+      value: token,
+      httponly: true,
+      domain: ENV['COOKIE_DOMAIN'],
+      expires: 1.year.from_now
+    }
   end
 end

@@ -5,8 +5,10 @@ module Mutations::User
     argument :id, ID, required: true
     argument :email, String, required: false
     argument :name, String, required: false
+    argument :locale, String, required: false
 
     field :user, Objects::User, null: true
+    field :token, String, null: true
 
     def authorized?(**args)
       raise unauthorised_error unless logged_in?
@@ -17,8 +19,9 @@ module Mutations::User
 
     def resolve(**args)
       if @user.update(args.except(:id))
+        token = generate_jwt(@user, session)
         trigger(:user_updated, {id: @user.id}, @user)
-        { user: @user }
+        { user: @user, token: token }
       else
         errors = @user.errors.full_messages
         unprocessable_error(errors.join(', '))

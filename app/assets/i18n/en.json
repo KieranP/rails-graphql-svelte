@@ -70,6 +70,7 @@
       "edit": {
         "email": "Email",
         "heading": "Edit User",
+        "locale": "Locale",
         "name": "Name"
       }
     }

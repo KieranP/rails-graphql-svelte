@@ -1,5 +1,5 @@
 <script>
-  import { session } from '@libs/stores'
+  import { session } from '@libs/session'
   import { url, isActive } from '@roxi/routify'
   import { _ } from '@libs/i18n'
 </script>
