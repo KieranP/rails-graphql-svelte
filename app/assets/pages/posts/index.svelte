@@ -2,9 +2,9 @@
   import { allPosts } from '@libs/queries'
   import { session } from '@libs/session'
   import { errors } from '@libs/stores'
-  import Loader from '@components/loader'
+  import Loader from '@components/loader.svelte'
   import { url, params } from '@roxi/routify'
-  import Pager from '@components/pager'
+  import Pager from '@components/pager.svelte'
   import pager from '@libs/pager'
   import { _ } from '@libs/i18n'
 

@@ -6,29 +6,20 @@ module.exports = {
   plugins: [
     '@snowpack/plugin-dotenv',
     '@snowpack/plugin-svelte',
-    '@snowpack/plugin-webpack'
   ],
   buildOptions: {
     out: './public',
     clean: true,
   },
-  install: [
-    /* ... */
-  ],
-  installOptions: {
-    /* ... */
-  },
-  devOptions: {
-    /* ... */
-  },
-  proxy: {
-    /* ... */
-  },
   alias: {
     '@components': './app/assets/components',
     '@i18n': './app/assets/i18n',
-    '@layouts': './app/assets/layouts',
     '@libs': './app/assets/libs',
     '@pages': './app/assets/pages'
   },
+  // optimize: {
+  //   target: 'es2017',
+  //   bundle: true,
+  //   minify: true
+  // }
 }

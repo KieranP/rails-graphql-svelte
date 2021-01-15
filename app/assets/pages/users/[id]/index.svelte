@@ -3,7 +3,7 @@
   import { session } from '@libs/session'
   import { errors } from '@libs/stores'
   import { url } from '@roxi/routify'
-  import Loader from '@components/loader'
+  import Loader from '@components/loader.svelte'
   import { _ } from '@libs/i18n'
 
   export let id

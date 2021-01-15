@@ -1,6 +1,6 @@
 <script>
-  import Nav from '@components/nav'
-  import Errors from '@components/errors'
+  import Nav from '@components/nav.svelte'
+  import Errors from '@components/errors.svelte'
 </script>
 
 <div class="container">

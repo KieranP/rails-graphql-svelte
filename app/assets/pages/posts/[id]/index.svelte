@@ -3,8 +3,8 @@
   import { session } from '@libs/session'
   import { errors } from '@libs/stores'
   import { url, goto } from '@roxi/routify'
-  import Loader from '@components/loader'
-  import Confirm from '@components/confirm'
+  import Loader from '@components/loader.svelte'
+  import Confirm from '@components/confirm.svelte'
   import { _ } from '@libs/i18n'
 
   export let id

@@ -2,7 +2,7 @@
   import { createPost } from '@libs/queries'
   import { errors } from '@libs/stores'
   import { goto } from '@roxi/routify'
-  import Form from './_form'
+  import Form from './_form.svelte'
   import { _ } from '@libs/i18n'
 
   function submit(event) {

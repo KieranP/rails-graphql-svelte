@@ -2,8 +2,8 @@
   import { findPost, updatePost } from '@libs/queries'
   import { errors } from '@libs/stores'
   import { goto } from '@roxi/routify'
-  import Loader from '@components/loader'
-  import Form from '../_form'
+  import Loader from '@components/loader.svelte'
+  import Form from '../_form.svelte'
   import { _ } from '@libs/i18n'
 
   export let id
