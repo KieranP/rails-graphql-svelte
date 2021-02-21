@@ -8,14 +8,16 @@
     let queryParams = new URLSearchParams(window.location.search)
     queryParams.set('before', pageInfo.startCursor)
     queryParams.delete('after')
-    $goto(`${window.location.pathname}?${queryParams.toString()}`)
+    queryParams = Object.fromEntries(queryParams.entries())
+    $goto(window.location.pathname, queryParams)
   }
 
   function next() {
     let queryParams = new URLSearchParams(window.location.search)
     queryParams.set('after', pageInfo.endCursor)
     queryParams.delete('before')
-    $goto(`${window.location.pathname}?${queryParams.toString()}`)
+    queryParams = Object.fromEntries(queryParams.entries())
+    $goto(window.location.pathname, queryParams)
   }
 </script>
 
