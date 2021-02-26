@@ -129,6 +129,7 @@ GEM
     nokogiri (1.11.1)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
+    pg (1.2.3)
     promise.rb (0.7.4)
     puma (5.2.1)
       nio4r (~> 2.0)
@@ -205,7 +206,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     thor (1.1.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
@@ -230,6 +230,7 @@ DEPENDENCIES
   jwt
   kaminari
   listen
+  pg
   puma
   pundit
   rack-cors
@@ -238,10 +239,9 @@ DEPENDENCIES
   rspec-rails
   sidekiq
   simplecov
-  sqlite3
 
 RUBY VERSION
-   ruby 2.7.1p83
+   ruby 2.7.2p137
 
 BUNDLED WITH
    2.1.4
