@@ -1,20 +1,25 @@
-module Subscriptions::Posts
-  class Updated < Types::Subscription
-    payload_type Objects::Post
+# frozen_string_literal: true
 
-    argument :id, ID, required: true
+module Subscriptions
+  module Posts
+    class Updated < Types::Subscription
+      payload_type Objects::Post
 
-    def update(**args)
-      unless post = find_post(args)
-        raise GraphQL::ExecutionError.new('Post Not Found', options: { code: 404 })
+      argument :id, ID, required: true
+
+      def update(**args)
+        unless post = post(args)
+          raise GraphQL::ExecutionError.new('Post Not Found', options: { code: 404 })
+        end
+
+        post
       end
-      post
-    end
 
-    private
+      private
 
-    def find_post(**args)
-      @post ||= Post.find_by_id(args[:id])
+      def post(**args)
+        @post ||= ::Post.find_by_id(args[:id])
+      end
     end
   end
 end

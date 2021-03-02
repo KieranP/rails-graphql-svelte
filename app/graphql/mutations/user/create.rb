@@ -1,37 +1,42 @@
-module Mutations::User
-  class Create < Types::Mutation
-    graphql_name "UserCreate"
+# frozen_string_literal: true
 
-    argument :email, String, required: true
-    argument :name, String, required: true
-    argument :password, String, required: true
-    argument :password_confirmation, String, required: true
+module Mutations
+  module User
+    class Create < Types::Mutation
+      graphql_name 'UserCreate'
 
-    field :user, Objects::User, null: true
-    field :token, String, null: true
+      argument :email, String, required: true
+      argument :name, String, required: true
+      argument :password, String, required: true
+      argument :password_confirmation, String, required: true
 
-    def authorized?(**args)
-      raise forbidden_error unless policy.create?
-      true
-    end
+      field :user, Objects::User, null: true
+      field :token, String, null: true
 
-    def resolve(**args)
-      user = User.new(args)
-      if user.save
-        session = user.sessions.create!
-        token = generate_jwt(user, session)
+      def authorized?(**_args)
+        raise forbidden_error unless policy.create?
 
-        { user: user, token: token }
-      else
-        errors = user.errors.full_messages
-        unprocessable_error(errors.join(', '))
+        true
       end
-    end
 
-    private
+      def resolve(**args)
+        user = ::User.new(args)
+        if user.save
+          session = user.sessions.create!
+          token = generate_jwt(user, session)
 
-    def policy
-      PostPolicy.new(current_user, nil)
+          { user: user, token: token }
+        else
+          errors = user.errors.full_messages
+          unprocessable_error(errors.join(', '))
+        end
+      end
+
+      private
+
+      def policy
+        PostPolicy.new(current_user, nil)
+      end
     end
   end
 end

@@ -1,22 +1,27 @@
-module Resolvers::Post
-  class Index < Types::Resolver
-    graphql_name "PostIndex"
+# frozen_string_literal: true
 
-    type Objects::Post.connection_type, null: false
+module Resolvers
+  module Post
+    class Index < Types::Resolver
+      graphql_name 'PostIndex'
 
-    def authorized?(**args)
-      raise forbidden_error unless policy.index?
-      true
-    end
+      type Objects::Post.connection_type, null: false
 
-    def resolve(**args)
-      Post.all
-    end
+      def authorized?(**_args)
+        raise forbidden_error unless policy.index?
 
-    private
+        true
+      end
 
-    def policy
-      PostPolicy.new(current_user, nil)
+      def resolve(**_args)
+        ::Post.all
+      end
+
+      private
+
+      def policy
+        PostPolicy.new(current_user, nil)
+      end
     end
   end
 end

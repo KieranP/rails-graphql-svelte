@@ -1,29 +1,34 @@
-module Resolvers::Post
-  class Show < Types::Resolver
-    graphql_name "PostShow"
+# frozen_string_literal: true
 
-    type Objects::Post, null: false
+module Resolvers
+  module Post
+    class Show < Types::Resolver
+      graphql_name 'PostShow'
 
-    argument :id, ID, required: true
+      type Objects::Post, null: false
 
-    def authorized?(**args)
-      raise not_found_error('Post Not Found') unless find_post(**args)
-      raise forbidden_error unless policy.show?
-      true
-    end
+      argument :id, ID, required: true
 
-    def resolve(**args)
-      @post
-    end
+      def authorized?(**args)
+        raise not_found_error('Post Not Found') unless post(**args)
+        raise forbidden_error unless policy.show?
 
-    private
+        true
+      end
 
-    def find_post(**args)
-      @post ||= Post.find_by_id(args[:id])
-    end
+      def resolve(**_args)
+        @post
+      end
 
-    def policy
-      PostPolicy.new(current_user, @post)
+      private
+
+      def post(**args)
+        @post ||= ::Post.find_by_id(args[:id])
+      end
+
+      def policy
+        PostPolicy.new(current_user, @post)
+      end
     end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module QueryHelpers
   extend ActiveSupport::Concern
 
@@ -28,27 +30,26 @@ module QueryHelpers
   end
 
   def execution_error(message, code = 500)
-    msg ||= "Execution Error"
     GraphQL::ExecutionError.new(message, options: { code: code })
   end
 
   def unauthorised_error(msg = nil)
-    msg ||= "Unauthorized"
+    msg ||= 'Unauthorized'
     execution_error(msg, 401)
   end
 
   def forbidden_error(msg = nil)
-    msg ||= "Forbidden"
+    msg ||= 'Forbidden'
     execution_error(msg, 403)
   end
 
   def not_found_error(msg = nil)
-    msg ||= "Not Found"
+    msg ||= 'Not Found'
     execution_error(msg, 404)
   end
 
   def unprocessable_error(msg = nil)
-    msg ||= "Unprocessable"
+    msg ||= 'Unprocessable'
     execution_error(msg, 422)
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::API
   include ActionController::Cookies
 
@@ -33,7 +35,7 @@ class ApplicationController < ActionController::API
     @current_session ||= begin
       return unless jwt_payload
 
-      jti = jwt_payload.dig('jti')
+      jti = jwt_payload['jti']
       Session.find_by_jwt_id(jti)
     end
   end
@@ -51,6 +53,7 @@ class ApplicationController < ActionController::API
 
   def update_session
     return unless current_session
+
     current_session.mark_visit!
   end
 end

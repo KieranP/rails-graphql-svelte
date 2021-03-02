@@ -1,20 +1,25 @@
-module Subscriptions::Users
-  class Updated < Types::Subscription
-    payload_type Objects::User
+# frozen_string_literal: true
 
-    argument :id, ID, required: true
+module Subscriptions
+  module Users
+    class Updated < Types::Subscription
+      payload_type Objects::User
 
-    def update(**args)
-      unless user = find_user(args)
-        raise GraphQL::ExecutionError.new('User Not Found', options: { code: 404 })
+      argument :id, ID, required: true
+
+      def update(**args)
+        unless user = user(args)
+          raise GraphQL::ExecutionError.new('User Not Found', options: { code: 404 })
+        end
+
+        user
       end
-      user
-    end
 
-    private
+      private
 
-    def find_user(**args)
-      @user ||= User.find_by_id(args[:id])
+      def user(**args)
+        @user ||= ::User.find_by_id(args[:id])
+      end
     end
   end
 end

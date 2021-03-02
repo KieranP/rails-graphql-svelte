@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     origins ENV['CORS_ORIGIN']
@@ -5,6 +7,6 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     resource '*',
       headers: :any,
       credentials: true,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      methods: %i[get post put patch delete options head]
   end
 end

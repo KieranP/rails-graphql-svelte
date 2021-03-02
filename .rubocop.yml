@@ -1,0 +1,33 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'bin/*'
+    - 'db/schema.rb'
+    - 'lib/tasks/auto_annotate_models.rake'
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Lint/AssignmentInCondition:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+Lint/NoReturnInBeginEndBlocks:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 15
+
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
+
+Style/Documentation:
+  Enabled: false

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class JwtToken
   def self.generate(user, session)
     payload = {

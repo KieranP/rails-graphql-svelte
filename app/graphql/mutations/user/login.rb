@@ -1,22 +1,26 @@
-module Mutations::User
-  class Login < Types::Mutation
-    graphql_name "UserLogin"
+# frozen_string_literal: true
 
-    argument :email, String, required: true
-    argument :password, String, required: true
+module Mutations
+  module User
+    class Login < Types::Mutation
+      graphql_name 'UserLogin'
 
-    field :user, Objects::User, null: true
-    field :token, String, null: true
+      argument :email, String, required: true
+      argument :password, String, required: true
 
-    def resolve(email:, password:)
-      user = User.find_by_email(email)
-      valid = user&.authenticate(password)
-      raise forbidden_error unless valid
+      field :user, Objects::User, null: true
+      field :token, String, null: true
 
-      session = user.sessions.create!
-      token = generate_jwt(user, session)
+      def resolve(email:, password:)
+        user = ::User.find_by_email(email)
+        valid = user&.authenticate(password)
+        raise forbidden_error unless valid
 
-      { user: user, token: token }
+        session = user.sessions.create!
+        token = generate_jwt(user, session)
+
+        { user: user, token: token }
+      end
     end
   end
 end

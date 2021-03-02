@@ -1,41 +1,46 @@
-module Mutations::User
-  class Update < Types::Mutation
-    graphql_name "UserUpdate"
+# frozen_string_literal: true
 
-    argument :id, ID, required: true
-    argument :email, String, required: false
-    argument :name, String, required: false
-    argument :locale, String, required: false
+module Mutations
+  module User
+    class Update < Types::Mutation
+      graphql_name 'UserUpdate'
 
-    field :user, Objects::User, null: true
-    field :token, String, null: true
+      argument :id, ID, required: true
+      argument :email, String, required: false
+      argument :name, String, required: false
+      argument :locale, String, required: false
 
-    def authorized?(**args)
-      raise unauthorised_error unless logged_in?
-      raise not_found_error('User Not Found') unless find_user(**args)
-      raise forbidden_error unless policy.update?
-      true
-    end
+      field :user, Objects::User, null: true
+      field :token, String, null: true
 
-    def resolve(**args)
-      if @user.update(args.except(:id))
-        token = generate_jwt(@user, session)
-        trigger(:user_updated, {id: @user.id}, @user)
-        { user: @user, token: token }
-      else
-        errors = @user.errors.full_messages
-        unprocessable_error(errors.join(', '))
+      def authorized?(**args)
+        raise unauthorised_error unless logged_in?
+        raise not_found_error('User Not Found') unless user(**args)
+        raise forbidden_error unless policy.update?
+
+        true
       end
-    end
 
-    private
+      def resolve(**args)
+        if @user.update(args.except(:id))
+          token = generate_jwt(@user, session)
+          trigger(:user_updated, { id: @user.id }, @user)
+          { user: @user, token: token }
+        else
+          errors = @user.errors.full_messages
+          unprocessable_error(errors.join(', '))
+        end
+      end
 
-    def find_user(**args)
-      @user ||= User.find_by_id(args[:id])
-    end
+      private
 
-    def policy
-      UserPolicy.new(current_user, @user)
+      def user(**args)
+        @user ||= ::User.find_by_id(args[:id])
+      end
+
+      def policy
+        UserPolicy.new(current_user, @user)
+      end
     end
   end
 end

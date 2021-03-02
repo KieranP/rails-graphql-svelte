@@ -1,32 +1,37 @@
-module Mutations::Post
-  class Create < Types::Mutation
-    graphql_name "PostCreate"
+# frozen_string_literal: true
 
-    argument :title, String, required: true
-    argument :body, String, required: true
+module Mutations
+  module Post
+    class Create < Types::Mutation
+      graphql_name 'PostCreate'
 
-    field :post, Objects::Post, null: true
+      argument :title, String, required: true
+      argument :body, String, required: true
 
-    def authorized?(**args)
-      raise unauthorised_error unless logged_in?
-      raise forbidden_error unless policy.create?
-      true
-    end
+      field :post, Objects::Post, null: true
 
-    def resolve(**args)
-      post = current_user.posts.new(args)
-      if post.save
-        { post: post }
-      else
-        errors = post.errors.full_messages
-        unprocessable_error(errors.join(', '))
+      def authorized?(**_args)
+        raise unauthorised_error unless logged_in?
+        raise forbidden_error unless policy.create?
+
+        true
       end
-    end
 
-    private
+      def resolve(**args)
+        post = current_user.posts.new(args)
+        if post.save
+          { post: post }
+        else
+          errors = post.errors.full_messages
+          unprocessable_error(errors.join(', '))
+        end
+      end
 
-    def policy
-      PostPolicy.new(current_user, nil)
+      private
+
+      def policy
+        PostPolicy.new(current_user, nil)
+      end
     end
   end
 end

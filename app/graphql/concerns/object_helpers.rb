@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module ObjectHelpers
   extend ActiveSupport::Concern
 
   class_methods do
     def model
-      @model ||= self.name.demodulize.constantize
+      @model ||= name.demodulize.constantize
     end
 
     def association(association, *fields)

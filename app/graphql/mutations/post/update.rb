@@ -1,38 +1,43 @@
-module Mutations::Post
-  class Update < Types::Mutation
-    graphql_name "PostUpdate"
+# frozen_string_literal: true
 
-    argument :id, ID, required: true
-    argument :title, String, required: true
-    argument :body, String, required: true
+module Mutations
+  module Post
+    class Update < Types::Mutation
+      graphql_name 'PostUpdate'
 
-    field :post, Objects::Post, null: true
+      argument :id, ID, required: true
+      argument :title, String, required: true
+      argument :body, String, required: true
 
-    def authorized?(**args)
-      raise unauthorised_error unless logged_in?
-      raise not_found_error('Post Not Found') unless find_post(**args)
-      raise forbidden_error unless policy.update?
-      true
-    end
+      field :post, Objects::Post, null: true
 
-    def resolve(**args)
-      if @post.update(args.except(:id))
-        trigger(:post_updated, {id: @post.id}, @post)
-        { post: @post }
-      else
-        errors = @post.errors.full_messages
-        unprocessable_error(errors.join(', '))
+      def authorized?(**args)
+        raise unauthorised_error unless logged_in?
+        raise not_found_error('Post Not Found') unless post(**args)
+        raise forbidden_error unless policy.update?
+
+        true
       end
-    end
 
-    private
+      def resolve(**args)
+        if @post.update(args.except(:id))
+          trigger(:post_updated, { id: @post.id }, @post)
+          { post: @post }
+        else
+          errors = @post.errors.full_messages
+          unprocessable_error(errors.join(', '))
+        end
+      end
 
-    def find_post(**args)
-      @post ||= Post.find_by_id(args[:id])
-    end
+      private
 
-    def policy
-      PostPolicy.new(current_user, @post)
+      def post(**args)
+        @post ||= ::Post.find_by_id(args[:id])
+      end
+
+      def policy
+        PostPolicy.new(current_user, @post)
+      end
     end
   end
 end

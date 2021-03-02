@@ -1,29 +1,34 @@
-module Resolvers::User
-  class Show < Types::Resolver
-    graphql_name "UserShow"
+# frozen_string_literal: true
 
-    type Objects::User, null: false
+module Resolvers
+  module User
+    class Show < Types::Resolver
+      graphql_name 'UserShow'
 
-    argument :id, ID, required: true
+      type Objects::User, null: false
 
-    def authorized?(**args)
-      raise not_found_error('User Not Found') unless find_user(**args)
-      raise forbidden_error unless policy.show?
-      true
-    end
+      argument :id, ID, required: true
 
-    def resolve(**args)
-      @user
-    end
+      def authorized?(**args)
+        raise not_found_error('User Not Found') unless user(**args)
+        raise forbidden_error unless policy.show?
 
-    private
+        true
+      end
 
-    def find_user(**args)
-      @user ||= User.find_by_id(args[:id])
-    end
+      def resolve(**_args)
+        @user
+      end
 
-    def policy
-      UserPolicy.new(current_user, @user)
+      private
+
+      def user(**args)
+        @user ||= ::User.find_by_id(args[:id])
+      end
+
+      def policy
+        UserPolicy.new(current_user, @user)
+      end
     end
   end
 end

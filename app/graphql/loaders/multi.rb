@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Loaders
   class Multi < GraphQL::Batch::Loader
     def initialize(model, column)

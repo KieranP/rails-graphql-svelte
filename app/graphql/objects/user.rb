@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Objects
   class User < Types::Object
     field :id, ID, null: false

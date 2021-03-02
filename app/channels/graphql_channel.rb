@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class GraphqlChannel < ApplicationCable::Channel
   def subscribed
     @subscription_ids = []
   end
 
   def unsubscribed
-    @subscription_ids.each { |sid|
+    @subscription_ids.each do |sid|
       Schema.subscriptions.delete_subscription(sid)
-    }
+    end
   end
 
   def execute(data)

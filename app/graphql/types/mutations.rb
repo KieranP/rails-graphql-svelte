@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   class Mutations < Object
     field :create_user, mutation: ::Mutations::User::Create

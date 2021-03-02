@@ -1,35 +1,40 @@
-module Mutations::Post
-  class Destroy < Types::Mutation
-    graphql_name "PostDestroy"
+# frozen_string_literal: true
 
-    argument :id, ID, required: true
+module Mutations
+  module Post
+    class Destroy < Types::Mutation
+      graphql_name 'PostDestroy'
 
-    field :post, Objects::Post, null: true
+      argument :id, ID, required: true
 
-    def authorized?(**args)
-      raise unauthorised_error unless logged_in?
-      raise not_found_error('Post Not Found') unless find_post(**args)
-      raise forbidden_error unless policy.destroy?
-      true
-    end
+      field :post, Objects::Post, null: true
 
-    def resolve(**args)
-      if @post.destroy
-        { post: @post }
-      else
-        errors = @post.errors.full_messages
-        unprocessable_error(errors.join(', '))
+      def authorized?(**args)
+        raise unauthorised_error unless logged_in?
+        raise not_found_error('Post Not Found') unless post(**args)
+        raise forbidden_error unless policy.destroy?
+
+        true
       end
-    end
 
-    private
+      def resolve(**_args)
+        if @post.destroy
+          { post: @post }
+        else
+          errors = @post.errors.full_messages
+          unprocessable_error(errors.join(', '))
+        end
+      end
 
-    def find_post(**args)
-      @post ||= Post.find_by_id(args[:id])
-    end
+      private
 
-    def policy
-      PostPolicy.new(current_user, @post)
+      def post(**args)
+        @post ||= ::Post.find_by_id(args[:id])
+      end
+
+      def policy
+        PostPolicy.new(current_user, @post)
+      end
     end
   end
 end

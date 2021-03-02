@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -29,6 +31,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'database_cleaner-active_record'
   gem 'simplecov', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :development do

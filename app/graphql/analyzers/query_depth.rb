@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Analyzers
   class QueryDepth < GraphQL::Analysis::AST::QueryDepth
     def result

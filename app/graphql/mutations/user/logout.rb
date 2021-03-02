@@ -1,12 +1,16 @@
-module Mutations::User
-  class Logout < Types::Mutation
-    graphql_name "UserLogout"
+# frozen_string_literal: true
 
-    field :user, Objects::User, null: true
+module Mutations
+  module User
+    class Logout < Types::Mutation
+      graphql_name 'UserLogout'
 
-    def resolve
-      cookies.delete('jwt_token')
-      { user: current_user }
+      field :user, Objects::User, null: true
+
+      def resolve
+        cookies.delete('jwt_token')
+        { user: current_user }
+      end
     end
   end
 end

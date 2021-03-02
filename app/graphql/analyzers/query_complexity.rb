@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Analyzers
   class QueryComplexity < GraphQL::Analysis::AST::QueryComplexity
     def result

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   class Queries < Object
     field :find_user, resolver: ::Resolvers::User::Show

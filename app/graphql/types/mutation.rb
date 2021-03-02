@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   class Mutation < GraphQL::Schema::RelayClassicMutation
     argument_class Argument
