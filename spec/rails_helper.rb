@@ -10,6 +10,20 @@ require File.expand_path('../config/environment', __dir__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
 require 'rspec/rails'
+require 'capybara/rails'
+require 'capybara/rspec'
+
+Capybara.server = :puma
+Capybara.server_host = 'localhost'
+Capybara.server_port = 3030
+
+if ENV['HEADLESS'] == 'false'
+  Capybara.default_driver = :selenium_chrome
+  Capybara.javascript_driver = :selenium_chrome
+else
+  Capybara.default_driver = :selenium_chrome_headless
+  Capybara.javascript_driver = :selenium_chrome_headless
+end
 
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
 
@@ -27,15 +41,17 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.include FactoryBot::Syntax::Methods
+  config.include AuthenticationHelpers
 
   config.before(:suite) do
-    DatabaseCleaner.clean_with :truncation
-    DatabaseCleaner.strategy = :transaction
-  end
+    unless ENV['BUILD_FRONTEND'] == 'false'
+      puts 'Bulding Route File...'
+      puts `yarn routify -b`
+      puts ''
 
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
+      puts 'Building Frontend App...'
+      puts `yarn snowpack build --polyfill-node`
+      puts ''
     end
   end
 end

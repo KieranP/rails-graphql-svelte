@@ -23,6 +23,10 @@ Lint/MissingSuper:
 Lint/NoReturnInBeginEndBlocks:
   Enabled: false
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
 Metrics/MethodLength:
   Max: 15
 

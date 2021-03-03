@@ -28,7 +28,10 @@ gem 'sidekiq'
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
+  gem 'capybara'
+  gem 'webdrivers'
   gem 'factory_bot_rails'
+  gem 'faker'
   gem 'database_cleaner-active_record'
   gem 'simplecov', require: false
   gem 'rubocop-rails', require: false

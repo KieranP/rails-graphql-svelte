@@ -1,4 +1,7 @@
 {
+  "name": "fullapp",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
   "dependencies": {
     "@apollo/client": "^3.3.6",
     "@popperjs/core": "^2.6.0",
