@@ -69,6 +69,7 @@ GEM
     bcrypt (3.1.16)
     bootsnap (1.7.2)
       msgpack (~> 1.0)
+    brakeman (5.0.0)
     builder (3.2.4)
     capybara (3.35.3)
       addressable
@@ -256,6 +257,7 @@ DEPENDENCIES
   annotate
   bcrypt
   bootsnap
+  brakeman
   capybara
   database_cleaner-active_record
   dotenv-rails

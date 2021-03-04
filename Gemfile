@@ -30,6 +30,7 @@ group :development, :test do
 
   # Code Quality
   gem 'rubocop-rails', require: false
+  gem 'brakeman', require: false
 end
 
 group :development do
