@@ -28,7 +28,11 @@ const link = ApolloLink.split(
   })
 )
 
-const cache = new InMemoryCache()
+const cache = new InMemoryCache({
+  dataIdFromObject: (object) => (
+    `${object.__typename}:${object.uuid}`
+  )
+})
 
 const client = new ApolloClient({ link, cache })
 
