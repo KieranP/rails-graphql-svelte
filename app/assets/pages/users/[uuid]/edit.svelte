@@ -1,5 +1,5 @@
 <script>
-  import { findUser, updateUser } from '@libs/queries'
+  import { findUser, updateUser } from '@queries/user'
   import { setSession } from '@libs/session'
   import { errors } from '@libs/stores'
   import { goto } from '@roxi/routify'

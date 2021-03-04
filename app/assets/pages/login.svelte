@@ -1,5 +1,5 @@
 <script>
-  import { loginUser } from '@libs/queries'
+  import { loginUser } from '@queries/auth'
   import { setSession } from '@libs/session'
   import { errors } from '@libs/stores'
   import { setLocale, _ } from '@libs/i18n'

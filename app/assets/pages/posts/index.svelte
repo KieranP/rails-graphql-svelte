@@ -1,5 +1,5 @@
 <script>
-  import { allPosts } from '@libs/queries'
+  import { allPosts } from '@queries/post'
   import { session } from '@libs/session'
   import { errors } from '@libs/stores'
   import Loader from '@components/loader.svelte'

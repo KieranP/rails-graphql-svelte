@@ -1,5 +1,5 @@
 <script>
-  import { createPost } from '@libs/queries'
+  import { createPost } from '@queries/post'
   import { errors } from '@libs/stores'
   import { goto } from '@roxi/routify'
   import Form from './_form.svelte'

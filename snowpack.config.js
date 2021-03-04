@@ -15,7 +15,8 @@ module.exports = {
     '@components': './app/assets/components',
     '@i18n': './app/assets/i18n',
     '@libs': './app/assets/libs',
-    '@pages': './app/assets/pages'
+    '@pages': './app/assets/pages',
+    '@queries': './app/assets/queries'
   },
   // optimize: {
   //   target: 'es2017',

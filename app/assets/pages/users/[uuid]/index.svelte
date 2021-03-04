@@ -1,5 +1,5 @@
 <script>
-  import { findUser, watchUser } from '@libs/queries'
+  import { findUser, watchUser } from '@queries/user'
   import { session } from '@libs/session'
   import { errors } from '@libs/stores'
   import { url } from '@roxi/routify'

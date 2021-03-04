@@ -1,5 +1,5 @@
 <script>
-  import { findPost, updatePost } from '@libs/queries'
+  import { findPost, updatePost } from '@queries/post'
   import { errors } from '@libs/stores'
   import { goto } from '@roxi/routify'
   import Loader from '@components/loader.svelte'

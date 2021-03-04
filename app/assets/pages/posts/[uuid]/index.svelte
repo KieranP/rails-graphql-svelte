@@ -1,5 +1,5 @@
 <script>
-  import { findPost, watchPost, destroyPost } from '@libs/queries'
+  import { findPost, watchPost, destroyPost } from '@queries/post'
   import { session } from '@libs/session'
   import { errors } from '@libs/stores'
   import { url, goto } from '@roxi/routify'
