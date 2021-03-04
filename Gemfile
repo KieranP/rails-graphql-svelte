@@ -10,34 +10,41 @@ gem 'rails'
 gem 'pg'
 gem 'puma'
 gem 'bootsnap', require: false
-gem 'rack-cors'
-gem 'dotenv-rails'
+gem 'bcrypt'
 gem 'redis'
 
 # API
 gem 'graphql'
 gem 'graphql-batch'
-gem 'bcrypt'
+gem 'rack-cors'
 gem 'jwt'
 
 # App
+gem 'dotenv-rails'
 gem 'pundit'
-gem 'kaminari'
 gem 'sidekiq'
 
 group :development, :test do
-  gem 'byebug'
+  # Testing
   gem 'rspec-rails'
-  gem 'capybara'
-  gem 'webdrivers'
-  gem 'factory_bot_rails'
-  gem 'faker'
-  gem 'database_cleaner-active_record'
-  gem 'simplecov', require: false
+
+  # Code Quality
   gem 'rubocop-rails', require: false
 end
 
 group :development do
   gem 'listen'
   gem 'annotate'
+end
+
+group :test do
+  # Testing
+  gem 'factory_bot_rails'
+  gem 'database_cleaner-active_record'
+  gem 'faker'
+  gem 'capybara'
+  gem 'webdrivers'
+
+  # Code Quality
+  gem 'simplecov'
 end
