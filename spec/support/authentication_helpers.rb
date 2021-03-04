@@ -2,7 +2,7 @@
 
 module AuthenticationHelpers
   def login(user)
-    visit "/testing/login?id=#{user.id}"
+    visit "/testing/login?uuid=#{user.uuid}"
     @loggedin = true
   end
 

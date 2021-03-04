@@ -6,7 +6,7 @@ class TestingController < ActionController::Base
   end
 
   def login
-    user = User.find(params[:id])
+    user = User.find_by_uuid(params[:uuid])
     session = user.sessions.create!
     jwt_token = JwtToken.generate(user, session)
     JwtToken.set_cookie(cookies, jwt_token)

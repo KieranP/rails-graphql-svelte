@@ -7,7 +7,7 @@ class JwtToken
       exp: session.expires_at.to_i,
       jti: session.jwt_id,
       user: {
-        id: user.id,
+        uuid: user.uuid,
         name: user.name,
         locale: user.locale
       }

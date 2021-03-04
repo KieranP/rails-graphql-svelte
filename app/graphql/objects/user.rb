@@ -2,7 +2,7 @@
 
 module Objects
   class User < Types::Object
-    field :id, ID, null: false
+    field :uuid, ID, null: false
     field :email, String, null: false
     field :name, String, null: false
     field :locale, String, null: false

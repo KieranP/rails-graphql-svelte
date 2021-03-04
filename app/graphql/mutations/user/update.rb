@@ -5,7 +5,7 @@ module Mutations
     class Update < Types::Mutation
       graphql_name 'UserUpdate'
 
-      argument :id, ID, required: true
+      argument :uuid, ID, required: true
       argument :email, String, required: false
       argument :name, String, required: false
       argument :locale, String, required: false
@@ -22,9 +22,9 @@ module Mutations
       end
 
       def resolve(**args)
-        if @user.update(args.except(:id))
+        if @user.update(args.except(:uuid))
           token = generate_jwt(@user, session)
-          trigger(:user_updated, { id: @user.id }, @user)
+          trigger(:user_updated, { uuid: @user.uuid }, @user)
           { user: @user, token: token }
         else
           errors = @user.errors.full_messages
@@ -35,7 +35,7 @@ module Mutations
       private
 
       def user(**args)
-        @user ||= ::User.find_by_id(args[:id])
+        @user ||= ::User.find_by_uuid(args[:uuid])
       end
 
       def policy

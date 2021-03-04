@@ -4,9 +4,10 @@
 #
 # Table name: sessions
 #
-#  id             :integer          not null, primary key
+#  id             :bigint           not null, primary key
 #  expires_at     :datetime
 #  last_access_at :datetime
+#  uuid           :uuid             not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  jwt_id         :string           not null
@@ -15,12 +16,15 @@
 # Indexes
 #
 #  index_sessions_on_user_id  (user_id)
+#  index_sessions_on_uuid     (uuid) UNIQUE
 #
 # Foreign Keys
 #
-#  user_id  (user_id => users.id)
+#  fk_rails_...  (user_id => users.id)
 #
 class Session < ApplicationRecord
+  include HasUuid
+
   belongs_to :user
 
   before_validation :populate_jwt_id

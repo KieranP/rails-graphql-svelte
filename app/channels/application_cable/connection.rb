@@ -14,8 +14,8 @@ module ApplicationCable
       @current_user ||= begin
         return unless jwt_payload
 
-        id = jwt_payload.dig('user', 'id')
-        User.find_by_id(id)
+        uuid = jwt_payload.dig('user', 'uuid')
+        User.find_by_uuid(uuid)
       end
     end
 

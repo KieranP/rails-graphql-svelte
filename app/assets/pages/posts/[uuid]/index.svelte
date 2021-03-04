@@ -7,25 +7,25 @@
   import Confirm from '@components/confirm.svelte'
   import { _ } from '@libs/i18n'
 
-  export let id
+  export let uuid
 
   let post
 
-  const fields = `id title body user { id }`
+  const fields = `uuid title body user { uuid }`
 
-  findPost({id}, fields).then(res => {
+  findPost({uuid}, fields).then(res => {
     post = res.data.findPost
   }).catch(error => {
     errors.set(error.graphQLErrors)
   })
 
-  watchPost({id}, fields).subscribe(
+  watchPost({uuid}, fields).subscribe(
     (res) => { if(res.data.postUpdated) post = res.data.postUpdated },
     (err) => { errors.set(err.graphQLErrors) }
   )
 
   function destroy() {
-    destroyPost({id}, `post { id }`).then(res => {
+    destroyPost({uuid}, `post { uuid }`).then(res => {
       $goto('/posts')
     }).catch(error => {
       errors.set(error.graphQLErrors)
@@ -37,9 +37,9 @@
   <h1>{post.title}</h1>
   <p>{post.body}</p>
 
-  {#if $session.user && $session.user.id == post.user.id}
+  {#if $session.user && $session.user.uuid == post.user.uuid}
     <p>
-      <a href={$url('/posts/:id/edit', { id: post.id })} class="btn btn-outline-primary">
+      <a href={$url('/posts/:uuid/edit', { uuid: post.uuid })} class="btn btn-outline-primary">
         {$_('common.edit')}
       </a>
 

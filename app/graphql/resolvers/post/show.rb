@@ -7,7 +7,7 @@ module Resolvers
 
       type Objects::Post, null: false
 
-      argument :id, ID, required: true
+      argument :uuid, ID, required: true
 
       def authorized?(**args)
         raise not_found_error('Post Not Found') unless post(**args)
@@ -23,7 +23,7 @@ module Resolvers
       private
 
       def post(**args)
-        @post ||= ::Post.find_by_id(args[:id])
+        @post ||= ::Post.find_by_uuid(args[:uuid])
       end
 
       def policy

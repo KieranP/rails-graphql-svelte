@@ -5,7 +5,7 @@ module Subscriptions
     class Updated < Types::Subscription
       payload_type Objects::Post
 
-      argument :id, ID, required: true
+      argument :uuid, ID, required: true
 
       def update(**args)
         unless post = post(args)
@@ -18,7 +18,7 @@ module Subscriptions
       private
 
       def post(**args)
-        @post ||= ::Post.find_by_id(args[:id])
+        @post ||= ::Post.find_by_uuid(args[:uuid])
       end
     end
   end

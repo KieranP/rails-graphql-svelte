@@ -4,9 +4,10 @@
 #
 # Table name: posts
 #
-#  id         :integer          not null, primary key
+#  id         :bigint           not null, primary key
 #  body       :text
 #  title      :string
+#  uuid       :uuid             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  user_id    :integer
@@ -14,12 +15,15 @@
 # Indexes
 #
 #  index_posts_on_user_id  (user_id)
+#  index_posts_on_uuid     (uuid) UNIQUE
 #
 # Foreign Keys
 #
-#  user_id  (user_id => users.id)
+#  fk_rails_...  (user_id => users.id)
 #
 class Post < ApplicationRecord
+  include HasUuid
+
   belongs_to :user
 
   validates :title, presence: true

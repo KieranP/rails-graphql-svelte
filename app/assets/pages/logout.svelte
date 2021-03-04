@@ -5,7 +5,7 @@
   import { setLocale } from '@libs/i18n'
   import { goto } from '@roxi/routify'
 
-  logoutUser({}, `user { id }`).then(res => {
+  logoutUser({}, `user { uuid }`).then(res => {
     clearSession()
     setLocale.set('en')
 

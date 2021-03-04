@@ -6,14 +6,14 @@
   import Loader from '@components/loader.svelte'
   import { allLocales, setLocale, _ } from '@libs/i18n'
 
-  export let id
+  export let uuid
 
   let user
   let name
   let email
   let locale
 
-  findUser({id}, `id name email locale`).then(res => {
+  findUser({uuid}, `uuid name email locale`).then(res => {
     user = res.data.findUser
     name = user.name
     email = user.email
@@ -24,17 +24,17 @@
 
   function submit() {
     updateUser(
-      {id, name, email, locale},
-      `user { id name email locale }`
+      {uuid, name, email, locale},
+      `user { uuid name email locale }`
     ).then(res => {
       let data = res.data.updateUser
       let user = data.user
-      let id = user.id
+      let uuid = user.uuid
 
       setSession(data)
       setLocale.set(user.locale)
 
-      $goto('/users/:id', {id})
+      $goto('/users/:uuid', {uuid})
     }).catch(error => {
       errors.set(error.graphQLErrors)
     })

@@ -36,26 +36,26 @@ feature 'Posts', type: :feature, js: true do
     end
   end
 
-  describe '/posts/:id' do
+  describe '/posts/:uuid' do
     let(:post) { create(:post) }
 
     before { login(user) }
 
     it do
-      visit "/posts/#{post.id}"
+      visit "/posts/#{post.uuid}"
 
       expect(page).to have_content post.title
       expect(page).to have_content post.body
     end
   end
 
-  describe '/posts/:id/edit' do
+  describe '/posts/:uuid/edit' do
     let(:post) { create(:post, user: user) }
 
     before { login(user) }
 
     it do
-      visit "/posts/#{post.id}/edit"
+      visit "/posts/#{post.uuid}/edit"
 
       new_title = Faker::Lorem.question
       new_body = Faker::Lorem.paragraph

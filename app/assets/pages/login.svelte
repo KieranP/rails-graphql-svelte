@@ -9,7 +9,7 @@
   let password
 
   function submit() {
-    loginUser({email, password}, `user { id email name locale }`).then(res => {
+    loginUser({email, password}, `user { uuid email name locale }`).then(res => {
       let data = res.data.loginUser
       let user = data.user
 

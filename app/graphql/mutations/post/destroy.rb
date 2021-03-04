@@ -5,7 +5,7 @@ module Mutations
     class Destroy < Types::Mutation
       graphql_name 'PostDestroy'
 
-      argument :id, ID, required: true
+      argument :uuid, ID, required: true
 
       field :post, Objects::Post, null: true
 
@@ -29,7 +29,7 @@ module Mutations
       private
 
       def post(**args)
-        @post ||= ::Post.find_by_id(args[:id])
+        @post ||= ::Post.find_by_uuid(args[:uuid])
       end
 
       def policy

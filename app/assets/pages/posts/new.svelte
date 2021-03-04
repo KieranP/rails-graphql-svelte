@@ -6,10 +6,10 @@
   import { _ } from '@libs/i18n'
 
   function submit(event) {
-    createPost(event.detail, `post { id }`).then(res => {
+    createPost(event.detail, `post { uuid }`).then(res => {
       let data = res.data
-      let id = data.createPost.post.id
-      $goto('/posts/:id', {id})
+      let uuid = data.createPost.post.uuid
+      $goto('/posts/:uuid', {uuid})
     }).catch(error => {
       errors.set(error.graphQLErrors)
     })

@@ -29,7 +29,7 @@
     <ul class="navbar-nav">
       {#if $session.user}
         <li class="nav-item">
-          <a href={$url('/users/:id', { id: $session.user.id })} class="nav-link" class:active={$isActive('/users')}>
+          <a href={$url('/users/:uuid', { uuid: $session.user.uuid })} class="nav-link" class:active={$isActive('/users')}>
             {$session.user.name}
           </a>
         </li>

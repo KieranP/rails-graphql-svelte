@@ -25,8 +25,8 @@ export const logoutUser = (variables, graphql) => (
 
 export const findUser = (variables, graphql) => (
   query(`
-    query($id: ID!) {
-      findUser(id: $id) {
+    query($uuid: ID!) {
+      findUser(uuid: $uuid) {
         ${graphql}
       }
     }
@@ -35,8 +35,8 @@ export const findUser = (variables, graphql) => (
 
 export const watchUser = (variables, graphql) => (
   subscribe(`
-    subscription($id: ID!) {
-      userUpdated(id: $id) {
+    subscription($uuid: ID!) {
+      userUpdated(uuid: $uuid) {
         ${graphql}
       }
     }
@@ -45,9 +45,9 @@ export const watchUser = (variables, graphql) => (
 
 export const updateUser = (variables, graphql) => (
   mutation(`
-    mutation($id: ID!, $name: String, $email: String, $locale: String) {
+    mutation($uuid: ID!, $name: String, $email: String, $locale: String) {
       updateUser(input: {
-        id: $id,
+        uuid: $uuid,
         name: $name,
         email: $email,
         locale: $locale
@@ -76,8 +76,8 @@ export const allPosts = (variables, graphql) => (
 
 export const findPost = (variables, graphql) => (
   query(`
-    query($id: ID!) {
-      findPost(id: $id) {
+    query($uuid: ID!) {
+      findPost(uuid: $uuid) {
         ${graphql}
       }
     }
@@ -86,8 +86,8 @@ export const findPost = (variables, graphql) => (
 
 export const watchPost = (variables, graphql) => (
   subscribe(`
-    subscription($id: ID!) {
-      postUpdated(id: $id) {
+    subscription($uuid: ID!) {
+      postUpdated(uuid: $uuid) {
         ${graphql}
       }
     }
@@ -109,9 +109,9 @@ export const createPost = (variables, graphql) => (
 
 export const updatePost = (variables, graphql) => (
   mutation(`
-    mutation($id: ID!, $title: String, $body: String) {
+    mutation($uuid: ID!, $title: String, $body: String) {
       updatePost(input: {
-        id: $id,
+        uuid: $uuid,
         title: $title,
         body: $body
       }) {
@@ -123,9 +123,9 @@ export const updatePost = (variables, graphql) => (
 
 export const destroyPost = (variables, graphql) => (
   mutation(`
-    mutation($id: ID!) {
+    mutation($uuid: ID!) {
       destroyPost(input: {
-        id: $id
+        uuid: $uuid
       }) {
         ${graphql}
       }

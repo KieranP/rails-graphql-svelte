@@ -5,7 +5,7 @@ module Mutations
     class Update < Types::Mutation
       graphql_name 'PostUpdate'
 
-      argument :id, ID, required: true
+      argument :uuid, ID, required: true
       argument :title, String, required: true
       argument :body, String, required: true
 
@@ -20,8 +20,8 @@ module Mutations
       end
 
       def resolve(**args)
-        if @post.update(args.except(:id))
-          trigger(:post_updated, { id: @post.id }, @post)
+        if @post.update(args.except(:uuid))
+          trigger(:post_updated, { uuid: @post.uuid }, @post)
           { post: @post }
         else
           errors = @post.errors.full_messages
@@ -32,7 +32,7 @@ module Mutations
       private
 
       def post(**args)
-        @post ||= ::Post.find_by_id(args[:id])
+        @post ||= ::Post.find_by_uuid(args[:uuid])
       end
 
       def policy

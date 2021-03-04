@@ -5,22 +5,22 @@ require 'rails_helper'
 feature 'Users', type: :feature, js: true do
   let(:user) { create(:user) }
 
-  describe '/users/:id' do
+  describe '/users/:uuid' do
     before { login(user) }
 
     it do
-      visit "/users/#{user.id}"
+      visit "/users/#{user.uuid}"
 
       expect(page).to have_content user.name
       expect(page).to have_content user.email
     end
   end
 
-  describe '/users/:id/edit' do
+  describe '/users/:uuid/edit' do
     before { login(user) }
 
     it do
-      visit "/users/#{user.id}/edit"
+      visit "/users/#{user.uuid}/edit"
 
       new_name = Faker::Name.name
       new_email = Faker::Internet.email

@@ -6,18 +6,18 @@
   import Loader from '@components/loader.svelte'
   import { _ } from '@libs/i18n'
 
-  export let id
+  export let uuid
 
   let user
-  const fields = `id name email posts { id title }`
+  const fields = `uuid name email posts { uuid title }`
 
-  findUser({id}, fields).then(res => {
+  findUser({uuid}, fields).then(res => {
     user = res.data.findUser
   }).catch(error => {
     errors.set(error.graphQLErrors)
   })
 
-  watchUser({id}, fields).subscribe(
+  watchUser({uuid}, fields).subscribe(
     (res) => { if(res.data.userUpdated) user = res.data.userUpdated },
     (err) => { errors.set(err.graphQLErrors) }
   )
@@ -29,9 +29,9 @@
 
   {#if user.posts}
     <ul>
-      {#each user.posts as post (post.id)}
+      {#each user.posts as post (post.uuid)}
         <li>
-          <a href={$url('/posts/:id', { id: post.id })}>
+          <a href={$url('/posts/:uuid', { uuid: post.uuid })}>
             {post.title}
           </a>
         </li>
@@ -39,9 +39,9 @@
     </ul>
   {/if}
 
-  {#if $session.user && $session.user.id == user.id}
+  {#if $session.user && $session.user.uuid == user.uuid}
     <p>
-      <a href={$url('/users/:id/edit', { id: user.id })} class="btn btn-outline-primary">
+      <a href={$url('/users/:uuid/edit', { uuid: user.uuid })} class="btn btn-outline-primary">
         {$_('common.edit')}
       </a>
     </p>

@@ -13,7 +13,7 @@
 
   $: allPosts(
     pager($params),
-    `nodes { id title user { id name } }`
+    `nodes { uuid title user { uuid name } }`
   ).then(res => {
     posts = res.data.allPosts.nodes
     pageInfo = res.data.allPosts.pageInfo
@@ -34,13 +34,13 @@
 
 {#if posts}
   <ul>
-    {#each posts as post (post.id)}
+    {#each posts as post (post.uuid)}
       <li>
-        <a href={$url('/posts/:id', { id: post.id })}>
+        <a href={$url('/posts/:uuid', { uuid: post.uuid })}>
           {post.title}
         </a>
         by
-        <a href={$url('/users/:id', { id: post.user.id })}>
+        <a href={$url('/users/:uuid', { uuid: post.user.uuid })}>
           {post.user.name}
         </a>
       </li>

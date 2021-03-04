@@ -5,7 +5,7 @@ module Subscriptions
     class Updated < Types::Subscription
       payload_type Objects::User
 
-      argument :id, ID, required: true
+      argument :uuid, ID, required: true
 
       def update(**args)
         unless user = user(args)
@@ -18,7 +18,7 @@ module Subscriptions
       private
 
       def user(**args)
-        @user ||= ::User.find_by_id(args[:id])
+        @user ||= ::User.find_by_uuid(args[:uuid])
       end
     end
   end

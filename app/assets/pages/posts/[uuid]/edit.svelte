@@ -6,11 +6,11 @@
   import Form from '../_form.svelte'
   import { _ } from '@libs/i18n'
 
-  export let id
+  export let uuid
 
   let post
 
-  findPost({id}, `id title body`).then(res => {
+  findPost({uuid}, `uuid title body`).then(res => {
     post = res.data.findPost
   }).catch(error => {
     errors.set(error.graphQLErrors)
@@ -18,12 +18,12 @@
 
   function submit(event) {
     updatePost(
-      {id, ...event.detail},
-      `post { id title body }`
+      {uuid, ...event.detail},
+      `post { uuid title body }`
     ).then(res => {
       let data = res.data
-      let id = data.updatePost.post.id
-      $goto('/posts/:id', {id})
+      let uuid = data.updatePost.post.uuid
+      $goto('/posts/:uuid', {uuid})
     }).catch(error => {
       errors.set(error.graphQLErrors)
     })

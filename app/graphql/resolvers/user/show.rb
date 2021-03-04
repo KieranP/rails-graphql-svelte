@@ -7,7 +7,7 @@ module Resolvers
 
       type Objects::User, null: false
 
-      argument :id, ID, required: true
+      argument :uuid, ID, required: true
 
       def authorized?(**args)
         raise not_found_error('User Not Found') unless user(**args)
@@ -23,7 +23,7 @@ module Resolvers
       private
 
       def user(**args)
-        @user ||= ::User.find_by_id(args[:id])
+        @user ||= ::User.find_by_uuid(args[:uuid])
       end
 
       def policy
