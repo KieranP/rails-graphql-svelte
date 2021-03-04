@@ -34,7 +34,9 @@ class Session < ApplicationRecord
   validates :expires_at, presence: true
 
   def mark_visit!
+    # rubocop:disable Rails/SkipsModelValidations
     update_column(:last_access_at, Time.zone.now)
+    # rubocop:enable Rails/SkipsModelValidations
   end
 
   private

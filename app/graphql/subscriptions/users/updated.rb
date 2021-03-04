@@ -18,7 +18,7 @@ module Subscriptions
       private
 
       def user(**args)
-        @user ||= ::User.find_by_uuid(args[:uuid])
+        @user ||= ::User.find_by(uuid: args[:uuid])
       end
     end
   end

@@ -20,7 +20,7 @@ class JwtToken
     JWT.decode(jwt_token, ENV['JWT_SECRET'], true, {
       verify_iat: true,
       verify_jti: proc { |jti|
-        Session.find_by_jwt_id(jti)
+        Session.find_by(jwt_id: jti)
       }
     })
   end

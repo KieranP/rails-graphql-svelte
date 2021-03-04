@@ -15,7 +15,8 @@
 #
 # Indexes
 #
-#  index_users_on_uuid  (uuid) UNIQUE
+#  index_users_on_email  (email) UNIQUE
+#  index_users_on_uuid   (uuid) UNIQUE
 #
 class User < ApplicationRecord
   include HasUuid

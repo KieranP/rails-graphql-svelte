@@ -12,7 +12,7 @@ module Mutations
       field :token, String, null: true
 
       def resolve(email:, password:)
-        user = ::User.find_by_email(email)
+        user = ::User.find_by(email: email)
         valid = user&.authenticate(password)
         raise forbidden_error unless valid
 

@@ -18,7 +18,7 @@ module Subscriptions
       private
 
       def post(**args)
-        @post ||= ::Post.find_by_uuid(args[:uuid])
+        @post ||= ::Post.find_by(uuid: args[:uuid])
       end
     end
   end

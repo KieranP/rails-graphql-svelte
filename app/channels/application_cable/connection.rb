@@ -15,7 +15,7 @@ module ApplicationCable
         return unless jwt_payload
 
         uuid = jwt_payload.dig('user', 'uuid')
-        User.find_by_uuid(uuid)
+        User.find_by(uuid: uuid)
       end
     end
 
