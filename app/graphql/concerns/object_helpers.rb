@@ -8,8 +8,8 @@ module ObjectHelpers
       @model ||= name.demodulize.constantize
     end
 
-    def association(association, *fields)
-      field association, *fields
+    def association(association, ...)
+      field(association, ...)
 
       define_method(association) do
         Loaders::Association.for(self.class.model, association).load(object)
