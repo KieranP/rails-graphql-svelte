@@ -15,7 +15,7 @@ module AuthenticationHelpers
 end
 
 RSpec.configure do |config|
-  config.after(:each) do
+  config.after do
     logout
   end
 end

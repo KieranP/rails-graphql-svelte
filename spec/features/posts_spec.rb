@@ -32,7 +32,7 @@ feature 'Posts', type: :feature, js: true do
 
         expect(page).to have_content 'Sample Title'
         expect(page).to have_content 'Sample Body'
-      }.to change { Post.count }.by 1
+      }.to change(Post, :count).by 1
     end
   end
 

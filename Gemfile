@@ -27,15 +27,18 @@ gem 'sidekiq'
 group :development, :test do
   # Testing
   gem 'rspec-rails'
-
-  # Code Quality
-  gem 'rubocop-rails', require: false
-  gem 'brakeman', require: false
 end
 
 group :development do
-  gem 'listen'
+  gem 'foreman', require: false
   gem 'annotate'
+  gem 'listen'
+
+  # Code Quality
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
+  gem 'brakeman', require: false
+  gem 'lefthook', require: false
 end
 
 group :test do

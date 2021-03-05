@@ -1,0 +1,10 @@
+pre-commit:
+  parallel: true
+  commands:
+    # TODO: Brakeman is broken at the moment with Ruby 3.0.0
+    # brakeman:
+    #   run: bundle exec brakeman --no-pager
+    rubocop:
+      files: git diff --name-only --staged
+      glob: "*.rb"
+      run: bundle exec rubocop --force-exclusion {files}
