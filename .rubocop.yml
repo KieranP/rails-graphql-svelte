@@ -9,6 +9,7 @@ AllCops:
     - 'bin/*'
     - 'db/schema.rb'
     - 'lib/tasks/auto_annotate_models.rake'
+    - 'vendor/**/*'
 
 Bundler/OrderedGems:
   Enabled: false
