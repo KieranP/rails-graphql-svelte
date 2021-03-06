@@ -4,6 +4,6 @@ module Types
   module Interface
     include GraphQL::Schema::Interface
 
-    field_class Field
+    field_class Types::Field
   end
 end

@@ -2,7 +2,7 @@
 
 module Mutations
   module Post
-    class Destroy < Types::Mutation
+    class Destroy < Mutations::Base
       graphql_name 'PostDestroy'
 
       argument :uuid, ID, required: true

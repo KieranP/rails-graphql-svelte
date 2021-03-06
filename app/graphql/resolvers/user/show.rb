@@ -2,7 +2,7 @@
 
 module Resolvers
   module User
-    class Show < Types::Resolver
+    class Show < Resolvers::Base
       graphql_name 'UserShow'
 
       type Objects::User, null: false

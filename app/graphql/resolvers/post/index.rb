@@ -2,7 +2,7 @@
 
 module Resolvers
   module Post
-    class Index < Types::Resolver
+    class Index < Resolvers::Base
       graphql_name 'PostIndex'
 
       type Objects::Post.connection_type, null: false

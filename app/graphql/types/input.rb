@@ -2,6 +2,6 @@
 
 module Types
   class Input < GraphQL::Schema::InputObject
-    argument_class Argument
+    argument_class Types::Argument
   end
 end

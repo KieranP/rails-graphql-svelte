@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Objects
-  class User < Types::Object
+  class User < Objects::Base
     field :uuid, ID, null: false
     field :email, String, null: false
     field :name, String, null: false

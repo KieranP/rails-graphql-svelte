@@ -2,7 +2,7 @@
 
 module Mutations
   module User
-    class Login < Types::Mutation
+    class Login < Mutations::Base
       graphql_name 'UserLogin'
 
       argument :email, String, required: true

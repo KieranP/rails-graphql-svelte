@@ -2,7 +2,7 @@
 
 module Subscriptions
   module Users
-    class Updated < Types::Subscription
+    class Updated < Subscriptions::Base
       payload_type Objects::User
 
       argument :uuid, ID, required: true

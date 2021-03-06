@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Types
-  class Mutations < Object
+  class Mutations < Objects::Base
     field :create_user, mutation: ::Mutations::User::Create
     field :update_user, mutation: ::Mutations::User::Update
     field :login_user, mutation: ::Mutations::User::Login

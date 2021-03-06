@@ -2,6 +2,6 @@
 
 module Types
   class Field < GraphQL::Schema::Field
-    argument_class Argument
+    argument_class Types::Argument
   end
 end

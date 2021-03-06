@@ -2,7 +2,7 @@
 
 module Mutations
   module User
-    class Logout < Types::Mutation
+    class Logout < Mutations::Base
       graphql_name 'UserLogout'
 
       field :user, Objects::User, null: true

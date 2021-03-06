@@ -2,7 +2,7 @@
 
 module Mutations
   module User
-    class Update < Types::Mutation
+    class Update < Mutations::Base
       graphql_name 'UserUpdate'
 
       argument :uuid, ID, required: true

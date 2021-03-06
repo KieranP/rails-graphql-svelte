@@ -2,7 +2,7 @@
 
 module Mutations
   module User
-    class Create < Types::Mutation
+    class Create < Mutations::Base
       graphql_name 'UserCreate'
 
       argument :email, String, required: true

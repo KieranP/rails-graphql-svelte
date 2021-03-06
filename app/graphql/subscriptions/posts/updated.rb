@@ -2,7 +2,7 @@
 
 module Subscriptions
   module Posts
-    class Updated < Types::Subscription
+    class Updated < Subscriptions::Base
       payload_type Objects::Post
 
       argument :uuid, ID, required: true

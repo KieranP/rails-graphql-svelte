@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Objects
-  class Post < Types::Object
+  class Post < Objects::Base
     field :uuid, ID, null: false
     field :title, String, null: false
     field :body, String, null: false

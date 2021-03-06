@@ -2,7 +2,7 @@
 
 module Mutations
   module Post
-    class Create < Types::Mutation
+    class Create < Mutations::Base
       graphql_name 'PostCreate'
 
       argument :title, String, required: true

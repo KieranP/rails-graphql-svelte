@@ -2,7 +2,7 @@
 
 module Mutations
   module Post
-    class Update < Types::Mutation
+    class Update < Mutations::Base
       graphql_name 'PostUpdate'
 
       argument :uuid, ID, required: true

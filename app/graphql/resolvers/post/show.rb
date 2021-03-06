@@ -2,7 +2,7 @@
 
 module Resolvers
   module Post
-    class Show < Types::Resolver
+    class Show < Resolvers::Base
       graphql_name 'PostShow'
 
       type Objects::Post, null: false
