@@ -1,24 +1,46 @@
-# README
+# Starter Template: Rails + GraphQL + Svelte
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repo contains a starter template for a Rails+GraphQL API and Svelte frontend.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+### Backend
 
-* System dependencies
+The backend is powered by Ruby on Rails, with a GraphQL API.
 
-* Configuration
+It includes a secure JWT authentication system and authorisation using Pundit.
 
-* Database creation
+It is prewired with ActionCable for Websockets, and Sidekiq for background processing.
 
-* Database initialization
+It includes Rspec and Capybara for feature tests, and Rubocop/Brakeman for code analysis.
 
-* How to run the test suite
+It contains a basic config for Github Actions.
 
-* Services (job queues, cache servers, search engines, etc.)
+### Frontend
 
-* Deployment instructions
+The frontend is powered by Svelte, and compiled using Snowpack.
 
-* ...
+Routing is handled by Routify, and API requests made using Apollo.
+
+Styling is provided by Bootstrap, and websockets via ActionCableJS.
+
+Dependencies are managed via Yarn.
+
+## Usage
+
+* Clone Git Repo
+* Adjust `config/database.yml`
+* `bundle install`
+* `yarn install`
+* `bin/rspec`
+* `foreman start`
+
+## File Structure
+
+### Backend
+
+The backend is powered by a standard Ruby on Rails app. The only exception is that Sprockets is not included for asset management and there are no Rails views templates. All HTML/CSS/JS is handled by Snowpack.
+
+### Frontend
+
+When Snowpack runs, it clears the contents of `/public`, then takes the contents of `/static` and `/app/assets` and compiles them together into `/public`. The result is a frontend application that is embedded into a Ruby on Rails app for ease of development, whilst still being able to be extracted and deployed to a CDN for production. Frontend configs are managed via `snowpack.config.js` and `routify.config.js`

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class ApplicationJob
+class ApplicationWorker
   include Sidekiq::Worker
 end
