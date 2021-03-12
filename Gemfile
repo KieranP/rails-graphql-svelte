@@ -27,6 +27,9 @@ gem 'sidekiq'
 group :development, :test do
   # Testing
   gem 'rspec-rails'
+
+  # Code Quality
+  gem 'prosopite'
 end
 
 group :development do
@@ -48,6 +51,7 @@ group :test do
   gem 'faker'
   gem 'capybara'
   gem 'webdrivers'
+  gem 'webmock'
 
   # Code Quality
   gem 'simplecov'

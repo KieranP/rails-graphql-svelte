@@ -2,6 +2,7 @@
 
 class GraphqlController < ActionController::API
   include ActionController::Cookies
+  include ProsopiteHooks
 
   before_action :update_session
 

@@ -3,27 +3,13 @@
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 
-require 'simplecov'
-SimpleCov.start 'rails'
-
 require File.expand_path('../config/environment', __dir__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
+require 'simplecov'
+SimpleCov.start 'rails'
+
 require 'rspec/rails'
-require 'capybara/rails'
-require 'capybara/rspec'
-
-Capybara.server = :puma
-Capybara.server_host = 'localhost'
-Capybara.server_port = 3030
-
-if ENV['HEADLESS'] == 'false'
-  Capybara.default_driver = :selenium_chrome
-  Capybara.javascript_driver = :selenium_chrome
-else
-  Capybara.default_driver = :selenium_chrome_headless
-  Capybara.javascript_driver = :selenium_chrome_headless
-end
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
