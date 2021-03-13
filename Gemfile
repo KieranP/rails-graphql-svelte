@@ -40,6 +40,7 @@ group :development do
   # Code Quality
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  gem 'bundler-audit', require: false
   gem 'brakeman', require: false
   gem 'lefthook', require: false
 end
