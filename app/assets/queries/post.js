@@ -38,7 +38,7 @@ export const watchPost = (variables, graphql) => (
 
 export const createPost = (variables, graphql) => (
   mutation(`
-    mutation($title: String, $body: String) {
+    mutation($title: String!, $body: String!) {
       createPost(input: {
         title: $title,
         body: $body
@@ -51,7 +51,7 @@ export const createPost = (variables, graphql) => (
 
 export const updatePost = (variables, graphql) => (
   mutation(`
-    mutation($uuid: ID!, $title: String, $body: String) {
+    mutation($uuid: ID!, $title: String!, $body: String!) {
       updatePost(input: {
         uuid: $uuid,
         title: $title,

@@ -22,7 +22,7 @@ export const watchUser = (variables, graphql) => (
 
 export const updateUser = (variables, graphql) => (
   mutation(`
-    mutation($uuid: ID!, $name: String, $email: String, $locale: String) {
+    mutation($uuid: ID!, $name: String!, $email: String!, $locale: String!) {
       updateUser(input: {
         uuid: $uuid,
         name: $name,
