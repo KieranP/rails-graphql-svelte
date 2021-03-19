@@ -30,6 +30,7 @@ group :development, :test do
 
   # Code Quality
   gem 'prosopite'
+  gem 'pg_query'
 end
 
 group :development do
