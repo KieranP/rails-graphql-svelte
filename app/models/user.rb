@@ -5,9 +5,9 @@
 # Table name: users
 #
 #  id              :bigint           not null, primary key
-#  email           :string
+#  email           :string           not null
 #  locale          :string           default("en")
-#  name            :string
+#  name            :string           not null
 #  password_digest :string
 #  uuid            :uuid             not null
 #  created_at      :datetime         not null

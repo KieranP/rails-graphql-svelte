@@ -5,12 +5,12 @@
 # Table name: posts
 #
 #  id         :bigint           not null, primary key
-#  body       :text
-#  title      :string
+#  body       :text             not null
+#  title      :string           not null
 #  uuid       :uuid             not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :integer
+#  user_id    :bigint
 #
 # Indexes
 #

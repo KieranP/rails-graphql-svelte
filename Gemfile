@@ -29,6 +29,7 @@ group :development, :test do
   gem 'rspec-rails'
 
   # Code Quality
+  gem 'strong_migrations'
   gem 'prosopite'
   gem 'pg_query'
 end
@@ -39,6 +40,7 @@ group :development do
   gem 'listen'
 
   # Code Quality
+  gem 'database_consistency', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'bundler-audit', require: false

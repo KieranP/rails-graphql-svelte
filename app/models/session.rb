@@ -5,13 +5,13 @@
 # Table name: sessions
 #
 #  id             :bigint           not null, primary key
-#  expires_at     :datetime
+#  expires_at     :datetime         not null
 #  last_access_at :datetime
 #  uuid           :uuid             not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #  jwt_id         :string           not null
-#  user_id        :integer          not null
+#  user_id        :bigint           not null
 #
 # Indexes
 #

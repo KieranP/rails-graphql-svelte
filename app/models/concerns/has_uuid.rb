@@ -4,6 +4,8 @@ module HasUuid
   extend ActiveSupport::Concern
 
   included do
+    validates :uuid, uniqueness: true
+
     before_validation :populate_uuid
   end
 

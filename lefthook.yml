@@ -8,3 +8,5 @@ pre-commit:
       files: git diff --name-only --staged
       glob: "*.rb"
       run: bundle exec rubocop --force-exclusion {files}
+    db_consistency:
+      run: bundle exec database_consistency
