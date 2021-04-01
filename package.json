@@ -2,21 +2,20 @@
   "name": "fullapp",
   "version": "1.0.0",
   "license": "UNLICENSED",
-  "dependencies": {
+  "devDependencies": {
     "@apollo/client": "^3.3.6",
     "@popperjs/core": "^2.6.0",
     "@rails/actioncable": "^6.1.0",
     "@roxi/routify": "^2.12.5",
-    "bootstrap": "^5.0.0-beta1",
-    "graphql-ruby-client": "^1.8.1",
-    "svelte": "^3.29.7",
-    "svelte-i18n": "^3.3.0"
-  },
-  "devDependencies": {
     "@snowpack/plugin-dotenv": "^2.0.5",
     "@snowpack/plugin-svelte": "^3.3.0",
+    "bootstrap": "^5.0.0-beta1",
+    "graphql": "^15.5.0",
+    "graphql-ruby-client": "^1.8.1",
     "prettier": "^2.0.5",
     "sass": "^1.29.0",
-    "snowpack": "^3.0.10"
+    "snowpack": "^3.0.10",
+    "svelte": "^3.29.7",
+    "svelte-i18n": "^3.3.0"
   }
 }

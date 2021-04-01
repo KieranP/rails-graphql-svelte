@@ -28,13 +28,14 @@ const link = ApolloLink.split(
   })
 )
 
-const cache = new InMemoryCache({
-  dataIdFromObject: (object) => (
-    `${object.__typename}:${object.uuid}`
-  )
-})
+const cache = new InMemoryCache({})
 
-const client = new ApolloClient({ link, cache })
+const defaultOptions = {
+  watchQuery: { fetchPolicy: 'no-cache' },
+  query: { fetchPolicy: 'no-cache' }
+}
+
+const client = new ApolloClient({ link, cache, defaultOptions })
 
 export const query = (graphql, variables) => (
   client.query({
