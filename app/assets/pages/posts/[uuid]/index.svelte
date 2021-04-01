@@ -33,7 +33,7 @@
   }
 </script>
 
-{#if post}
+<Loader result={post}>
   <h1>{post.title}</h1>
   <p>{post.body}</p>
 
@@ -48,8 +48,6 @@
       </button>
     </p>
   {/if}
-{:else}
-  <Loader />
-{/if}
+</Loader>
 
 <Confirm on:confirm={destroy} />

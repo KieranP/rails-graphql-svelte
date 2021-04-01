@@ -23,7 +23,7 @@
   )
 </script>
 
-{#if user}
+<Loader result={user}>
   <h1>{user.name}</h1>
   <p>{user.email}</p>
 
@@ -46,6 +46,4 @@
       </a>
     </p>
   {/if}
-{:else}
-  <Loader />
-{/if}
+</Loader>

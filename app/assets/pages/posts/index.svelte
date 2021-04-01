@@ -32,7 +32,7 @@
   </a>
 {/if}
 
-{#if posts}
+<Loader result={posts}>
   <ul>
     {#each posts as post (post.uuid)}
       <li>
@@ -48,6 +48,4 @@
   </ul>
 
   <Pager pageInfo={pageInfo} />
-{:else}
-  <Loader />
-{/if}
+</Loader>

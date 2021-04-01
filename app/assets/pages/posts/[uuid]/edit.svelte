@@ -34,8 +34,6 @@
   {$_('pages.posts.edit.heading')}
 </h1>
 
-{#if post}
+<Loader result={post}>
   <Form post={post} on:submit={submit} />
-{:else}
-  <Loader />
-{/if}
+</Loader>

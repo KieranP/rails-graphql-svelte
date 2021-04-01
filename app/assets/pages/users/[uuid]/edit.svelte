@@ -45,7 +45,7 @@
   {$_('pages.users.edit.heading')}
 </h1>
 
-{#if user}
+<Loader result={user}>
   <form on:submit|preventDefault={submit}>
     <div class="mb-3">
       <label for="name" class="form-label">
@@ -81,6 +81,4 @@
       </button>
     </div>
   </form>
-{:else}
-  <Loader />
-{/if}
+</Loader>
