@@ -18,11 +18,12 @@ module Mutations
       end
 
       def resolve(**_args)
-        if @post.destroy
-          { post: @post }
+        result = DestroyPost.call(post: @post)
+        if result.success?
+          { post: result.post }
         else
-          errors = @post.errors.full_messages
-          unprocessable_error(errors.join(', '))
+          errors = result.errors.join(', ')
+          unprocessable_error(errors)
         end
       end
 

@@ -12,14 +12,16 @@ module Mutations
       field :token, String, null: true
 
       def resolve(email:, password:)
-        user = ::User.find_by(email: email)
-        valid = user&.authenticate(password)
-        raise forbidden_error unless valid
-
-        session = user.sessions.create!
-        token = generate_jwt(user, session)
-
-        { user: user, token: token }
+        result = AuthenticateUser.call(email: email, password: password)
+        if result.success?
+          user = result.user
+          session = user.sessions.create!
+          token = generate_jwt(user, session)
+          { user: user, token: token }
+        else
+          errors = result.errors.join(', ')
+          unprocessable_error(errors)
+        end
       end
     end
   end

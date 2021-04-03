@@ -18,12 +18,12 @@ module Mutations
       end
 
       def resolve(**args)
-        post = current_user.posts.new(args)
-        if post.save
-          { post: post }
+        result = CreatePost.call(user: current_user, args: args)
+        if result.success?
+          { post: result.post }
         else
-          errors = post.errors.full_messages
-          unprocessable_error(errors.join(', '))
+          errors = result.errors.join(', ')
+          unprocessable_error(errors)
         end
       end
 

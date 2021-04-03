@@ -21,15 +21,15 @@ module Mutations
       end
 
       def resolve(**args)
-        user = ::User.new(args)
-        if user.save
+        result = CreateUser.call(args: args)
+        if result.success?
+          user = result.user
           session = user.sessions.create!
           token = generate_jwt(user, session)
-
           { user: user, token: token }
         else
-          errors = user.errors.full_messages
-          unprocessable_error(errors.join(', '))
+          errors = result.errors.join(', ')
+          unprocessable_error(errors)
         end
       end
 

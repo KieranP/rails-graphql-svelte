@@ -122,6 +122,8 @@ GEM
     hashdiff (1.0.1)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
+    interaktor (0.2.0)
+      zeitwerk (~> 2.0)
     jwt (2.2.2)
     lefthook (0.7.2)
     listen (3.5.1)
@@ -292,6 +294,7 @@ DEPENDENCIES
   foreman
   graphql
   graphql-batch
+  interaktor
   jwt
   lefthook
   listen

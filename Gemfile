@@ -21,6 +21,7 @@ gem 'jwt'
 
 # App
 gem 'dotenv-rails'
+gem 'interaktor'
 gem 'pundit'
 gem 'sidekiq'
 

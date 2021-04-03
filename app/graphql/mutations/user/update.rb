@@ -22,13 +22,15 @@ module Mutations
       end
 
       def resolve(**args)
-        if @user.update(args.except(:uuid))
-          token = generate_jwt(@user, session)
-          trigger(:user_updated, { uuid: @user.uuid }, @user)
-          { user: @user, token: token }
+        result = UpdateUser.call(user: @user, args: args)
+        if result.success?
+          user = result.user
+          trigger(:user_updated, { uuid: user.uuid }, user)
+          token = generate_jwt(user, session)
+          { user: user, token: token }
         else
-          errors = @user.errors.full_messages
-          unprocessable_error(errors.join(', '))
+          errors = result.errors.join(', ')
+          unprocessable_error(errors)
         end
       end
 

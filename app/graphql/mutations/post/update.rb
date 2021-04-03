@@ -20,12 +20,14 @@ module Mutations
       end
 
       def resolve(**args)
-        if @post.update(args.except(:uuid))
-          trigger(:post_updated, { uuid: @post.uuid }, @post)
-          { post: @post }
+        result = UpdatePost.call(post: @post, args: args)
+        if result.success?
+          post = result.post
+          trigger(:post_updated, { uuid: post.uuid }, post)
+          { post: post }
         else
-          errors = @post.errors.full_messages
-          unprocessable_error(errors.join(', '))
+          errors = result.errors.join(', ')
+          unprocessable_error(errors)
         end
       end
 
