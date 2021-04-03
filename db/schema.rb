@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_28_062150) do
+ActiveRecord::Schema.define(version: 2021_04_03_034206) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "citext"
   enable_extension "hstore"
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -41,14 +42,14 @@ ActiveRecord::Schema.define(version: 2021_03_28_062150) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", null: false
+    t.citext "email", null: false
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name", null: false
     t.string "locale", default: "en"
     t.uuid "uuid", default: -> { "gen_random_uuid()" }, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index "lower((email)::text)", name: "index_users_on_lower_email", unique: true
     t.index ["uuid"], name: "index_users_on_uuid", unique: true
   end
 

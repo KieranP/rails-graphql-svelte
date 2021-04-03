@@ -20,6 +20,22 @@ export const watchUser = (variables, graphql) => (
   `, variables)
 )
 
+export const createUser = (variables, graphql) => (
+  mutation(`
+    mutation($email: String!, $name: String!, $locale: String!, $password: String!, $passwordConfirmation: String!) {
+      createUser(input: {
+        email: $email,
+        name: $name,
+        locale: $locale,
+        password: $password,
+        passwordConfirmation: $passwordConfirmation
+      }) {
+        ${graphql}
+      }
+    }
+  `, variables)
+)
+
 export const updateUser = (variables, graphql) => (
   mutation(`
     mutation($uuid: ID!, $name: String!, $email: String!, $locale: String!) {

@@ -7,6 +7,7 @@ module Mutations
 
       argument :email, String, required: true
       argument :name, String, required: true
+      argument :locale, String, required: true
       argument :password, String, required: true
       argument :password_confirmation, String, required: true
 
@@ -35,7 +36,7 @@ module Mutations
       private
 
       def policy
-        PostPolicy.new(current_user, nil)
+        UserPolicy.new(current_user, nil)
       end
     end
   end

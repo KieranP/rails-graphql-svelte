@@ -4,7 +4,7 @@ users = 3.times.map do |i|
   User.create!(
     email: "user#{i}@example.com",
     name: "User #{i}",
-    password: "user#{i}pass",
+    password: "User#{i}pass!",
     locale: 'en'
   )
 end

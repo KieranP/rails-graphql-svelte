@@ -24,6 +24,9 @@ gem 'dotenv-rails'
 gem 'pundit'
 gem 'sidekiq'
 
+# Misc
+gem 'email_validator'
+
 group :development, :test do
   # Testing
   gem 'rspec-rails'

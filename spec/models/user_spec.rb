@@ -5,7 +5,7 @@
 # Table name: users
 #
 #  id              :bigint           not null, primary key
-#  email           :string           not null
+#  email           :citext           not null
 #  locale          :string           default("en")
 #  name            :string           not null
 #  password_digest :string
@@ -15,8 +15,8 @@
 #
 # Indexes
 #
-#  index_users_on_email  (email) UNIQUE
-#  index_users_on_uuid   (uuid) UNIQUE
+#  index_users_on_lower_email  (lower((email)::text)) UNIQUE
+#  index_users_on_uuid         (uuid) UNIQUE
 #
 require 'rails_helper'
 

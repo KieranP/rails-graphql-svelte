@@ -45,6 +45,12 @@
             {$_('components.nav.login')}
           </a>
         </li>
+
+        <li class="nav-item">
+          <a href={$url('/users/new')} class="nav-link" class:active={$isActive('/users/new')}>
+            {$_('components.nav.signup')}
+          </a>
+        </li>
       {/if}
     </ul>
   </div>
