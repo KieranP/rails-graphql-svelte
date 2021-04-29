@@ -6,6 +6,7 @@ module.exports = {
   plugins: [
     '@snowpack/plugin-dotenv',
     '@snowpack/plugin-svelte',
+    '@snowpack/plugin-postcss',
   ],
   buildOptions: {
     out: './public',
