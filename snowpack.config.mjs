@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   mount: {
     'static': '/',
     'app/assets': '/_dist_',
