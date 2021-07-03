@@ -2,7 +2,7 @@
 export default {
   mount: {
     'static': { url: '/', static: true },
-    'app/assets': { url: '/_dist_' },
+    'app/frontend': { url: '/_dist_' },
   },
   plugins: [
     '@snowpack/plugin-svelte',
@@ -15,12 +15,12 @@ export default {
     clean: true,
   },
   alias: {
-    '@components': './app/assets/components',
-    '@i18n': './app/assets/i18n',
-    '@libs': './app/assets/libs',
-    '@pages': './app/assets/pages',
-    '@queries': './app/assets/queries',
-    '@tstypes': './app/assets/types'
+    '@components': './app/frontend/components',
+    '@i18n': './app/frontend/i18n',
+    '@libs': './app/frontend/libs',
+    '@pages': './app/frontend/pages',
+    '@queries': './app/frontend/queries',
+    '@tstypes': './app/frontend/types'
   },
   // optimize: {
   //   target: 'es2017',

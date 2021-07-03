@@ -30,6 +30,6 @@
 
 /coverage
 
-/app/assets/.routify
+/app/frontend/.routify
 /node_modules
 /public
