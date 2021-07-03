@@ -1,6 +1,6 @@
 import type { Post } from '@types/Post'
 
-export interface User {
+export type User = {
   uuid:string
   name:string
   email:string

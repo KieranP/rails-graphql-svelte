@@ -1,13 +1,13 @@
 import type { User } from '@types/User'
 
-export interface Post {
+export type Post = {
   uuid:string
   title:string
   body:string
   user:User
 }
 
-export interface PostSubmission {
+export type PostSubmission = {
   title:string
   body:string
 }
