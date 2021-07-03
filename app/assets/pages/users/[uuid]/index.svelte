@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { findUser, watchUser } from '@queries/user'
   import { session } from '@libs/session'
   import { errors } from '@libs/stores'
@@ -6,9 +6,11 @@
   import Loader from '@components/loader.svelte'
   import { _ } from '@libs/i18n'
 
-  export let uuid
+  import type { User } from '@tstypes/User'
 
-  let user
+  export let uuid:string
+
+  let user:User
   const fields = `uuid name email posts { uuid title }`
 
   findUser({uuid}, fields).then(res => {

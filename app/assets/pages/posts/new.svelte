@@ -1,11 +1,13 @@
-<script>
+<script lang="ts">
   import { createPost } from '@queries/post'
   import { errors } from '@libs/stores'
   import { goto } from '@roxi/routify'
   import Form from './_form.svelte'
   import { _ } from '@libs/i18n'
 
-  function submit(event) {
+  import type { PostSubmission } from '@tstypes/Post'
+
+  function submit(event:CustomEvent<PostSubmission>) {
     createPost(event.detail, `post { uuid }`).then(res => {
       let data = res.data
       let uuid = data.createPost.post.uuid
@@ -20,4 +22,4 @@
   {$_('pages.posts.new.heading')}
 </h1>
 
-<Form on:submit={submit} />
+<Form post={null} on:submit={submit} />

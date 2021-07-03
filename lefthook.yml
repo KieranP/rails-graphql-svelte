@@ -10,3 +10,5 @@ pre-commit:
       run: bundle exec rubocop --force-exclusion {files}
     db_consistency:
       run: bundle exec database_consistency
+    typescript:
+      run: yarn svelte-check

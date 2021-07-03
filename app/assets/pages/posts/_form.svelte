@@ -1,11 +1,13 @@
-<script>
+<script lang="ts">
   import { createEventDispatcher } from 'svelte'
   import { _ } from '@libs/i18n'
+
+  import type { Post } from '@tstypes/Post'
 
   const dispatch = createEventDispatcher()
   const submit = () => dispatch('submit', { title, body })
 
-  export let post
+  export let post:Post|null
   let title = post?.title
   let body = post?.body
 </script>

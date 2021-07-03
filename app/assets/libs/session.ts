@@ -4,7 +4,7 @@ let getSession = function() {
   return get(session)
 }
 
-let setSession = function(value) {
+let setSession = function(value:object) {
   session.set(value)
 
   let json = JSON.stringify(value)

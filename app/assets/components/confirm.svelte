@@ -1,13 +1,16 @@
-<script>
-  import { Modal } from 'bootstrap/dist/js/bootstrap.esm'
+<script lang="ts">
+  import Modal from 'bootstrap/js/dist/modal'
   import { createEventDispatcher } from 'svelte'
   const dispatch = createEventDispatcher()
   import { _ } from '@libs/i18n'
 
   function confirm() {
     var dialog = document.getElementById('confirmDialog')
-    var modal = Modal.getInstance(dialog)
-    modal.hide()
+
+    if (dialog) {
+      var modal = Modal.getInstance(dialog)
+      modal?.hide()
+    }
 
     dispatch('confirm')
   }

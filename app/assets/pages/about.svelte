@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { _ } from '@libs/i18n'
 </script>
 

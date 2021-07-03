@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { findUser, updateUser } from '@queries/user'
   import { setSession } from '@libs/session'
   import { errors } from '@libs/stores'
@@ -6,12 +6,14 @@
   import Loader from '@components/loader.svelte'
   import { allLocales, setLocale, _ } from '@libs/i18n'
 
-  export let uuid
+  import type { User } from '@tstypes/User'
 
-  let user
-  let name
-  let email
-  let locale
+  export let uuid:string
+
+  let user:User
+  let name:string
+  let email:string
+  let locale:string
 
   findUser({uuid}, `uuid name email locale`).then(res => {
     user = res.data.findUser

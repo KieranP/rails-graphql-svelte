@@ -1,6 +1,6 @@
 import { query, mutation, subscribe } from '@libs/graphql'
 
-export const allPosts = (variables, graphql) => (
+export const allPosts = (variables:object, graphql:string) => (
   query(`
     query($before: String, $after: String, $first: Int, $last: Int) {
       allPosts(before: $before, after: $after, first: $first, last: $last) {
@@ -16,7 +16,7 @@ export const allPosts = (variables, graphql) => (
   `, variables)
 )
 
-export const findPost = (variables, graphql) => (
+export const findPost = (variables:object, graphql:string) => (
   query(`
     query($uuid: ID!) {
       findPost(uuid: $uuid) {
@@ -26,7 +26,7 @@ export const findPost = (variables, graphql) => (
   `, variables)
 )
 
-export const watchPost = (variables, graphql) => (
+export const watchPost = (variables:object, graphql:string) => (
   subscribe(`
     subscription($uuid: ID!) {
       postUpdated(uuid: $uuid) {
@@ -36,7 +36,7 @@ export const watchPost = (variables, graphql) => (
   `, variables)
 )
 
-export const createPost = (variables, graphql) => (
+export const createPost = (variables:object, graphql:string) => (
   mutation(`
     mutation($title: String!, $body: String!) {
       createPost(input: {
@@ -49,7 +49,7 @@ export const createPost = (variables, graphql) => (
   `, variables)
 )
 
-export const updatePost = (variables, graphql) => (
+export const updatePost = (variables:object, graphql:string) => (
   mutation(`
     mutation($uuid: ID!, $title: String!, $body: String!) {
       updatePost(input: {
@@ -63,7 +63,7 @@ export const updatePost = (variables, graphql) => (
   `, variables)
 )
 
-export const destroyPost = (variables, graphql) => (
+export const destroyPost = (variables:object, graphql:string) => (
   mutation(`
     mutation($uuid: ID!) {
       destroyPost(input: {

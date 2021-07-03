@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { findPost, watchPost, destroyPost } from '@queries/post'
   import { session } from '@libs/session'
   import { errors } from '@libs/stores'
@@ -7,9 +7,11 @@
   import Confirm from '@components/confirm.svelte'
   import { _ } from '@libs/i18n'
 
-  export let uuid
+  import type { Post } from '@tstypes/Post'
 
-  let post
+  export let uuid:string
+
+  let post:Post
 
   const fields = `uuid title body user { uuid }`
 
@@ -25,7 +27,7 @@
   )
 
   function destroy() {
-    destroyPost({uuid}, `post { uuid }`).then(res => {
+    destroyPost({uuid}, `post { uuid }`).then(_res => {
       $goto('/posts')
     }).catch(error => {
       errors.set(error.graphQLErrors)

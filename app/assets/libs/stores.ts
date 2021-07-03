@@ -4,6 +4,7 @@ let session_str = localStorage.getItem('session')
 let session_init = session_str ? JSON.parse(session_str) : {}
 export let session = writable(session_init)
 
-export let errors = writable([])
+let errors_init: { [key:string]:string }[] = []
+export let errors = writable(errors_init)
 
 export { get }

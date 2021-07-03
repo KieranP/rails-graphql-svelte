@@ -1,15 +1,15 @@
-<script>
+<script lang="ts">
   import { createUser } from '@queries/user'
   import { setSession } from '@libs/session'
   import { errors } from '@libs/stores'
   import { goto } from '@roxi/routify'
   import { allLocales, setLocale, _ } from '@libs/i18n'
 
-  let name
-  let email
-  let locale
-  let password
-  let passwordConfirmation
+  let name:string
+  let email:string
+  let locale:string
+  let password:string
+  let passwordConfirmation:string
 
   function submit() {
     createUser(

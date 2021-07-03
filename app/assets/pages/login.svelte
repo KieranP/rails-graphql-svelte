@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
   import { loginUser } from '@queries/auth'
   import { setSession } from '@libs/session'
   import { errors } from '@libs/stores'
   import { setLocale, _ } from '@libs/i18n'
   import { goto } from '@roxi/routify'
 
-  let email
-  let password
+  let email:string
+  let password:string
 
   function submit() {
     loginUser({email, password}, `user { uuid email name locale }`).then(res => {

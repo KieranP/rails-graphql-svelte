@@ -1,0 +1,45 @@
+{
+  // See https://www.typescriptlang.org/tsconfig
+  "extends": "@tsconfig/svelte/tsconfig.json",
+  "include": ["app/assets"],
+  "exclude": ["node_modules/*"],
+  "compilerOptions": {
+    // Project Options
+    "isolatedModules": true,
+    "lib": ["ES2021", "dom", "dom.iterable"],
+    "module": "ES2020",
+    "noEmit": true,
+    "sourceMap": true,
+    "target": "ES2021",
+
+    // Strict Checks
+    "strict": true,
+
+    // Module Resolution
+    "baseUrl": "./",
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "paths": {
+      "@components/*": ["./app/assets/components/*"],
+      "@i18n/*": ["./app/assets/i18n/*"],
+      "@libs/*": ["./app/assets/libs/*"],
+      "@pages/*": ["./app/assets/pages/*"],
+      "@queries/*": ["./app/assets/queries/*"],
+      "@tstypes/*": ["./app/assets/types/*"]
+    },
+    "types": ["snowpack-env", "svelte"],
+
+    // Linter Checks
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+
+    // Advanced
+    "forceConsistentCasingInFileNames": true,
+    "importsNotUsedAsValues": "error",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "useDefineForClassFields": true
+  }
+}

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { allPosts } from '@queries/post'
   import { session } from '@libs/session'
   import { errors } from '@libs/stores'
@@ -8,8 +8,11 @@
   import pager from '@libs/pager'
   import { _ } from '@libs/i18n'
 
-  let posts
-  let pageInfo
+  import type { Post } from '@tstypes/Post'
+  import type { PageInfo } from '@tstypes/PageInfo'
+
+  let posts:Post[]
+  let pageInfo:PageInfo
 
   $: allPosts(
     pager($params),

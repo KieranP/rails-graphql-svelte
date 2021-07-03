@@ -1,11 +1,13 @@
+/** @type {import("snowpack").SnowpackUserConfig } */
 export default {
   mount: {
-    'static': '/',
-    'app/assets': '/_dist_',
+    'static': { url: '/', static: true },
+    'app/assets': { url: '/_dist_' },
   },
   plugins: [
-    '@snowpack/plugin-dotenv',
     '@snowpack/plugin-svelte',
+    '@snowpack/plugin-dotenv',
+    '@snowpack/plugin-typescript',
     '@snowpack/plugin-postcss',
   ],
   buildOptions: {
@@ -17,7 +19,8 @@ export default {
     '@i18n': './app/assets/i18n',
     '@libs': './app/assets/libs',
     '@pages': './app/assets/pages',
-    '@queries': './app/assets/queries'
+    '@queries': './app/assets/queries',
+    '@tstypes': './app/assets/types'
   },
   // optimize: {
   //   target: 'es2017',

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { findPost, updatePost } from '@queries/post'
   import { errors } from '@libs/stores'
   import { goto } from '@roxi/routify'
@@ -6,9 +6,11 @@
   import Form from '../_form.svelte'
   import { _ } from '@libs/i18n'
 
-  export let uuid
+  import type { Post, PostSubmission } from '@tstypes/Post'
 
-  let post
+  export let uuid:string
+
+  let post:Post
 
   findPost({uuid}, `uuid title body`).then(res => {
     post = res.data.findPost
@@ -16,7 +18,7 @@
     errors.set(error.graphQLErrors)
   })
 
-  function submit(event) {
+  function submit(event:CustomEvent<PostSubmission>) {
     updatePost(
       {uuid, ...event.detail},
       `post { uuid title body }`

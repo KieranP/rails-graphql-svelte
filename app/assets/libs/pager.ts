@@ -1,4 +1,4 @@
-export default function(params) {
+export default function(params: { [x:string]:any }) {
   let before = params['before']
   let after = params['after']
 

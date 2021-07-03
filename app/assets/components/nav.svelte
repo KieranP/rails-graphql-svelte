@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { session } from '@libs/session'
   import { url, isActive } from '@roxi/routify'
   import { _ } from '@libs/i18n'
