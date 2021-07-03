@@ -3,12 +3,18 @@
 class CreatePost
   include Interaktor
 
-  required :user
-  required :args
+  input do
+    required :user
+    required :args
+  end
 
-  success :post
+  success do
+    required :post
+  end
 
-  failure :errors
+  failure do
+    required :errors
+  end
 
   def call
     post = user.posts.new(args)

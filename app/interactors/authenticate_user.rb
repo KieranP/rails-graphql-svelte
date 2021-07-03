@@ -3,12 +3,18 @@
 class AuthenticateUser
   include Interaktor
 
-  required :email
-  required :password
+  input do
+    required :email
+    required :password
+  end
 
-  success :user
+  success do
+    required :user
+  end
 
-  failure :errors
+  failure do
+    required :errors
+  end
 
   def call
     user = User.find_by(email: email)

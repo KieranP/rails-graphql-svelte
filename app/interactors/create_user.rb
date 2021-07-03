@@ -3,11 +3,17 @@
 class CreateUser
   include Interaktor
 
-  required :args
+  input do
+    required :args
+  end
 
-  success :user
+  success do
+    required :user
+  end
 
-  failure :errors
+  failure do
+    required :errors
+  end
 
   def call
     user = User.new(args)

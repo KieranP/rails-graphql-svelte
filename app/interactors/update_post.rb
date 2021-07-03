@@ -3,12 +3,18 @@
 class UpdatePost
   include Interaktor
 
-  required :post
-  required :args
+  input do
+    required :post
+    required :args
+  end
 
-  success :post
+  success do
+    required :post
+  end
 
-  failure :errors
+  failure do
+    required :errors
+  end
 
   def call
     if post.update(args.except(:uuid))

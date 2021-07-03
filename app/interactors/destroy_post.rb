@@ -3,11 +3,17 @@
 class DestroyPost
   include Interaktor
 
-  required :post
+  input do
+    required :post
+  end
 
-  success :post
+  success do
+    required :post
+  end
 
-  failure :errors
+  failure do
+    required :errors
+  end
 
   def call
     if post.destroy

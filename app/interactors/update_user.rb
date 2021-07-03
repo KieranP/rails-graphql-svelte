@@ -3,12 +3,18 @@
 class UpdateUser
   include Interaktor
 
-  required :user
-  required :args
+  input do
+    required :user
+    required :args
+  end
 
-  success :user
+  success do
+    required :user
+  end
 
-  failure :errors
+  failure do
+    required :errors
+  end
 
   def call
     if user.update(args.except(:uuid))
