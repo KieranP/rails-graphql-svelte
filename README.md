@@ -43,4 +43,4 @@ The backend is powered by a standard Ruby on Rails app. The only exception is th
 
 ### Frontend
 
-When Snowpack runs, it clears the contents of `/public`, then takes the contents of `/static` and `/app/frontend` and compiles them together into `/public`. The result is a frontend application that is embedded into a Ruby on Rails app for ease of development, whilst still being able to be extracted and deployed to a CDN for production. Frontend configs are managed via `snowpack.config.js` and `routify.config.js`
+When Snowpack runs, it clears the contents of `/public`, then takes the contents of `/app/frontend` and compiles them together into `/public`. The result is a frontend application that is embedded into a Ruby on Rails app for ease of development, whilst still being able to be extracted and deployed to a CDN for production. Frontend configs are managed via `snowpack.config.js` and `routify.config.js`
