@@ -4,14 +4,16 @@
 #
 # Table name: users
 #
-#  id              :bigint           not null, primary key
-#  email           :citext           not null
-#  locale          :string           default("en")
-#  name            :string           not null
-#  password_digest :string
-#  uuid            :uuid             not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                     :bigint           not null, primary key
+#  email                  :citext           not null
+#  locale                 :string           default("en")
+#  name                   :string           not null
+#  password_digest        :string
+#  password_reset_sent_at :datetime
+#  password_reset_token   :string
+#  uuid                   :uuid             not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
 #
 # Indexes
 #
@@ -37,4 +39,10 @@ class User < ApplicationRecord
   validates :email, presence: true, email: true, uniqueness: { case_sensitive: false }
   validates :name, presence: true
   validates :password, format: { with: PASSWORD_FORMAT }, allow_blank: true
+
+  def save_password_reset_token
+    generate_unique_token(:password_reset_token)
+    self.password_reset_sent_at = Time.zone.now
+    save!
+  end
 end

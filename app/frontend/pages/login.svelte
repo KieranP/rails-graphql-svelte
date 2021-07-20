@@ -3,7 +3,7 @@
   import { setSession } from '@libs/session'
   import { errors } from '@libs/stores'
   import { setLocale, _ } from '@libs/i18n'
-  import { goto } from '@roxi/routify'
+  import { goto, url } from '@roxi/routify'
 
   let email:string
   let password:string
@@ -24,27 +24,31 @@
 </script>
 
 <h1>
-  {$_('pages.auth.login.heading')}
+  {$_('pages.login.heading')}
 </h1>
 
 <form on:submit|preventDefault={submit}>
   <div class="mb-3">
     <label for="email" class="form-label">
-      {$_('pages.auth.login.email')}
+      {$_('pages.login.email')}
     </label>
     <input type="email" class="form-control" id="email" bind:value={email} required />
   </div>
 
   <div class="mb-3">
     <label for="password" class="form-label">
-      {$_('pages.auth.login.password')}
+      {$_('pages.login.password')}
     </label>
     <input type="password" class="form-control" id="password" bind:value={password} required />
   </div>
 
   <div class="mb-3">
     <button type="submit" class="btn btn-primary">
-      {$_('pages.auth.login.button')}
+      {$_('pages.login.button')}
     </button>
+
+    <a href={$url('/forgot-password')}>
+      {$_('pages.login.forgot_password')}
+    </a>
   </div>
 </form>

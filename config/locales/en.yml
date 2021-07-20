@@ -6,3 +6,8 @@ en:
           attributes:
             password:
               invalid: "must be at least 8 characters long and contain at least one number, lower case letter, upper case letter and symbol"
+  user_mailer:
+    forgot_password:
+      button: Reset Password
+      heading: Reset password instructions
+      subject: Reset password instructions

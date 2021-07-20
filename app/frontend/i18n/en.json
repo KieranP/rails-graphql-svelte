@@ -33,23 +33,28 @@
         "heading": "About"
       }
     },
-    "auth": {
-      "login": {
-        "button": "Login",
-        "email": "Email",
-        "heading": "Login",
-        "password": "Password"
-      }
-    },
     "errors": {
       "404": {
         "heading": "404 Not Found"
       }
     },
+    "forgot-password": {
+      "button": "Send password reset email",
+      "email": "Email",
+      "heading": "Reset your password",
+      "success": "If the email provided matches an account, it will be sent further password reset instructions."
+    },
     "home": {
       "index": {
         "heading": "Home"
       }
+    },
+    "login": {
+      "button": "Login",
+      "email": "Email",
+      "forgot_password": "Forgotten password?",
+      "heading": "Login",
+      "password": "Password"
     },
     "posts": {
       "_form": {
@@ -66,6 +71,13 @@
       "new": {
         "heading": "New Post"
       }
+    },
+    "reset-password": {
+      "button": "Reset password",
+      "email": "Email",
+      "heading": "Reset your password",
+      "password": "Password",
+      "password_confirmation": "Password (again)"
     },
     "users": {
       "edit": {

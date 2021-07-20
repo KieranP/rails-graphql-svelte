@@ -50,3 +50,30 @@ export const updateUser = (variables:object, graphql:string) => (
     }
   `, variables)
 )
+
+export const forgotPassword = (variables:object, graphql:string) => (
+  mutation(`
+    mutation($email: String!) {
+      forgotPassword(input: {
+        email: $email
+      }) {
+        ${graphql}
+      }
+    }
+  `, variables)
+)
+
+export const resetPassword = (variables:object, graphql:string) => (
+  mutation(`
+    mutation($token: String!, $email: String!, $password: String!, $passwordConfirmation: String!) {
+      resetPassword(input: {
+        token: $token,
+        email: $email,
+        password: $password,
+        passwordConfirmation: $passwordConfirmation
+      }) {
+        ${graphql}
+      }
+    }
+  `, variables)
+)
