@@ -6,16 +6,45 @@ feature 'Posts', type: :feature, js: true do
   let(:user) { create(:user) }
 
   describe '/posts' do
-    let(:posts) { create_list(:post, 3) }
+    let(:posts) { create_list(:post, 50) }
 
-    it 'returns all posts' do
+    it 'returns pageable results' do
       posts
 
       visit '/posts'
+      expect(page).to have_content posts[0].title
+      expect(page).to have_content 'Next'
+      expect(page).not_to have_content 'Prev'
 
-      posts.each do |post|
-        expect(page).to have_content post.title
-      end
+      click_button 'Next'
+
+      expect(page).to have_content posts[20].title
+      expect(page).to have_content 'Next'
+      expect(page).to have_content 'Prev'
+
+      click_button 'Next'
+
+      expect(page).to have_content posts[40].title
+      expect(page).not_to have_content 'Next'
+      expect(page).to have_content 'Prev'
+
+      click_button 'Prev'
+
+      expect(page).to have_content posts[20].title
+      expect(page).to have_content 'Next'
+      expect(page).to have_content 'Prev'
+
+      click_button 'Prev'
+
+      expect(page).to have_content posts[0].title
+      expect(page).to have_content 'Next'
+      expect(page).not_to have_content 'Prev'
+
+      click_button 'Next'
+
+      expect(page).to have_content posts[20].title
+      expect(page).to have_content 'Next'
+      expect(page).to have_content 'Prev'
     end
   end
 
