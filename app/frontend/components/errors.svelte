@@ -3,7 +3,7 @@
   import { errors } from '@libs/stores'
 
   // Clear errors when page location changes
-  $beforeUrlChange((_event:any, _store:any) => {
+  $beforeUrlChange((_event: any, _store: any) => {
     errors.set([])
     return true
   })

@@ -4,7 +4,7 @@
 
   import type { PageInfo } from '@tstypes/PageInfo'
 
-  export let pageInfo:PageInfo
+  export let pageInfo: PageInfo
 
   function prev() {
     let queryParams = new URLSearchParams(window.location.search)

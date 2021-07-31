@@ -1,10 +1,10 @@
 import { session, get } from '@libs/stores'
 
-let getSession = function() {
+let getSession = function () {
   return get(session)
 }
 
-let setSession = function(value:object) {
+let setSession = function (value: object) {
   session.set(value)
 
   let json = JSON.stringify(value)
@@ -13,7 +13,7 @@ let setSession = function(value:object) {
   return true
 }
 
-let clearSession = function() {
+let clearSession = function () {
   let json = JSON.stringify({})
   localStorage.setItem('session', json)
 
@@ -22,9 +22,4 @@ let clearSession = function() {
   return true
 }
 
-export {
-  session,
-  getSession,
-  setSession,
-  clearSession
-}
+export { session, getSession, setSession, clearSession }

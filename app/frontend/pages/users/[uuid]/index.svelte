@@ -8,20 +8,26 @@
 
   import type { User } from '@tstypes/User'
 
-  export let uuid:string
+  export let uuid: string
 
-  let user:User
+  let user: User
   const fields = `uuid name email posts { uuid title }`
 
-  findUser({uuid}, fields).then(res => {
-    user = res.data.findUser
-  }).catch(error => {
-    errors.set(error.graphQLErrors)
-  })
+  findUser({ uuid }, fields)
+    .then(res => {
+      user = res.data.findUser
+    })
+    .catch(error => {
+      errors.set(error.graphQLErrors)
+    })
 
-  watchUser({uuid}, fields).subscribe(
-    (res) => { if(res.data.userUpdated) user = res.data.userUpdated },
-    (err) => { errors.set(err.graphQLErrors) }
+  watchUser({ uuid }, fields).subscribe(
+    res => {
+      if (res.data.userUpdated) user = res.data.userUpdated
+    },
+    err => {
+      errors.set(err.graphQLErrors)
+    }
   )
 </script>
 
@@ -43,7 +49,10 @@
 
   {#if $session.user && $session.user.uuid == user.uuid}
     <p>
-      <a href={$url('/users/:uuid/edit', { uuid: user.uuid })} class="btn btn-outline-primary">
+      <a
+        href={$url('/users/:uuid/edit', { uuid: user.uuid })}
+        class="btn btn-outline-primary"
+      >
         {$_('common.edit')}
       </a>
     </p>

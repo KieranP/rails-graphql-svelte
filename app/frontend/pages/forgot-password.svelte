@@ -3,16 +3,18 @@
   import { errors } from '@libs/stores'
   import { _ } from '@libs/i18n'
 
-  let email:string
-  let result:object
+  let email: string
+  let result: object
 
   function submit() {
-    forgotPassword({email}, `success`).then(res => {
-      errors.set([])
-      result = res.data.forgotPassword
-    }).catch(error => {
-      errors.set(error.graphQLErrors)
-    })
+    forgotPassword({ email }, `success`)
+      .then(res => {
+        errors.set([])
+        result = res.data.forgotPassword
+      })
+      .catch(error => {
+        errors.set(error.graphQLErrors)
+      })
   }
 </script>
 
@@ -28,7 +30,13 @@
       <label for="email" class="form-label">
         {$_('pages.forgot-password.email')}
       </label>
-      <input type="email" class="form-control" id="email" bind:value={email} required />
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        bind:value={email}
+        required
+      />
     </div>
 
     <div class="mb-3">

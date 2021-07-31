@@ -2,9 +2,9 @@
   import { onMount } from 'svelte'
   import QRCode from 'qrcode'
 
-  export let content:string
+  export let content: string
 
-  let canvas:any
+  let canvas: any
 
   onMount(() => {
     QRCode.toCanvas(canvas, content, {
@@ -13,4 +13,4 @@
   })
 </script>
 
-<canvas id="qrcode" bind:this={canvas}></canvas>
+<canvas id="qrcode" bind:this={canvas} />

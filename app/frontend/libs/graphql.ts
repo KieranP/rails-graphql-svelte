@@ -17,7 +17,7 @@ const cable = ActionCable.createConsumer(
   import.meta.env.SNOWPACK_PUBLIC_CABLE_ENDPOINT
 )
 
-const hasSubscriptionOperation = ({ query }:any) => {
+const hasSubscriptionOperation = ({ query }: any) => {
   const definition = getMainDefinition(query)
   return (
     definition.kind === 'OperationDefinition' &&
@@ -27,7 +27,7 @@ const hasSubscriptionOperation = ({ query }:any) => {
 
 const link = ApolloLink.split(
   hasSubscriptionOperation,
-  new ActionCableLink({cable}),
+  new ActionCableLink({ cable }),
   createHttpLink({
     uri: import.meta.env.SNOWPACK_PUBLIC_API_ENDPOINT,
     credentials: 'include'
@@ -43,23 +43,20 @@ const defaultOptions = {
 
 const client = new ApolloClient({ link, cache, defaultOptions })
 
-export const query = (graphql:string, variables:object) => (
+export const query = (graphql: string, variables: object) =>
   client.query({
-    query: gql`${graphql}`,
+    query: gql(graphql),
     variables
   })
-)
 
-export const mutation = (graphql:string, variables:object) => (
+export const mutation = (graphql: string, variables: object) =>
   client.mutate({
-    mutation: gql`${graphql}`,
+    mutation: gql(graphql),
     variables
   })
-)
 
-export const subscribe = (graphql:string, variables:object) => (
+export const subscribe = (graphql: string, variables: object) =>
   client.subscribe({
-    query: gql`${graphql}`,
+    query: gql(graphql),
     variables
   })
-)

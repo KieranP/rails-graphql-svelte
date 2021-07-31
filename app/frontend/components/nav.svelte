@@ -14,13 +14,21 @@
       </li>
 
       <li class="nav-item">
-        <a href={$url('/about')} class="nav-link" class:active={$isActive('/about')}>
+        <a
+          href={$url('/about')}
+          class="nav-link"
+          class:active={$isActive('/about')}
+        >
           {$_('components.nav.about')}
         </a>
       </li>
 
       <li class="nav-item">
-        <a href={$url('/posts')} class="nav-link" class:active={$isActive('/posts')}>
+        <a
+          href={$url('/posts')}
+          class="nav-link"
+          class:active={$isActive('/posts')}
+        >
           {$_('components.nav.posts')}
         </a>
       </li>
@@ -29,7 +37,11 @@
     <ul class="navbar-nav">
       {#if $session.user}
         <li class="nav-item">
-          <a href={$url('/users/:uuid', { uuid: $session.user.uuid })} class="nav-link" class:active={$isActive('/users')}>
+          <a
+            href={$url('/users/:uuid', { uuid: $session.user.uuid })}
+            class="nav-link"
+            class:active={$isActive('/users')}
+          >
             {$session.user.name}
           </a>
         </li>
@@ -41,13 +53,21 @@
         </li>
       {:else}
         <li class="nav-item">
-          <a href={$url('/login')} class="nav-link" class:active={$isActive('/login')}>
+          <a
+            href={$url('/login')}
+            class="nav-link"
+            class:active={$isActive('/login')}
+          >
             {$_('components.nav.login')}
           </a>
         </li>
 
         <li class="nav-item">
-          <a href={$url('/users/new')} class="nav-link" class:active={$isActive('/users/new')}>
+          <a
+            href={$url('/users/new')}
+            class="nav-link"
+            class:active={$isActive('/users/new')}
+          >
             {$_('components.nav.signup')}
           </a>
         </li>

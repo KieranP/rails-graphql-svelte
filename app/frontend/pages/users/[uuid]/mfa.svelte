@@ -8,16 +8,18 @@
 
   import type { User } from '@tstypes/User'
 
-  export let uuid:string
+  export let uuid: string
 
-  let user:User
-  let code:string
+  let user: User
+  let code: string
 
-  findUser({uuid}, `uuid otpEnabled otpProvisioningUrl`).then(res => {
-    user = res.data.findUser
-  }).catch(error => {
-    errors.set(error.graphQLErrors)
-  })
+  findUser({ uuid }, `uuid otpEnabled otpProvisioningUrl`)
+    .then(res => {
+      user = res.data.findUser
+    })
+    .catch(error => {
+      errors.set(error.graphQLErrors)
+    })
 
   function submitEnable() {
     updateUser(
@@ -27,14 +29,16 @@
         otpCode: code
       },
       `user { uuid otpEnabled }`
-    ).then(res => {
-      let data = res.data.updateUser
-      user = data.user
+    )
+      .then(res => {
+        let data = res.data.updateUser
+        user = data.user
 
-      $goto('/users/:uuid', {uuid})
-    }).catch(error => {
-      errors.set(error.graphQLErrors)
-    })
+        $goto('/users/:uuid', { uuid })
+      })
+      .catch(error => {
+        errors.set(error.graphQLErrors)
+      })
   }
 
   function submitDisable() {
@@ -45,14 +49,16 @@
         otpCode: code
       },
       `user { uuid otpEnabled }`
-    ).then(res => {
-      let data = res.data.updateUser
-      user = data.user
+    )
+      .then(res => {
+        let data = res.data.updateUser
+        user = data.user
 
-      $goto('/users/:uuid', {uuid})
-    }).catch(error => {
-      errors.set(error.graphQLErrors)
-    })
+        $goto('/users/:uuid', { uuid })
+      })
+      .catch(error => {
+        errors.set(error.graphQLErrors)
+      })
   }
 </script>
 
@@ -67,7 +73,13 @@
         <label for="code" class="form-label">
           {$_('pages.users.mfa.code')}
         </label>
-        <input type="text" class="form-control" id="name" bind:value={code} required />
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          bind:value={code}
+          required
+        />
       </div>
 
       <div class="mb-3">
@@ -86,7 +98,13 @@
         <label for="name" class="form-label">
           {$_('pages.users.mfa.code')}
         </label>
-        <input type="text" class="form-control" id="name" bind:value={code} required />
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          bind:value={code}
+          required
+        />
       </div>
 
       <div class="mb-3">

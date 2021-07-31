@@ -1,7 +1,7 @@
 <script lang="ts">
   import { _ } from '@libs/i18n'
 
-  export let result:any
+  export let result: any
 </script>
 
 {#if result}

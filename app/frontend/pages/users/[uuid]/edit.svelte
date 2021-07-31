@@ -8,38 +8,39 @@
 
   import type { User } from '@tstypes/User'
 
-  export let uuid:string
+  export let uuid: string
 
-  let user:User
-  let name:string
-  let email:string
-  let locale:string
+  let user: User
+  let name: string
+  let email: string
+  let locale: string
 
-  findUser({uuid}, `uuid name email locale otpEnabled`).then(res => {
-    user = res.data.findUser
-    name = user.name
-    email = user.email
-    locale = user.locale
-  }).catch(error => {
-    errors.set(error.graphQLErrors)
-  })
-
-  function submit() {
-    updateUser(
-      {uuid, name, email, locale},
-      `user { uuid name email locale }`
-    ).then(res => {
-      let data = res.data.updateUser
-      let user = data.user
-      let uuid = user.uuid
-
-      setSession(data)
-      setLocale.set(user.locale)
-
-      $goto('/users/:uuid', {uuid})
-    }).catch(error => {
+  findUser({ uuid }, `uuid name email locale otpEnabled`)
+    .then(res => {
+      user = res.data.findUser
+      name = user.name
+      email = user.email
+      locale = user.locale
+    })
+    .catch(error => {
       errors.set(error.graphQLErrors)
     })
+
+  function submit() {
+    updateUser({ uuid, name, email, locale }, `user { uuid name email locale }`)
+      .then(res => {
+        let data = res.data.updateUser
+        let user = data.user
+        let uuid = user.uuid
+
+        setSession(data)
+        setLocale.set(user.locale)
+
+        $goto('/users/:uuid', { uuid })
+      })
+      .catch(error => {
+        errors.set(error.graphQLErrors)
+      })
   }
 </script>
 
@@ -53,14 +54,26 @@
       <label for="name" class="form-label">
         {$_('pages.users.edit.name')}
       </label>
-      <input type="text" class="form-control" id="name" bind:value={name} required />
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        bind:value={name}
+        required
+      />
     </div>
 
     <div class="mb-3">
       <label for="email" class="form-label">
         {$_('pages.users.edit.email')}
       </label>
-      <input type="email" class="form-control" id="email" bind:value={email} required />
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        bind:value={email}
+        required
+      />
     </div>
 
     <div class="mb-3">
@@ -82,7 +95,7 @@
         {$_('common.update')}
       </button>
 
-      <a href={$url('/users/:uuid/mfa', {uuid})}>
+      <a href={$url('/users/:uuid/mfa', { uuid })}>
         {#if user.otpEnabled}
           {$_('pages.users.edit.mfa-disable')}
         {:else}

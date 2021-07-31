@@ -1,7 +1,8 @@
 import { query, mutation, subscribe } from '@libs/graphql'
 
-export const allPosts = (variables:object, graphql:string) => (
-  query(`
+export const allPosts = (variables: object, graphql: string) =>
+  query(
+    `
     query($before: String, $after: String, $first: Int, $last: Int) {
       allPosts(before: $before, after: $after, first: $first, last: $last) {
         pageInfo {
@@ -13,31 +14,37 @@ export const allPosts = (variables:object, graphql:string) => (
         ${graphql}
       }
     }
-  `, variables)
-)
+    `,
+    variables
+  )
 
-export const findPost = (variables:object, graphql:string) => (
-  query(`
+export const findPost = (variables: object, graphql: string) =>
+  query(
+    `
     query($uuid: ID!) {
       findPost(uuid: $uuid) {
         ${graphql}
       }
     }
-  `, variables)
-)
+    `,
+    variables
+  )
 
-export const watchPost = (variables:object, graphql:string) => (
-  subscribe(`
+export const watchPost = (variables: object, graphql: string) =>
+  subscribe(
+    `
     subscription($uuid: ID!) {
       postUpdated(uuid: $uuid) {
         ${graphql}
       }
     }
-  `, variables)
-)
+    `,
+    variables
+  )
 
-export const createPost = (variables:object, graphql:string) => (
-  mutation(`
+export const createPost = (variables: object, graphql: string) =>
+  mutation(
+    `
     mutation($title: String!, $body: String!) {
       createPost(input: {
         title: $title,
@@ -46,11 +53,13 @@ export const createPost = (variables:object, graphql:string) => (
         ${graphql}
       }
     }
-  `, variables)
-)
+    `,
+    variables
+  )
 
-export const updatePost = (variables:object, graphql:string) => (
-  mutation(`
+export const updatePost = (variables: object, graphql: string) =>
+  mutation(
+    `
     mutation($uuid: ID!, $title: String!, $body: String!) {
       updatePost(input: {
         uuid: $uuid,
@@ -60,11 +69,13 @@ export const updatePost = (variables:object, graphql:string) => (
         ${graphql}
       }
     }
-  `, variables)
-)
+    `,
+    variables
+  )
 
-export const destroyPost = (variables:object, graphql:string) => (
-  mutation(`
+export const destroyPost = (variables: object, graphql: string) =>
+  mutation(
+    `
     mutation($uuid: ID!) {
       destroyPost(input: {
         uuid: $uuid
@@ -72,5 +83,6 @@ export const destroyPost = (variables:object, graphql:string) => (
         ${graphql}
       }
     }
-  `, variables)
-)
+    `,
+    variables
+  )

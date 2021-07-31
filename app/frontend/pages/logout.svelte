@@ -5,12 +5,14 @@
   import { setLocale } from '@libs/i18n'
   import { goto } from '@roxi/routify'
 
-  logoutUser({}, `user { uuid }`).then(_res => {
-    clearSession()
-    setLocale.set('en')
+  logoutUser({}, `user { uuid }`)
+    .then(_res => {
+      clearSession()
+      setLocale.set('en')
 
-    $goto('/')
-  }).catch(error => {
-    errors.set(error.graphQLErrors)
-  })
+      $goto('/')
+    })
+    .catch(error => {
+      errors.set(error.graphQLErrors)
+    })
 </script>

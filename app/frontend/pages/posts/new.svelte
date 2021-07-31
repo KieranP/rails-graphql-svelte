@@ -7,14 +7,16 @@
 
   import type { PostSubmission } from '@tstypes/Post'
 
-  function submit(event:CustomEvent<PostSubmission>) {
-    createPost(event.detail, `post { uuid }`).then(res => {
-      let data = res.data
-      let uuid = data.createPost.post.uuid
-      $goto('/posts/:uuid', {uuid})
-    }).catch(error => {
-      errors.set(error.graphQLErrors)
-    })
+  function submit(event: CustomEvent<PostSubmission>) {
+    createPost(event.detail, `post { uuid }`)
+      .then(res => {
+        let data = res.data
+        let uuid = data.createPost.post.uuid
+        $goto('/posts/:uuid', { uuid })
+      })
+      .catch(error => {
+        errors.set(error.graphQLErrors)
+      })
   }
 </script>
 

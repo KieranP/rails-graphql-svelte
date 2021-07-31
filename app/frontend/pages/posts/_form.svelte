@@ -7,7 +7,7 @@
   const dispatch = createEventDispatcher()
   const submit = () => dispatch('submit', { title, body })
 
-  export let post:Post|null
+  export let post: Post | null
   let title = post?.title
   let body = post?.body
 </script>
@@ -17,14 +17,26 @@
     <label for="title" class="form-label">
       {$_('pages.posts._form.title')}
     </label>
-    <input type="text" class="form-control" id="title" bind:value={title} required />
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      bind:value={title}
+      required
+    />
   </div>
 
   <div class="mb-3">
     <label for="body" class="form-label">
       {$_('pages.posts._form.body')}
     </label>
-    <textarea class="form-control" id="body" rows="5" bind:value={body} required />
+    <textarea
+      class="form-control"
+      id="body"
+      rows="5"
+      bind:value={body}
+      required
+    />
   </div>
 
   <div class="mb-3">

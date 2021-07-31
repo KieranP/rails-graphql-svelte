@@ -20,11 +20,7 @@ initialLocale ??= 'en'
 
 init({
   initialLocale: initialLocale,
-  fallbackLocale: 'en',
+  fallbackLocale: 'en'
 })
 
-export {
-  locales as allLocales,
-  locale as setLocale,
-  _
-}
+export { locales as allLocales, locale as setLocale, _ }

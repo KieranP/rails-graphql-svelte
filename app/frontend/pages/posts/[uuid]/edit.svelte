@@ -8,27 +8,28 @@
 
   import type { Post, PostSubmission } from '@tstypes/Post'
 
-  export let uuid:string
+  export let uuid: string
 
-  let post:Post
+  let post: Post
 
-  findPost({uuid}, `uuid title body`).then(res => {
-    post = res.data.findPost
-  }).catch(error => {
-    errors.set(error.graphQLErrors)
-  })
-
-  function submit(event:CustomEvent<PostSubmission>) {
-    updatePost(
-      {uuid, ...event.detail},
-      `post { uuid title body }`
-    ).then(res => {
-      let data = res.data
-      let uuid = data.updatePost.post.uuid
-      $goto('/posts/:uuid', {uuid})
-    }).catch(error => {
+  findPost({ uuid }, `uuid title body`)
+    .then(res => {
+      post = res.data.findPost
+    })
+    .catch(error => {
       errors.set(error.graphQLErrors)
     })
+
+  function submit(event: CustomEvent<PostSubmission>) {
+    updatePost({ uuid, ...event.detail }, `post { uuid title body }`)
+      .then(res => {
+        let data = res.data
+        let uuid = data.updatePost.post.uuid
+        $goto('/posts/:uuid', { uuid })
+      })
+      .catch(error => {
+        errors.set(error.graphQLErrors)
+      })
   }
 </script>
 
@@ -37,5 +38,5 @@
 </h1>
 
 <Loader result={post}>
-  <Form post={post} on:submit={submit} />
+  <Form {post} on:submit={submit} />
 </Loader>

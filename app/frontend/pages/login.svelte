@@ -5,28 +5,30 @@
   import { setLocale, _ } from '@libs/i18n'
   import { goto, url } from '@roxi/routify'
 
-  let email:string
-  let password:string
-  let otpRequired:boolean = false
-  let otpCode:string
+  let email: string
+  let password: string
+  let otpRequired: boolean = false
+  let otpCode: string
 
   function submit() {
-    loginUser({email, password, otpCode}, `user { uuid email name locale }`).then(res => {
-      let data = res.data.loginUser
-      let user = data.user
+    loginUser({ email, password, otpCode }, `user { uuid email name locale }`)
+      .then(res => {
+        let data = res.data.loginUser
+        let user = data.user
 
-      setSession(data)
-      setLocale.set(user.locale)
+        setSession(data)
+        setLocale.set(user.locale)
 
-      $goto('/')
-    }).catch(res => {
-      const gqlErrors = res.graphQLErrors
-      if (gqlErrors[0].message == 'otp_code_required') {
-        otpRequired = true
-      } else {
-        errors.set(gqlErrors)
-      }
-    })
+        $goto('/')
+      })
+      .catch(res => {
+        const gqlErrors = res.graphQLErrors
+        if (gqlErrors[0].message == 'otp_code_required') {
+          otpRequired = true
+        } else {
+          errors.set(gqlErrors)
+        }
+      })
   }
 </script>
 
@@ -39,14 +41,26 @@
     <label for="email" class="form-label">
       {$_('pages.login.email')}
     </label>
-    <input type="email" class="form-control" id="email" bind:value={email} required />
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      bind:value={email}
+      required
+    />
   </div>
 
   <div class="mb-3">
     <label for="password" class="form-label">
       {$_('pages.login.password')}
     </label>
-    <input type="password" class="form-control" id="password" bind:value={password} required />
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      bind:value={password}
+      required
+    />
   </div>
 
   {#if otpRequired}
@@ -54,7 +68,13 @@
       <label for="otp_code" class="form-label">
         {$_('pages.login.otp_code')}
       </label>
-      <input type="text" class="form-control" id="otp_code" bind:value={otpCode} required />
+      <input
+        type="text"
+        class="form-control"
+        id="otp_code"
+        bind:value={otpCode}
+        required
+      />
     </div>
   {/if}
 

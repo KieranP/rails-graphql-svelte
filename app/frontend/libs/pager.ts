@@ -1,4 +1,4 @@
-export default function(params: { [x:string]:any }) {
+export default function (params: { [x: string]: any }) {
   let before = params['before']
   let after = params['after']
 
@@ -9,5 +9,5 @@ export default function(params: { [x:string]:any }) {
     first = 20
   }
 
-  return {before, after, first, last}
+  return { before, after, first, last }
 }

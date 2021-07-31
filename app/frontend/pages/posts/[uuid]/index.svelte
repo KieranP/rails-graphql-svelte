@@ -9,29 +9,37 @@
 
   import type { Post } from '@tstypes/Post'
 
-  export let uuid:string
+  export let uuid: string
 
-  let post:Post
+  let post: Post
 
   const fields = `uuid title body user { uuid }`
 
-  findPost({uuid}, fields).then(res => {
-    post = res.data.findPost
-  }).catch(error => {
-    errors.set(error.graphQLErrors)
-  })
+  findPost({ uuid }, fields)
+    .then(res => {
+      post = res.data.findPost
+    })
+    .catch(error => {
+      errors.set(error.graphQLErrors)
+    })
 
-  watchPost({uuid}, fields).subscribe(
-    (res) => { if(res.data.postUpdated) post = res.data.postUpdated },
-    (err) => { errors.set(err.graphQLErrors) }
+  watchPost({ uuid }, fields).subscribe(
+    res => {
+      if (res.data.postUpdated) post = res.data.postUpdated
+    },
+    err => {
+      errors.set(err.graphQLErrors)
+    }
   )
 
   function destroy() {
-    destroyPost({uuid}, `post { uuid }`).then(_res => {
-      $goto('/posts')
-    }).catch(error => {
-      errors.set(error.graphQLErrors)
-    })
+    destroyPost({ uuid }, `post { uuid }`)
+      .then(_res => {
+        $goto('/posts')
+      })
+      .catch(error => {
+        errors.set(error.graphQLErrors)
+      })
   }
 </script>
 
@@ -41,11 +49,19 @@
 
   {#if $session.user && $session.user.uuid == post.user.uuid}
     <p>
-      <a href={$url('/posts/:uuid/edit', { uuid: post.uuid })} class="btn btn-outline-primary">
+      <a
+        href={$url('/posts/:uuid/edit', { uuid: post.uuid })}
+        class="btn btn-outline-primary"
+      >
         {$_('common.edit')}
       </a>
 
-      <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#confirmDialog">
+      <button
+        type="button"
+        class="btn btn-outline-danger"
+        data-bs-toggle="modal"
+        data-bs-target="#confirmDialog"
+      >
         {$_('common.delete')}
       </button>
     </p>

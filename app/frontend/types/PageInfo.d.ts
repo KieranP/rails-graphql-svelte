@@ -1,6 +1,6 @@
 export type PageInfo = {
-  startCursor:string
-  endCursor:string
-  hasPreviousPage:string
-  hasNextPage:string
+  startCursor: string
+  endCursor: string
+  hasPreviousPage: string
+  hasNextPage: string
 }

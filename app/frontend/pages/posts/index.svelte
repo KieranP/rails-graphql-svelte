@@ -11,18 +11,17 @@
   import type { Post } from '@tstypes/Post'
   import type { PageInfo } from '@tstypes/PageInfo'
 
-  let posts:Post[]
-  let pageInfo:PageInfo
+  let posts: Post[]
+  let pageInfo: PageInfo
 
-  $: allPosts(
-    pager($params),
-    `nodes { uuid title user { uuid name } }`
-  ).then(res => {
-    posts = res.data.allPosts.nodes
-    pageInfo = res.data.allPosts.pageInfo
-  }).catch(error => {
-    errors.set(error.graphQLErrors)
-  })
+  $: allPosts(pager($params), `nodes { uuid title user { uuid name } }`)
+    .then(res => {
+      posts = res.data.allPosts.nodes
+      pageInfo = res.data.allPosts.pageInfo
+    })
+    .catch(error => {
+      errors.set(error.graphQLErrors)
+    })
 </script>
 
 <h1>
@@ -50,5 +49,5 @@
     {/each}
   </ul>
 
-  <Pager pageInfo={pageInfo} />
+  <Pager {pageInfo} />
 </Loader>
