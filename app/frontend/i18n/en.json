@@ -54,6 +54,7 @@
       "email": "Email",
       "forgot_password": "Forgotten password?",
       "heading": "Login",
+      "otp_code": "Multi-Factor Authentication Code",
       "password": "Password"
     },
     "posts": {
@@ -84,7 +85,15 @@
         "email": "Email",
         "heading": "Edit User",
         "locale": "Locale",
+        "mfa-disable": "Disable Multi-Factor Authentication",
+        "mfa-enable": "Enable Multi-Factor Authentication",
         "name": "Name"
+      },
+      "mfa": {
+        "code": "Enter Code:",
+        "disable": "Disable Multi-Factor Authentication",
+        "enable": "Enable Multi-Factor Authentication",
+        "heading": "Multi-factor Authentication"
       },
       "new": {
         "button": "Sign Up",

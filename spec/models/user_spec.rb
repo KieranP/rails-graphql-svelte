@@ -8,6 +8,8 @@
 #  email                  :citext           not null
 #  locale                 :string           default("en")
 #  name                   :string           not null
+#  otp_enabled            :boolean          default(FALSE)
+#  otp_secret_key         :string
 #  password_digest        :string
 #  password_reset_sent_at :datetime
 #  password_reset_token   :string

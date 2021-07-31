@@ -10,6 +10,8 @@ module Mutations
       argument :name, String, required: false
       argument :locale, String, required: false
 
+      argument :otp_action, Inputs::User::OtpAction, required: false
+
       field :user, Objects::User, null: true
       field :token, String, null: true
 

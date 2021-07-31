@@ -2,7 +2,7 @@
   import { findUser, updateUser } from '@queries/user'
   import { setSession } from '@libs/session'
   import { errors } from '@libs/stores'
-  import { goto } from '@roxi/routify'
+  import { goto, url } from '@roxi/routify'
   import Loader from '@components/loader.svelte'
   import { allLocales, setLocale, _ } from '@libs/i18n'
 
@@ -15,7 +15,7 @@
   let email:string
   let locale:string
 
-  findUser({uuid}, `uuid name email locale`).then(res => {
+  findUser({uuid}, `uuid name email locale otpEnabled`).then(res => {
     user = res.data.findUser
     name = user.name
     email = user.email
@@ -81,6 +81,14 @@
       <button type="submit" class="btn btn-primary">
         {$_('common.update')}
       </button>
+
+      <a href={$url('/users/:uuid/mfa', {uuid})}>
+        {#if user.otpEnabled}
+          {$_('pages.users.edit.mfa-disable')}
+        {:else}
+          {$_('pages.users.edit.mfa-enable')}
+        {/if}
+      </a>
     </div>
   </form>
 </Loader>

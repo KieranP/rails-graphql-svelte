@@ -38,12 +38,16 @@ export const createUser = (variables:object, graphql:string) => (
 
 export const updateUser = (variables:object, graphql:string) => (
   mutation(`
-    mutation($uuid: ID!, $name: String!, $email: String!, $locale: String!) {
+    mutation($uuid: ID!, $name: String, $email: String, $locale: String, $otpEnable: Boolean, $otpCode: String) {
       updateUser(input: {
         uuid: $uuid,
         name: $name,
         email: $email,
-        locale: $locale
+        locale: $locale,
+        otpAction: {
+          enable: $otpEnable,
+          code: $otpCode
+        }
       }) {
         ${graphql}
       }

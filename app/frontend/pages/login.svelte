@@ -7,9 +7,11 @@
 
   let email:string
   let password:string
+  let otpRequired:boolean = false
+  let otpCode:string
 
   function submit() {
-    loginUser({email, password}, `user { uuid email name locale }`).then(res => {
+    loginUser({email, password, otpCode}, `user { uuid email name locale }`).then(res => {
       let data = res.data.loginUser
       let user = data.user
 
@@ -17,8 +19,13 @@
       setLocale.set(user.locale)
 
       $goto('/')
-    }).catch(error => {
-      errors.set(error.graphQLErrors)
+    }).catch(res => {
+      const gqlErrors = res.graphQLErrors
+      if (gqlErrors[0].message == 'otp_code_required') {
+        otpRequired = true
+      } else {
+        errors.set(gqlErrors)
+      }
     })
   }
 </script>
@@ -41,6 +48,15 @@
     </label>
     <input type="password" class="form-control" id="password" bind:value={password} required />
   </div>
+
+  {#if otpRequired}
+    <div class="mb-3">
+      <label for="otp_code" class="form-label">
+        {$_('pages.login.otp_code')}
+      </label>
+      <input type="text" class="form-control" id="otp_code" bind:value={otpCode} required />
+    </div>
+  {/if}
 
   <div class="mb-3">
     <button type="submit" class="btn btn-primary">

@@ -26,6 +26,7 @@ gem 'pundit'
 gem 'sidekiq'
 
 # Misc
+gem 'active_model_otp'
 gem 'email_validator'
 
 group :development, :test do

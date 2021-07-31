@@ -4,7 +4,7 @@ module Mutations
   class Base < GraphQL::Schema::RelayClassicMutation
     argument_class Types::Argument
     field_class Types::Field
-    input_object_class Types::Input
+    input_object_class Inputs::Base
     object_class Objects::Base
 
     include QueryHelpers
