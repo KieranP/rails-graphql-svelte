@@ -4,13 +4,11 @@
   const dispatch = createEventDispatcher()
   import { _ } from '@libs/i18n'
 
-  function confirm() {
-    var dialog = document.getElementById('confirmDialog')
+  let dialog: HTMLDivElement
 
-    if (dialog) {
-      var modal = Modal.getInstance(dialog)
-      modal?.hide()
-    }
+  function confirm() {
+    var modal = Modal.getInstance(dialog)
+    modal?.hide()
 
     dispatch('confirm')
   }
@@ -18,7 +16,7 @@
   export let title = $_('components.confirm.title')
 </script>
 
-<div class="modal fade" id="confirmDialog">
+<div class="modal fade" id="confirmDialog" bind:this={dialog}>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
