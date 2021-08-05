@@ -2,7 +2,7 @@
 
 class TestingController < ApplicationController
   before_action do
-    head(403) unless Rails.env.test?
+    head(:forbidden) unless Rails.env.test?
   end
 
   def login
@@ -10,11 +10,11 @@ class TestingController < ApplicationController
     session = user.sessions.create!
     jwt_token = JwtToken.generate(user, session)
     JwtToken.set_cookie(cookies, jwt_token)
-    head 202
+    head :accepted
   end
 
   def logout
     cookies.delete('jwt_token')
-    head 202
+    head :accepted
   end
 end
