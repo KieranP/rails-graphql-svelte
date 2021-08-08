@@ -8,6 +8,10 @@ pre-commit:
       files: git diff --name-only --staged
       glob: "*.rb"
       run: bundle exec rubocop --force-exclusion {files}
+    fasterer:
+      run: bundle exec fasterer
+    rails_best_practices:
+      run: bundle exec rails_best_practices -c .rails_best_practices.yml
     db_consistency:
       run: bundle exec database_consistency
     typescript:

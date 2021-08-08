@@ -46,11 +46,13 @@ group :development do
 
   # Code Quality
   gem 'database_consistency', require: false
+  gem 'rails_best_practices', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
   gem 'bundler-audit', require: false
   gem 'brakeman', require: false
   gem 'lefthook', require: false
+  gem 'fasterer', require: false
 end
 
 group :test do
