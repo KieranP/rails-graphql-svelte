@@ -8,9 +8,9 @@ This repo contains a starter template for a Rails+GraphQL API and Svelte fronten
 
 The backend is powered by Ruby on Rails, with a GraphQL API.
 
-It includes a secure JWT authentication system and authorisation using Pundit.
+It includes a secure JWT & 2FA authentication system, and authorisation using Pundit.
 
-It is prewired with ActionCable for Websockets, and Sidekiq for background processing.
+It is pre-wired with ActionCable for Websockets, and Sidekiq for background processing.
 
 It includes Rspec and Capybara for feature tests, and Rubocop/Brakeman for code analysis.
 
