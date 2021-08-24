@@ -49,6 +49,7 @@ group :development do
   gem 'rails_best_practices', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+  gem 'rubocop-performance', require: false
   gem 'bundler-audit', require: false
   gem 'brakeman', require: false
   gem 'lefthook', require: false

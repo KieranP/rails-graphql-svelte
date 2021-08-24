@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
-users = 3.times.map do |i|
-  User.create!(
+users = []
+
+3.times do |i|
+  users << User.create!(
     email: "user#{i}@example.com",
     name: "User #{i}",
     password: "User#{i}pass!",
