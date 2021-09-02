@@ -36,7 +36,7 @@ RSpec.configure do |config|
       puts ''
 
       puts 'Building Frontend App...'
-      puts `yarn snowpack build --polyfill-node`
+      puts `yarn snowpack build`
       puts ''
     end
   end

@@ -11,7 +11,7 @@ import type { DefaultOptions } from '@apollo/client/core'
 import { getMainDefinition } from '@apollo/client/utilities'
 
 import ActionCable from '@rails/actioncable'
-import { ActionCableLink } from 'graphql-ruby-client'
+import ActionCableLink from 'graphql-ruby-client/subscriptions/ActionCableLink'
 
 const cable = ActionCable.createConsumer(
   import.meta.env.SNOWPACK_PUBLIC_CABLE_ENDPOINT

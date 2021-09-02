@@ -1,3 +1,3 @@
 backend: bin/rails server -p 3000
 routify: yarn routify
-frontend: NODE_ENV=development yarn snowpack build --watch --hmr --polyfill-node
+frontend: NODE_ENV=development yarn snowpack build --watch --hmr

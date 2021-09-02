@@ -19,7 +19,6 @@
     "@snowpack/plugin-typescript": "^1.2.1",
     "@tsconfig/svelte": "^2.0.1",
     "@types/bootstrap": "^5.0.16",
-    "@types/qrcode": "^1.4.1",
     "@types/rails__actioncable": "^6.1.4",
     "@types/snowpack-env": "^2.3.3",
     "autoprefixer": "^10.2.5",
