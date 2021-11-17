@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_21_091537) do
+ActiveRecord::Schema.define(version: 2021_11_17_072809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2021_07_21_091537) do
     t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.uuid "uuid", default: -> { "gen_random_uuid()" }, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
     t.index ["uuid"], name: "index_posts_on_uuid", unique: true
