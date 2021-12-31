@@ -1,4 +1,4 @@
-import { session, get } from '@libs/stores'
+import { session, get } from '~/libs/stores'
 
 let getSession = function () {
   return get(session)

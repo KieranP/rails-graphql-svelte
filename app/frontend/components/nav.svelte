@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { session } from '@libs/session'
+  import { session } from '~/libs/session'
   import { url, isActive } from '@roxi/routify'
-  import { _ } from '@libs/i18n'
+  import { _ } from '~/libs/i18n'
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">

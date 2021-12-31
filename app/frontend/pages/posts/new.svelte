@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { createPost } from '@queries/post'
-  import { errors } from '@libs/stores'
+  import { createPost } from '~/queries/post'
+  import { errors } from '~/libs/stores'
   import { goto } from '@roxi/routify'
   import Form from './_form.svelte'
-  import { _ } from '@libs/i18n'
+  import { _ } from '~/libs/i18n'
 
-  import type { PostSubmission } from '@tstypes/Post'
+  import type { PostSubmission } from '~/types/Post'
 
   function submit(event: CustomEvent<PostSubmission>) {
     createPost(event.detail, `post { uuid }`)

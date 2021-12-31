@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { findUser, watchUser } from '@queries/user'
-  import { session } from '@libs/session'
-  import { errors } from '@libs/stores'
+  import { findUser, watchUser } from '~/queries/user'
+  import { session } from '~/libs/session'
+  import { errors } from '~/libs/stores'
   import { url } from '@roxi/routify'
-  import Loader from '@components/loader.svelte'
-  import { _ } from '@libs/i18n'
+  import Loader from '~/components/loader.svelte'
+  import { _ } from '~/libs/i18n'
 
-  import type { User } from '@tstypes/User'
+  import type { User } from '~/types/User'
 
   export let uuid: string
 

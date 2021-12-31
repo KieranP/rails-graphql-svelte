@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.2'
+ruby '3.0.3'
 
 # Core
 gem 'rails'
@@ -20,6 +20,7 @@ gem 'rack-cors'
 gem 'jwt'
 
 # App
+gem 'vite_rails'
 gem 'dotenv-rails'
 gem 'interaktor'
 gem 'pundit'

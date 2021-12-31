@@ -1,4 +1,4 @@
-import { mutation } from '@libs/graphql'
+import { mutation } from '~/libs/graphql'
 
 export const loginUser = (variables: object, graphql: string) =>
   mutation(

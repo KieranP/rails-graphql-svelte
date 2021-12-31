@@ -1,45 +1,43 @@
 {
   // See https://www.typescriptlang.org/tsconfig
-  "extends": "@tsconfig/svelte/tsconfig.json",
-  "include": ["app/frontend"],
-  "exclude": ["node_modules/*"],
+  "include": [
+    "./app/frontend/**/*.js",
+    "./app/frontend/**/*.ts",
+    "./app/frontend/**/*.d.ts",
+    "./app/frontend/**/*.svele"
+  ],
   "compilerOptions": {
-    // Project Options
-    "isolatedModules": true,
-    "lib": ["ES2021", "dom", "dom.iterable"],
-    "module": "ES2020",
-    "noEmit": true,
-    "sourceMap": true,
-    "target": "ES2021",
-
-    // Strict Checks
-    "strict": true,
-
-    // Module Resolution
-    "baseUrl": "./",
-    "esModuleInterop": true,
+    // Modules
+    "baseUrl": "./app/frontend",
+    "module": "esnext",
     "moduleResolution": "node",
     "paths": {
-      "@components/*": ["./app/frontend/components/*"],
-      "@i18n/*": ["./app/frontend/i18n/*"],
-      "@libs/*": ["./app/frontend/libs/*"],
-      "@pages/*": ["./app/frontend/pages/*"],
-      "@queries/*": ["./app/frontend/queries/*"],
-      "@tstypes/*": ["./app/frontend/types/*"]
+      "~/*": ["./*"]
     },
-    "types": ["snowpack-env", "svelte"],
+    "resolveJsonModule": true,
 
-    // Linter Checks
+    // Emit
+    "importsNotUsedAsValues": "error",
+    "preserveValueImports": true,
+    "sourceMap": true,
+
+    // Interop
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+
+    // Language & Environment
+    "target": "esnext",
+    "useDefineForClassFields": true,
+
+    // Completeness
+    "skipLibCheck": true,
+
+    // Type Checking
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-
-    // Advanced
-    "forceConsistentCasingInFileNames": true,
-    "importsNotUsedAsValues": "error",
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "useDefineForClassFields": true
+    "strict": true
   }
 }

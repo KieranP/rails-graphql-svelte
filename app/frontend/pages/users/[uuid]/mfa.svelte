@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { findUser, updateUser } from '@queries/user'
-  import { errors } from '@libs/stores'
+  import { findUser, updateUser } from '~/queries/user'
+  import { errors } from '~/libs/stores'
   import { goto } from '@roxi/routify'
-  import Loader from '@components/loader.svelte'
-  import { _ } from '@libs/i18n'
-  import QRCode from '@components/qrcode.svelte'
+  import Loader from '~/components/loader.svelte'
+  import { _ } from '~/libs/i18n'
+  import QRCode from '~/components/qrcode.svelte'
 
-  import type { User } from '@tstypes/User'
+  import type { User } from '~/types/User'
 
   export let uuid: string
 

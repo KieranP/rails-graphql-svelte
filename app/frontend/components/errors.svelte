@@ -1,6 +1,6 @@
 <script lang="ts">
   import { beforeUrlChange } from '@roxi/routify'
-  import { errors } from '@libs/stores'
+  import { errors } from '~/libs/stores'
 
   // Clear errors when page location changes
   $beforeUrlChange((_event: any, _store: any) => {

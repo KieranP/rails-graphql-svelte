@@ -32,4 +32,11 @@
 
 /app/frontend/.routify
 /node_modules
-/public
+
+# Vite Ruby
+/public/vite
+/public/vite-dev
+/public/vite-test
+node_modules
+*.local
+.DS_Store

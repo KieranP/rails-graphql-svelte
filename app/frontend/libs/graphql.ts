@@ -10,11 +10,11 @@ import type { DefaultOptions } from '@apollo/client/core'
 
 import { getMainDefinition } from '@apollo/client/utilities'
 
-import ActionCable from '@rails/actioncable'
+import { createConsumer } from '@rails/actioncable'
 import ActionCableLink from 'graphql-ruby-client/subscriptions/ActionCableLink'
 
-const cable = ActionCable.createConsumer(
-  import.meta.env.SNOWPACK_PUBLIC_CABLE_ENDPOINT
+const cable = createConsumer(
+  import.meta.env.VITE_CABLE_ENDPOINT as string
 )
 
 const hasSubscriptionOperation = ({ query }: any) => {
@@ -29,7 +29,7 @@ const link = ApolloLink.split(
   hasSubscriptionOperation,
   new ActionCableLink({ cable }),
   createHttpLink({
-    uri: import.meta.env.SNOWPACK_PUBLIC_API_ENDPOINT,
+    uri: import.meta.env.VITE_GRAPHQL_ENDPOINT as string,
     credentials: 'include'
   })
 )

@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { findPost, watchPost, destroyPost } from '@queries/post'
-  import { session } from '@libs/session'
-  import { errors } from '@libs/stores'
+  import { findPost, watchPost, destroyPost } from '~/queries/post'
+  import { session } from '~/libs/session'
+  import { errors } from '~/libs/stores'
   import { url, goto } from '@roxi/routify'
-  import Loader from '@components/loader.svelte'
-  import Confirm from '@components/confirm.svelte'
-  import { _ } from '@libs/i18n'
+  import Loader from '~/components/loader.svelte'
+  import Confirm from '~/components/confirm.svelte'
+  import { _ } from '~/libs/i18n'
 
-  import type { Post } from '@tstypes/Post'
+  import type { Post } from '~/types/Post'
 
   export let uuid: string
 

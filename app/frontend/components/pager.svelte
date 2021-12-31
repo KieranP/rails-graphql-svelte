@@ -1,8 +1,8 @@
 <script lang="ts">
   import { goto } from '@roxi/routify'
-  import { _ } from '@libs/i18n'
+  import { _ } from '~/libs/i18n'
 
-  import type { PageInfo } from '@tstypes/PageInfo'
+  import type { PageInfo } from '~/types/PageInfo'
 
   export let pageInfo: PageInfo
 

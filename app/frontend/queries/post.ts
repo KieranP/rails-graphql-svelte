@@ -1,4 +1,4 @@
-import { query, mutation, subscribe } from '@libs/graphql'
+import { query, mutation, subscribe } from '~/libs/graphql'
 
 export const allPosts = (variables: object, graphql: string) =>
   query(

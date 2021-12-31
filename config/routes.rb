@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   end
 
   get '*path', to: 'home#index'
+  root to: 'home#index'
 end

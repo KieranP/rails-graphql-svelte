@@ -1,9 +1,9 @@
 <script lang="ts">
   import { params, goto } from '@roxi/routify'
-  import { resetPassword } from '@queries/user'
-  import { errors } from '@libs/stores'
-  import { base64Decode } from '@libs/utils'
-  import { _ } from '@libs/i18n'
+  import { resetPassword } from '~/queries/user'
+  import { errors } from '~/libs/stores'
+  import { base64Decode } from '~/libs/utils'
+  import { _ } from '~/libs/i18n'
 
   let token: string
   let email: string

@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { forgotPassword } from '@queries/user'
-  import { errors } from '@libs/stores'
-  import { _ } from '@libs/i18n'
+  import { forgotPassword } from '~/queries/user'
+  import { errors } from '~/libs/stores'
+  import { _ } from '~/libs/i18n'
 
   let email: string
   let result: object

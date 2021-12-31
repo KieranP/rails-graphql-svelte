@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { findUser, updateUser } from '@queries/user'
-  import { setSession } from '@libs/session'
-  import { errors } from '@libs/stores'
+  import { findUser, updateUser } from '~/queries/user'
+  import { setSession } from '~/libs/session'
+  import { errors } from '~/libs/stores'
   import { goto, url } from '@roxi/routify'
-  import Loader from '@components/loader.svelte'
-  import { allLocales, setLocale, _ } from '@libs/i18n'
+  import Loader from '~/components/loader.svelte'
+  import { allLocales, setLocale, _ } from '~/libs/i18n'
 
-  import type { User } from '@tstypes/User'
+  import type { User } from '~/types/User'
 
   export let uuid: string
 

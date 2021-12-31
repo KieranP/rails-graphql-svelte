@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { findPost, updatePost } from '@queries/post'
-  import { errors } from '@libs/stores'
+  import { findPost, updatePost } from '~/queries/post'
+  import { errors } from '~/libs/stores'
   import { goto } from '@roxi/routify'
-  import Loader from '@components/loader.svelte'
+  import Loader from '~/components/loader.svelte'
   import Form from '../_form.svelte'
-  import { _ } from '@libs/i18n'
+  import { _ } from '~/libs/i18n'
 
-  import type { Post, PostSubmission } from '@tstypes/Post'
+  import type { Post, PostSubmission } from '~/types/Post'
 
   export let uuid: string
 

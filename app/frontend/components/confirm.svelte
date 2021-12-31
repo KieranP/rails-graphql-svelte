@@ -2,7 +2,7 @@
   import Modal from 'bootstrap/js/dist/modal'
   import { createEventDispatcher } from 'svelte'
   const dispatch = createEventDispatcher()
-  import { _ } from '@libs/i18n'
+  import { _ } from '~/libs/i18n'
 
   let dialog: HTMLDivElement
 

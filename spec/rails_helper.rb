@@ -36,7 +36,7 @@ RSpec.configure do |config|
       puts ''
 
       puts 'Building Frontend App...'
-      puts `yarn snowpack build`
+      puts `bin/vite build -m test`
       puts ''
     end
   end

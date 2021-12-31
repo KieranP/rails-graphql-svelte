@@ -1,15 +1,15 @@
 <script lang="ts">
-  import { allPosts } from '@queries/post'
-  import { session } from '@libs/session'
-  import { errors } from '@libs/stores'
-  import Loader from '@components/loader.svelte'
+  import { allPosts } from '~/queries/post'
+  import { session } from '~/libs/session'
+  import { errors } from '~/libs/stores'
+  import Loader from '~/components/loader.svelte'
   import { url, params } from '@roxi/routify'
-  import Pager from '@components/pager.svelte'
-  import pager from '@libs/pager'
-  import { _ } from '@libs/i18n'
+  import Pager from '~/components/pager.svelte'
+  import pager from '~/libs/pager'
+  import { _ } from '~/libs/i18n'
 
-  import type { Post } from '@tstypes/Post'
-  import type { PageInfo } from '@tstypes/PageInfo'
+  import type { Post } from '~/types/Post'
+  import type { PageInfo } from '~/types/PageInfo'
 
   let posts: Post[]
   let pageInfo: PageInfo

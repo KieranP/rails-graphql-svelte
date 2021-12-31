@@ -1,8 +1,8 @@
 <script lang="ts">
-  import { loginUser } from '@queries/auth'
-  import { setSession } from '@libs/session'
-  import { errors } from '@libs/stores'
-  import { setLocale, _ } from '@libs/i18n'
+  import { loginUser } from '~/queries/auth'
+  import { setSession } from '~/libs/session'
+  import { errors } from '~/libs/stores'
+  import { setLocale, _ } from '~/libs/i18n'
   import { goto, url } from '@roxi/routify'
 
   let email: string

@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { createUser } from '@queries/user'
-  import { setSession } from '@libs/session'
-  import { errors } from '@libs/stores'
+  import { createUser } from '~/queries/user'
+  import { setSession } from '~/libs/session'
+  import { errors } from '~/libs/stores'
   import { goto } from '@roxi/routify'
-  import { allLocales, setLocale, _ } from '@libs/i18n'
+  import { allLocales, setLocale, _ } from '~/libs/i18n'
 
   let name: string
   let email: string

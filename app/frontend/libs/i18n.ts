@@ -6,12 +6,12 @@ import {
   locale,
   _
 } from 'svelte-i18n'
-import { getSession } from '@libs/session'
+import { getSession } from '~/libs/session'
 
-import en from '@i18n/en.json'
+import en from '~/i18n/en.json'
 addMessages('en', en)
 
-import de from '@i18n/de.json'
+import de from '~/i18n/de.json'
 addMessages('de', de)
 
 let initialLocale = getSession()?.user?.locale

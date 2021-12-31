@@ -1,4 +1,4 @@
-import type { Post } from '@types/Post'
+import type { Post } from '~/types/Post'
 
 export type User = {
   uuid: string

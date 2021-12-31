@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import QRCode from 'qrcode/build/qrcode'
+  import QRCode from 'qrcode'
 
   export let content: string
 
