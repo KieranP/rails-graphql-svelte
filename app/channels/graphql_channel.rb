@@ -12,16 +12,17 @@ class GraphqlChannel < ApplicationCable::Channel
   end
 
   def execute(data)
-    result = Schema.execute(**schema_options(data))
+    options = schema_options(data)
+    result = Schema.execute(**options)
 
     if sub_id = result.context[:subscription_id]
       @subscription_ids << sub_id
     end
 
-    transmit(
+    transmit({
       result: result.to_h,
       more: result.subscription?
-    )
+    })
   end
 
   private

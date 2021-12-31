@@ -8,7 +8,7 @@ module Subscriptions
       argument :uuid, ID, required: true
 
       def update(**args)
-        unless user = user(args)
+        unless user = user(**args)
           raise GraphQL::ExecutionError.new('User Not Found', options: { code: 404 })
         end
 
