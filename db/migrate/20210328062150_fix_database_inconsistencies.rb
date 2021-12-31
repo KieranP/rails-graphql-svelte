@@ -2,6 +2,7 @@
 
 class FixDatabaseInconsistencies < ActiveRecord::Migration[6.1]
   def change
+    # rubocop:disable Rails/ReversibleMigration
     safety_assured do
       change_column_null :users, :email, false
       change_column_null :users, :name, false
@@ -13,5 +14,6 @@ class FixDatabaseInconsistencies < ActiveRecord::Migration[6.1]
       change_column :sessions, :user_id, :bigint
       change_column_null :sessions, :expires_at, false
     end
+    # rubocop:enable Rails/ReversibleMigration
   end
 end
