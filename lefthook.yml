@@ -4,6 +4,8 @@ pre-commit:
     # TODO: Brakeman is broken at the moment with Ruby 3.0.0
     # brakeman:
     #   run: bundle exec brakeman --no-pager
+    graphql:
+      run: bin/rails graphql:schema:idl && git add app/graphql/schema.graphql
     rubocop:
       files: git diff --name-only --staged
       glob: "*.rb"
