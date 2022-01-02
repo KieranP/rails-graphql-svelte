@@ -6,16 +6,14 @@ import {
   gql
 } from '@apollo/client/core'
 
-import type { DefaultOptions } from '@apollo/client/core'
+import type { DefaultOptions, DocumentNode } from '@apollo/client/core'
 
 import { getMainDefinition } from '@apollo/client/utilities'
 
 import { createConsumer } from '@rails/actioncable'
 import ActionCableLink from 'graphql-ruby-client/subscriptions/ActionCableLink'
 
-const cable = createConsumer(
-  import.meta.env.VITE_CABLE_ENDPOINT as string
-)
+const cable = createConsumer(import.meta.env.VITE_CABLE_ENDPOINT as string)
 
 const hasSubscriptionOperation = ({ query }: any) => {
   const definition = getMainDefinition(query)
@@ -43,20 +41,22 @@ const defaultOptions = {
 
 const client = new ApolloClient({ link, cache, defaultOptions })
 
-export const query = (graphql: string, variables: object) =>
+export const query = (graphql: DocumentNode, variables: object) =>
   client.query({
-    query: gql(graphql),
+    query: graphql,
     variables
   })
 
-export const mutation = (graphql: string, variables: object) =>
+export const mutation = (graphql: DocumentNode, variables: object) =>
   client.mutate({
-    mutation: gql(graphql),
+    mutation: graphql,
     variables
   })
 
-export const subscribe = (graphql: string, variables: object) =>
+export const subscribe = (graphql: DocumentNode, variables: object) =>
   client.subscribe({
-    query: gql(graphql),
+    query: graphql,
     variables
   })
+
+export { gql }

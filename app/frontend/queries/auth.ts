@@ -1,9 +1,9 @@
-import { mutation } from '~/libs/graphql'
+import { gql, mutation } from '~/libs/graphql'
 
 export const loginUser = (variables: object, graphql: string) =>
   mutation(
-    `
-    mutation($email: String!, $password: String!, $otpCode: String) {
+    gql`
+    mutation loginUser($email: String!, $password: String!, $otpCode: String) {
       loginUser(input: {
         email: $email,
         password: $password,
@@ -18,8 +18,8 @@ export const loginUser = (variables: object, graphql: string) =>
 
 export const logoutUser = (variables: object, graphql: string) =>
   mutation(
-    `
-    mutation {
+    gql`
+    mutation logoutUser() {
       logoutUser(input: {}) {
         ${graphql}
       }

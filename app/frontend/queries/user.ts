@@ -1,9 +1,9 @@
-import { query, mutation, subscribe } from '~/libs/graphql'
+import { gql, query, mutation, subscribe } from '~/libs/graphql'
 
 export const findUser = (variables: object, graphql: string) =>
   query(
-    `
-    query($uuid: ID!) {
+    gql`
+    query findUser($uuid: ID!) {
       findUser(uuid: $uuid) {
         ${graphql}
       }
@@ -14,8 +14,8 @@ export const findUser = (variables: object, graphql: string) =>
 
 export const watchUser = (variables: object, graphql: string) =>
   subscribe(
-    `
-    subscription($uuid: ID!) {
+    gql`
+    subscription watchUser($uuid: ID!) {
       userUpdated(uuid: $uuid) {
         ${graphql}
       }
@@ -26,8 +26,8 @@ export const watchUser = (variables: object, graphql: string) =>
 
 export const createUser = (variables: object, graphql: string) =>
   mutation(
-    `
-    mutation($email: String!, $name: String!, $locale: String!, $password: String!, $passwordConfirmation: String!) {
+    gql`
+    mutation createUser($email: String!, $name: String!, $locale: String!, $password: String!, $passwordConfirmation: String!) {
       createUser(input: {
         email: $email,
         name: $name,
@@ -44,8 +44,8 @@ export const createUser = (variables: object, graphql: string) =>
 
 export const updateUser = (variables: object, graphql: string) =>
   mutation(
-    `
-    mutation($uuid: ID!, $name: String, $email: String, $locale: String, $otpEnable: Boolean, $otpCode: String) {
+    gql`
+    mutation updateUser($uuid: ID!, $name: String, $email: String, $locale: String, $otpEnable: Boolean, $otpCode: String) {
       updateUser(input: {
         uuid: $uuid,
         name: $name,
@@ -65,8 +65,8 @@ export const updateUser = (variables: object, graphql: string) =>
 
 export const forgotPassword = (variables: object, graphql: string) =>
   mutation(
-    `
-    mutation($email: String!) {
+    gql`
+    mutation forgotPassword($email: String!) {
       forgotPassword(input: {
         email: $email
       }) {
@@ -79,8 +79,8 @@ export const forgotPassword = (variables: object, graphql: string) =>
 
 export const resetPassword = (variables: object, graphql: string) =>
   mutation(
-    `
-    mutation($token: String!, $email: String!, $password: String!, $passwordConfirmation: String!) {
+    gql`
+    mutation resetPassword($token: String!, $email: String!, $password: String!, $passwordConfirmation: String!) {
       resetPassword(input: {
         token: $token,
         email: $email,

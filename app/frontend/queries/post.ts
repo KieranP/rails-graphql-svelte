@@ -1,9 +1,9 @@
-import { query, mutation, subscribe } from '~/libs/graphql'
+import { gql, query, mutation, subscribe } from '~/libs/graphql'
 
 export const allPosts = (variables: object, graphql: string) =>
   query(
-    `
-    query($before: String, $after: String, $first: Int, $last: Int) {
+    gql`
+    query allPosts($before: String, $after: String, $first: Int, $last: Int) {
       allPosts(before: $before, after: $after, first: $first, last: $last) {
         pageInfo {
           startCursor
@@ -20,8 +20,8 @@ export const allPosts = (variables: object, graphql: string) =>
 
 export const findPost = (variables: object, graphql: string) =>
   query(
-    `
-    query($uuid: ID!) {
+    gql`
+    query findPost($uuid: ID!) {
       findPost(uuid: $uuid) {
         ${graphql}
       }
@@ -32,8 +32,8 @@ export const findPost = (variables: object, graphql: string) =>
 
 export const watchPost = (variables: object, graphql: string) =>
   subscribe(
-    `
-    subscription($uuid: ID!) {
+    gql`
+    subscription watchPost($uuid: ID!) {
       postUpdated(uuid: $uuid) {
         ${graphql}
       }
@@ -44,8 +44,8 @@ export const watchPost = (variables: object, graphql: string) =>
 
 export const createPost = (variables: object, graphql: string) =>
   mutation(
-    `
-    mutation($title: String!, $body: String!) {
+    gql`
+    mutation createPost($title: String!, $body: String!) {
       createPost(input: {
         title: $title,
         body: $body
@@ -59,8 +59,8 @@ export const createPost = (variables: object, graphql: string) =>
 
 export const updatePost = (variables: object, graphql: string) =>
   mutation(
-    `
-    mutation($uuid: ID!, $title: String!, $body: String!) {
+    gql`
+    mutation updatePost($uuid: ID!, $title: String!, $body: String!) {
       updatePost(input: {
         uuid: $uuid,
         title: $title,
@@ -75,8 +75,8 @@ export const updatePost = (variables: object, graphql: string) =>
 
 export const destroyPost = (variables: object, graphql: string) =>
   mutation(
-    `
-    mutation($uuid: ID!) {
+    gql`
+    mutation destroyPost($uuid: ID!) {
       destroyPost(input: {
         uuid: $uuid
       }) {
