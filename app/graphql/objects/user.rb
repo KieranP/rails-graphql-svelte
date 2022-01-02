@@ -2,6 +2,8 @@
 
 module Objects
   class User < Objects::Base
+    policy :show?
+
     field :uuid, ID, null: false
 
     field :email, String, null: true, policy: :update?

@@ -2,6 +2,8 @@
 
 module Objects
   class Post < Objects::Base
+    policy :show?
+
     field :uuid, ID, null: false
     field :title, String, null: false
     field :body, String, null: false
