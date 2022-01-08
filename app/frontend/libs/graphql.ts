@@ -34,10 +34,11 @@ const link = ApolloLink.split(
 
 const cache = new InMemoryCache({})
 
-const defaultOptions = {
+const defaultOptions: DefaultOptions = {
   watchQuery: { fetchPolicy: 'no-cache' },
-  query: { fetchPolicy: 'no-cache' }
-} as DefaultOptions
+  query: { fetchPolicy: 'no-cache' },
+  mutate: { fetchPolicy: 'no-cache' }
+}
 
 const client = new ApolloClient({ link, cache, defaultOptions })
 
