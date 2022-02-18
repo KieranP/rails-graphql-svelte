@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_17_072809) do
-
+ActiveRecord::Schema[7.0].define(version: 2021_11_17_072809) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -21,8 +20,8 @@ ActiveRecord::Schema.define(version: 2021_11_17_072809) do
   create_table "posts", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.uuid "uuid", default: -> { "gen_random_uuid()" }, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
@@ -32,10 +31,10 @@ ActiveRecord::Schema.define(version: 2021_11_17_072809) do
   create_table "sessions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "jwt_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.datetime "last_access_at"
-    t.datetime "expires_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "last_access_at", precision: nil
+    t.datetime "expires_at", precision: nil, null: false
     t.uuid "uuid", default: -> { "gen_random_uuid()" }, null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
     t.index ["uuid"], name: "index_sessions_on_uuid", unique: true
@@ -44,13 +43,13 @@ ActiveRecord::Schema.define(version: 2021_11_17_072809) do
   create_table "users", force: :cascade do |t|
     t.citext "email", null: false
     t.string "password_digest"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name", null: false
     t.string "locale", default: "en"
     t.uuid "uuid", default: -> { "gen_random_uuid()" }, null: false
     t.string "password_reset_token"
-    t.datetime "password_reset_sent_at"
+    t.datetime "password_reset_sent_at", precision: nil
     t.string "otp_secret_key"
     t.boolean "otp_enabled", default: false
     t.index "lower((email)::text)", name: "index_users_on_lower_email", unique: true

@@ -31,6 +31,8 @@ gem 'active_model_otp'
 gem 'email_validator'
 
 group :development, :test do
+  gem 'debug'
+
   # Testing
   gem 'rspec-rails'
 

@@ -2,7 +2,13 @@
 
 module Loaders
   class Association < GraphQL::Batch::Loader
+    def self.validate(model, association_name)
+      new(model, association_name)
+      nil
+    end
+
     def initialize(model, association_name)
+      super()
       @model = model
       @association_name = association_name
       validate
@@ -34,7 +40,7 @@ module Loaders
     end
 
     def preload_association(records)
-      ::ActiveRecord::Associations::Preloader.new.preload(records, @association_name)
+      ::ActiveRecord::Associations::Preloader.new(records: records, associations: @association_name).call
     end
 
     def read_association(record)
