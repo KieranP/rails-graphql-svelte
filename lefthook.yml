@@ -1,9 +1,6 @@
 pre-commit:
   parallel: true
   commands:
-    # TODO: Brakeman is broken at the moment with Ruby 3.0.0
-    # brakeman:
-    #   run: bundle exec brakeman --no-pager
     graphql:
       run: bin/rails graphql:schema:idl && git add app/graphql/schema.graphql
     rubocop:
@@ -16,5 +13,7 @@ pre-commit:
       run: bundle exec rails_best_practices -c .rails_best_practices.yml
     db_consistency:
       run: bundle exec database_consistency
+    brakeman:
+      run: bundle exec brakeman --quiet --no-pager
     typescript:
       run: yarn svelte-check
