@@ -6,7 +6,11 @@ class GraphqlController < ActionController::API
 
   before_action :update_session
 
-  rescue_from JWT::InvalidIatError, JWT::InvalidJtiError, with: :invalid_jwt
+  rescue_from \
+    JWT::InvalidIatError,
+    JWT::InvalidJtiError,
+    JWT::ExpiredSignature,
+    with: :invalid_jwt
 
   def execute
     render json: Schema.execute(**schema_options)
