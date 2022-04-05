@@ -26,7 +26,7 @@ require 'rails_helper'
 describe Post, type: :model do
   it 'requires a title and body' do
     post = described_class.new
-    expect(post.valid?).to eq false
+    expect(post.valid?).to be false
     expect(post.errors).to include :title
     expect(post.errors).to include :body
   end
