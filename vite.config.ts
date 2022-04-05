@@ -9,4 +9,7 @@ export default defineConfig({
     RubyPlugin(),
     svelte({})
   ],
+  css: {
+    devSourcemap: true
+  }
 })
