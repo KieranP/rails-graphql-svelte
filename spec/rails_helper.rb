@@ -30,7 +30,7 @@ RSpec.configure do |config|
   config.include AuthenticationHelpers
 
   config.before(:suite) do
-    unless ENV['BUILD_FRONTEND'] == 'false'
+    unless ENV.fetch('BUILD_FRONTEND', nil) == 'false'
       puts 'Bulding Route File...'
       puts `yarn routify -b`
       puts ''

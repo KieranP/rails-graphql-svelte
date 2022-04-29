@@ -3,7 +3,7 @@
 class ApplicationMailer < ActionMailer::Base
   layout 'mailer'
 
-  default from: ENV['MAILER_FROM']
+  default from: ENV.fetch('MAILER_FROM')
 
   private
 
@@ -17,9 +17,9 @@ class ApplicationMailer < ActionMailer::Base
   def url(path)
     # rubocop:disable Rails/OutputSafety
     [
-      ENV['HOST_PROTO'],
+      ENV.fetch('HOST_PROTO'),
       '://',
-      ENV['HOST_NAME'],
+      ENV.fetch('HOST_NAME'),
       path
     ].join.html_safe
     # rubocop:enable Rails/OutputSafety

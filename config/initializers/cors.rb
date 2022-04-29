@@ -2,7 +2,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins ENV['HOST_NAME']
+    origins ENV.fetch('HOST_NAME')
 
     resource '*',
       headers: :any,

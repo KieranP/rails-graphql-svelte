@@ -4,9 +4,7 @@ pre-commit:
     graphql:
       run: bin/rails graphql:schema:idl && git add app/graphql/schema.graphql
     rubocop:
-      files: git diff --name-only --staged
-      glob: "*.rb"
-      run: bundle exec rubocop --force-exclusion {files}
+      run: bundle exec rubocop
     fasterer:
       run: bundle exec fasterer
     rails_best_practices:

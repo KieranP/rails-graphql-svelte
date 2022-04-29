@@ -13,11 +13,11 @@ class JwtToken
       }
     }
 
-    JWT.encode(payload, ENV['JWT_SECRET'], 'HS256')
+    JWT.encode(payload, ENV.fetch('JWT_SECRET'), 'HS256')
   end
 
   def self.decode(jwt_token)
-    JWT.decode(jwt_token, ENV['JWT_SECRET'], true, {
+    JWT.decode(jwt_token, ENV.fetch('JWT_SECRET'), true, {
       verify_iat: true,
       verify_jti: proc { |jti|
         Session.find_by(jwt_id: jti)
@@ -30,7 +30,7 @@ class JwtToken
     cookies.signed['jwt_token'] = {
       value: token,
       httponly: true,
-      domain: ENV['COOKIE_DOMAIN'],
+      domain: ENV.fetch('COOKIE_DOMAIN'),
       expires: 1.year.from_now
     }
   end

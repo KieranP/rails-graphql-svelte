@@ -7,7 +7,7 @@ Capybara.server = :puma
 Capybara.server_host = 'localhost'
 Capybara.server_port = 3030
 
-if ENV['HEADLESS'] == 'false'
+if ENV.fetch('HEADLESS', nil) == 'false'
   Capybara.default_driver = :selenium_chrome
   Capybara.javascript_driver = :selenium_chrome
 else
