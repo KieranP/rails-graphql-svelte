@@ -15,6 +15,10 @@
       "~/*": ["./*"]
     },
     "resolveJsonModule": true,
+    "types": [
+      "vite/client",
+      "svelte"
+    ],
 
     // Emit
     "importsNotUsedAsValues": "error",

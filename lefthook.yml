@@ -13,5 +13,7 @@ pre-commit:
       run: bundle exec database_consistency
     brakeman:
       run: bundle exec brakeman --quiet --no-pager
-    typescript:
+    svelte-check:
       run: yarn svelte-check
+    typescript-types:
+      run: tsc --noEmit

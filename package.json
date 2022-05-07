@@ -6,7 +6,8 @@
     "node": ">=16"
   },
   "scripts": {
-    "format": "prettier --write 'app/frontend/**/*.{html,css,scss,json,js,ts,svelte}'"
+    "format": "prettier --write 'app/frontend/**/*.{html,css,scss,json,js,ts,svelte}'",
+    "types": "tsc --noEmit"
   },
   "devDependencies": {
     "@apollo/client": "^3.3.6",
