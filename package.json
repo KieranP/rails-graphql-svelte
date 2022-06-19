@@ -7,7 +7,7 @@
   },
   "scripts": {
     "format": "prettier --write 'app/frontend/**/*.{html,css,scss,json,js,ts,svelte}'",
-    "types": "tsc --noEmit"
+    "types": "tsc --noEmit; svelte-check"
   },
   "devDependencies": {
     "@apollo/client": "^3.3.6",
