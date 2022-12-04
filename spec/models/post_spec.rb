@@ -23,7 +23,7 @@
 #
 require 'rails_helper'
 
-describe Post, type: :model do
+describe Post do
   it 'requires a title and body' do
     post = described_class.new
     expect(post.valid?).to be false

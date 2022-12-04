@@ -24,7 +24,7 @@
 #
 require 'rails_helper'
 
-describe User, type: :model do
+describe User do
   it 'requires an email and name' do
     user = described_class.new
     expect(user.valid?).to be false

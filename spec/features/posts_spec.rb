@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-feature 'Posts', type: :feature, js: true do
+feature 'Posts', js: true do
   let(:user) { create(:user) }
 
   describe '/posts' do

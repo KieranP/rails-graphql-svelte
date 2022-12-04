@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-feature 'Login', type: :feature, js: true do
+feature 'Login', js: true do
   let(:user) { create(:user, password: 'Testing123!') }
 
   it 'successfully logs in user' do

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-feature 'Users', type: :feature, js: true do
+feature 'Users', js: true do
   let(:user) { create(:user) }
 
   describe '/users/:uuid' do
