@@ -32,7 +32,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     unless ENV.fetch('BUILD_FRONTEND', nil) == 'false'
       puts 'Bulding Route File...'
-      puts `yarn routify -b`
+      puts `pnpm routify -b`
       puts ''
 
       puts 'Building Frontend App...'

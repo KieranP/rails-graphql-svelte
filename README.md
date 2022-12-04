@@ -24,14 +24,14 @@ Routing is handled by Routify, and API requests made using Apollo.
 
 Styling is provided by Bootstrap, and websockets via ActionCableJS.
 
-Dependencies are managed via Yarn.
+Dependencies are managed via Pnpm.
 
 ## Usage
 
 * Clone Git Repo
 * Adjust `config/database.yml`
 * `bundle install`
-* `yarn install`
+* `pnpm install`
 * `bin/rspec`
 * `foreman start`
 

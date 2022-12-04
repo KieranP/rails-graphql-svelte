@@ -21,6 +21,7 @@
     "bootstrap": "^5.0.0-beta1",
     "graphql": "^16.0.0",
     "graphql-ruby-client": "^1.8.1",
+    "postcss": "^8.4.19",
     "postcss-preset-env": "^7.1.0",
     "prettier": "^2.0.5",
     "prettier-plugin-svelte": "^2.3.1",

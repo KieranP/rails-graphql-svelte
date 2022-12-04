@@ -14,6 +14,6 @@ pre-commit:
     brakeman:
       run: bundle exec brakeman --quiet --no-pager
     svelte-check:
-      run: yarn svelte-check
+      run: pnpm svelte-check
     typescript-types:
       run: tsc --noEmit
