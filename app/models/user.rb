@@ -8,7 +8,7 @@
 #  email                  :citext           not null
 #  locale                 :string           default("en")
 #  name                   :string           not null
-#  otp_enabled            :boolean          default(FALSE)
+#  otp_enabled            :boolean          default(FALSE), not null
 #  otp_secret_key         :string
 #  password_digest        :string
 #  password_reset_sent_at :datetime
@@ -19,8 +19,8 @@
 #
 # Indexes
 #
-#  index_users_on_lower_email  (lower((email)::text)) UNIQUE
-#  index_users_on_uuid         (uuid) UNIQUE
+#  index_users_on_email  (email) UNIQUE
+#  index_users_on_uuid   (uuid) UNIQUE
 #
 class User < ApplicationRecord
   include HasUuid
@@ -42,7 +42,7 @@ class User < ApplicationRecord
 
   before_validation :process_otp_action
 
-  validates :email, presence: true, email: true, uniqueness: { case_sensitive: false }
+  validates :email, presence: true, email: true, uniqueness: true
   validates :name, presence: true
   validates :password, format: { with: PASSWORD_FORMAT }, allow_blank: true
 

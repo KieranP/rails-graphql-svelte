@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2021_11_17_072809) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_14_070007) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -51,8 +51,8 @@ ActiveRecord::Schema[7.0].define(version: 2021_11_17_072809) do
     t.string "password_reset_token"
     t.datetime "password_reset_sent_at", precision: nil
     t.string "otp_secret_key"
-    t.boolean "otp_enabled", default: false
-    t.index "lower((email)::text)", name: "index_users_on_lower_email", unique: true
+    t.boolean "otp_enabled", default: false, null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["uuid"], name: "index_users_on_uuid", unique: true
   end
 

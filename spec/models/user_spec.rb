@@ -8,7 +8,7 @@
 #  email                  :citext           not null
 #  locale                 :string           default("en")
 #  name                   :string           not null
-#  otp_enabled            :boolean          default(FALSE)
+#  otp_enabled            :boolean          default(FALSE), not null
 #  otp_secret_key         :string
 #  password_digest        :string
 #  password_reset_sent_at :datetime
@@ -19,8 +19,8 @@
 #
 # Indexes
 #
-#  index_users_on_lower_email  (lower((email)::text)) UNIQUE
-#  index_users_on_uuid         (uuid) UNIQUE
+#  index_users_on_email  (email) UNIQUE
+#  index_users_on_uuid   (uuid) UNIQUE
 #
 require 'rails_helper'
 

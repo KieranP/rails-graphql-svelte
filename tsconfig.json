@@ -21,8 +21,6 @@
     ],
 
     // Emit
-    "importsNotUsedAsValues": "error",
-    "preserveValueImports": true,
     "sourceMap": true,
 
     // Interop
