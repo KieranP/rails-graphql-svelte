@@ -31,12 +31,8 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     unless ENV.fetch('BUILD_FRONTEND', nil) == 'false'
-      puts 'Bulding Route File...'
-      puts `pnpm routify -b`
-      puts ''
-
       puts 'Building Frontend App...'
-      puts `bin/vite build -m test`
+      puts `pnpm vite build -m test`
       puts ''
     end
   end

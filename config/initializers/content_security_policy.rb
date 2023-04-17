@@ -21,11 +21,9 @@ Rails.application.configure do
     # Specify URI for violation reports
     # policy.report_uri "/csp-violation-report-endpoint"
 
-    if Rails.env.development?
-      # Allow @vite/client to hot reload changes in development
+    if Rails.env.development? || Rails.env.test?
       policy.style_src(*policy.style_src, :unsafe_inline)
-      policy.script_src(*policy.script_src, :unsafe_eval, "http://#{ViteRuby.config.host_with_port}")
-      policy.connect_src(*policy.connect_src, "ws://#{ViteRuby.config.host_with_port}")
+      policy.script_src(*policy.script_src, :unsafe_inline)
     end
   end
 

@@ -30,13 +30,17 @@
 
 /coverage
 
-/app/frontend/.routify
-/node_modules
-
-# Vite Ruby
-/public/vite
-/public/vite-dev
-/public/vite-test
-node_modules
-*.local
+# SvelteKit
 .DS_Store
+node_modules
+/build
+/.svelte-kit
+/package
+.env
+.env.*
+!.env.example
+.vercel
+.output
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+/public

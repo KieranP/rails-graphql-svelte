@@ -1,24 +1,9 @@
 {
   // See https://www.typescriptlang.org/tsconfig
-  "include": [
-    "./app/frontend/**/*.js",
-    "./app/frontend/**/*.ts",
-    "./app/frontend/**/*.d.ts",
-    "./app/frontend/**/*.svele"
-  ],
+  "extends": "./.svelte-kit/tsconfig.json",
   "compilerOptions": {
     // Modules
-    "baseUrl": "./app/frontend",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "paths": {
-      "~/*": ["./*"]
-    },
     "resolveJsonModule": true,
-    "types": [
-      "vite/client",
-      "svelte"
-    ],
 
     // Emit
     "sourceMap": true,
@@ -26,10 +11,8 @@
     // Interop
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
 
     // Language & Environment
-    "target": "esnext",
     "useDefineForClassFields": true,
 
     // Completeness

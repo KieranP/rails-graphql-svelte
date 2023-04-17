@@ -20,7 +20,6 @@ gem 'rack-cors'
 gem 'jwt'
 
 # App
-gem 'vite_rails'
 gem 'dotenv-rails'
 gem 'interaktor'
 gem 'pundit'

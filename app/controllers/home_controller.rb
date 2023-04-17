@@ -2,6 +2,6 @@
 
 class HomeController < ApplicationController
   def index
-    render layout: true, html: ''
+    render file: 'public/index.html'
   end
 end
