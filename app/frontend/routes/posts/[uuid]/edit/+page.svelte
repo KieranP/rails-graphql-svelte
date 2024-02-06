@@ -39,6 +39,6 @@
   {$_('pages.posts.edit.heading')}
 </h1>
 
-<Loader result={post}>
+<Loader loaded={!!post}>
   <Form {post} on:submit={submit} />
 </Loader>

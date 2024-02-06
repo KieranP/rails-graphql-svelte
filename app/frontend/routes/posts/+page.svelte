@@ -38,7 +38,7 @@
   </a>
 {/if}
 
-<Loader result={posts}>
+<Loader loaded={!!posts}>
   <ul>
     {#each posts as post (post.uuid)}
       <li>

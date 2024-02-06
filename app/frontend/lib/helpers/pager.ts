@@ -3,7 +3,7 @@ export default function (params: URLSearchParams) {
   const after = params.get('after')
 
   let first, last
-  if (!!before) {
+  if (before !== null) {
     last = 20
   } else {
     first = 20

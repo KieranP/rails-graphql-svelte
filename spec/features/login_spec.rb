@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-feature 'Login', js: true do
+feature 'Login', :js do
   let(:user) { create(:user, password: 'Testing123!') }
 
   it 'successfully logs in user' do
@@ -10,7 +10,7 @@ feature 'Login', js: true do
 
     fill_in 'Email', with: user.email
     fill_in 'Password', with: 'Testing123!'
-    click_button 'Login'
+    click_button 'Login' # rubocop:disable Capybara/ClickLinkOrButtonStyle
 
     expect(page).to have_content 'Logout'
   end

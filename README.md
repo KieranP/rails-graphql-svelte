@@ -32,6 +32,7 @@ Dependencies are managed via Pnpm.
 * Adjust `config/database.yml`
 * `bundle install`
 * `pnpm install`
+* `bin/rake db:setup`
 * `bin/rspec`
 * `foreman start`
 

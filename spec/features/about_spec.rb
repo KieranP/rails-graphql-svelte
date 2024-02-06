@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-feature 'About', js: true do
+feature 'About', :js do
   it 'loads' do
     visit '/about'
     expect(page).to have_content 'About'

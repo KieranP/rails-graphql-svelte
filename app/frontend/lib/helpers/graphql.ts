@@ -6,7 +6,11 @@ import {
   gql
 } from '@apollo/client/core'
 
-import type { DefaultOptions, DocumentNode } from '@apollo/client/core'
+import type {
+  DefaultOptions,
+  DocumentNode,
+  Operation
+} from '@apollo/client/core'
 
 import { getMainDefinition } from '@apollo/client/utilities'
 
@@ -15,7 +19,7 @@ import ActionCableLink from 'graphql-ruby-client/subscriptions/ActionCableLink'
 
 const cable = createConsumer(import.meta.env.VITE_CABLE_ENDPOINT as string)
 
-const hasSubscriptionOperation = ({ query }: any) => {
+const hasSubscriptionOperation = ({ query }: Operation) => {
   const definition = getMainDefinition(query)
   return (
     definition.kind === 'OperationDefinition' &&

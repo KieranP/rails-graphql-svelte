@@ -36,6 +36,7 @@ Metrics/AbcSize:
 
 Metrics/BlockLength:
   Exclude:
+    - 'config/environments/*'
     - 'spec/**/*'
 
 Metrics/MethodLength:

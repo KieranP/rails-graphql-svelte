@@ -50,7 +50,7 @@
   {$_('pages.users.edit.heading')}
 </h1>
 
-<Loader result={user}>
+<Loader loaded={!!user}>
   <form on:submit|preventDefault={submit}>
     <div class="mb-3">
       <label for="name" class="form-label">

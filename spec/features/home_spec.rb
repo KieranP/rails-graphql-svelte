@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-feature 'Home', js: true do
+feature 'Home', :js do
   it 'loads' do
     visit '/'
     expect(page).to have_content 'Home'

@@ -1,5 +1,5 @@
 import adapter from '@sveltejs/adapter-static'
-import { vitePreprocess } from '@sveltejs/kit/vite'
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -24,7 +24,11 @@ const config = {
       directives: {
         'default-src': ['none'],
         'script-src': ['self'],
-        'connect-src': ['self'],
+        'connect-src': [
+          'self',
+          'http://localhost:3000/',
+          'ws://localhost:3000/'
+        ],
         'style-src': ['self'],
         'img-src': ['self']
       }

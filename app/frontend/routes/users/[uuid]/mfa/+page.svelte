@@ -68,7 +68,7 @@
   {$_('pages.users.mfa.heading')}
 </h1>
 
-<Loader result={user}>
+<Loader loaded={!!user}>
   {#if user.otpEnabled}
     <form on:submit|preventDefault={submitDisable}>
       <div class="mb-3">

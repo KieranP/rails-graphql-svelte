@@ -45,7 +45,7 @@
   }
 </script>
 
-<Loader result={post}>
+<Loader loaded={!!post}>
   <h1>{post.title}</h1>
   <p>
     <small

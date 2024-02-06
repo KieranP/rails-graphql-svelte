@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-feature 'Users', js: true do
+feature 'Users', :js do
   let(:user) { create(:user) }
 
   describe '/users/:uuid' do
@@ -27,7 +27,7 @@ feature 'Users', js: true do
 
       fill_in 'Name', with: new_name
       fill_in 'Email', with: new_email
-      click_button 'Update'
+      click_on 'Update'
 
       expect(page).to have_content new_name
       expect(page).to have_content new_email

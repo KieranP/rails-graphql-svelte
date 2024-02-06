@@ -21,7 +21,7 @@ Rails.application.configure do
     # Specify URI for violation reports
     # policy.report_uri "/csp-violation-report-endpoint"
 
-    if Rails.env.development? || Rails.env.test?
+    if Rails.env.local?
       policy.style_src(*policy.style_src, :unsafe_inline)
       policy.script_src(*policy.script_src, :unsafe_inline)
     end

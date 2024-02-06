@@ -2,11 +2,11 @@
 
 require 'rails_helper'
 
-feature 'Posts', js: true do
+feature 'Posts', :js do
   let(:user) { create(:user) }
 
   describe '/posts' do
-    let(:posts) { create_list(:post, 50) }
+    let(:posts) { create_list(:post, 50) } # rubocop:disable FactoryBot/ExcessiveCreateList
 
     it 'returns pageable results' do
       posts
@@ -14,33 +14,33 @@ feature 'Posts', js: true do
       visit '/posts'
       expect(page).to have_content posts[0].title
       expect(page).to have_content 'Next'
-      expect(page).not_to have_content 'Prev'
+      expect(page).to have_no_content 'Prev'
 
-      click_button 'Next'
+      click_on 'Next'
 
       expect(page).to have_content posts[20].title
       expect(page).to have_content 'Next'
       expect(page).to have_content 'Prev'
 
-      click_button 'Next'
+      click_on 'Next'
 
       expect(page).to have_content posts[40].title
-      expect(page).not_to have_content 'Next'
+      expect(page).to have_no_content 'Next'
       expect(page).to have_content 'Prev'
 
-      click_button 'Prev'
+      click_on 'Prev'
 
       expect(page).to have_content posts[20].title
       expect(page).to have_content 'Next'
       expect(page).to have_content 'Prev'
 
-      click_button 'Prev'
+      click_on 'Prev'
 
       expect(page).to have_content posts[0].title
       expect(page).to have_content 'Next'
-      expect(page).not_to have_content 'Prev'
+      expect(page).to have_no_content 'Prev'
 
-      click_button 'Next'
+      click_on 'Next'
 
       expect(page).to have_content posts[20].title
       expect(page).to have_content 'Next'
@@ -57,7 +57,7 @@ feature 'Posts', js: true do
 
         fill_in 'Title', with: 'Sample Title'
         fill_in 'Body', with: 'Sample Body'
-        click_button 'Create'
+        click_on 'Create'
 
         expect(page).to have_content 'Sample Title'
         expect(page).to have_content 'Sample Body'
@@ -91,7 +91,7 @@ feature 'Posts', js: true do
 
       fill_in 'Title', with: new_title
       fill_in 'Body', with: new_body
-      click_button 'Update'
+      click_on 'Update'
 
       expect(page).to have_content new_title
       expect(page).to have_content new_body
