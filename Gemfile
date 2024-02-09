@@ -21,7 +21,7 @@ gem 'jwt'
 gem 'dotenv-rails'
 gem 'interaktor'
 gem 'pundit'
-gem 'sidekiq'
+gem 'solid_queue'
 
 # Misc
 gem 'active_model_otp'
@@ -41,6 +41,7 @@ end
 
 group :development do
   gem 'foreman', require: false
+  gem 'web-console'
   gem 'annotate'
   gem 'listen'
 

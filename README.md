@@ -10,7 +10,7 @@ The backend is powered by Ruby on Rails, with a GraphQL API.
 
 It includes a secure JWT & 2FA authentication system, and authorisation using Pundit.
 
-It is pre-wired with ActionCable for Websockets, and Sidekiq for background processing.
+It is pre-wired with ActionCable for Websockets, and SolidQueue for background processing.
 
 It includes Rspec and Capybara for feature tests, and Rubocop/Brakeman for code analysis.
 

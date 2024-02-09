@@ -1,7 +1,7 @@
 defaults: &defaults
   adapter: postgresql
-  encoding: utf8
-  min_messages: WARNING
+  encoding: unicode
+  min_messages: warning
   host: <%= ENV['POSTGRES_HOST'] || '0.0.0.0' %>
   username: fullapp
   password: fullapp
