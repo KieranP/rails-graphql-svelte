@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_09_050329) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_24_074937) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "hstore"
@@ -113,6 +113,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_09_050329) do
     t.index ["queue_name", "priority", "job_id"], name: "index_solid_queue_poll_by_queue"
   end
 
+  create_table "solid_queue_recurring_executions", force: :cascade do |t|
+    t.bigint "job_id", null: false
+    t.string "task_key", null: false
+    t.datetime "run_at", null: false
+    t.datetime "created_at", null: false
+    t.index ["job_id"], name: "index_solid_queue_recurring_executions_on_job_id", unique: true
+    t.index ["task_key", "run_at"], name: "index_solid_queue_recurring_executions_on_task_key_and_run_at", unique: true
+  end
+
   create_table "solid_queue_scheduled_executions", force: :cascade do |t|
     t.bigint "job_id", null: false
     t.string "queue_name", null: false
@@ -156,5 +165,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_09_050329) do
   add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_failed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
 end
