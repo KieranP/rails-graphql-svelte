@@ -24,14 +24,14 @@ Routing is handled by SvelteKit, and API requests made using Apollo.
 
 Styling is provided by Bootstrap, and websockets via ActionCableJS.
 
-Dependencies are managed via Pnpm.
+Dependency management and development runtime are handled via Bun.
 
 ## Usage
 
 * Clone Git Repo
 * Adjust `config/database.yml`
 * `bundle install`
-* `pnpm install`
+* `bun install`
 * `bin/rake db:setup`
 * `bin/rspec`
 * `foreman start`

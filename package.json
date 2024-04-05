@@ -3,43 +3,44 @@
   "version": "1.0.0",
   "license": "UNLICENSED",
   "type": "module",
-  "engines": {
-    "node": ">=16"
-  },
   "scripts": {
+    "dev": "bunx --bun vite dev --port 3001",
+    "build": "bunx --bun vite build",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "format": "prettier --write 'app/frontend/**/*.{html,css,scss,json,js,ts,svelte}'",
-    "lint": "prettier --check app/frontend/ && eslint app/frontend/"
+    "lint": "prettier --check app/frontend/ && eslint app/frontend/",
+    "outdated": "ncu -i"
   },
   "devDependencies": {
-    "@apollo/client": "^3.9.9",
+    "@apollo/client": "^3.9.10",
     "@popperjs/core": "^2.11.8",
     "@rails/actioncable": "^7.1.3",
     "@sveltejs/adapter-static": "^3.0.1",
-    "@sveltejs/kit": "^2.5.4",
+    "@sveltejs/kit": "^2.5.5",
     "@sveltejs/vite-plugin-svelte": "^3.0.2",
     "@types/bootstrap": "^5.2.10",
-    "@types/eslint": "^8.56.6",
+    "@types/eslint": "^8.56.7",
     "@types/qrcode": "^1.5.5",
     "@types/rails__actioncable": "^6.1.10",
-    "@typescript-eslint/eslint-plugin": "^7.3.1",
-    "@typescript-eslint/parser": "^7.3.1",
+    "@typescript-eslint/eslint-plugin": "^7.5.0",
+    "@typescript-eslint/parser": "^7.5.0",
     "bootstrap": "^5.3.3",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-svelte": "^2.35.1",
     "graphql": "^16.8.1",
     "graphql-ruby-client": "^1.13.3",
+    "npm-check-updates": "^16.14.18",
     "prettier": "^3.2.5",
     "prettier-plugin-svelte": "^3.2.2",
     "qrcode": "^1.5.3",
-    "sass": "^1.72.0",
+    "sass": "^1.74.1",
     "svelte": "^4.2.12",
-    "svelte-check": "^3.6.8",
+    "svelte-check": "^3.6.9",
     "svelte-i18n": "^4.0.0",
     "svelte-preprocess": "^5.1.3",
     "tslib": "^2.6.2",
-    "typescript": "^5.4.3",
-    "vite": "^5.2.4"
+    "typescript": "^5.4.4",
+    "vite": "^5.2.8"
   }
 }
