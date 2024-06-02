@@ -26,8 +26,8 @@ const config = {
         'script-src': ['self'],
         'connect-src': [
           'self',
-          'http://localhost:3000/',
-          'ws://localhost:3000/'
+          'https://api.localhost/',
+          'wss://api.localhost/'
         ],
         'style-src': ['self'],
         'img-src': ['self']

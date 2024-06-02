@@ -1,0 +1,7 @@
+localhost {
+  reverse_proxy localhost:3001
+}
+
+api.localhost {
+  reverse_proxy localhost:3000
+}
