@@ -6,7 +6,7 @@ module Types
 
     def initialize(*args, **kwargs, &block)
       @policy = kwargs.delete(:policy)
-      super(*args, **kwargs, &block)
+      super
     end
 
     def authorized?(obj, args, ctx)
