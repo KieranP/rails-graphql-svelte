@@ -78,4 +78,6 @@ Rails.application.configure do
   config.after_initialize do
     Prosopite.rails_logger = true
   end
+
+  config.hosts << 'api.apps.localhost'
 end

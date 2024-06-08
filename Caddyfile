@@ -1,7 +1,7 @@
-localhost {
-  reverse_proxy localhost:3001
+web.apps.localhost {
+	reverse_proxy localhost:3001
 }
 
-api.localhost {
-  reverse_proxy localhost:3000
+api.apps.localhost {
+	reverse_proxy localhost:3000
 }
