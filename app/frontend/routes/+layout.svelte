@@ -3,6 +3,14 @@
 
   import Nav from '$lib/components/nav.svelte'
   import Errors from '$lib/components/errors.svelte'
+
+  import type { Snippet } from 'svelte'
+
+  interface Props {
+    children: Snippet
+  }
+
+  let { children }: Props = $props()
 </script>
 
 <div class="container">
@@ -11,6 +19,6 @@
   <main class="p-3">
     <Errors />
 
-    <slot />
+    {@render children()}
   </main>
 </div>

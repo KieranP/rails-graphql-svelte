@@ -8,8 +8,8 @@
 
   import type { PostSubmission } from '$lib/types/Post'
 
-  function submit(event: CustomEvent<PostSubmission>) {
-    createPost(event.detail, `post { uuid }`)
+  function onsubmit(data: PostSubmission) {
+    createPost(data, `post { uuid }`)
       .then(res => {
         let data = res.data
         let uuid = data.createPost.post.uuid
@@ -25,4 +25,4 @@
   {$_('pages.posts.new.heading')}
 </h1>
 
-<Form post={null} on:submit={submit} />
+<Form post={null} {onsubmit} />

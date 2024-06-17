@@ -6,12 +6,14 @@
   import { errors } from '$lib/helpers/stores'
   import { setLocale, _ } from '$lib/helpers/i18n'
 
-  let email: string
-  let password: string
-  let otpRequired = false
-  let otpCode: string
+  let email: string = $state('')
+  let password: string = $state('')
+  let otpRequired = $state(false)
+  let otpCode: string = $state('')
 
-  function submit() {
+  function submit(event: SubmitEvent) {
+    event.preventDefault()
+
     loginUser({ email, password, otpCode }, `user { uuid email name locale }`)
       .then(res => {
         let data = res.data.loginUser
@@ -24,7 +26,7 @@
       })
       .catch(res => {
         const gqlErrors = res.graphQLErrors
-        if (gqlErrors[0].message == 'otp_code_required') {
+        if (gqlErrors?.[0]?.message == 'otp_code_required') {
           otpRequired = true
         } else {
           errors.set(gqlErrors)
@@ -37,7 +39,7 @@
   {$_('pages.login.heading')}
 </h1>
 
-<form on:submit|preventDefault={submit}>
+<form onsubmit={submit}>
   <div class="mb-3">
     <label for="email" class="form-label">
       {$_('pages.login.email')}

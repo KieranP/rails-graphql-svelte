@@ -7,15 +7,15 @@
   import { base64Decode } from '$lib/helpers/utils'
   import { _ } from '$lib/helpers/i18n'
 
-  let token: string
-  let email: string
-  let password: string
-  let passwordConfirmation: string
+  let token: string = base64Decode($page.params.token)
+  let email: string = base64Decode($page.params.email)
 
-  $: token = base64Decode($page.params.token)
-  $: email = base64Decode($page.params.email)
+  let password: string = $state('')
+  let passwordConfirmation: string = $state('')
 
-  function submit() {
+  function submit(event: SubmitEvent) {
+    event.preventDefault()
+
     resetPassword({ token, email, password, passwordConfirmation }, `success`)
       .then(() => {
         goto('/login')
@@ -30,7 +30,7 @@
   {$_('pages.reset-password.heading')}
 </h1>
 
-<form on:submit|preventDefault={submit}>
+<form onsubmit={submit}>
   <div class="mb-3">
     <label for="email" class="form-label">
       {$_('pages.reset-password.email')}
@@ -39,7 +39,7 @@
       type="email"
       class="form-control"
       id="email"
-      bind:value={email}
+      value={email}
       required
       readonly
     />

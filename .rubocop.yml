@@ -42,10 +42,6 @@ Metrics/BlockLength:
 Metrics/MethodLength:
   Max: 15
 
-RSpec/Capybara/FeatureMethods:
-  EnabledMethods:
-    - feature
-
 RSpec/ExampleLength:
   Enabled: false
 

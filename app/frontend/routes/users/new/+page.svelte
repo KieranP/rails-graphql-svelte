@@ -6,13 +6,15 @@
   import { errors } from '$lib/helpers/stores'
   import { allLocales, setLocale, _ } from '$lib/helpers/i18n'
 
-  let name: string
-  let email: string
-  let locale: string
-  let password: string
-  let passwordConfirmation: string
+  let name: string = $state('')
+  let email: string = $state('')
+  let locale: string = $state('')
+  let password: string = $state('')
+  let passwordConfirmation: string = $state('')
 
-  function submit() {
+  function submit(event: SubmitEvent) {
+    event.preventDefault()
+
     createUser(
       { name, email, locale, password, passwordConfirmation },
       `user { uuid name email locale }`
@@ -37,7 +39,7 @@
   {$_('pages.users.new.heading')}
 </h1>
 
-<form on:submit|preventDefault={submit}>
+<form onsubmit={submit}>
   <div class="mb-3">
     <label for="name" class="form-label">
       {$_('pages.users.new.name')}

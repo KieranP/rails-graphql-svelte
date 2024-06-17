@@ -1,6 +1,6 @@
 import type { Post } from '$lib/types/Post'
 
-export type User = {
+export interface User {
   uuid: string
   name: string
   email: string

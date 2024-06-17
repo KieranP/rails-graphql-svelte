@@ -3,10 +3,12 @@
   import { errors } from '$lib/helpers/stores'
   import { _ } from '$lib/helpers/i18n'
 
-  let email: string
-  let result: object
+  let email: string = $state('')
+  let result: object | undefined = $state()
 
-  function submit() {
+  function submit(event: SubmitEvent) {
+    event.preventDefault()
+
     forgotPassword({ email }, `success`)
       .then(res => {
         errors.set([])
@@ -25,7 +27,7 @@
 {#if result}
   {$_('pages.forgot-password.success')}
 {:else}
-  <form on:submit|preventDefault={submit}>
+  <form onsubmit={submit}>
     <div class="mb-3">
       <label for="email" class="form-label">
         {$_('pages.forgot-password.email')}

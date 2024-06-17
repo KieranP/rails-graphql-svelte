@@ -7,9 +7,28 @@ import globals from "globals";
 
 export default typescriptEslint.config(
   eslint.configs.recommended,
+
   ...typescriptEslint.configs.strict,
+  ...typescriptEslint.configs.stylistic,
+
+  // ...typescriptEslint.configs.strictTypeChecked,
+  // ...typescriptEslint.configs.stylisticTypeChecked,
+
   ...eslintPluginSvelte.configs["flat/recommended"],
+  ...eslintPluginSvelte.configs['flat/prettier'],
   eslintConfigPrettier,
+
+  {
+    languageOptions: {
+      parserOptions: {
+        project: true,
+        tsconfigRootDir: import.meta.dirname,
+        parser: typescriptEslint.parser,
+        extraFileExtensions: ['.svelte']
+      },
+    },
+  },
+
   {
     files: ['**/*.svelte'],
     languageOptions: {
@@ -22,13 +41,15 @@ export default typescriptEslint.config(
       }
     },
   },
+
   {
     ignores: [
       "**/.DS_Store",
       "**/.env.*",
       "**/.svelte-kit/",
       "**/bun.lockb",
-      "**/node_modules/"
+      "**/node_modules/",
+      "app/frontend/app.d.ts"
     ]
   },
 )

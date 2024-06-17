@@ -5,7 +5,11 @@
 
   import type { PageInfo } from '$lib/types/PageInfo'
 
-  export let pageInfo: PageInfo
+  interface Props {
+    pageInfo: PageInfo
+  }
+
+  let { pageInfo }: Props = $props()
 
   function prev() {
     let queryParams = new URLSearchParams(window.location.search)
@@ -25,13 +29,13 @@
 </script>
 
 {#if pageInfo.hasPreviousPage}
-  <button on:click={prev} class="btn btn-outline-secondary btn-sm">
+  <button onclick={prev} class="btn btn-outline-secondary btn-sm">
     {$_('components.pager.prev')}
   </button>
 {/if}
 
 {#if pageInfo.hasNextPage}
-  <button on:click={next} class="btn btn-outline-secondary btn-sm">
+  <button onclick={next} class="btn btn-outline-secondary btn-sm">
     {$_('components.pager.next')}
   </button>
 {/if}

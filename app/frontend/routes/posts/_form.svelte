@@ -1,18 +1,24 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte'
   import { _ } from '$lib/helpers/i18n'
 
-  import type { Post } from '$lib/types/Post'
+  import type { Post, PostSubmission } from '$lib/types/Post'
 
-  const dispatch = createEventDispatcher()
-  const submit = () => dispatch('submit', { title, body })
+  interface Props {
+    post: Post | null
+    onsubmit: (data: PostSubmission) => void
+  }
 
-  export let post: Post | null
-  let title = post?.title
-  let body = post?.body
+  let { post, onsubmit }: Props = $props()
+  let title = $state(post?.title)
+  let body = $state(post?.body)
+
+  function submit(event: SubmitEvent) {
+    event.preventDefault()
+    onsubmit({ title, body })
+  }
 </script>
 
-<form on:submit|preventDefault={submit}>
+<form onsubmit={submit}>
   <div class="mb-3">
     <label for="title" class="form-label">
       {$_('pages.posts._form.title')}
@@ -30,13 +36,8 @@
     <label for="body" class="form-label">
       {$_('pages.posts._form.body')}
     </label>
-    <textarea
-      class="form-control"
-      id="body"
-      rows="5"
-      bind:value={body}
-      required
-    />
+    <textarea class="form-control" id="body" rows="5" bind:value={body} required
+    ></textarea>
   </div>
 
   <div class="mb-3">

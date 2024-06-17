@@ -6,7 +6,7 @@ feature 'Posts', :js do
   let(:user) { create(:user) }
 
   describe '/posts' do
-    let(:posts) { create_list(:post, 50) } # rubocop:disable FactoryBot/ExcessiveCreateList
+    let(:posts) { create_list(:post, 50) }
 
     it 'returns pageable results' do
       posts

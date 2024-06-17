@@ -1,13 +1,13 @@
 import type { User } from '$lib/types/User'
 
-export type Post = {
+export interface Post {
   uuid: string
   title: string
   body: string
   user: User
 }
 
-export type PostSubmission = {
-  title: string
-  body: string
+export interface PostSubmission {
+  title: string | undefined
+  body: string | undefined
 }

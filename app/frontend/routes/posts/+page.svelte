@@ -12,20 +12,21 @@
   import type { Post } from '$lib/types/Post'
   import type { PageInfo } from '$lib/types/PageInfo'
 
-  let posts: Post[]
-  let pageInfo: PageInfo
+  let params = $derived(pager($page.url.searchParams))
 
-  let params = {}
-  $: params = pager($page.url.searchParams)
+  let posts: Post[] | undefined = $state()
+  let pageInfo: PageInfo | undefined = $state()
 
-  $: allPosts(params, `nodes { uuid title user { uuid name } }`)
-    .then(res => {
-      posts = res.data.allPosts.nodes
-      pageInfo = res.data.allPosts.pageInfo
-    })
-    .catch(error => {
-      errors.set(error.graphQLErrors)
-    })
+  $effect(() => {
+    allPosts(params, `nodes { uuid title user { uuid name } }`)
+      .then(res => {
+        posts = res.data.allPosts.nodes
+        pageInfo = res.data.allPosts.pageInfo
+      })
+      .catch(error => {
+        errors.set(error.graphQLErrors)
+      })
+  })
 </script>
 
 <h1>
@@ -38,20 +39,24 @@
   </a>
 {/if}
 
-<Loader loaded={!!posts}>
-  <ul>
-    {#each posts as post (post.uuid)}
-      <li>
-        <a href="/posts/{post.uuid}">
-          {post.title}
-        </a>
-        by
-        <a href="/users/{post.user.uuid}">
-          {post.user.name}
-        </a>
-      </li>
-    {/each}
-  </ul>
+<Loader>
+  {#if posts}
+    <ul>
+      {#each posts as post (post.uuid)}
+        <li>
+          <a href="/posts/{post.uuid}">
+            {post.title}
+          </a>
+          by
+          <a href="/users/{post.user.uuid}">
+            {post.user.name}
+          </a>
+        </li>
+      {/each}
+    </ul>
 
-  <Pager {pageInfo} />
+    {#if pageInfo}
+      <Pager {pageInfo} />
+    {/if}
+  {/if}
 </Loader>

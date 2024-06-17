@@ -10,20 +10,22 @@
 
   import type { Post, PostSubmission } from '$lib/types/Post'
 
-  let uuid = $page.params.uuid
+  let uuid = $derived($page.params.uuid)
 
-  let post: Post
+  let post: Post | undefined = $state()
 
-  findPost({ uuid }, `uuid title body`)
-    .then(res => {
-      post = res.data.findPost
-    })
-    .catch(error => {
-      errors.set(error.graphQLErrors)
-    })
+  $effect(() => {
+    findPost({ uuid }, `uuid title body`)
+      .then(res => {
+        post = res.data.findPost
+      })
+      .catch(error => {
+        errors.set(error.graphQLErrors)
+      })
+  })
 
-  function submit(event: CustomEvent<PostSubmission>) {
-    updatePost({ uuid, ...event.detail }, `post { uuid title body }`)
+  function onsubmit(data: PostSubmission) {
+    updatePost({ uuid, ...data }, `post { uuid title body }`)
       .then(res => {
         let data = res.data
         let uuid = data.updatePost.post.uuid
@@ -39,6 +41,8 @@
   {$_('pages.posts.edit.heading')}
 </h1>
 
-<Loader loaded={!!post}>
-  <Form {post} on:submit={submit} />
+<Loader>
+  {#if post}
+    <Form {post} {onsubmit} />
+  {/if}
 </Loader>

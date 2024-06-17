@@ -1,11 +1,17 @@
 <script lang="ts">
   import { _ } from '$lib/helpers/i18n'
 
-  export let loaded = false
+  import type { Snippet } from 'svelte'
+
+  interface Props {
+    children: Snippet
+  }
+
+  let { children }: Props = $props()
 </script>
 
-{#if loaded}
-  <slot />
+{#if children}
+  {@render children()}
 {:else}
   <div class="spinner-border" role="status">
     <span class="visually-hidden">

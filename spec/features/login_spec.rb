@@ -10,7 +10,7 @@ feature 'Login', :js do
 
     fill_in 'Email', with: user.email
     fill_in 'Password', with: 'Testing123!'
-    click_button 'Login' # rubocop:disable Capybara/ClickLinkOrButtonStyle
+    click_button 'Login'
 
     expect(page).to have_content 'Logout'
   end
