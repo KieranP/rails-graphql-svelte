@@ -1,0 +1,9 @@
+module Interaktor
+  def input: -> nil
+  def success: -> nil
+  def failure: -> nil
+  def required: -> nil
+  def optional: -> nil
+  def success!: (?Hash[Symbol, Object] success_attributes) -> nil
+  def fail!: (?Hash[Symbol, Object] failed_attributes) -> nil
+end

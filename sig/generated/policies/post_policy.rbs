@@ -1,0 +1,13 @@
+# Generated from app/policies/post_policy.rb with RBS::Inline
+
+class PostPolicy < ApplicationPolicy
+  def index?: () -> untyped
+
+  def show?: () -> untyped
+
+  def create?: () -> untyped
+
+  def update?: () -> untyped
+
+  def destroy?: () -> untyped
+end

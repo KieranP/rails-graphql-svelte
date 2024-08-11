@@ -1,0 +1,9 @@
+# Generated from app/models/concerns/has_uuid.rb with RBS::Inline
+
+module HasUuid
+  extend ActiveSupport::Concern
+
+  private
+
+  def populate_uuid: () -> untyped
+end

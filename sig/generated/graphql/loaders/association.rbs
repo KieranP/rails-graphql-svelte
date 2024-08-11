@@ -1,0 +1,26 @@
+# Generated from app/graphql/loaders/association.rb with RBS::Inline
+
+module Loaders
+  class Association < GraphQL::Batch::Loader
+    def self.validate: (untyped model, untyped association_name) -> untyped
+
+    def initialize: (untyped model, untyped association_name) -> untyped
+
+    def load: (untyped record) -> untyped
+
+    # We want to load the associations on all records, even if they have the same id
+    def cache_key: (untyped record) -> untyped
+
+    def perform: (untyped records) -> untyped
+
+    private
+
+    def validate: () -> untyped
+
+    def preload_association: (untyped records) -> untyped
+
+    def read_association: (untyped record) -> untyped
+
+    def association_loaded?: (untyped record) -> untyped
+  end
+end

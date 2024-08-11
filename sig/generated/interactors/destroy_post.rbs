@@ -1,0 +1,7 @@
+# Generated from app/interactors/destroy_post.rb with RBS::Inline
+
+class DestroyPost
+  include Interaktor
+
+  def call: () -> untyped
+end

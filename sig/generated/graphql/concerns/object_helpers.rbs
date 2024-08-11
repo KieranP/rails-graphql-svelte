@@ -1,0 +1,9 @@
+# Generated from app/graphql/concerns/object_helpers.rb with RBS::Inline
+
+module ObjectHelpers
+  extend ActiveSupport::Concern
+
+  def model: () -> untyped
+
+  def association: (untyped association) -> untyped
+end

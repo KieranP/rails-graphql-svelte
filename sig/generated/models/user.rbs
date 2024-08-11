@@ -1,0 +1,41 @@
+# Generated from app/models/user.rb with RBS::Inline
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :bigint           not null, primary key
+#  email                  :citext           not null
+#  locale                 :string           default("en")
+#  name                   :string           not null
+#  otp_enabled            :boolean          default(FALSE), not null
+#  otp_secret_key         :string
+#  password_digest        :string
+#  password_reset_sent_at :datetime
+#  password_reset_token   :string
+#  uuid                   :uuid             not null
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#
+# Indexes
+#
+#  index_users_on_email  (email) UNIQUE
+#  index_users_on_uuid   (uuid) UNIQUE
+class User < ApplicationRecord
+  include HasUuid
+
+  PASSWORD_FORMAT: ::Regexp
+
+  def save_password_reset_token: () -> untyped
+
+  # @rbs return: String
+  def otp_provisioning_url: () -> String
+
+  def otp_action=: (untyped input) -> untyped
+
+  def process_otp_action: () -> untyped
+
+  def enable_otp: () -> untyped
+
+  def disable_otp: () -> untyped
+end

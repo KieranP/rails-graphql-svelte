@@ -17,6 +17,7 @@ class AuthenticateUser
     required :errors
   end
 
+  # @rbs return: void
   def call
     user = User.find_by(email: email)
 
@@ -31,6 +32,8 @@ class AuthenticateUser
     end
   end
 
+  # @rbs user: ::User
+  # @rbs return: void
   def validate_otp_code(user)
     if otp_code.blank?
       fail!(errors: ['otp_code_required'])

@@ -1,0 +1,17 @@
+# Generated from app/graphql/resolvers/user/show.rb with RBS::Inline
+
+module Resolvers
+  module User
+    class Show < Resolvers::Base
+      def authorized?: (**untyped args) -> untyped
+
+      def resolve: (**untyped _args) -> untyped
+
+      private
+
+      def user: (**untyped args) -> untyped
+
+      def policy: () -> untyped
+    end
+  end
+end

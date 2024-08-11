@@ -1,0 +1,6 @@
+# Generated from app/graphql/types/union.rb with RBS::Inline
+
+module Types
+  class Union < GraphQL::Schema::Union
+  end
+end

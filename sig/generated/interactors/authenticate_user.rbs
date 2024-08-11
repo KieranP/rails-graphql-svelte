@@ -1,0 +1,12 @@
+# Generated from app/interactors/authenticate_user.rb with RBS::Inline
+
+class AuthenticateUser
+  include Interaktor
+
+  # @rbs return: void
+  def call: () -> void
+
+  # @rbs user: ::User
+  # @rbs return: void
+  def validate_otp_code: (::User user) -> void
+end

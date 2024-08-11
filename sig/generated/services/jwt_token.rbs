@@ -1,0 +1,14 @@
+# Generated from app/services/jwt_token.rb with RBS::Inline
+
+class JwtToken
+  # @rbs user: ::User
+  # @rbs session: ::Session
+  # @rbs return: ::String
+  def self.generate: (::User user, ::Session session) -> ::String
+
+  # @rbs jwt_token: ::String
+  # @rbs return: untyped | ::Hash[::String, untyped]
+  def self.decode: (::String jwt_token) -> (untyped | ::Hash[::String, untyped])
+
+  def self.set_cookie: (untyped cookies, untyped token) -> untyped
+end

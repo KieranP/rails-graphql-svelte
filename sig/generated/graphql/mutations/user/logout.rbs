@@ -1,0 +1,9 @@
+# Generated from app/graphql/mutations/user/logout.rb with RBS::Inline
+
+module Mutations
+  module User
+    class Logout < Mutations::Base
+      def resolve: () -> untyped
+    end
+  end
+end

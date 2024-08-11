@@ -1,0 +1,6 @@
+# Generated from app/graphql/types/subscriptions.rb with RBS::Inline
+
+module Types
+  class Subscriptions < Objects::Base
+  end
+end

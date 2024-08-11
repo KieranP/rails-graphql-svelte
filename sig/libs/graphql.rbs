@@ -1,0 +1,29 @@
+module GraphQL
+  class Analysis
+    class AST
+      class QueryDepth
+      end
+
+      class QueryComplexity
+      end
+    end
+  end
+
+  class Backtrace
+  end
+
+  class Batch
+    class Loader
+    end
+  end
+
+  class Schema
+    class Subscription
+    end
+  end
+
+  class Subscriptions
+    class ActionCableSubscriptions
+    end
+  end
+end

@@ -1,0 +1,15 @@
+# Generated from app/graphql/mutations/post/create.rb with RBS::Inline
+
+module Mutations
+  module Post
+    class Create < Mutations::Base
+      def authorized?: (**untyped _args) -> untyped
+
+      def resolve: (**untyped args) -> untyped
+
+      private
+
+      def policy: () -> untyped
+    end
+  end
+end

@@ -1,0 +1,4 @@
+# Generated from app/jobs/application_job.rb with RBS::Inline
+
+class ApplicationJob < ActiveJob::Base
+end

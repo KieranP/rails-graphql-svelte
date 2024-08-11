@@ -1,0 +1,7 @@
+# Generated from app/graphql/resolvers/base.rb with RBS::Inline
+
+module Resolvers
+  class Base < GraphQL::Schema::Resolver
+    include QueryHelpers
+  end
+end

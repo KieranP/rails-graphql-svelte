@@ -1,0 +1,29 @@
+# Generated from app/controllers/graphql_controller.rb with RBS::Inline
+
+class GraphqlController < ActionController::API
+  include ActionController::Cookies
+
+  include ProsopiteHooks
+
+  def execute: () -> untyped
+
+  private
+
+  def current_user: () -> untyped
+
+  def jwt_payload: () -> untyped
+
+  def jwt_token: () -> untyped
+
+  def current_session: () -> untyped
+
+  def update_session: () -> untyped
+
+  def invalid_jwt: () -> untyped
+
+  def schema_options: () -> untyped
+
+  def ensure_hash: (untyped ambiguous_param) -> untyped
+
+  def handle_error_in_development: (untyped err) -> untyped
+end

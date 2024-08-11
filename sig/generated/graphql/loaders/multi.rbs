@@ -1,0 +1,9 @@
+# Generated from app/graphql/loaders/multi.rb with RBS::Inline
+
+module Loaders
+  class Multi < GraphQL::Batch::Loader
+    def initialize: (untyped model, untyped column) -> untyped
+
+    def perform: (untyped ids) -> untyped
+  end
+end

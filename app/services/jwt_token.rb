@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class JwtToken
+  # @rbs user: ::User
+  # @rbs session: ::Session
+  # @rbs return: ::String
   def self.generate(user, session)
     payload = {
       iat: session.created_at.to_i,
@@ -16,6 +19,8 @@ class JwtToken
     JWT.encode(payload, ENV.fetch('JWT_SECRET'), 'HS256')
   end
 
+  # @rbs jwt_token: ::String
+  # @rbs return: untyped | ::Hash[::String, untyped]
   def self.decode(jwt_token)
     JWT.decode(jwt_token, ENV.fetch('JWT_SECRET'), true, {
       verify_iat: true,

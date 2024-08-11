@@ -1,0 +1,4 @@
+# Generated from app/graphql/schema.rb with RBS::Inline
+
+class Schema < GraphQL::Schema
+end

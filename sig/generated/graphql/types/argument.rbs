@@ -1,0 +1,6 @@
+# Generated from app/graphql/types/argument.rb with RBS::Inline
+
+module Types
+  class Argument < GraphQL::Schema::Argument
+  end
+end

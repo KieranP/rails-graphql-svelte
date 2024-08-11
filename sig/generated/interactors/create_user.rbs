@@ -1,0 +1,7 @@
+# Generated from app/interactors/create_user.rb with RBS::Inline
+
+class CreateUser
+  include Interaktor
+
+  def call: () -> untyped
+end

@@ -1,0 +1,6 @@
+# Generated from app/graphql/types/scalar.rb with RBS::Inline
+
+module Types
+  class Scalar < GraphQL::Schema::Scalar
+  end
+end

@@ -1,0 +1,27 @@
+# Generated from app/graphql/concerns/query_helpers.rb with RBS::Inline
+
+module QueryHelpers
+  extend ActiveSupport::Concern
+
+  def current_user: () -> untyped
+
+  def session: () -> untyped
+
+  def cookies: () -> untyped
+
+  def generate_jwt: (untyped user, untyped session) -> untyped
+
+  def logged_in?: () -> untyped
+
+  def trigger: (*untyped args) -> untyped
+
+  def execution_error: (untyped message, ?untyped code) -> untyped
+
+  def unauthorised_error: (?untyped msg) -> untyped
+
+  def forbidden_error: (?untyped msg) -> untyped
+
+  def not_found_error: (?untyped msg) -> untyped
+
+  def unprocessable_error: (?untyped msg) -> untyped
+end

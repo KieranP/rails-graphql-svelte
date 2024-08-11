@@ -1,0 +1,11 @@
+# Generated from app/graphql/types/field.rb with RBS::Inline
+
+module Types
+  class Field < GraphQL::Schema::Field
+    def initialize: (*untyped args, **untyped kwargs) ?{ (?) -> untyped } -> untyped
+
+    def authorized?: (untyped obj, untyped args, untyped ctx) -> untyped
+
+    def pundit_authorized?: (untyped obj, untyped _args, untyped ctx) -> untyped
+  end
+end

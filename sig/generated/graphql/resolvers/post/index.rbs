@@ -1,0 +1,15 @@
+# Generated from app/graphql/resolvers/post/index.rb with RBS::Inline
+
+module Resolvers
+  module Post
+    class Index < Resolvers::Base
+      def authorized?: (**untyped _args) -> untyped
+
+      def resolve: (**untyped _args) -> untyped
+
+      private
+
+      def policy: () -> untyped
+    end
+  end
+end

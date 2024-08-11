@@ -1,0 +1,15 @@
+# Generated from app/channels/graphql_channel.rb with RBS::Inline
+
+class GraphqlChannel < ApplicationCable::Channel
+  def subscribed: () -> untyped
+
+  def unsubscribed: () -> untyped
+
+  def execute: (untyped data) -> untyped
+
+  private
+
+  def schema_options: (untyped data) -> untyped
+
+  def ensure_hash: (untyped ambiguous_param) -> untyped
+end

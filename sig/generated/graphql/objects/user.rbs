@@ -1,0 +1,6 @@
+# Generated from app/graphql/objects/user.rb with RBS::Inline
+
+module Objects
+  class User < Objects::Base
+  end
+end

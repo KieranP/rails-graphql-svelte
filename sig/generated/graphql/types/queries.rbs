@@ -1,0 +1,6 @@
+# Generated from app/graphql/types/queries.rb with RBS::Inline
+
+module Types
+  class Queries < Objects::Base
+  end
+end

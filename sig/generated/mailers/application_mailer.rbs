@@ -1,0 +1,9 @@
+# Generated from app/mailers/application_mailer.rb with RBS::Inline
+
+class ApplicationMailer < ActionMailer::Base
+  private
+
+  def mail: (**untyped args) -> untyped
+
+  def url: (untyped path) -> untyped
+end

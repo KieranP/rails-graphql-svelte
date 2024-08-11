@@ -1,0 +1,7 @@
+# Generated from app/interactors/update_post.rb with RBS::Inline
+
+class UpdatePost
+  include Interaktor
+
+  def call: () -> untyped
+end

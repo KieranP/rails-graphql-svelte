@@ -1,0 +1,9 @@
+# Generated from app/graphql/loaders/single.rb with RBS::Inline
+
+module Loaders
+  class Single < GraphQL::Batch::Loader
+    def initialize: (untyped model, untyped column) -> untyped
+
+    def perform: (untyped ids) -> untyped
+  end
+end

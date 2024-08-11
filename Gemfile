@@ -28,6 +28,9 @@ gem 'active_model_otp'
 gem 'email_validator'
 
 group :development, :test do
+  gem 'rbs_rails', require: false
+  gem 'rbs-inline', require: false
+  gem 'steep', require: false
   gem 'debug'
 
   # Testing

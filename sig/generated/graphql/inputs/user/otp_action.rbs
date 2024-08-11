@@ -1,0 +1,8 @@
+# Generated from app/graphql/inputs/user/otp_action.rb with RBS::Inline
+
+module Inputs
+  module User
+    class OtpAction < Inputs::Base
+    end
+  end
+end

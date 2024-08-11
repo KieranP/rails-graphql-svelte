@@ -1,0 +1,476 @@
+class User < ::ApplicationRecord
+  extend _ActiveRecord_Relation_ClassMethods[User, ActiveRecord_Relation, Integer]
+
+  module GeneratedAttributeMethods
+    def id: () -> Integer
+
+    def id=: (Integer) -> Integer
+
+    def id?: () -> bool
+
+    def id_changed?: () -> bool
+
+    def id_change: () -> [ Integer?, Integer? ]
+
+    def id_will_change!: () -> void
+
+    def id_was: () -> Integer?
+
+    def id_previously_changed?: () -> bool
+
+    def id_previous_change: () -> Array[Integer?]?
+
+    def id_previously_was: () -> Integer?
+
+    def id_before_last_save: () -> Integer?
+
+    def id_change_to_be_saved: () -> Array[Integer?]?
+
+    def id_in_database: () -> Integer?
+
+    def saved_change_to_id: () -> Array[Integer?]?
+
+    def saved_change_to_id?: () -> bool
+
+    def will_save_change_to_id?: () -> bool
+
+    def restore_id!: () -> void
+
+    def clear_id_change: () -> void
+
+    def email: () -> String
+
+    def email=: (String) -> String
+
+    def email?: () -> bool
+
+    def email_changed?: () -> bool
+
+    def email_change: () -> [ String?, String? ]
+
+    def email_will_change!: () -> void
+
+    def email_was: () -> String?
+
+    def email_previously_changed?: () -> bool
+
+    def email_previous_change: () -> Array[String?]?
+
+    def email_previously_was: () -> String?
+
+    def email_before_last_save: () -> String?
+
+    def email_change_to_be_saved: () -> Array[String?]?
+
+    def email_in_database: () -> String?
+
+    def saved_change_to_email: () -> Array[String?]?
+
+    def saved_change_to_email?: () -> bool
+
+    def will_save_change_to_email?: () -> bool
+
+    def restore_email!: () -> void
+
+    def clear_email_change: () -> void
+
+    def password_digest: () -> String?
+
+    def password_digest=: (String?) -> String?
+
+    def password_digest?: () -> bool
+
+    def password_digest_changed?: () -> bool
+
+    def password_digest_change: () -> [ String?, String? ]
+
+    def password_digest_will_change!: () -> void
+
+    def password_digest_was: () -> String?
+
+    def password_digest_previously_changed?: () -> bool
+
+    def password_digest_previous_change: () -> Array[String?]?
+
+    def password_digest_previously_was: () -> String?
+
+    def password_digest_before_last_save: () -> String?
+
+    def password_digest_change_to_be_saved: () -> Array[String?]?
+
+    def password_digest_in_database: () -> String?
+
+    def saved_change_to_password_digest: () -> Array[String?]?
+
+    def saved_change_to_password_digest?: () -> bool
+
+    def will_save_change_to_password_digest?: () -> bool
+
+    def restore_password_digest!: () -> void
+
+    def clear_password_digest_change: () -> void
+
+    def created_at: () -> ActiveSupport::TimeWithZone
+
+    def created_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+
+    def created_at?: () -> bool
+
+    def created_at_changed?: () -> bool
+
+    def created_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+
+    def created_at_will_change!: () -> void
+
+    def created_at_was: () -> ActiveSupport::TimeWithZone?
+
+    def created_at_previously_changed?: () -> bool
+
+    def created_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def created_at_previously_was: () -> ActiveSupport::TimeWithZone?
+
+    def created_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+
+    def created_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def created_at_in_database: () -> ActiveSupport::TimeWithZone?
+
+    def saved_change_to_created_at: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def saved_change_to_created_at?: () -> bool
+
+    def will_save_change_to_created_at?: () -> bool
+
+    def restore_created_at!: () -> void
+
+    def clear_created_at_change: () -> void
+
+    def updated_at: () -> ActiveSupport::TimeWithZone
+
+    def updated_at=: (ActiveSupport::TimeWithZone) -> ActiveSupport::TimeWithZone
+
+    def updated_at?: () -> bool
+
+    def updated_at_changed?: () -> bool
+
+    def updated_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+
+    def updated_at_will_change!: () -> void
+
+    def updated_at_was: () -> ActiveSupport::TimeWithZone?
+
+    def updated_at_previously_changed?: () -> bool
+
+    def updated_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def updated_at_previously_was: () -> ActiveSupport::TimeWithZone?
+
+    def updated_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+
+    def updated_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def updated_at_in_database: () -> ActiveSupport::TimeWithZone?
+
+    def saved_change_to_updated_at: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def saved_change_to_updated_at?: () -> bool
+
+    def will_save_change_to_updated_at?: () -> bool
+
+    def restore_updated_at!: () -> void
+
+    def clear_updated_at_change: () -> void
+
+    def name: () -> String
+
+    def name=: (String) -> String
+
+    def name?: () -> bool
+
+    def name_changed?: () -> bool
+
+    def name_change: () -> [ String?, String? ]
+
+    def name_will_change!: () -> void
+
+    def name_was: () -> String?
+
+    def name_previously_changed?: () -> bool
+
+    def name_previous_change: () -> Array[String?]?
+
+    def name_previously_was: () -> String?
+
+    def name_before_last_save: () -> String?
+
+    def name_change_to_be_saved: () -> Array[String?]?
+
+    def name_in_database: () -> String?
+
+    def saved_change_to_name: () -> Array[String?]?
+
+    def saved_change_to_name?: () -> bool
+
+    def will_save_change_to_name?: () -> bool
+
+    def restore_name!: () -> void
+
+    def clear_name_change: () -> void
+
+    def locale: () -> String?
+
+    def locale=: (String?) -> String?
+
+    def locale?: () -> bool
+
+    def locale_changed?: () -> bool
+
+    def locale_change: () -> [ String?, String? ]
+
+    def locale_will_change!: () -> void
+
+    def locale_was: () -> String?
+
+    def locale_previously_changed?: () -> bool
+
+    def locale_previous_change: () -> Array[String?]?
+
+    def locale_previously_was: () -> String?
+
+    def locale_before_last_save: () -> String?
+
+    def locale_change_to_be_saved: () -> Array[String?]?
+
+    def locale_in_database: () -> String?
+
+    def saved_change_to_locale: () -> Array[String?]?
+
+    def saved_change_to_locale?: () -> bool
+
+    def will_save_change_to_locale?: () -> bool
+
+    def restore_locale!: () -> void
+
+    def clear_locale_change: () -> void
+
+    def uuid: () -> String
+
+    def uuid=: (String) -> String
+
+    def uuid?: () -> bool
+
+    def uuid_changed?: () -> bool
+
+    def uuid_change: () -> [ String?, String? ]
+
+    def uuid_will_change!: () -> void
+
+    def uuid_was: () -> String?
+
+    def uuid_previously_changed?: () -> bool
+
+    def uuid_previous_change: () -> Array[String?]?
+
+    def uuid_previously_was: () -> String?
+
+    def uuid_before_last_save: () -> String?
+
+    def uuid_change_to_be_saved: () -> Array[String?]?
+
+    def uuid_in_database: () -> String?
+
+    def saved_change_to_uuid: () -> Array[String?]?
+
+    def saved_change_to_uuid?: () -> bool
+
+    def will_save_change_to_uuid?: () -> bool
+
+    def restore_uuid!: () -> void
+
+    def clear_uuid_change: () -> void
+
+    def password_reset_token: () -> String?
+
+    def password_reset_token=: (String?) -> String?
+
+    def password_reset_token?: () -> bool
+
+    def password_reset_token_changed?: () -> bool
+
+    def password_reset_token_change: () -> [ String?, String? ]
+
+    def password_reset_token_will_change!: () -> void
+
+    def password_reset_token_was: () -> String?
+
+    def password_reset_token_previously_changed?: () -> bool
+
+    def password_reset_token_previous_change: () -> Array[String?]?
+
+    def password_reset_token_previously_was: () -> String?
+
+    def password_reset_token_before_last_save: () -> String?
+
+    def password_reset_token_change_to_be_saved: () -> Array[String?]?
+
+    def password_reset_token_in_database: () -> String?
+
+    def saved_change_to_password_reset_token: () -> Array[String?]?
+
+    def saved_change_to_password_reset_token?: () -> bool
+
+    def will_save_change_to_password_reset_token?: () -> bool
+
+    def restore_password_reset_token!: () -> void
+
+    def clear_password_reset_token_change: () -> void
+
+    def password_reset_sent_at: () -> ActiveSupport::TimeWithZone?
+
+    def password_reset_sent_at=: (ActiveSupport::TimeWithZone?) -> ActiveSupport::TimeWithZone?
+
+    def password_reset_sent_at?: () -> bool
+
+    def password_reset_sent_at_changed?: () -> bool
+
+    def password_reset_sent_at_change: () -> [ ActiveSupport::TimeWithZone?, ActiveSupport::TimeWithZone? ]
+
+    def password_reset_sent_at_will_change!: () -> void
+
+    def password_reset_sent_at_was: () -> ActiveSupport::TimeWithZone?
+
+    def password_reset_sent_at_previously_changed?: () -> bool
+
+    def password_reset_sent_at_previous_change: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def password_reset_sent_at_previously_was: () -> ActiveSupport::TimeWithZone?
+
+    def password_reset_sent_at_before_last_save: () -> ActiveSupport::TimeWithZone?
+
+    def password_reset_sent_at_change_to_be_saved: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def password_reset_sent_at_in_database: () -> ActiveSupport::TimeWithZone?
+
+    def saved_change_to_password_reset_sent_at: () -> Array[ActiveSupport::TimeWithZone?]?
+
+    def saved_change_to_password_reset_sent_at?: () -> bool
+
+    def will_save_change_to_password_reset_sent_at?: () -> bool
+
+    def restore_password_reset_sent_at!: () -> void
+
+    def clear_password_reset_sent_at_change: () -> void
+
+    def otp_secret_key: () -> String?
+
+    def otp_secret_key=: (String?) -> String?
+
+    def otp_secret_key?: () -> bool
+
+    def otp_secret_key_changed?: () -> bool
+
+    def otp_secret_key_change: () -> [ String?, String? ]
+
+    def otp_secret_key_will_change!: () -> void
+
+    def otp_secret_key_was: () -> String?
+
+    def otp_secret_key_previously_changed?: () -> bool
+
+    def otp_secret_key_previous_change: () -> Array[String?]?
+
+    def otp_secret_key_previously_was: () -> String?
+
+    def otp_secret_key_before_last_save: () -> String?
+
+    def otp_secret_key_change_to_be_saved: () -> Array[String?]?
+
+    def otp_secret_key_in_database: () -> String?
+
+    def saved_change_to_otp_secret_key: () -> Array[String?]?
+
+    def saved_change_to_otp_secret_key?: () -> bool
+
+    def will_save_change_to_otp_secret_key?: () -> bool
+
+    def restore_otp_secret_key!: () -> void
+
+    def clear_otp_secret_key_change: () -> void
+
+    def otp_enabled: () -> bool
+
+    def otp_enabled=: (bool) -> bool
+
+    def otp_enabled?: () -> bool
+
+    def otp_enabled_changed?: () -> bool
+
+    def otp_enabled_change: () -> [ bool?, bool? ]
+
+    def otp_enabled_will_change!: () -> void
+
+    def otp_enabled_was: () -> bool?
+
+    def otp_enabled_previously_changed?: () -> bool
+
+    def otp_enabled_previous_change: () -> Array[bool?]?
+
+    def otp_enabled_previously_was: () -> bool?
+
+    def otp_enabled_before_last_save: () -> bool?
+
+    def otp_enabled_change_to_be_saved: () -> Array[bool?]?
+
+    def otp_enabled_in_database: () -> bool?
+
+    def saved_change_to_otp_enabled: () -> Array[bool?]?
+
+    def saved_change_to_otp_enabled?: () -> bool
+
+    def will_save_change_to_otp_enabled?: () -> bool
+
+    def restore_otp_enabled!: () -> void
+
+    def clear_otp_enabled_change: () -> void
+  end
+  include GeneratedAttributeMethods
+  def sessions: () -> Session::ActiveRecord_Associations_CollectionProxy
+  def sessions=: (Session::ActiveRecord_Associations_CollectionProxy | Array[Session]) -> (Session::ActiveRecord_Associations_CollectionProxy | Array[Session])
+  def session_ids: () -> Array[Integer]
+  def session_ids=: (Array[Integer]) -> Array[Integer]
+  def posts: () -> Post::ActiveRecord_Associations_CollectionProxy
+  def posts=: (Post::ActiveRecord_Associations_CollectionProxy | Array[Post]) -> (Post::ActiveRecord_Associations_CollectionProxy | Array[Post])
+  def post_ids: () -> Array[Integer]
+  def post_ids=: (Array[Integer]) -> Array[Integer]
+
+  module GeneratedAssociationMethods
+  end
+  include GeneratedAssociationMethods
+  module ActiveModel_SecurePassword_InstanceMethodsOnActivation_password
+    attr_reader password: String?
+
+    def password=: (String) -> String
+
+    def password_confirmation=: (String) -> String
+
+    def authenticate_password: (String) -> (User | false)
+
+    alias authenticate authenticate_password
+  end
+  include ActiveModel_SecurePassword_InstanceMethodsOnActivation_password
+
+  module GeneratedRelationMethods
+  end
+
+  class ActiveRecord_Relation < ::ActiveRecord::Relation
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[User, Integer]
+    include Enumerable[User]
+  end
+
+  class ActiveRecord_Associations_CollectionProxy < ::ActiveRecord::Associations::CollectionProxy
+    include GeneratedRelationMethods
+    include _ActiveRecord_Relation[User, Integer]
+  end
+end

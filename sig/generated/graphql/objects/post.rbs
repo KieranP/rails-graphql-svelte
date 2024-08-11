@@ -1,0 +1,6 @@
+# Generated from app/graphql/objects/post.rb with RBS::Inline
+
+module Objects
+  class Post < Objects::Base
+  end
+end

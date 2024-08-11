@@ -1,0 +1,7 @@
+# Generated from app/interactors/update_user.rb with RBS::Inline
+
+class UpdateUser
+  include Interaktor
+
+  def call: () -> untyped
+end

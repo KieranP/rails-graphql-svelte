@@ -1,0 +1,36 @@
+# Generated from app/models/session.rb with RBS::Inline
+
+# == Schema Information
+#
+# Table name: sessions
+#
+#  id             :bigint           not null, primary key
+#  expires_at     :datetime         not null
+#  last_access_at :datetime
+#  uuid           :uuid             not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  jwt_id         :string           not null
+#  user_id        :bigint           not null
+#
+# Indexes
+#
+#  index_sessions_on_user_id  (user_id)
+#  index_sessions_on_uuid     (uuid) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_id => users.id)
+class Session < ApplicationRecord
+  include HasUuid
+
+  def mark_visit!: () -> untyped
+
+  private
+
+  # @rbs return: ::String
+  def populate_jwt_id: () -> ::String
+
+  # @rbs return: ::ActiveSupport::TimeWithZone
+  def populate_expiration: () -> ::ActiveSupport::TimeWithZone
+end

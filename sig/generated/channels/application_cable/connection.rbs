@@ -1,0 +1,15 @@
+# Generated from app/channels/application_cable/connection.rb with RBS::Inline
+
+module ApplicationCable
+  class Connection < ActionCable::Connection::Base
+    def connect: () -> untyped
+
+    private
+
+    def current_user: () -> untyped
+
+    def jwt_payload: () -> untyped
+
+    def jwt_token: () -> untyped
+  end
+end

@@ -1,0 +1,7 @@
+# Generated from app/graphql/analyzers/query_depth.rb with RBS::Inline
+
+module Analyzers
+  class QueryDepth < GraphQL::Analysis::AST::QueryDepth
+    def result: () -> untyped
+  end
+end

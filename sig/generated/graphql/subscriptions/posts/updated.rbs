@@ -1,0 +1,13 @@
+# Generated from app/graphql/subscriptions/posts/updated.rb with RBS::Inline
+
+module Subscriptions
+  module Posts
+    class Updated < Subscriptions::Base
+      def update: (**untyped args) -> untyped
+
+      private
+
+      def post: (**untyped args) -> untyped
+    end
+  end
+end

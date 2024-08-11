@@ -32,6 +32,7 @@ Dependency management and development runtime are handled via Bun.
 * Adjust `config/database.yml`
 * `bundle install`
 * `bun install`
+* `rbs collection install`
 * `bin/rake db:setup`
 * `bin/rspec`
 * `foreman start`

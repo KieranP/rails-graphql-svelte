@@ -1,0 +1,33 @@
+# Generated from app/policies/application_policy.rb with RBS::Inline
+
+class ApplicationPolicy
+  attr_reader user: untyped
+
+  attr_reader record: untyped
+
+  def initialize: (untyped user, untyped record) -> untyped
+
+  def index?: () -> untyped
+
+  def show?: () -> untyped
+
+  def create?: () -> untyped
+
+  def new?: () -> untyped
+
+  def update?: () -> untyped
+
+  def edit?: () -> untyped
+
+  def destroy?: () -> untyped
+
+  class Scope
+    attr_reader user: untyped
+
+    attr_reader scope: untyped
+
+    def initialize: (untyped user, untyped scope) -> untyped
+
+    def resolve: () -> untyped
+  end
+end

@@ -1,0 +1,7 @@
+# Generated from app/controllers/testing_controller.rb with RBS::Inline
+
+class TestingController < ApplicationController
+  def login: () -> untyped
+
+  def logout: () -> untyped
+end

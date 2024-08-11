@@ -1,0 +1,7 @@
+# Generated from app/graphql/analyzers/query_complexity.rb with RBS::Inline
+
+module Analyzers
+  class QueryComplexity < GraphQL::Analysis::AST::QueryComplexity
+    def result: () -> untyped
+  end
+end

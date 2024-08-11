@@ -1,0 +1,7 @@
+# Generated from app/graphql/mutations/base.rb with RBS::Inline
+
+module Mutations
+  class Base < GraphQL::Schema::RelayClassicMutation
+    include QueryHelpers
+  end
+end

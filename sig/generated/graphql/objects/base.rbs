@@ -1,0 +1,13 @@
+# Generated from app/graphql/objects/base.rb with RBS::Inline
+
+module Objects
+  class Base < GraphQL::Schema::Object
+    include ObjectHelpers
+
+    def self.policy: (untyped policy) -> untyped
+
+    def self.authorized?: (untyped obj, untyped ctx) -> untyped
+
+    def self.pundit_authorized?: (untyped obj, untyped ctx) -> untyped
+  end
+end

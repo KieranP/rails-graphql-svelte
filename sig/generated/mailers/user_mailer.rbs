@@ -1,0 +1,5 @@
+# Generated from app/mailers/user_mailer.rb with RBS::Inline
+
+class UserMailer < ApplicationMailer
+  def forgot_password: (untyped user_id) -> untyped
+end

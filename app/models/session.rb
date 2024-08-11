@@ -41,10 +41,12 @@ class Session < ApplicationRecord
 
   private
 
+  # @rbs return: ::String
   def populate_jwt_id
     self.jwt_id ||= SecureRandom.uuid
   end
 
+  # @rbs return: ::ActiveSupport::TimeWithZone
   def populate_expiration
     self.expires_at ||= 1.month.from_now
   end

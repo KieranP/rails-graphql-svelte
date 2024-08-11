@@ -1,0 +1,5 @@
+# Generated from app/controllers/concerns/prosopite_hooks.rb with RBS::Inline
+
+module ProsopiteHooks
+  extend ActiveSupport::Concern
+end

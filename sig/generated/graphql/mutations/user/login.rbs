@@ -1,0 +1,9 @@
+# Generated from app/graphql/mutations/user/login.rb with RBS::Inline
+
+module Mutations
+  module User
+    class Login < Mutations::Base
+      def resolve: (email: untyped, password: untyped, ?otp_code: untyped) -> untyped
+    end
+  end
+end

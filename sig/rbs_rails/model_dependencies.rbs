@@ -1,0 +1,22 @@
+module SolidQueue
+end
+class SolidQueue::Record < ActiveRecord::Base
+end
+class SolidQueue::ClaimedExecution::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class SolidQueue::Process::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class SolidQueue::Execution < SolidQueue::Record
+end
+class ApplicationRecord < ActiveRecord::Base
+end
+class Session::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class Post::ActiveRecord_Associations_CollectionProxy < ActiveRecord::Associations::CollectionProxy
+end
+class ActiveRecord::Associations::CollectionProxy < ActiveRecord::Relation
+end
+class ActiveRecord::Relation < Object
+end
+module ActiveRecord::Associations
+end

@@ -1,0 +1,11 @@
+# Generated from app/policies/user_policy.rb with RBS::Inline
+
+class UserPolicy < ApplicationPolicy
+  def show?: () -> untyped
+
+  def create?: () -> untyped
+
+  def update?: () -> untyped
+
+  def destroy?: () -> untyped
+end

@@ -52,6 +52,7 @@ class User < ApplicationRecord
     save!
   end
 
+  # @rbs return: String
   def otp_provisioning_url
     provisioning_uri
   end
