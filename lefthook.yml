@@ -18,4 +18,4 @@ pre-commit:
     eslint:
       run: bun run lint
     typescript-types:
-      run: tsc --noEmit
+      run: bun run types

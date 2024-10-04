@@ -20,7 +20,7 @@ class ApplicationMailer < ActionMailer::Base
       ENV.fetch('HOST_PROTO'),
       '://',
       ENV.fetch('HOST_NAME'),
-      path
+      path,
     ].join.html_safe
     # rubocop:enable Rails/OutputSafety
   end

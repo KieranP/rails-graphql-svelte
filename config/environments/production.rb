@@ -36,7 +36,7 @@ Rails.application.configure do
   # config.action_cable.mount_path = nil
   config.action_cable.url = ENV.fetch('VITE_CABLE_ENDPOINT')
   config.action_cable.allowed_request_origins = [
-    "#{ENV.fetch('HOST_PROTO')}://#{ENV.fetch('HOST_NAME')}"
+    "#{ENV.fetch("HOST_PROTO")}://#{ENV.fetch("HOST_NAME")}",
   ]
 
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
@@ -49,8 +49,8 @@ Rails.application.configure do
   # Log to STDOUT by default
   config.logger =
     ActiveSupport::Logger.new($stdout)
-                         .tap  { |logger| logger.formatter = Logger::Formatter.new }
-                         .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
+      .tap  { |logger| logger.formatter = Logger::Formatter.new }
+      .then { |logger| ActiveSupport::TaggedLogging.new(logger) }
 
   # Prepend all log lines with the following tags.
   config.log_tags = [:request_id]
@@ -65,6 +65,8 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   config.active_job.queue_adapter = :solid_queue
+  config.solid_queue.connects_to = { database: { writing: :queue } }
+
   # config.active_job.queue_name_prefix = "rails_api_production"
 
   config.action_mailer.perform_caching = false

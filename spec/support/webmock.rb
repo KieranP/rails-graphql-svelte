@@ -9,5 +9,5 @@ WebMock.disable_net_connect!(
     storage.googleapis.com
     googlechromelabs.github.io
     edgedl.me.gvt1.com
-  ]
+  ],
 )

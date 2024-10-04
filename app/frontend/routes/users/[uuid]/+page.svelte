@@ -1,15 +1,17 @@
 <script lang="ts">
+  import { ApolloError } from '@apollo/client/core'
+
   import { page } from '$app/stores'
 
-  import { findUser, watchUser } from '$lib/queries/user'
-  import { session } from '$lib/helpers/session'
-  import { errors } from '$lib/helpers/stores'
   import Loader from '$lib/components/loader.svelte'
   import { _ } from '$lib/helpers/i18n'
+  import { session } from '$lib/helpers/session'
+  import { errors } from '$lib/helpers/stores'
+  import { findUser, watchUser } from '$lib/queries/user'
 
   import type { User } from '$lib/types/User'
 
-  let uuid = $derived($page.params.uuid)
+  const uuid = $derived($page.params.uuid)
 
   let user: User | undefined = $state()
 
@@ -20,16 +22,22 @@
       .then(res => {
         user = res.data.findUser
       })
-      .catch(error => {
-        errors.set(error.graphQLErrors)
+      .catch((error: unknown) => {
+        if (error instanceof ApolloError) {
+          errors.set(error.graphQLErrors)
+        }
       })
 
     watchUser({ uuid }, fields).subscribe(
       res => {
-        if (res.data.userUpdated) user = res.data.userUpdated
+        if (res.data.userUpdated !== undefined) {
+          user = res.data.userUpdated
+        }
       },
-      err => {
-        errors.set(err.graphQLErrors)
+      (error: unknown) => {
+        if (error instanceof ApolloError) {
+          errors.set(error.graphQLErrors)
+        }
       }
     )
   })
@@ -52,9 +60,12 @@
       </ul>
     {/if}
 
-    {#if $session.user && $session.user.uuid == user.uuid}
+    {#if $session.user?.uuid === user.uuid}
       <p>
-        <a href="/users/{user.uuid}/edit" class="btn btn-outline-primary">
+        <a
+          href="/users/{user.uuid}/edit"
+          class="btn btn-outline-primary"
+        >
           {$_('common.edit')}
         </a>
       </p>

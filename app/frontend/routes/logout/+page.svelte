@@ -1,21 +1,25 @@
 <script lang="ts">
+  import { ApolloError } from '@apollo/client/core'
+
   import { goto } from '$app/navigation'
 
-  import { logoutUser } from '$lib/queries/auth'
+  import { setLocale } from '$lib/helpers/i18n'
   import { clearSession } from '$lib/helpers/session'
   import { errors } from '$lib/helpers/stores'
-  import { setLocale } from '$lib/helpers/i18n'
+  import { logoutUser } from '$lib/queries/auth'
 
   $effect(() => {
     logoutUser({}, `user { uuid }`)
-      .then(() => {
+      .then(async () => {
         clearSession()
-        setLocale.set('en')
+        await setLocale.set('en')
 
-        goto('/')
+        void goto('/')
       })
-      .catch(error => {
-        errors.set(error.graphQLErrors)
+      .catch((error: unknown) => {
+        if (error instanceof ApolloError) {
+          errors.set(error.graphQLErrors)
+        }
       })
   })
 </script>

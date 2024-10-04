@@ -1,8 +1,8 @@
 <script lang="ts">
   import 'bootstrap/dist/css/bootstrap.css'
 
-  import Nav from '$lib/components/nav.svelte'
   import Errors from '$lib/components/errors.svelte'
+  import Nav from '$lib/components/nav.svelte'
 
   import type { Snippet } from 'svelte'
 
@@ -10,7 +10,7 @@
     children: Snippet
   }
 
-  let { children }: Props = $props()
+  const { children }: Props = $props()
 </script>
 
 <div class="container">

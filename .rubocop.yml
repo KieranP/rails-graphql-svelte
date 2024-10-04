@@ -1,46 +1,31 @@
+inherit_gem:
+  rubocop-shopify: rubocop.yml
+
 require:
   - rubocop-rails
-  - rubocop-rspec
   - rubocop-performance
+  - rubocop-rspec
+  - rubocop-rspec_rails
+  - rubocop-factory_bot
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.0
+  TargetRubyVersion: 3.3
+  ParserEngine: parser_prism
   SuggestExtensions: false
   Exclude:
-    - 'bin/*'
+    - 'bin/**/*'
+    - 'coverage/**/*'
     - 'db/schema.rb'
     - 'lib/tasks/auto_annotate_models.rake'
+    - 'log/**/*'
+    - 'public/**/*'
+    - 'scripts/**/*'
+    - 'tmp/**/*'
     - 'vendor/**/*'
 
-Bundler/OrderedGems:
+FactoryBot/ExcessiveCreateList:
   Enabled: false
-
-Layout/ArgumentAlignment:
-  EnforcedStyle: with_fixed_indentation
-
-Layout/FirstHashElementIndentation:
-  EnforcedStyle: consistent
-
-Lint/AssignmentInCondition:
-  Enabled: false
-
-Lint/MissingSuper:
-  Enabled: false
-
-Lint/NoReturnInBeginEndBlocks:
-  Enabled: false
-
-Metrics/AbcSize:
-  Enabled: false
-
-Metrics/BlockLength:
-  Exclude:
-    - 'config/environments/*'
-    - 'spec/**/*'
-
-Metrics/MethodLength:
-  Max: 15
 
 RSpec/ExampleLength:
   Enabled: false
@@ -51,5 +36,20 @@ RSpec/MultipleExpectations:
 Style/BlockDelimiters:
   EnforcedStyle: braces_for_chaining
 
-Style/Documentation:
-  Enabled: false
+Style/MethodCallWithArgsParentheses:
+  AllowedMethods:
+    - head
+    - raise
+    - render
+  Exclude:
+    - 'db/migrate/*'
+    - 'spec/**/*'
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Style/SymbolArray:
+  EnforcedStyle: percent
+
+Style/WordArray:
+  EnforcedStyle: percent

@@ -6,20 +6,22 @@ module Objects
 
     include ObjectHelpers
 
-    def self.policy(policy)
-      @policy = policy
-    end
+    class << self
+      def policy(policy)
+        @policy = policy
+      end
 
-    def self.authorized?(obj, ctx)
-      super && pundit_authorized?(obj, ctx)
-    end
+      def authorized?(obj, ctx)
+        super && pundit_authorized?(obj, ctx)
+      end
 
-    def self.pundit_authorized?(obj, ctx)
-      return true unless @policy
+      def pundit_authorized?(obj, ctx)
+        return true unless @policy
 
-      user = ctx[:current_user]
-      policy = Pundit.policy(user, obj)
-      policy.send(@policy)
+        user = ctx[:current_user]
+        policy = Pundit.policy(user, obj)
+        policy.send(@policy)
+      end
     end
   end
 end

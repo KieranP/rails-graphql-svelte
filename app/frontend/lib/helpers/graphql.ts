@@ -1,29 +1,26 @@
+import { Kind, OperationTypeNode } from 'graphql'
+import ActionCableLink from 'graphql-ruby-client/subscriptions/ActionCableLink'
+
 import {
   ApolloClient,
   ApolloLink,
-  InMemoryCache,
   createHttpLink,
-  gql
+  type DefaultOptions,
+  type DocumentNode,
+  gql,
+  InMemoryCache,
+  type Operation
 } from '@apollo/client/core'
-
-import type {
-  DefaultOptions,
-  DocumentNode,
-  Operation
-} from '@apollo/client/core'
-
 import { getMainDefinition } from '@apollo/client/utilities'
-
 import { createConsumer } from '@rails/actioncable'
-import ActionCableLink from 'graphql-ruby-client/subscriptions/ActionCableLink'
 
 const cable = createConsumer(import.meta.env.VITE_CABLE_ENDPOINT as string)
 
 const hasSubscriptionOperation = ({ query }: Operation) => {
   const definition = getMainDefinition(query)
   return (
-    definition.kind === 'OperationDefinition' &&
-    definition.operation === 'subscription'
+    definition.kind === Kind.OPERATION_DEFINITION &&
+    definition.operation === OperationTypeNode.SUBSCRIPTION
   )
 }
 
@@ -46,13 +43,13 @@ const defaultOptions: DefaultOptions = {
 
 const client = new ApolloClient({ link, cache, defaultOptions })
 
-export const query = (graphql: DocumentNode, variables: object) =>
+export const query = async (graphql: DocumentNode, variables: object) =>
   client.query({
     query: graphql,
     variables
   })
 
-export const mutation = (graphql: DocumentNode, variables: object) =>
+export const mutation = async (graphql: DocumentNode, variables: object) =>
   client.mutate({
     mutation: graphql,
     variables

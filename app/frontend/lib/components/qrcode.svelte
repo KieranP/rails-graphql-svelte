@@ -5,15 +5,18 @@
     content: string
   }
 
-  let { content }: Props = $props()
+  const { content }: Props = $props()
 
   let canvas: HTMLElement
 
   $effect(() => {
-    QRCode.toCanvas(canvas, content, {
+    void QRCode.toCanvas(canvas, content, {
       width: 300
     })
   })
 </script>
 
-<canvas id="qrcode" bind:this={canvas}></canvas>
+<canvas
+  id="qrcode"
+  bind:this={canvas}
+></canvas>

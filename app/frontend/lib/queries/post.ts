@@ -1,6 +1,6 @@
-import { gql, query, mutation, subscribe } from '$lib/helpers/graphql'
+import { gql, mutation, query, subscribe } from '$lib/helpers/graphql'
 
-export const allPosts = (variables: object, graphql: string) =>
+export const allPosts = async (variables: object, graphql: string) =>
   query(
     gql`
     query allPosts($before: String, $after: String, $first: Int, $last: Int) {
@@ -18,7 +18,7 @@ export const allPosts = (variables: object, graphql: string) =>
     variables
   )
 
-export const findPost = (variables: object, graphql: string) =>
+export const findPost = async (variables: object, graphql: string) =>
   query(
     gql`
     query findPost($uuid: ID!) {
@@ -42,7 +42,7 @@ export const watchPost = (variables: object, graphql: string) =>
     variables
   )
 
-export const createPost = (variables: object, graphql: string) =>
+export const createPost = async (variables: object, graphql: string) =>
   mutation(
     gql`
     mutation createPost($title: String!, $body: String!) {
@@ -57,7 +57,7 @@ export const createPost = (variables: object, graphql: string) =>
     variables
   )
 
-export const updatePost = (variables: object, graphql: string) =>
+export const updatePost = async (variables: object, graphql: string) =>
   mutation(
     gql`
     mutation updatePost($uuid: ID!, $title: String!, $body: String!) {
@@ -73,7 +73,7 @@ export const updatePost = (variables: object, graphql: string) =>
     variables
   )
 
-export const destroyPost = (variables: object, graphql: string) =>
+export const destroyPost = async (variables: object, graphql: string) =>
   mutation(
     gql`
     mutation destroyPost($uuid: ID!) {

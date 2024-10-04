@@ -27,7 +27,7 @@ Rails.application.configure do
 
     config.cache_store = :memory_store
     config.public_file_server.headers = {
-      'Cache-Control' => "public, max-age=#{2.days.to_i}"
+      'Cache-Control' => "public, max-age=#{2.days.to_i}",
     }
   else
     config.action_controller.perform_caching = false
@@ -57,6 +57,7 @@ Rails.application.configure do
 
   # Highlight code that enqueued background job in logs.
   config.active_job.queue_adapter = :solid_queue
+  config.solid_queue.connects_to = { database: { writing: :queue } }
   # config.active_job.verbose_enqueue_logs = true
 
   # Raises error for missing translations.
@@ -69,7 +70,7 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   config.action_cable.url = ENV.fetch('VITE_CABLE_ENDPOINT')
   config.action_cable.allowed_request_origins = [
-    "#{ENV.fetch('HOST_PROTO')}://#{ENV.fetch('HOST_NAME')}"
+    "#{ENV.fetch("HOST_PROTO")}://#{ENV.fetch("HOST_NAME")}",
   ]
 
   # Raise error when a before_action's only/except options reference missing actions

@@ -25,13 +25,13 @@
 class User < ApplicationRecord
   include HasUuid
 
-  PASSWORD_FORMAT = /\A
+  PASSWORD_FORMAT = %r{\A
     (?=.*\d)           # Must contain a digit
     (?=.*[a-z])        # Must contain a lower case character
     (?=.*[A-Z])        # Must contain an upper case character
     (?=.*[[:^alnum:]]) # Must contain a symbol
     .{8,}              # Must contain 8 or more characters
-  \z/x
+  \z}x
 
   has_secure_password
 

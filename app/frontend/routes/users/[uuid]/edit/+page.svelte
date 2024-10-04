@@ -1,16 +1,18 @@
 <script lang="ts">
-  import { page } from '$app/stores'
-  import { goto } from '$app/navigation'
+  import { ApolloError } from '@apollo/client/core'
 
-  import { findUser, updateUser } from '$lib/queries/user'
+  import { goto } from '$app/navigation'
+  import { page } from '$app/stores'
+
+  import Loader from '$lib/components/loader.svelte'
+  import { _, allLocales, setLocale } from '$lib/helpers/i18n'
   import { setSession } from '$lib/helpers/session'
   import { errors } from '$lib/helpers/stores'
-  import Loader from '$lib/components/loader.svelte'
-  import { allLocales, setLocale, _ } from '$lib/helpers/i18n'
+  import { findUser, updateUser } from '$lib/queries/user'
 
   import type { User } from '$lib/types/User'
 
-  let uuid = $derived($page.params.uuid)
+  const uuid = $derived($page.params.uuid)
 
   let user: User | undefined = $state()
   let name: string = $state('')
@@ -25,8 +27,10 @@
         email = user.email
         locale = user.locale
       })
-      .catch(error => {
-        errors.set(error.graphQLErrors)
+      .catch((error: unknown) => {
+        if (error instanceof ApolloError) {
+          errors.set(error.graphQLErrors)
+        }
       })
   })
 
@@ -34,18 +38,19 @@
     event.preventDefault()
 
     updateUser({ uuid, name, email, locale }, `user { uuid name email locale }`)
-      .then(res => {
-        let data = res.data.updateUser
-        let user = data.user
-        let uuid = user.uuid
+      .then(async res => {
+        const data = res.data.updateUser
+        const updated_user = data.user
 
         setSession(data)
-        setLocale.set(user.locale)
+        await setLocale.set(updated_user.locale)
 
-        goto(`/users/${uuid}`)
+        void goto(`/users/${uuid}`)
       })
-      .catch(error => {
-        errors.set(error.graphQLErrors)
+      .catch((error: unknown) => {
+        if (error instanceof ApolloError) {
+          errors.set(error.graphQLErrors)
+        }
       })
   }
 </script>
@@ -58,7 +63,10 @@
   {#if user}
     <form onsubmit={submit}>
       <div class="mb-3">
-        <label for="name" class="form-label">
+        <label
+          for="name"
+          class="form-label"
+        >
           {$_('pages.users.edit.name')}
         </label>
         <input
@@ -71,7 +79,10 @@
       </div>
 
       <div class="mb-3">
-        <label for="email" class="form-label">
+        <label
+          for="email"
+          class="form-label"
+        >
           {$_('pages.users.edit.email')}
         </label>
         <input
@@ -84,13 +95,22 @@
       </div>
 
       <div class="mb-3">
-        <label for="locale" class="form-label">
+        <label
+          for="locale"
+          class="form-label"
+        >
           {$_('pages.users.edit.locale')}
         </label>
 
-        <select class="form-select" bind:value={locale}>
+        <select
+          class="form-select"
+          bind:value={locale}
+        >
           {#each $allLocales as _locale}
-            <option value={_locale} selected={_locale == locale}>
+            <option
+              value={_locale}
+              selected={_locale === locale}
+            >
               {_locale}
             </option>
           {/each}
@@ -98,7 +118,10 @@
       </div>
 
       <div class="mb-3">
-        <button type="submit" class="btn btn-primary">
+        <button
+          type="submit"
+          class="btn btn-primary"
+        >
           {$_('common.update')}
         </button>
 

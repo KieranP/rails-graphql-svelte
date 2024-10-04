@@ -1,7 +1,9 @@
 <script lang="ts">
-  import { forgotPassword } from '$lib/queries/user'
-  import { errors } from '$lib/helpers/stores'
+  import { ApolloError } from '@apollo/client/core'
+
   import { _ } from '$lib/helpers/i18n'
+  import { errors } from '$lib/helpers/stores'
+  import { forgotPassword } from '$lib/queries/user'
 
   let email: string = $state('')
   let result: object | undefined = $state()
@@ -14,8 +16,10 @@
         errors.set([])
         result = res.data.forgotPassword
       })
-      .catch(error => {
-        errors.set(error.graphQLErrors)
+      .catch((error: unknown) => {
+        if (error instanceof ApolloError) {
+          errors.set(error.graphQLErrors)
+        }
       })
   }
 </script>
@@ -29,7 +33,10 @@
 {:else}
   <form onsubmit={submit}>
     <div class="mb-3">
-      <label for="email" class="form-label">
+      <label
+        for="email"
+        class="form-label"
+      >
         {$_('pages.forgot-password.email')}
       </label>
       <input
@@ -42,7 +49,10 @@
     </div>
 
     <div class="mb-3">
-      <button type="submit" class="btn btn-primary">
+      <button
+        type="submit"
+        class="btn btn-primary"
+      >
         {$_('pages.forgot-password.button')}
       </button>
     </div>

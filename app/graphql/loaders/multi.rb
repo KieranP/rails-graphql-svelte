@@ -3,6 +3,7 @@
 module Loaders
   class Multi < GraphQL::Batch::Loader
     def initialize(model, column)
+      super
       @model = model
       @column = column
     end

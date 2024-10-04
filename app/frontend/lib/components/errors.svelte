@@ -12,7 +12,10 @@
 
 {#if $errors.length > 0}
   {#each $errors as error}
-    <div class="alert alert-danger" role="alert">
+    <div
+      class="alert alert-danger"
+      role="alert"
+    >
       {error.message}
     </div>
   {/each}

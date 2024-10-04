@@ -1,14 +1,16 @@
 <script lang="ts">
-  import { page } from '$app/stores'
-  import { goto } from '$app/navigation'
+  import { ApolloError } from '@apollo/client/core'
 
-  import { resetPassword } from '$lib/queries/user'
+  import { goto } from '$app/navigation'
+  import { page } from '$app/stores'
+
+  import { _ } from '$lib/helpers/i18n'
   import { errors } from '$lib/helpers/stores'
   import { base64Decode } from '$lib/helpers/utils'
-  import { _ } from '$lib/helpers/i18n'
+  import { resetPassword } from '$lib/queries/user'
 
-  let token: string = base64Decode($page.params.token)
-  let email: string = base64Decode($page.params.email)
+  const token: string = base64Decode($page.params.token)
+  const email: string = base64Decode($page.params.email)
 
   let password: string = $state('')
   let passwordConfirmation: string = $state('')
@@ -18,10 +20,12 @@
 
     resetPassword({ token, email, password, passwordConfirmation }, `success`)
       .then(() => {
-        goto('/login')
+        void goto('/login')
       })
-      .catch(error => {
-        errors.set(error.graphQLErrors)
+      .catch((error: unknown) => {
+        if (error instanceof ApolloError) {
+          errors.set(error.graphQLErrors)
+        }
       })
   }
 </script>
@@ -32,7 +36,10 @@
 
 <form onsubmit={submit}>
   <div class="mb-3">
-    <label for="email" class="form-label">
+    <label
+      for="email"
+      class="form-label"
+    >
       {$_('pages.reset-password.email')}
     </label>
     <input
@@ -46,7 +53,10 @@
   </div>
 
   <div class="mb-3">
-    <label for="password" class="form-label">
+    <label
+      for="password"
+      class="form-label"
+    >
       {$_('pages.reset-password.password')}
     </label>
     <input
@@ -59,7 +69,10 @@
   </div>
 
   <div class="mb-3">
-    <label for="password_confirmation" class="form-label">
+    <label
+      for="password_confirmation"
+      class="form-label"
+    >
       {$_('pages.reset-password.password_confirmation')}
     </label>
     <input
@@ -72,7 +85,10 @@
   </div>
 
   <div class="mb-3">
-    <button type="submit" class="btn btn-primary">
+    <button
+      type="submit"
+      class="btn btn-primary"
+    >
       {$_('pages.reset-password.button')}
     </button>
   </div>

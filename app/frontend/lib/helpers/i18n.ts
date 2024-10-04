@@ -1,12 +1,11 @@
 import {
+  _,
   addMessages,
-  init,
   getLocaleFromNavigator,
-  locales,
+  init,
   locale,
-  _
+  locales
 } from 'svelte-i18n'
-// import { getSession } from '$lib/helpers/session'
 
 import en from '$lib/i18n/en.json'
 addMessages('en', en)
@@ -14,13 +13,15 @@ addMessages('en', en)
 import de from '$lib/i18n/de.json'
 addMessages('de', de)
 
-let initialLocale = null // getSession()?.user?.locale
+import { getSession } from '$lib/helpers/session'
+
+let initialLocale = getSession().user?.locale ?? null
 initialLocale ??= getLocaleFromNavigator()
 initialLocale ??= 'en'
 
-init({
-  initialLocale: initialLocale,
+await init({
+  initialLocale,
   fallbackLocale: 'en'
 })
 
-export { locales as allLocales, locale as setLocale, _ }
+export { _, locales as allLocales, locale as setLocale }

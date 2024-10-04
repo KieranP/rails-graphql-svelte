@@ -3,10 +3,10 @@ export default function (params: URLSearchParams) {
   const after = params.get('after')
 
   let first, last
-  if (before !== null) {
-    last = 20
-  } else {
+  if (before === null) {
     first = 20
+  } else {
+    last = 20
   }
 
   return { before, after, first, last }

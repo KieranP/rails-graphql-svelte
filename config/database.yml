@@ -9,13 +9,23 @@ defaults: &defaults
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  <<: *defaults
-  database: fullapp-development
+  primary:
+    <<: *defaults
+    database: fullapp-development
+  queue:
+    <<: *defaults
+    database: fullapp-development-queue
+    migrations_paths: db/queue_migrate
+
+production:
+  primary:
+    <<: *defaults
+    database: fullapp-production
+  queue:
+    <<: *defaults
+    database: fullapp-production-queue
+    migrations_paths: db/queue_migrate
 
 test:
   <<: *defaults
   database: fullapp-test
-
-production:
-  <<: *defaults
-  database: fullapp-production

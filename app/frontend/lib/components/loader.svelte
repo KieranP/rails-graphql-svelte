@@ -7,13 +7,16 @@
     children: Snippet
   }
 
-  let { children }: Props = $props()
+  const { children }: Props = $props()
 </script>
 
 {#if children}
   {@render children()}
 {:else}
-  <div class="spinner-border" role="status">
+  <div
+    class="spinner-border"
+    role="status"
+  >
     <span class="visually-hidden">
       {$_('components.loader.loading')}
     </span>

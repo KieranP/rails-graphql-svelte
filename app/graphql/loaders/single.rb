@@ -3,6 +3,7 @@
 module Loaders
   class Single < GraphQL::Batch::Loader
     def initialize(model, column)
+      super
       @model = model
       @column = column
     end

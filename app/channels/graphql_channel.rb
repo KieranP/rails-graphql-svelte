@@ -15,13 +15,13 @@ class GraphqlChannel < ApplicationCable::Channel
     options = schema_options(data)
     result = Schema.execute(**options)
 
-    if sub_id = result.context[:subscription_id]
+    if (sub_id = result.context[:subscription_id])
       @subscription_ids << sub_id
     end
 
     transmit({
       result: result.to_h,
-      more: result.subscription?
+      more: result.subscription?,
     })
   end
 
@@ -35,8 +35,8 @@ class GraphqlChannel < ApplicationCable::Channel
       context: {
         current_user: current_user,
         # cookies: cookies,
-        channel: self
-      }
+        channel: self,
+      },
     }
   end
 

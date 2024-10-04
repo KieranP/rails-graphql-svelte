@@ -1,6 +1,6 @@
 import { gql, mutation } from '$lib/helpers/graphql'
 
-export const loginUser = (variables: object, graphql: string) =>
+export const loginUser = async (variables: object, graphql: string) =>
   mutation(
     gql`
     mutation loginUser($email: String!, $password: String!, $otpCode: String) {
@@ -16,7 +16,7 @@ export const loginUser = (variables: object, graphql: string) =>
     variables
   )
 
-export const logoutUser = (variables: object, graphql: string) =>
+export const logoutUser = async (variables: object, graphql: string) =>
   mutation(
     gql`
     mutation logoutUser {

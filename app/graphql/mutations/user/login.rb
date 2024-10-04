@@ -16,7 +16,7 @@ module Mutations
         result = AuthenticateUser.call(
           email: email,
           password: password,
-          otp_code: otp_code
+          otp_code: otp_code,
         )
 
         if result.success?

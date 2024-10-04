@@ -1,4 +1,11 @@
-import { session, get } from '$lib/helpers/stores'
+import { get, writable } from 'svelte/store'
+
+const session_str = window.localStorage.getItem('session')
+const session_init = session_str === null ? {} : JSON.parse(session_str)
+export const session = writable<{
+  token?: string
+  user?: { uuid: string; name: string; locale: string }
+}>(session_init)
 
 export const getSession = function () {
   return get(session)
@@ -21,5 +28,3 @@ export const clearSession = function () {
 
   return true
 }
-
-export { session }

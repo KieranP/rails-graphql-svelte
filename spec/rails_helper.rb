@@ -11,7 +11,7 @@ SimpleCov.start 'rails'
 
 require 'rspec/rails'
 
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Rails.root.glob('spec/support/**/*.rb').each { |f| require f }
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
@@ -32,7 +32,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     unless ENV.fetch('BUILD_FRONTEND', nil) == 'false'
       puts 'Building Frontend App...'
-      puts `bun run build -m test`
+      puts %x{bun run build -m test}
       puts ''
     end
   end

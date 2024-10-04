@@ -8,7 +8,8 @@
     onsubmit: (data: PostSubmission) => void
   }
 
-  let { post, onsubmit }: Props = $props()
+  const { post, onsubmit }: Props = $props()
+
   let title = $state(post?.title)
   let body = $state(post?.body)
 
@@ -20,7 +21,10 @@
 
 <form onsubmit={submit}>
   <div class="mb-3">
-    <label for="title" class="form-label">
+    <label
+      for="title"
+      class="form-label"
+    >
       {$_('pages.posts._form.title')}
     </label>
     <input
@@ -33,15 +37,26 @@
   </div>
 
   <div class="mb-3">
-    <label for="body" class="form-label">
+    <label
+      for="body"
+      class="form-label"
+    >
       {$_('pages.posts._form.body')}
     </label>
-    <textarea class="form-control" id="body" rows="5" bind:value={body} required
+    <textarea
+      class="form-control"
+      id="body"
+      rows="5"
+      bind:value={body}
+      required
     ></textarea>
   </div>
 
   <div class="mb-3">
-    <button type="submit" class="btn btn-primary">
+    <button
+      type="submit"
+      class="btn btn-primary"
+    >
       {#if post}
         {$_('common.update')}
       {:else}

@@ -1,16 +1,19 @@
 <script lang="ts">
-  import { page } from '$app/stores'
-  import { goto } from '$app/navigation'
+  import { ApolloError } from '@apollo/client/core'
 
-  import { findPost, updatePost } from '$lib/queries/post'
-  import { errors } from '$lib/helpers/stores'
+  import { goto } from '$app/navigation'
+  import { page } from '$app/stores'
+
   import Loader from '$lib/components/loader.svelte'
-  import Form from '../../_form.svelte'
   import { _ } from '$lib/helpers/i18n'
+  import { errors } from '$lib/helpers/stores'
+  import { findPost, updatePost } from '$lib/queries/post'
+
+  import Form from '../../_form.svelte'
 
   import type { Post, PostSubmission } from '$lib/types/Post'
 
-  let uuid = $derived($page.params.uuid)
+  const uuid = $derived($page.params.uuid)
 
   let post: Post | undefined = $state()
 
@@ -19,20 +22,22 @@
       .then(res => {
         post = res.data.findPost
       })
-      .catch(error => {
-        errors.set(error.graphQLErrors)
+      .catch((error: unknown) => {
+        if (error instanceof ApolloError) {
+          errors.set(error.graphQLErrors)
+        }
       })
   })
 
   function onsubmit(data: PostSubmission) {
     updatePost({ uuid, ...data }, `post { uuid title body }`)
-      .then(res => {
-        let data = res.data
-        let uuid = data.updatePost.post.uuid
-        goto(`/posts/${uuid}`)
+      .then(_res => {
+        void goto(`/posts/${uuid}`)
       })
-      .catch(error => {
-        errors.set(error.graphQLErrors)
+      .catch((error: unknown) => {
+        if (error instanceof ApolloError) {
+          errors.set(error.graphQLErrors)
+        }
       })
   }
 </script>
@@ -43,6 +48,9 @@
 
 <Loader>
   {#if post}
-    <Form {post} {onsubmit} />
+    <Form
+      {post}
+      {onsubmit}
+    />
   {/if}
 </Loader>

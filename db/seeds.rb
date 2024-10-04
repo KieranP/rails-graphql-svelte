@@ -7,7 +7,7 @@ users = []
     email: "user#{i}@example.com",
     name: "User #{i}",
     password: "User#{i}pass!",
-    locale: 'en'
+    locale: 'en',
   )
 end
 
@@ -15,6 +15,6 @@ end
   user = users.sample
   user.posts.create!(
     title: "Post #{i}",
-    body: "Post #{i}"
+    body: "Post #{i}",
   )
 end

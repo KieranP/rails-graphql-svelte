@@ -1,6 +1,6 @@
-import { gql, query, mutation, subscribe } from '$lib/helpers/graphql'
+import { gql, mutation, query, subscribe } from '$lib/helpers/graphql'
 
-export const findUser = (variables: object, graphql: string) =>
+export const findUser = async (variables: object, graphql: string) =>
   query(
     gql`
     query findUser($uuid: ID!) {
@@ -24,7 +24,7 @@ export const watchUser = (variables: object, graphql: string) =>
     variables
   )
 
-export const createUser = (variables: object, graphql: string) =>
+export const createUser = async (variables: object, graphql: string) =>
   mutation(
     gql`
     mutation createUser($email: String!, $name: String!, $locale: String!, $password: String!, $passwordConfirmation: String!) {
@@ -42,7 +42,7 @@ export const createUser = (variables: object, graphql: string) =>
     variables
   )
 
-export const updateUser = (variables: object, graphql: string) =>
+export const updateUser = async (variables: object, graphql: string) =>
   mutation(
     gql`
     mutation updateUser($uuid: ID!, $name: String, $email: String, $locale: String, $otpEnable: Boolean, $otpCode: String) {
@@ -63,7 +63,7 @@ export const updateUser = (variables: object, graphql: string) =>
     variables
   )
 
-export const forgotPassword = (variables: object, graphql: string) =>
+export const forgotPassword = async (variables: object, graphql: string) =>
   mutation(
     gql`
     mutation forgotPassword($email: String!) {
@@ -77,7 +77,7 @@ export const forgotPassword = (variables: object, graphql: string) =>
     variables
   )
 
-export const resetPassword = (variables: object, graphql: string) =>
+export const resetPassword = async (variables: object, graphql: string) =>
   mutation(
     gql`
     mutation resetPassword($token: String!, $email: String!, $password: String!, $passwordConfirmation: String!) {

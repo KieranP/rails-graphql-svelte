@@ -1,8 +1,8 @@
 <script lang="ts">
   import { page } from '$app/stores'
 
-  import { session } from '$lib/helpers/session'
   import { _ } from '$lib/helpers/i18n'
+  import { session } from '$lib/helpers/session'
 </script>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -52,7 +52,10 @@
         </li>
 
         <li class="nav-item">
-          <a href="/logout" class="nav-link">
+          <a
+            href="/logout"
+            class="nav-link"
+          >
             {$_('components.nav.logout')}
           </a>
         </li>

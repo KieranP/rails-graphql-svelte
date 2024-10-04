@@ -9,7 +9,7 @@ class UserMailer < ApplicationMailer
     @url = url("/reset-password?email=#{email}&token=#{token}")
 
     mail(
-      subject: t('.subject')
+      subject: t('.subject'),
     )
   end
 end

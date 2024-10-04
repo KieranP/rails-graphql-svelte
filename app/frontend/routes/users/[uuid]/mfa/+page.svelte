@@ -1,16 +1,18 @@
 <script lang="ts">
-  import { page } from '$app/stores'
-  import { goto } from '$app/navigation'
+  import { ApolloError } from '@apollo/client/core'
 
-  import { findUser, updateUser } from '$lib/queries/user'
-  import { errors } from '$lib/helpers/stores'
+  import { goto } from '$app/navigation'
+  import { page } from '$app/stores'
+
   import Loader from '$lib/components/loader.svelte'
-  import { _ } from '$lib/helpers/i18n'
   import QRCode from '$lib/components/qrcode.svelte'
+  import { _ } from '$lib/helpers/i18n'
+  import { errors } from '$lib/helpers/stores'
+  import { findUser, updateUser } from '$lib/queries/user'
 
   import type { User } from '$lib/types/User'
 
-  let uuid = $derived($page.params.uuid)
+  const uuid = $derived($page.params.uuid)
 
   let user: User | undefined = $state()
   let code: string = $state('')
@@ -20,8 +22,10 @@
       .then(res => {
         user = res.data.findUser
       })
-      .catch(error => {
-        errors.set(error.graphQLErrors)
+      .catch((error: unknown) => {
+        if (error instanceof ApolloError) {
+          errors.set(error.graphQLErrors)
+        }
       })
   })
 
@@ -37,13 +41,15 @@
       `user { uuid otpEnabled }`
     )
       .then(res => {
-        let data = res.data.updateUser
+        const data = res.data.updateUser
         user = data.user
 
-        goto(`/users/${uuid}`)
+        void goto(`/users/${uuid}`)
       })
-      .catch(error => {
-        errors.set(error.graphQLErrors)
+      .catch((error: unknown) => {
+        if (error instanceof ApolloError) {
+          errors.set(error.graphQLErrors)
+        }
       })
   }
 
@@ -59,13 +65,15 @@
       `user { uuid otpEnabled }`
     )
       .then(res => {
-        let data = res.data.updateUser
+        const data = res.data.updateUser
         user = data.user
 
-        goto(`/users/${uuid}`)
+        void goto(`/users/${uuid}`)
       })
-      .catch(error => {
-        errors.set(error.graphQLErrors)
+      .catch((error: unknown) => {
+        if (error instanceof ApolloError) {
+          errors.set(error.graphQLErrors)
+        }
       })
   }
 </script>
@@ -79,7 +87,10 @@
     {#if user.otpEnabled}
       <form onsubmit={submitDisable}>
         <div class="mb-3">
-          <label for="code" class="form-label">
+          <label
+            for="code"
+            class="form-label"
+          >
             {$_('pages.users.mfa.code')}
           </label>
           <input
@@ -92,7 +103,10 @@
         </div>
 
         <div class="mb-3">
-          <button type="submit" class="btn btn-primary">
+          <button
+            type="submit"
+            class="btn btn-primary"
+          >
             {$_('pages.users.mfa.disable')}
           </button>
         </div>
@@ -104,7 +118,10 @@
         </div>
 
         <div class="mb-3">
-          <label for="name" class="form-label">
+          <label
+            for="name"
+            class="form-label"
+          >
             {$_('pages.users.mfa.code')}
           </label>
           <input
@@ -117,7 +134,10 @@
         </div>
 
         <div class="mb-3">
-          <button type="submit" class="btn btn-primary">
+          <button
+            type="submit"
+            class="btn btn-primary"
+          >
             {$_('pages.users.mfa.enable')}
           </button>
         </div>

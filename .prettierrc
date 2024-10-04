@@ -3,6 +3,7 @@
   "singleQuote": true,
   "trailingComma": "none",
   "arrowParens": "avoid",
+  "singleAttributePerLine": true,
   "plugins": [
     "prettier-plugin-svelte"
   ],

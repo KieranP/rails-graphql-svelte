@@ -1,10 +1,12 @@
 <script lang="ts">
+  import { ApolloError } from '@apollo/client/core'
+
   import { goto } from '$app/navigation'
 
-  import { loginUser } from '$lib/queries/auth'
+  import { _, setLocale } from '$lib/helpers/i18n'
   import { setSession } from '$lib/helpers/session'
   import { errors } from '$lib/helpers/stores'
-  import { setLocale, _ } from '$lib/helpers/i18n'
+  import { loginUser } from '$lib/queries/auth'
 
   let email: string = $state('')
   let password: string = $state('')
@@ -15,21 +17,23 @@
     event.preventDefault()
 
     loginUser({ email, password, otpCode }, `user { uuid email name locale }`)
-      .then(res => {
-        let data = res.data.loginUser
-        let user = data.user
+      .then(async res => {
+        const data = res.data.loginUser
+        const user = data.user
 
         setSession(data)
-        setLocale.set(user.locale)
+        await setLocale.set(user.locale)
 
-        goto('/')
+        void goto('/')
       })
-      .catch(res => {
-        const gqlErrors = res.graphQLErrors
-        if (gqlErrors?.[0]?.message == 'otp_code_required') {
-          otpRequired = true
-        } else {
-          errors.set(gqlErrors)
+      .catch((error: unknown) => {
+        if (error instanceof ApolloError) {
+          const gqlErrors = error.graphQLErrors
+          if (gqlErrors[0]?.message === 'otp_code_required') {
+            otpRequired = true
+          } else {
+            errors.set(gqlErrors)
+          }
         }
       })
   }
@@ -41,7 +45,10 @@
 
 <form onsubmit={submit}>
   <div class="mb-3">
-    <label for="email" class="form-label">
+    <label
+      for="email"
+      class="form-label"
+    >
       {$_('pages.login.email')}
     </label>
     <input
@@ -54,7 +61,10 @@
   </div>
 
   <div class="mb-3">
-    <label for="password" class="form-label">
+    <label
+      for="password"
+      class="form-label"
+    >
       {$_('pages.login.password')}
     </label>
     <input
@@ -68,7 +78,10 @@
 
   {#if otpRequired}
     <div class="mb-3">
-      <label for="otp_code" class="form-label">
+      <label
+        for="otp_code"
+        class="form-label"
+      >
         {$_('pages.login.otp_code')}
       </label>
       <input
@@ -82,7 +95,10 @@
   {/if}
 
   <div class="mb-3">
-    <button type="submit" class="btn btn-primary">
+    <button
+      type="submit"
+      class="btn btn-primary"
+    >
       {$_('pages.login.button')}
     </button>
 
