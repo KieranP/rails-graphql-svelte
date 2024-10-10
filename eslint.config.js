@@ -51,7 +51,7 @@ export default eslintTS.config(
 
     {
       ...eslintCompat.configs['flat/recommended'],
-      files: ['**/*.{js,ts,svelte}'],
+      files: ['**/*.{js,ts,svelte}']
     }
   ],
 

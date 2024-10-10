@@ -18,11 +18,11 @@
   "packageManager": "yarn@4.5.0",
   "devDependencies": {
     "@apollo/client": "^3.11.8",
-    "@eslint/js": "^9.11.1",
+    "@eslint/js": "^9.12.0",
     "@popperjs/core": "^2.11.8",
     "@rails/actioncable": "^7.2.100",
     "@sveltejs/adapter-static": "^3.0.5",
-    "@sveltejs/kit": "^2.6.1",
+    "@sveltejs/kit": "^2.6.4",
     "@sveltejs/vite-plugin-svelte": "^3.1.2",
     "@types/bootstrap": "^5.2.10",
     "@types/eslint": "^9.6.1",
@@ -30,7 +30,7 @@
     "@types/qrcode": "^1.5.5",
     "@types/rails__actioncable": "^6.1.11",
     "bootstrap": "^5.3.3",
-    "eslint": "^9.11.1",
+    "eslint": "^9.12.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-compat": "^6.0.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
@@ -47,8 +47,8 @@
     "svelte-i18n": "^4.0.0",
     "svelte-preprocess": "^6.0.3",
     "tslib": "^2.7.0",
-    "typescript": "^5.6.2",
-    "typescript-eslint": "^8.8.0",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.8.1",
     "vite": "^5.4.8"
   }
 }
