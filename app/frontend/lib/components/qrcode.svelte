@@ -1,5 +1,5 @@
 <script lang="ts">
-  import QRCode from 'qrcode'
+  import { toCanvas } from 'qrcode'
 
   interface Props {
     content: string
@@ -10,7 +10,7 @@
   let canvas: HTMLElement
 
   $effect(() => {
-    void QRCode.toCanvas(canvas, content, {
+    void toCanvas(canvas, content, {
       width: 300
     })
   })
