@@ -10,9 +10,11 @@
 
   const { onconfirm, title = $_('components.confirm.title') }: Props = $props()
 
-  let dialog: HTMLDivElement
+  let dialog: HTMLDivElement | undefined = $state()
 
   function confirm() {
+    if (!dialog) return
+
     const modal = Modal.getInstance(dialog)
     modal?.hide()
     onconfirm()

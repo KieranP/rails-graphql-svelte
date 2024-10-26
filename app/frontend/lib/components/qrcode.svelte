@@ -1,5 +1,6 @@
 <script lang="ts">
   import { toCanvas } from 'qrcode'
+  import { onMount } from 'svelte'
 
   interface Props {
     content: string
@@ -7,9 +8,11 @@
 
   const { content }: Props = $props()
 
-  let canvas: HTMLElement
+  let canvas: HTMLElement | undefined = $state()
 
-  $effect(() => {
+  onMount(() => {
+    if (!canvas) return
+
     void toCanvas(canvas, content, {
       width: 300
     })

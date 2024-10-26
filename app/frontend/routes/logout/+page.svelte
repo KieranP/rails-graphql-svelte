@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
+
   import { ApolloError } from '@apollo/client/core'
 
   import { goto } from '$app/navigation'
@@ -8,7 +10,7 @@
   import { errors } from '$lib/helpers/stores'
   import { logoutUser } from '$lib/queries/auth'
 
-  $effect(() => {
+  onMount(() => {
     logoutUser({}, `user { uuid }`)
       .then(async () => {
         clearSession()
