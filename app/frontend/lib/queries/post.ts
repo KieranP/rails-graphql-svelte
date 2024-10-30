@@ -15,7 +15,7 @@ export const allPosts = async (variables: object, graphql: string) =>
       }
     }
     `,
-    variables
+    variables,
   )
 
 export const findPost = async (variables: object, graphql: string) =>
@@ -27,7 +27,7 @@ export const findPost = async (variables: object, graphql: string) =>
       }
     }
     `,
-    variables
+    variables,
   )
 
 export const watchPost = (variables: object, graphql: string) =>
@@ -39,7 +39,7 @@ export const watchPost = (variables: object, graphql: string) =>
       }
     }
     `,
-    variables
+    variables,
   )
 
 export const createPost = async (variables: object, graphql: string) =>
@@ -54,7 +54,7 @@ export const createPost = async (variables: object, graphql: string) =>
       }
     }
     `,
-    variables
+    variables,
   )
 
 export const updatePost = async (variables: object, graphql: string) =>
@@ -70,7 +70,7 @@ export const updatePost = async (variables: object, graphql: string) =>
       }
     }
     `,
-    variables
+    variables,
   )
 
 export const destroyPost = async (variables: object, graphql: string) =>
@@ -84,5 +84,5 @@ export const destroyPost = async (variables: object, graphql: string) =>
       }
     }
     `,
-    variables
+    variables,
   )

@@ -19,7 +19,7 @@
 
   $effect(() => {
     findUser({ uuid }, fields)
-      .then(res => {
+      .then((res) => {
         user = res.data.findUser
       })
       .catch((error: unknown) => {
@@ -29,7 +29,7 @@
       })
 
     watchUser({ uuid }, fields).subscribe(
-      res => {
+      (res) => {
         if (res.data.userUpdated !== undefined) {
           user = res.data.userUpdated
         }
@@ -38,7 +38,7 @@
         if (error instanceof ApolloError) {
           errors.set(error.graphQLErrors)
         }
-      }
+      },
     )
   })
 </script>

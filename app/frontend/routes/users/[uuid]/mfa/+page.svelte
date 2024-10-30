@@ -19,7 +19,7 @@
 
   $effect(() => {
     findUser({ uuid }, `uuid otpEnabled otpProvisioningUrl`)
-      .then(res => {
+      .then((res) => {
         user = res.data.findUser
       })
       .catch((error: unknown) => {
@@ -36,11 +36,11 @@
       {
         uuid,
         otpEnable: true,
-        otpCode: code
+        otpCode: code,
       },
-      `user { uuid otpEnabled }`
+      `user { uuid otpEnabled }`,
     )
-      .then(res => {
+      .then((res) => {
         const data = res.data.updateUser
         user = data.user
 
@@ -60,11 +60,11 @@
       {
         uuid,
         otpEnable: false,
-        otpCode: code
+        otpCode: code,
       },
-      `user { uuid otpEnabled }`
+      `user { uuid otpEnabled }`,
     )
-      .then(res => {
+      .then((res) => {
         const data = res.data.updateUser
         user = data.user
 

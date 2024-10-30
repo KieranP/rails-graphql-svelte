@@ -21,7 +21,7 @@
 
   $effect(() => {
     allPosts(params, `nodes { uuid title user { uuid name } }`)
-      .then(res => {
+      .then((res) => {
         posts = res.data.allPosts.nodes
         pageInfo = res.data.allPosts.pageInfo
       })

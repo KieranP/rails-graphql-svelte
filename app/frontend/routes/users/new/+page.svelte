@@ -19,9 +19,9 @@
 
     createUser(
       { name, email, locale, password, passwordConfirmation },
-      `user { uuid name email locale }`
+      `user { uuid name email locale }`,
     )
-      .then(async res => {
+      .then(async (res) => {
         const data = res.data.createUser
         const user = data.user
         const uuid = user.uuid as string

@@ -14,7 +14,7 @@
     if (!canvas) return
 
     void toCanvas(canvas, content, {
-      width: 300
+      width: 300,
     })
   })
 </script>

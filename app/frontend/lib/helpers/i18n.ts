@@ -4,7 +4,7 @@ import {
   getLocaleFromNavigator,
   init,
   locale,
-  locales
+  locales,
 } from 'svelte-i18n'
 
 import en from '$lib/i18n/en.json'
@@ -21,7 +21,7 @@ initialLocale ??= 'en'
 
 await init({
   initialLocale,
-  fallbackLocale: 'en'
+  fallbackLocale: 'en',
 })
 
 export { _, locales as allLocales, locale as setLocale }

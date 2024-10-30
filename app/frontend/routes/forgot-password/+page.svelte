@@ -12,7 +12,7 @@
     event.preventDefault()
 
     forgotPassword({ email }, `success`)
-      .then(res => {
+      .then((res) => {
         errors.set([])
         result = res.data.forgotPassword
       })

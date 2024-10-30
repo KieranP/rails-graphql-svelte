@@ -13,7 +13,7 @@ export const loginUser = async (variables: object, graphql: string) =>
       }
     }
     `,
-    variables
+    variables,
   )
 
 export const logoutUser = async (variables: object, graphql: string) =>
@@ -25,5 +25,5 @@ export const logoutUser = async (variables: object, graphql: string) =>
       }
     }
     `,
-    variables
+    variables,
   )

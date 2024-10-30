@@ -17,7 +17,7 @@
     event.preventDefault()
 
     loginUser({ email, password, otpCode }, `user { uuid email name locale }`)
-      .then(async res => {
+      .then(async (res) => {
         const data = res.data.loginUser
         const user = data.user
 

@@ -21,7 +21,7 @@
 
   $effect(() => {
     findPost({ uuid }, fields)
-      .then(res => {
+      .then((res) => {
         post = res.data.findPost
       })
       .catch((error: unknown) => {
@@ -31,7 +31,7 @@
       })
 
     watchPost({ uuid }, fields).subscribe(
-      res => {
+      (res) => {
         console.log(res)
         if (res.data.postUpdated !== undefined) {
           console.log(res.data)
@@ -43,7 +43,7 @@
         if (error instanceof ApolloError) {
           errors.set(error.graphQLErrors)
         }
-      }
+      },
     )
   })
 

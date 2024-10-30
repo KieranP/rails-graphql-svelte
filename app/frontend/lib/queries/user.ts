@@ -9,7 +9,7 @@ export const findUser = async (variables: object, graphql: string) =>
       }
     }
     `,
-    variables
+    variables,
   )
 
 export const watchUser = (variables: object, graphql: string) =>
@@ -21,7 +21,7 @@ export const watchUser = (variables: object, graphql: string) =>
       }
     }
     `,
-    variables
+    variables,
   )
 
 export const createUser = async (variables: object, graphql: string) =>
@@ -39,7 +39,7 @@ export const createUser = async (variables: object, graphql: string) =>
       }
     }
     `,
-    variables
+    variables,
   )
 
 export const updateUser = async (variables: object, graphql: string) =>
@@ -60,7 +60,7 @@ export const updateUser = async (variables: object, graphql: string) =>
       }
     }
     `,
-    variables
+    variables,
   )
 
 export const forgotPassword = async (variables: object, graphql: string) =>
@@ -74,7 +74,7 @@ export const forgotPassword = async (variables: object, graphql: string) =>
       }
     }
     `,
-    variables
+    variables,
   )
 
 export const resetPassword = async (variables: object, graphql: string) =>
@@ -91,5 +91,5 @@ export const resetPassword = async (variables: object, graphql: string) =>
       }
     }
     `,
-    variables
+    variables,
   )

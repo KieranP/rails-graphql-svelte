@@ -9,7 +9,7 @@ import {
   type DocumentNode,
   gql,
   InMemoryCache,
-  type Operation
+  type Operation,
 } from '@apollo/client/core'
 import { getMainDefinition } from '@apollo/client/utilities'
 import { createConsumer } from '@rails/actioncable'
@@ -29,8 +29,8 @@ const link = ApolloLink.split(
   new ActionCableLink({ cable }),
   createHttpLink({
     uri: import.meta.env.VITE_GRAPHQL_ENDPOINT as string,
-    credentials: 'include'
-  })
+    credentials: 'include',
+  }),
 )
 
 const cache = new InMemoryCache({})
@@ -38,7 +38,7 @@ const cache = new InMemoryCache({})
 const defaultOptions: DefaultOptions = {
   watchQuery: { fetchPolicy: 'no-cache' },
   query: { fetchPolicy: 'no-cache' },
-  mutate: { fetchPolicy: 'no-cache' }
+  mutate: { fetchPolicy: 'no-cache' },
 }
 
 const client = new ApolloClient({ link, cache, defaultOptions })
@@ -46,19 +46,19 @@ const client = new ApolloClient({ link, cache, defaultOptions })
 export const query = async (graphql: DocumentNode, variables: object) =>
   client.query({
     query: graphql,
-    variables
+    variables,
   })
 
 export const mutation = async (graphql: DocumentNode, variables: object) =>
   client.mutate({
     mutation: graphql,
-    variables
+    variables,
   })
 
 export const subscribe = (graphql: DocumentNode, variables: object) =>
   client.subscribe({
     query: graphql,
-    variables
+    variables,
   })
 
 export { gql }

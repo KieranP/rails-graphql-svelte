@@ -21,7 +21,7 @@
 
   $effect(() => {
     findUser({ uuid }, `uuid name email locale otpEnabled`)
-      .then(res => {
+      .then((res) => {
         user = res.data.findUser as User
         name = user.name
         email = user.email
@@ -38,7 +38,7 @@
     event.preventDefault()
 
     updateUser({ uuid, name, email, locale }, `user { uuid name email locale }`)
-      .then(async res => {
+      .then(async (res) => {
         const data = res.data.updateUser
         const updated_user = data.user
 

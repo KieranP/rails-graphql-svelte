@@ -19,7 +19,7 @@
 
   $effect(() => {
     findPost({ uuid }, `uuid title body`)
-      .then(res => {
+      .then((res) => {
         post = res.data.findPost
       })
       .catch((error: unknown) => {
@@ -31,7 +31,7 @@
 
   function onsubmit(data: PostSubmission) {
     updatePost({ uuid, ...data }, `post { uuid title body }`)
-      .then(_res => {
+      .then((_res) => {
         void goto(`/posts/${uuid}`)
       })
       .catch((error: unknown) => {

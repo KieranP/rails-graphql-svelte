@@ -7,11 +7,11 @@ export const session = writable<{
   user?: { uuid: string; name: string; locale: string }
 }>(session_init)
 
-export const getSession = function () {
+export const getSession = () => {
   return get(session)
 }
 
-export const setSession = function (value: object) {
+export const setSession = (value: object) => {
   session.set(value)
 
   const json = JSON.stringify(value)
@@ -20,7 +20,7 @@ export const setSession = function (value: object) {
   return true
 }
 
-export const clearSession = function () {
+export const clearSession = () => {
   const json = JSON.stringify({})
   window.localStorage.setItem('session', json)
 

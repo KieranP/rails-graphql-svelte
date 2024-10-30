@@ -13,7 +13,7 @@
 
   function onsubmit(data: PostSubmission) {
     createPost(data, `post { uuid }`)
-      .then(res => {
+      .then((res) => {
         const uuid = res.data.createPost.post.uuid as string
         void goto(`/posts/${uuid}`)
       })
