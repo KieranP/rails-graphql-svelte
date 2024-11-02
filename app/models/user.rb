@@ -40,11 +40,11 @@ class User < ApplicationRecord
   has_many :sessions, dependent: :destroy
   has_many :posts, dependent: :destroy
 
-  before_validation :process_otp_action
-
   validates :email, presence: true, email: true, uniqueness: true
   validates :name, presence: true
   validates :password, format: { with: PASSWORD_FORMAT }, allow_blank: true
+
+  before_validation :process_otp_action
 
   def save_password_reset_token
     generate_unique_token(:password_reset_token)
@@ -58,17 +58,6 @@ class User < ApplicationRecord
 
   def otp_action=(input)
     @otp_action = input.to_h
-  end
-
-  def process_otp_action
-    # otp_action = nil OR {} OR {enable:, code:}
-    return if @otp_action.blank?
-
-    if @otp_action[:enable]
-      enable_otp
-    else
-      disable_otp
-    end
   end
 
   def enable_otp
@@ -87,6 +76,19 @@ class User < ApplicationRecord
       self.otp_enabled = false
     else
       errors.add(:otp_code)
+    end
+  end
+
+  private
+
+  def process_otp_action
+    # otp_action = nil OR {} OR {enable:, code:}
+    return if @otp_action.blank?
+
+    if @otp_action[:enable]
+      enable_otp
+    else
+      disable_otp
     end
   end
 end

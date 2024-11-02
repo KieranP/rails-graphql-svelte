@@ -27,11 +27,11 @@ class Session < ApplicationRecord
 
   belongs_to :user
 
-  before_validation :populate_jwt_id
-  before_validation :populate_expiration
-
   validates :jwt_id, presence: true
   validates :expires_at, presence: true
+
+  before_validation :populate_jwt_id
+  before_validation :populate_expiration
 
   def mark_visit!
     # rubocop:disable Rails/SkipsModelValidations

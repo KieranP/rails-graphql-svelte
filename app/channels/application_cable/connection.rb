@@ -22,19 +22,19 @@ module ApplicationCable
       @jwt_payload ||= jwt_token&.first
     end
 
-    def auth_token
-      @auth_token ||= begin
-        auth_token = request.headers['Authorization']
-        auth_token || cookies.signed['jwt_token']
-      end
-    end
-
     def jwt_token
       @jwt_token ||=
         if auth_token
           jwt_token = auth_token.remove('Bearer ')
           JwtToken.decode(jwt_token)
         end
+    end
+
+    def auth_token
+      @auth_token ||= begin
+        auth_token = request.headers['Authorization']
+        auth_token || cookies.signed['jwt_token']
+      end
     end
   end
 end

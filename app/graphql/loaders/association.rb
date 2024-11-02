@@ -41,16 +41,16 @@ module Loaders
       raise ArgumentError, "No association #{@association_name} on #{@model}"
     end
 
-    def preload_association(records)
-      ::ActiveRecord::Associations::Preloader.new(records: records, associations: @association_name).call
+    def association_loaded?(record)
+      record.association(@association_name).loaded?
     end
 
     def read_association(record)
       record.public_send(@association_name)
     end
 
-    def association_loaded?(record)
-      record.association(@association_name).loaded?
+    def preload_association(records)
+      ::ActiveRecord::Associations::Preloader.new(records: records, associations: @association_name).call
     end
   end
 end
