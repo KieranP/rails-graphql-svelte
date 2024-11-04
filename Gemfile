@@ -57,6 +57,7 @@ group :development do
   gem 'rubocop-rspec_rails', require: false
   gem 'rubocop-factory_bot', require: false
   gem 'rubocop-obsession', require: false
+  gem 'rubocop-thread_safety', require: false
   gem 'bundler-audit', require: false
   gem 'brakeman', require: false
   gem 'lefthook', require: false

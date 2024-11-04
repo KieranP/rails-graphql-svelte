@@ -5,7 +5,8 @@ module ObjectHelpers
 
   class_methods do
     def model
-      @model ||= name.demodulize.constantize
+      Thread.current["#{name}.model"] ||=
+        name.demodulize.constantize
     end
 
     def association(association, ...)

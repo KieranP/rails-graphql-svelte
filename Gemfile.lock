@@ -367,6 +367,8 @@ GEM
       rubocop-rspec (~> 3, >= 3.0.1)
     rubocop-shopify (2.15.1)
       rubocop (~> 1.51)
+    rubocop-thread_safety (0.5.1)
+      rubocop (>= 0.90.0)
     ruby-progressbar (1.13.0)
     ruby_parser (3.21.1)
       racc (~> 1.5)
@@ -465,6 +467,7 @@ DEPENDENCIES
   rubocop-rspec
   rubocop-rspec_rails
   rubocop-shopify
+  rubocop-thread_safety
   selenium-webdriver
   simplecov
   solid_queue

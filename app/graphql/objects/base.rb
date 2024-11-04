@@ -7,8 +7,8 @@ module Objects
     include ObjectHelpers
 
     class << self
-      def policy(policy)
-        @policy = policy
+      def policy(policy = nil)
+        Thread.current["#{name}.policy"] ||= policy
       end
 
       def authorized?(obj, ctx)
@@ -16,11 +16,13 @@ module Objects
       end
 
       def pundit_authorized?(obj, ctx)
-        return true unless @policy
+        return true unless policy
 
         user = ctx[:current_user]
-        policy = Pundit.policy(user, obj)
-        policy.send(@policy)
+
+        Pundit
+          .policy(user, obj)
+          .send(policy)
       end
     end
   end

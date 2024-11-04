@@ -8,6 +8,7 @@ require:
   - rubocop-rspec_rails
   - rubocop-factory_bot
   - rubocop-obsession
+  - rubocop-thread_safety
 
 AllCops:
   NewCops: enable
