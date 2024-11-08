@@ -1,4 +1,4 @@
-defaults: &defaults
+default: &default
   adapter: postgresql
   encoding: unicode
   min_messages: warning
@@ -10,22 +10,38 @@ defaults: &defaults
 
 development:
   primary:
-    <<: *defaults
-    database: fullapp-development
+    <<: *default
+    database: fullapp_development
+  cache:
+    <<: *default
+    database: fullapp_development_cache
+    migrations_paths: db/cache_migrate
   queue:
-    <<: *defaults
-    database: fullapp-development-queue
+    <<: *default
+    database: fullapp_development_queue
     migrations_paths: db/queue_migrate
+  cable:
+    <<: *default
+    database: fullapp_development_cable
+    migrations_paths: db/cable_migrate
+
+test:
+  <<: *default
+  database: fullapp_test
 
 production:
   primary:
-    <<: *defaults
-    database: fullapp-production
+    <<: *default
+    database: fullapp_production
+  cache:
+    <<: *default
+    database: fullapp_production_cache
+    migrations_paths: db/cache_migrate
   queue:
-    <<: *defaults
-    database: fullapp-production-queue
+    <<: *default
+    database: fullapp_production_queue
     migrations_paths: db/queue_migrate
-
-test:
-  <<: *defaults
-  database: fullapp-test
+  cable:
+    <<: *default
+    database: fullapp_production_cable
+    migrations_paths: db/cable_migrate

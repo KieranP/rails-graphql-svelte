@@ -10,9 +10,9 @@ The backend is powered by Ruby on Rails, with a GraphQL API.
 
 It includes a secure JWT & 2FA authentication system, and authorisation using Pundit.
 
-It is pre-wired with ActionCable for Websockets, and SolidQueue for background processing.
+It is pre-wired with ActionCable/SolidCable for Websockets, and ActiveJob/SolidQueue for Background Processing.
 
-It includes Rspec and Capybara for feature tests, and Rubocop/Brakeman for code analysis.
+It uses RSpec and Capybara for feature tests, and Rubocop/Brakeman for code analysis/quality.
 
 It contains a basic config for Github Actions.
 
@@ -24,17 +24,20 @@ Routing is handled by SvelteKit, and API requests made using Apollo.
 
 Styling is provided by Bootstrap, and websockets via ActionCableJS.
 
-Dependency management and development runtime are handled via Bun.
+It uses Prettier and ESLint +plugins for code analysis/quality.
+
+Frontend runtime via Bun. Dependencies managed by Yarn.
 
 ## Usage
 
 * Clone Git Repo
 * Adjust `config/database.yml`
 * `bundle install`
-* `bun install`
+* `yarn install`
 * `bin/rake db:setup`
 * `bin/rspec`
-* `foreman start`
+* `overmind start` (or `foreman`, `hivemind`, etc)
+* Open https://app.localhost
 
 ## File Structure
 

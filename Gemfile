@@ -9,7 +9,6 @@ gem 'pg'
 gem 'puma'
 gem 'bootsnap', require: false
 gem 'bcrypt'
-gem 'redis'
 
 # API
 gem 'graphql'
@@ -22,7 +21,9 @@ gem 'dotenv-rails'
 gem 'interaktor'
 gem 'ostruct'
 gem 'pundit'
+gem 'solid_cache'
 gem 'solid_queue'
+gem 'solid_cable'
 
 # Misc
 gem 'active_model_otp'
@@ -43,7 +44,7 @@ end
 group :development do
   gem 'foreman', require: false
   gem 'web-console'
-  gem 'annotate'
+  gem 'annotaterb'
   gem 'listen'
   gem 'prism'
 

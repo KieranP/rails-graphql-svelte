@@ -11,7 +11,7 @@ jobs:
         image: postgres
         ports: ['5432:5432']
         env:
-          POSTGRES_DB: fullapp-test
+          POSTGRES_DB: fullapp_test
           POSTGRES_USER: fullapp
           POSTGRES_PASSWORD: fullapp
         options: >-
@@ -19,23 +19,15 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-      redis:
-        image: redis
-        ports: ['6379:6379']
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
       - name: Cache Rubygems
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
@@ -47,9 +39,9 @@ jobs:
           bundle install --jobs 4 --retry 3
 
       - name: Install Bun
-        uses: oven-sh/setup-bun@v1
+        uses: oven-sh/setup-bun@v2
       - name: Cache Node Modules
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: node_modules
           key: ${{ runner.OS }}-bun-${{ hashFiles('**/bun.lockb') }}
@@ -69,7 +61,7 @@ jobs:
         image: postgres
         ports: ['5432:5432']
         env:
-          POSTGRES_DB: fullapp-test
+          POSTGRES_DB: fullapp_test
           POSTGRES_USER: fullapp
           POSTGRES_PASSWORD: fullapp
         options: >-
@@ -77,23 +69,15 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-      redis:
-        image: redis
-        ports: ['6379:6379']
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
       - name: Cache Rubygems
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
@@ -105,9 +89,9 @@ jobs:
           bundle install --jobs 4 --retry 3
 
       - name: Install Bun
-        uses: oven-sh/setup-bun@v1
+        uses: oven-sh/setup-bun@v2
       - name: Cache Node Modules
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: node_modules
           key: ${{ runner.OS }}-bun-${{ hashFiles('**/bun.lockb') }}

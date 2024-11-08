@@ -5,6 +5,10 @@ class TestingController < ApplicationController
     head(:forbidden) unless Rails.env.test?
   end
 
+  def index
+    render file: Rails.public_path.join('index.html')
+  end
+
   def login
     user = User.find_by(uuid: params[:uuid])
     session = user.sessions.create!

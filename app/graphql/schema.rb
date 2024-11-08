@@ -11,7 +11,7 @@ class Schema < GraphQL::Schema
   use GraphQL::Backtrace
   use GraphQL::Batch
 
-  use GraphQL::Subscriptions::ActionCableSubscriptions, redis: Redis.new
+  use GraphQL::Subscriptions::ActionCableSubscriptions
 
   # query_analyzer Analyzers::QueryComplexity
   # query_analyzer Analyzers::QueryDepth
