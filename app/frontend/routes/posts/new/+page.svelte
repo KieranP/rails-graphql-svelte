@@ -9,12 +9,15 @@
 
   import Form from '../_form.svelte'
 
-  import type { PostSubmission } from '$lib/types/Post'
+  import type { PostSubmission } from '$lib/types/post'
 
   function onsubmit(data: PostSubmission) {
-    createPost(data, `post { uuid }`)
+    createPost(data)
       .then((res) => {
-        const uuid = res.data.createPost.post.uuid as string
+        if (!res.data?.createPost) return
+
+        const post = res.data.createPost.post
+        const uuid = post.uuid
         void goto(`/posts/${uuid}`)
       })
       .catch((error: unknown) => {

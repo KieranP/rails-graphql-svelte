@@ -3,20 +3,25 @@
   "extends": "./.svelte-kit/tsconfig.json",
   "compilerOptions": {
     // Modules
+    "noUncheckedSideEffectImports": true,
     "resolveJsonModule": true,
 
     // Emit
+    "declarationMap": true,
     "sourceMap": true,
 
     // Interop
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "isolatedDeclarations": true,
 
     // Language & Environment
     "useDefineForClassFields": true,
 
     // Completeness
     "skipLibCheck": true,
+
+    // Projects
+    "composite": true,
 
     // Type Checking
     "allowUnreachableCode": false,
@@ -25,6 +30,8 @@
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "strict": true

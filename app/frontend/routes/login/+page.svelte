@@ -16,8 +16,10 @@
   function submit(event: SubmitEvent) {
     event.preventDefault()
 
-    loginUser({ email, password, otpCode }, `user { uuid email name locale }`)
+    loginUser({ email, password, otpCode })
       .then(async (res) => {
+        if (!res.data?.loginUser) return
+
         const data = res.data.loginUser
         const user = data.user
 

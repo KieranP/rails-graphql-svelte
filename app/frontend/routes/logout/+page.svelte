@@ -11,7 +11,7 @@
   import { logoutUser } from '$lib/queries/auth'
 
   onMount(() => {
-    logoutUser({}, `user { uuid }`)
+    logoutUser()
       .then(async () => {
         clearSession()
         await setLocale.set('en')

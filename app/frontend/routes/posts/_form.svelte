@@ -1,7 +1,7 @@
 <script lang="ts">
   import { _ } from '$lib/helpers/i18n'
 
-  import type { Post, PostSubmission } from '$lib/types/Post'
+  import type { Post, PostSubmission } from '$lib/types/post'
 
   interface Props {
     post: Post | null

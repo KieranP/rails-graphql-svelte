@@ -1,4 +1,4 @@
-import type { Post } from '$lib/types/Post'
+import type { Post } from '$lib/types/post'
 
 export interface User {
   uuid: string

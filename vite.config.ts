@@ -1,19 +1,21 @@
-import { defineConfig } from 'vite'
+import { defineConfig, type UserConfig } from 'vite'
 
 import { sveltekit } from '@sveltejs/kit/vite'
 
-export default defineConfig({
+const config: UserConfig = defineConfig({
   clearScreen: false,
   plugins: [sveltekit()],
   build: {
-    target: 'esnext'
+    target: 'esnext',
   },
   css: {
     devSourcemap: true,
     preprocessorOptions: {
       scss: {
-        api: 'modern-compiler'
-      }
-    }
-  }
+        api: 'modern-compiler',
+      },
+    },
+  },
 })
+
+export default config

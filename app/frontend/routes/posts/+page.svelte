@@ -11,8 +11,8 @@
   import { errors } from '$lib/helpers/stores'
   import { allPosts } from '$lib/queries/post'
 
-  import type { PageInfo } from '$lib/types/PageInfo'
-  import type { Post } from '$lib/types/Post'
+  import type { PageInfo } from '$lib/types/page_info'
+  import type { Post } from '$lib/types/post'
 
   const params = $derived(pager($page.url.searchParams))
 
@@ -20,7 +20,7 @@
   let pageInfo: PageInfo | undefined = $state()
 
   $effect(() => {
-    allPosts(params, `nodes { uuid title user { uuid name } }`)
+    allPosts(params)
       .then((res) => {
         posts = res.data.allPosts.nodes
         pageInfo = res.data.allPosts.pageInfo

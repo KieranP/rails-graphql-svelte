@@ -17,14 +17,13 @@
   function submit(event: SubmitEvent) {
     event.preventDefault()
 
-    createUser(
-      { name, email, locale, password, passwordConfirmation },
-      `user { uuid name email locale }`,
-    )
+    createUser({ name, email, locale, password, passwordConfirmation })
       .then(async (res) => {
+        if (!res.data?.createUser) return
+
         const data = res.data.createUser
         const user = data.user
-        const uuid = user.uuid as string
+        const uuid = user.uuid
 
         setSession(data)
         await setLocale.set(user.locale)

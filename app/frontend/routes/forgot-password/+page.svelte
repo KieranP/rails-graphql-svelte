@@ -11,8 +11,10 @@
   function submit(event: SubmitEvent) {
     event.preventDefault()
 
-    forgotPassword({ email }, `success`)
+    forgotPassword({ email })
       .then((res) => {
+        if (!res.data?.forgotPassword) return
+
         errors.set([])
         result = res.data.forgotPassword
       })

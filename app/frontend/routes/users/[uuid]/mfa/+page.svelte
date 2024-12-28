@@ -10,9 +10,9 @@
   import { errors } from '$lib/helpers/stores'
   import { findUser, updateUser } from '$lib/queries/user'
 
-  import type { User } from '$lib/types/User'
+  import type { User } from '$lib/types/user'
 
-  const uuid = $derived($page.params.uuid)
+  const uuid = $derived($page.params['uuid'])
 
   let user: User | undefined = $state()
   let code: string = $state('')
@@ -41,6 +41,8 @@
       `user { uuid otpEnabled }`,
     )
       .then((res) => {
+        if (!res.data?.updateUser) return
+
         const data = res.data.updateUser
         user = data.user
 
@@ -65,6 +67,8 @@
       `user { uuid otpEnabled }`,
     )
       .then((res) => {
+        if (!res.data?.updateUser) return
+
         const data = res.data.updateUser
         user = data.user
 

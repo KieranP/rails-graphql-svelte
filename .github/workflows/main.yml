@@ -48,7 +48,7 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-bun-
       - name: Install Node Modules
-        run: bun install
+        run: yarn install
 
       - name: Run Rubocop
         run: bundle exec rubocop
@@ -98,7 +98,7 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-bun-
       - name: Install Node Modules
-        run: bun install
+        run: yarn install
 
       - name: Run Specs
         run: bundle exec rspec

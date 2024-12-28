@@ -4,17 +4,20 @@ import ActionCableLink from 'graphql-ruby-client/subscriptions/ActionCableLink'
 import {
   ApolloClient,
   ApolloLink,
+  type ApolloQueryResult,
   createHttpLink,
   type DefaultOptions,
   type DocumentNode,
+  type FetchResult,
   gql,
   InMemoryCache,
+  type MaybeMasked,
   type Operation,
 } from '@apollo/client/core'
-import { getMainDefinition } from '@apollo/client/utilities'
+import { getMainDefinition, type Observable } from '@apollo/client/utilities'
 import { createConsumer } from '@rails/actioncable'
 
-const cable = createConsumer(import.meta.env.VITE_CABLE_ENDPOINT as string)
+const cable = createConsumer(import.meta.env['VITE_CABLE_ENDPOINT'] as string)
 
 const hasSubscriptionOperation = ({ query }: Operation) => {
   const definition = getMainDefinition(query)
@@ -28,7 +31,7 @@ const link = ApolloLink.split(
   hasSubscriptionOperation,
   new ActionCableLink({ cable }),
   createHttpLink({
-    uri: import.meta.env.VITE_GRAPHQL_ENDPOINT as string,
+    uri: import.meta.env['VITE_GRAPHQL_ENDPOINT'] as string,
     credentials: 'include',
   }),
 )
@@ -43,20 +46,29 @@ const defaultOptions: DefaultOptions = {
 
 const client = new ApolloClient({ link, cache, defaultOptions })
 
-export const query = async (graphql: DocumentNode, variables: object) =>
-  client.query({
+export const query = async <T>(
+  graphql: DocumentNode,
+  variables: object,
+): Promise<ApolloQueryResult<MaybeMasked<T>>> =>
+  client.query<T>({
     query: graphql,
     variables,
   })
 
-export const mutation = async (graphql: DocumentNode, variables: object) =>
+export const mutation = async <T>(
+  graphql: DocumentNode,
+  variables: object,
+): Promise<FetchResult<MaybeMasked<T>>> =>
   client.mutate({
     mutation: graphql,
     variables,
   })
 
-export const subscribe = (graphql: DocumentNode, variables: object) =>
-  client.subscribe({
+export const subscribe = <T>(
+  graphql: DocumentNode,
+  variables: object,
+): Observable<FetchResult<MaybeMasked<T>>> =>
+  client.subscribe<T>({
     query: graphql,
     variables,
   })

@@ -22,8 +22,8 @@ module Mutations
         if result.success?
           user = result.user
           session = user.sessions.create!
-          token = generate_jwt(user, session)
-          { user: user, token: token }
+          generate_jwt(user, session)
+          { user: user }
         else
           errors = result.errors.join(', ')
           unprocessable_error(errors)

@@ -32,7 +32,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     unless ENV.fetch('BUILD_FRONTEND', nil) == 'false'
       puts 'Building Frontend App...'
-      puts %x{bun run build -m test}
+      puts %x{bun run --bun build -m test}
       puts ''
     end
   end

@@ -1,13 +1,16 @@
-import { get, writable } from 'svelte/store'
+import { get, type Writable, writable } from 'svelte/store'
+
+import type { User } from '$lib/types/user'
+
+interface Session {
+  user?: Pick<User, 'uuid' | 'name' | 'locale'>
+}
 
 const session_str = window.localStorage.getItem('session')
 const session_init = session_str === null ? {} : JSON.parse(session_str)
-export const session = writable<{
-  token?: string
-  user?: { uuid: string; name: string; locale: string }
-}>(session_init)
+export const session: Writable<Session> = writable(session_init)
 
-export const getSession = () => {
+export const getSession = (): Session => {
   return get(session)
 }
 

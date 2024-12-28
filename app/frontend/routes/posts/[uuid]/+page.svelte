@@ -11,9 +11,9 @@
   import { errors } from '$lib/helpers/stores'
   import { destroyPost, findPost, watchPost } from '$lib/queries/post'
 
-  import type { Post } from '$lib/types/Post'
+  import type { Post } from '$lib/types/post'
 
-  const uuid = $derived($page.params.uuid)
+  const uuid = $derived($page.params['uuid'])
 
   let post: Post | undefined = $state()
 
@@ -32,12 +32,9 @@
 
     watchPost({ uuid }, fields).subscribe(
       (res) => {
-        console.log(res)
-        if (res.data.postUpdated !== undefined) {
-          console.log(res.data)
-          console.log(res.data.postUpdated)
-          post = res.data.postUpdated
-        }
+        if (!res.data?.postUpdated) return
+
+        post = res.data.postUpdated
       },
       (error: unknown) => {
         if (error instanceof ApolloError) {
@@ -48,7 +45,7 @@
   })
 
   function destroy() {
-    destroyPost({ uuid }, `post { uuid }`)
+    destroyPost({ uuid })
       .then(() => {
         void goto('/posts')
       })

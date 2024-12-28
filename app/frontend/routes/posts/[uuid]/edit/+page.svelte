@@ -11,9 +11,9 @@
 
   import Form from '../../_form.svelte'
 
-  import type { Post, PostSubmission } from '$lib/types/Post'
+  import type { Post, PostSubmission } from '$lib/types/post'
 
-  const uuid = $derived($page.params.uuid)
+  const uuid = $derived($page.params['uuid'])
 
   let post: Post | undefined = $state()
 
@@ -30,7 +30,7 @@
   })
 
   function onsubmit(data: PostSubmission) {
-    updatePost({ uuid, ...data }, `post { uuid title body }`)
+    updatePost({ uuid, ...data })
       .then((_res) => {
         void goto(`/posts/${uuid}`)
       })

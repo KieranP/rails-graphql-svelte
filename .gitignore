@@ -39,8 +39,9 @@
 /coverage
 
 # SvelteKit
-node_modules
 /.svelte-kit
+node_modules
+/public
+tsconfig.tsbuildinfo
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
-/public

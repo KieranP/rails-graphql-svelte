@@ -3,7 +3,7 @@
 
   import { _ } from '$lib/helpers/i18n'
 
-  import type { PageInfo } from '$lib/types/PageInfo'
+  import type { PageInfo } from '$lib/types/page_info'
 
   interface Props {
     pageInfo: PageInfo

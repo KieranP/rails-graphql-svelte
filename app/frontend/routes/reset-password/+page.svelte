@@ -9,8 +9,8 @@
   import { base64Decode } from '$lib/helpers/utils'
   import { resetPassword } from '$lib/queries/user'
 
-  const token: string = base64Decode($page.params.token)
-  const email: string = base64Decode($page.params.email)
+  const token: string = base64Decode($page.params['token'])
+  const email: string = base64Decode($page.params['email'])
 
   let password: string = $state('')
   let passwordConfirmation: string = $state('')
@@ -18,7 +18,7 @@
   function submit(event: SubmitEvent) {
     event.preventDefault()
 
-    resetPassword({ token, email, password, passwordConfirmation }, `success`)
+    resetPassword({ token, email, password, passwordConfirmation })
       .then(() => {
         void goto('/login')
       })
