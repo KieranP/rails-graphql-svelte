@@ -11,7 +11,7 @@
 
   const { pageInfo }: Props = $props()
 
-  function prev() {
+  function prev(): void {
     const queryParams = new URLSearchParams(window.location.search)
     queryParams.set('before', pageInfo.startCursor)
     queryParams.delete('after')
@@ -19,7 +19,7 @@
     void goto(`${window.location.pathname}?${queryParams.toString()}`)
   }
 
-  function next() {
+  function next(): void {
     const queryParams = new URLSearchParams(window.location.search)
     queryParams.set('after', pageInfo.endCursor)
     queryParams.delete('before')
@@ -30,8 +30,9 @@
 
 {#if pageInfo.hasPreviousPage}
   <button
-    onclick={prev}
     class="btn btn-outline-secondary btn-sm"
+    onclick={prev}
+    type="button"
   >
     {$_('components.pager.prev')}
   </button>
@@ -39,8 +40,9 @@
 
 {#if pageInfo.hasNextPage}
   <button
-    onclick={next}
     class="btn btn-outline-secondary btn-sm"
+    onclick={next}
+    type="button"
   >
     {$_('components.pager.next')}
   </button>

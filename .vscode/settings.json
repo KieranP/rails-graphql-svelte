@@ -1,8 +1,49 @@
 {
-  "search.exclude": {
-      "**/.git": true,
-      "**/node_modules": true,
-      "**/public": true,
-      "**/tmp": true
-  }
+  // Editor
+  "editor.formatOnSave": false,
+  "editor.insertSpaces": true,
+  "editor.renderWhitespace": "trailing",
+  "editor.tabSize": 2,
+
+  // Files
+  "files.associations": {
+    "*.svelte": "svelte"
+  },
+  "files.defaultLanguage": "${activeEditorLanguage}",
+  "files.exclude": {
+    "**/.svelte-kit": true,
+    "**/.yarn": true,
+  },
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+
+  // Search
+  "search.useIgnoreFiles": true,
+
+  // Extensions
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "svelte"
+  ],
+  "svelte.enable-ts-plugin": true,
+
+  // File Specific
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
 }

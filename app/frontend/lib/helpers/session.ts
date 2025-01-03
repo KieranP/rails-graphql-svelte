@@ -7,14 +7,15 @@ interface Session {
 }
 
 const session_str = window.localStorage.getItem('session')
-const session_init = session_str === null ? {} : JSON.parse(session_str)
+const session_init =
+  session_str === null ? {} : (JSON.parse(session_str) as object)
 export const session: Writable<Session> = writable(session_init)
 
 export const getSession = (): Session => {
   return get(session)
 }
 
-export const setSession = (value: object) => {
+export const setSession = (value: object): boolean => {
   session.set(value)
 
   const json = JSON.stringify(value)
@@ -23,7 +24,7 @@ export const setSession = (value: object) => {
   return true
 }
 
-export const clearSession = () => {
+export const clearSession = (): boolean => {
   const json = JSON.stringify({})
   window.localStorage.setItem('session', json)
 

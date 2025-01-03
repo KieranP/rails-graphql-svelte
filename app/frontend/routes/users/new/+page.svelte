@@ -14,7 +14,7 @@
   let password: string = $state('')
   let passwordConfirmation: string = $state('')
 
-  function submit(event: SubmitEvent) {
+  function submit(event: SubmitEvent): void {
     event.preventDefault()
 
     createUser({ name, email, locale, password, passwordConfirmation })
@@ -45,40 +45,40 @@
 <form onsubmit={submit}>
   <div class="mb-3">
     <label
-      for="name"
       class="form-label"
+      for="name"
     >
       {$_('pages.users.new.name')}
     </label>
     <input
-      type="text"
-      class="form-control"
       id="name"
-      bind:value={name}
+      class="form-control"
       required
+      type="text"
+      bind:value={name}
     />
   </div>
 
   <div class="mb-3">
     <label
-      for="email"
       class="form-label"
+      for="email"
     >
       {$_('pages.users.new.email')}
     </label>
     <input
-      type="email"
-      class="form-control"
       id="email"
-      bind:value={email}
+      class="form-control"
       required
+      type="email"
+      bind:value={email}
     />
   </div>
 
   <div class="mb-3">
     <label
-      for="locale"
       class="form-label"
+      for="locale"
     >
       {$_('pages.users.new.locale')}
     </label>
@@ -87,10 +87,10 @@
       class="form-select"
       bind:value={locale}
     >
-      {#each $allLocales as _locale}
+      {#each $allLocales as _locale (_locale)}
         <option
-          value={_locale}
           selected={_locale === locale}
+          value={_locale}
         >
           {_locale}
         </option>
@@ -100,40 +100,40 @@
 
   <div class="mb-3">
     <label
-      for="password"
       class="form-label"
+      for="password"
     >
       {$_('pages.users.new.password')}
     </label>
     <input
-      type="password"
-      class="form-control"
       id="password"
-      bind:value={password}
+      class="form-control"
       required
+      type="password"
+      bind:value={password}
     />
   </div>
 
   <div class="mb-3">
     <label
-      for="password_confirmation"
       class="form-label"
+      for="password_confirmation"
     >
       {$_('pages.users.new.password_confirmation')}
     </label>
     <input
-      type="password"
-      class="form-control"
       id="password_confirmation"
-      bind:value={passwordConfirmation}
+      class="form-control"
       required
+      type="password"
+      bind:value={passwordConfirmation}
     />
   </div>
 
   <div class="mb-3">
     <button
-      type="submit"
       class="btn btn-primary"
+      type="submit"
     >
       {$_('pages.users.new.button')}
     </button>

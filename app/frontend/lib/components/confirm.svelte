@@ -12,7 +12,7 @@
 
   let dialog: HTMLDivElement | undefined = $state()
 
-  function confirm() {
+  function confirm(): void {
     if (!dialog) return
 
     const modal = Modal.getInstance(dialog)
@@ -22,33 +22,33 @@
 </script>
 
 <div
-  class="modal fade"
-  id="confirmDialog"
   bind:this={dialog}
+  id="confirmDialog"
+  class="modal fade"
 >
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">{title}</h5>
         <button
-          type="button"
           class="btn-close"
-          data-bs-dismiss="modal"
           aria-label="Close"
+          data-bs-dismiss="modal"
+          type="button"
         ></button>
       </div>
       <div class="modal-footer">
         <button
-          type="button"
           class="btn btn-secondary"
           data-bs-dismiss="modal"
+          type="button"
         >
           {$_('components.confirm.cancel')}
         </button>
         <button
-          type="button"
           class="btn btn-danger"
           onclick={confirm}
+          type="button"
         >
           {$_('components.confirm.proceed')}
         </button>

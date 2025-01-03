@@ -12,6 +12,7 @@
 
     // Interop
     "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "isolatedDeclarations": true,
 
     // Language & Environment

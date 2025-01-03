@@ -63,8 +63,8 @@
     {#if $session.user?.uuid === user.uuid}
       <p>
         <a
-          href="/users/{user.uuid}/edit"
           class="btn btn-outline-primary"
+          href="/users/{user.uuid}/edit"
         >
           {$_('common.edit')}
         </a>

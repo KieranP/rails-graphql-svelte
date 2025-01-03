@@ -20,6 +20,6 @@
 </script>
 
 <canvas
-  id="qrcode"
   bind:this={canvas}
+  id="qrcode"
 ></canvas>

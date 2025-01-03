@@ -39,8 +39,8 @@
 
 {#if $session.user}
   <a
-    href="/posts/new"
     class="btn btn-outline-primary"
+    href="/posts/new"
   >
     {$_('pages.posts.index.create')}
   </a>

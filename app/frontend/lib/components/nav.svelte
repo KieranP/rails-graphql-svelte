@@ -10,9 +10,9 @@
     <ul class="navbar-nav me-auto">
       <li class="nav-item">
         <a
-          href="/"
           class="nav-link"
           class:active={$page.url.pathname === '/index'}
+          href="/"
         >
           {$_('components.nav.home')}
         </a>
@@ -20,9 +20,9 @@
 
       <li class="nav-item">
         <a
-          href="/about"
           class="nav-link"
           class:active={$page.url.pathname === '/about'}
+          href="/about"
         >
           {$_('components.nav.about')}
         </a>
@@ -30,9 +30,9 @@
 
       <li class="nav-item">
         <a
-          href="/posts"
           class="nav-link"
           class:active={$page.url.pathname === '/posts'}
+          href="/posts"
         >
           {$_('components.nav.posts')}
         </a>
@@ -43,9 +43,9 @@
       {#if $session.user}
         <li class="nav-item">
           <a
-            href="/users/{$session.user.uuid}"
             class="nav-link"
             class:active={$page.url.pathname === '/users'}
+            href="/users/{$session.user.uuid}"
           >
             {$session.user.name}
           </a>
@@ -53,8 +53,8 @@
 
         <li class="nav-item">
           <a
-            href="/logout"
             class="nav-link"
+            href="/logout"
           >
             {$_('components.nav.logout')}
           </a>
@@ -62,9 +62,9 @@
       {:else}
         <li class="nav-item">
           <a
-            href="/login"
             class="nav-link"
             class:active={$page.url.pathname === '/login'}
+            href="/login"
           >
             {$_('components.nav.login')}
           </a>
@@ -72,9 +72,9 @@
 
         <li class="nav-item">
           <a
-            href="/users/new"
             class="nav-link"
             class:active={$page.url.pathname === '/users/new'}
+            href="/users/new"
           >
             {$_('components.nav.signup')}
           </a>

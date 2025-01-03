@@ -11,7 +11,7 @@
 </script>
 
 {#if $errors.length > 0}
-  {#each $errors as error}
+  {#each $errors as error (error)}
     <div
       class="alert alert-danger"
       role="alert"

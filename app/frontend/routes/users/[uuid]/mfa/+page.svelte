@@ -29,7 +29,7 @@
       })
   })
 
-  function submitEnable(event: SubmitEvent) {
+  function submitEnable(event: SubmitEvent): void {
     event.preventDefault()
 
     updateUser(
@@ -55,7 +55,7 @@
       })
   }
 
-  function submitDisable(event: SubmitEvent) {
+  function submitDisable(event: SubmitEvent): void {
     event.preventDefault()
 
     updateUser(
@@ -92,24 +92,24 @@
       <form onsubmit={submitDisable}>
         <div class="mb-3">
           <label
-            for="code"
             class="form-label"
+            for="code"
           >
             {$_('pages.users.mfa.code')}
           </label>
           <input
-            type="text"
-            class="form-control"
             id="name"
-            bind:value={code}
+            class="form-control"
             required
+            type="text"
+            bind:value={code}
           />
         </div>
 
         <div class="mb-3">
           <button
-            type="submit"
             class="btn btn-primary"
+            type="submit"
           >
             {$_('pages.users.mfa.disable')}
           </button>
@@ -123,24 +123,24 @@
 
         <div class="mb-3">
           <label
-            for="name"
             class="form-label"
+            for="name"
           >
             {$_('pages.users.mfa.code')}
           </label>
           <input
-            type="text"
-            class="form-control"
             id="name"
-            bind:value={code}
+            class="form-control"
             required
+            type="text"
+            bind:value={code}
           />
         </div>
 
         <div class="mb-3">
           <button
-            type="submit"
             class="btn btn-primary"
+            type="submit"
           >
             {$_('pages.users.mfa.enable')}
           </button>

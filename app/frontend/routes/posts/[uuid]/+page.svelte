@@ -44,7 +44,7 @@
     )
   })
 
-  function destroy() {
+  function destroy(): void {
     destroyPost({ uuid })
       .then(() => {
         void goto('/posts')
@@ -72,17 +72,17 @@
     {#if $session.user?.uuid === post.user.uuid}
       <p>
         <a
-          href="/posts/{post.uuid}/edit"
           class="btn btn-outline-primary"
+          href="/posts/{post.uuid}/edit"
         >
           {$_('common.edit')}
         </a>
 
         <button
-          type="button"
           class="btn btn-outline-danger"
-          data-bs-toggle="modal"
           data-bs-target="#confirmDialog"
+          data-bs-toggle="modal"
+          type="button"
         >
           {$_('common.delete')}
         </button>

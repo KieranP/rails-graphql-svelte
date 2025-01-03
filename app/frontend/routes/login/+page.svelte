@@ -13,7 +13,7 @@
   let otpRequired = $state(false)
   let otpCode: string = $state('')
 
-  function submit(event: SubmitEvent) {
+  function submit(event: SubmitEvent): void {
     event.preventDefault()
 
     loginUser({ email, password, otpCode })
@@ -48,58 +48,58 @@
 <form onsubmit={submit}>
   <div class="mb-3">
     <label
-      for="email"
       class="form-label"
+      for="email"
     >
       {$_('pages.login.email')}
     </label>
     <input
-      type="email"
-      class="form-control"
       id="email"
-      bind:value={email}
+      class="form-control"
       required
+      type="email"
+      bind:value={email}
     />
   </div>
 
   <div class="mb-3">
     <label
-      for="password"
       class="form-label"
+      for="password"
     >
       {$_('pages.login.password')}
     </label>
     <input
-      type="password"
-      class="form-control"
       id="password"
-      bind:value={password}
+      class="form-control"
       required
+      type="password"
+      bind:value={password}
     />
   </div>
 
   {#if otpRequired}
     <div class="mb-3">
       <label
-        for="otp_code"
         class="form-label"
+        for="otp_code"
       >
         {$_('pages.login.otp_code')}
       </label>
       <input
-        type="text"
-        class="form-control"
         id="otp_code"
-        bind:value={otpCode}
+        class="form-control"
         required
+        type="text"
+        bind:value={otpCode}
       />
     </div>
   {/if}
 
   <div class="mb-3">
     <button
-      type="submit"
       class="btn btn-primary"
+      type="submit"
     >
       {$_('pages.login.button')}
     </button>

@@ -15,7 +15,7 @@
   let password: string = $state('')
   let passwordConfirmation: string = $state('')
 
-  function submit(event: SubmitEvent) {
+  function submit(event: SubmitEvent): void {
     event.preventDefault()
 
     resetPassword({ token, email, password, passwordConfirmation })
@@ -37,57 +37,57 @@
 <form onsubmit={submit}>
   <div class="mb-3">
     <label
-      for="email"
       class="form-label"
+      for="email"
     >
       {$_('pages.reset-password.email')}
     </label>
     <input
-      type="email"
-      class="form-control"
       id="email"
-      value={email}
-      required
+      class="form-control"
       readonly
+      required
+      type="email"
+      value={email}
     />
   </div>
 
   <div class="mb-3">
     <label
-      for="password"
       class="form-label"
+      for="password"
     >
       {$_('pages.reset-password.password')}
     </label>
     <input
-      type="password"
-      class="form-control"
       id="password"
-      bind:value={password}
+      class="form-control"
       required
+      type="password"
+      bind:value={password}
     />
   </div>
 
   <div class="mb-3">
     <label
-      for="password_confirmation"
       class="form-label"
+      for="password_confirmation"
     >
       {$_('pages.reset-password.password_confirmation')}
     </label>
     <input
-      type="password"
-      class="form-control"
       id="password_confirmation"
-      bind:value={passwordConfirmation}
+      class="form-control"
       required
+      type="password"
+      bind:value={passwordConfirmation}
     />
   </div>
 
   <div class="mb-3">
     <button
-      type="submit"
       class="btn btn-primary"
+      type="submit"
     >
       {$_('pages.reset-password.button')}
     </button>

@@ -8,7 +8,7 @@
   let email: string = $state('')
   let result: object | undefined = $state()
 
-  function submit(event: SubmitEvent) {
+  function submit(event: SubmitEvent): void {
     event.preventDefault()
 
     forgotPassword({ email })
@@ -36,24 +36,24 @@
   <form onsubmit={submit}>
     <div class="mb-3">
       <label
-        for="email"
         class="form-label"
+        for="email"
       >
         {$_('pages.forgot-password.email')}
       </label>
       <input
-        type="email"
-        class="form-control"
         id="email"
-        bind:value={email}
+        class="form-control"
         required
+        type="email"
+        bind:value={email}
       />
     </div>
 
     <div class="mb-3">
       <button
-        type="submit"
         class="btn btn-primary"
+        type="submit"
       >
         {$_('pages.forgot-password.button')}
       </button>

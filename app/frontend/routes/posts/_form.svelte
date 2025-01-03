@@ -13,7 +13,7 @@
   let title = $state(post?.title)
   let body = $state(post?.body)
 
-  function submit(event: SubmitEvent) {
+  function submit(event: SubmitEvent): void {
     event.preventDefault()
     onsubmit({ title, body })
   }
@@ -22,40 +22,40 @@
 <form onsubmit={submit}>
   <div class="mb-3">
     <label
-      for="title"
       class="form-label"
+      for="title"
     >
       {$_('pages.posts._form.title')}
     </label>
     <input
-      type="text"
-      class="form-control"
       id="title"
-      bind:value={title}
+      class="form-control"
       required
+      type="text"
+      bind:value={title}
     />
   </div>
 
   <div class="mb-3">
     <label
-      for="body"
       class="form-label"
+      for="body"
     >
       {$_('pages.posts._form.body')}
     </label>
     <textarea
-      class="form-control"
       id="body"
+      class="form-control"
+      required
       rows="5"
       bind:value={body}
-      required
     ></textarea>
   </div>
 
   <div class="mb-3">
     <button
-      type="submit"
       class="btn btn-primary"
+      type="submit"
     >
       {#if post}
         {$_('common.update')}

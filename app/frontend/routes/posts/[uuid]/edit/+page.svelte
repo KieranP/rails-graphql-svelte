@@ -29,7 +29,7 @@
       })
   })
 
-  function onsubmit(data: PostSubmission) {
+  function onsubmit(data: PostSubmission): void {
     updatePost({ uuid, ...data })
       .then((_res) => {
         void goto(`/posts/${uuid}`)
@@ -49,8 +49,8 @@
 <Loader>
   {#if post}
     <Form
-      {post}
       {onsubmit}
+      {post}
     />
   {/if}
 </Loader>

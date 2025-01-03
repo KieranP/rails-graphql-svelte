@@ -11,7 +11,7 @@
 
   import type { PostSubmission } from '$lib/types/post'
 
-  function onsubmit(data: PostSubmission) {
+  function onsubmit(data: PostSubmission): void {
     createPost(data)
       .then((res) => {
         if (!res.data?.createPost) return
@@ -33,6 +33,6 @@
 </h1>
 
 <Form
-  post={null}
   {onsubmit}
+  post={null}
 />

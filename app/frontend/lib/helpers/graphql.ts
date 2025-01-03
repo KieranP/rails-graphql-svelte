@@ -19,7 +19,7 @@ import { createConsumer } from '@rails/actioncable'
 
 const cable = createConsumer(import.meta.env['VITE_CABLE_ENDPOINT'] as string)
 
-const hasSubscriptionOperation = ({ query }: Operation) => {
+const hasSubscriptionOperation = ({ query }: Operation): boolean => {
   const definition = getMainDefinition(query)
   return (
     definition.kind === Kind.OPERATION_DEFINITION &&
