@@ -25,6 +25,10 @@ gem 'solid_cache'
 gem 'solid_queue'
 gem 'solid_cable'
 
+# Deployment
+gem 'kamal', require: false
+gem 'thruster', require: false
+
 # Misc
 gem 'active_model_otp'
 gem 'email_validator'
