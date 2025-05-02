@@ -1,5 +1,6 @@
 import eslint from '@eslint/js'
 import eslintTS from 'typescript-eslint'
+import eslintJson from '@eslint/json'
 import eslintImports from 'eslint-plugin-simple-import-sort'
 import eslintCompat from 'eslint-plugin-compat'
 import eslintPrettier from 'eslint-config-prettier'
@@ -7,23 +8,17 @@ import eslintSvelte from 'eslint-plugin-svelte'
 import svelteParser from 'svelte-eslint-parser'
 import globals from 'globals'
 
+import svelteConfig from './svelte.config.js'
+
 export default eslintTS.config(
   {
-    ignores: [
-      '**/.DS_Store',
-      '**/.env.*',
-      '**/.svelte-kit/',
-      '**/.yarn/',
-      '**/bun.lockb',
-      '**/yarn.lock',
-      '**/node_modules/',
-      'app/frontend/app.d.ts',
-    ],
+    ignores: ['**/.DS_Store', 'app/frontend/app.d.ts'],
   },
 
   {
     plugins: {
       'simple-import-sort': eslintImports,
+      json: eslintJson,
     },
   },
 
@@ -55,6 +50,12 @@ export default eslintTS.config(
       ...eslintCompat.configs['flat/recommended'],
       files: ['**/*.{js,ts,svelte}'],
     },
+
+    {
+      ...eslintJson.configs.recommended,
+      language: 'json/json5',
+      files: ['**/*.json'],
+    },
   ],
 
   // Prettier Compatability
@@ -64,7 +65,7 @@ export default eslintTS.config(
       files: ['**/*.{js,ts,svelte}'],
     },
 
-    ...eslintSvelte.configs['flat/prettier'].map((config) => ({
+    ...eslintSvelte.configs.prettier.map((config) => ({
       ...config,
       files: ['**/*.svelte'],
     })),
@@ -76,25 +77,44 @@ export default eslintTS.config(
     rules: {
       // Enable ESLint Rules
       'array-callback-return': 'error',
+      'block-scoped-var': 'error',
+      'default-case': 'error',
+      'default-case-last': 'error',
       eqeqeq: 'error',
+      'logical-assignment-operators': 'error',
       'no-await-in-loop': 'error',
       'no-constructor-return': 'error',
       'no-duplicate-imports': 'error',
+      'no-eq-null': 'error',
+      'no-eval': 'error',
+      'no-implicit-coercion': 'error',
       'no-inner-declarations': 'error',
       'no-lonely-if': 'error',
       'no-negated-condition': 'error',
+      'no-nested-ternary': 'error',
+      'no-new': 'error',
+      'no-new-func': 'error',
+      'no-param-reassign': 'error',
       'no-promise-executor-return': 'error',
       'no-return-assign': 'error',
+      'no-script-url': 'error',
       'no-self-compare': 'error',
       'no-template-curly-in-string': 'error',
+      'no-throw-literal': 'error',
       'no-unmodified-loop-condition': 'error',
       'no-unneeded-ternary': 'error',
       'no-unreachable-loop': 'error',
       'no-useless-assignment': 'error',
+      'no-useless-call': 'error',
+      'no-useless-computed-key': 'error',
       'no-useless-concat': 'error',
+      'no-useless-rename': 'error',
+      'no-useless-return': 'error',
       'no-var': 'error',
       'object-shorthand': 'error',
       'prefer-arrow-callback': 'error',
+      'prefer-const': 'error',
+      'prefer-object-has-own': 'error',
       'prefer-object-spread': 'error',
       'prefer-rest-params': 'error',
       'prefer-spread': 'error',
@@ -102,6 +122,7 @@ export default eslintTS.config(
       'require-atomic-updates': 'error',
 
       // Disable ESLint Rules (TS/Svelte versions below)
+      'class-methods-use-this': 'off',
       'consistent-return': 'off',
       'default-param-last': 'off',
       'no-dupe-class-members': 'off',
@@ -111,14 +132,15 @@ export default eslintTS.config(
       'no-restricted-imports': 'off',
       'no-shadow': 'off',
       'no-use-before-define': 'off',
-      'prefer-const': 'off',
 
       // Enable TSLint Rules
+      '@typescript-eslint/class-methods-use-this': 'error',
       '@typescript-eslint/consistent-return': 'error',
       '@typescript-eslint/consistent-type-exports': 'error',
       '@typescript-eslint/consistent-type-imports': 'error',
       '@typescript-eslint/default-param-last': 'error',
       '@typescript-eslint/explicit-function-return-type': 'error',
+      '@typescript-eslint/explicit-member-accessibility': 'error',
       '@typescript-eslint/explicit-module-boundary-types': 'error',
       '@typescript-eslint/member-ordering': 'error',
       '@typescript-eslint/method-signature-style': 'error',
@@ -137,6 +159,7 @@ export default eslintTS.config(
       '@typescript-eslint/no-unnecessary-parameter-property-assignment':
         'error',
       '@typescript-eslint/no-unnecessary-qualifier': 'error',
+      '@typescript-eslint/no-use-before-define': 'error',
       '@typescript-eslint/no-useless-empty-export': 'error',
       '@typescript-eslint/prefer-enum-initializers': 'error',
       '@typescript-eslint/promise-function-async': 'error',
@@ -171,28 +194,6 @@ export default eslintTS.config(
         },
       ],
 
-      // Enable Svelte Rules
-      'svelte/button-has-type': 'error',
-      'svelte/no-dom-manipulating': 'error',
-      'svelte/no-dupe-on-directives': 'error',
-      'svelte/no-dupe-use-directives': 'error',
-      'svelte/no-inline-styles': 'error',
-      'svelte/no-inspect': 'error',
-      'svelte/no-reactive-functions': 'error',
-      'svelte/no-reactive-literals': 'error',
-      'svelte/no-reactive-reassign': 'error',
-      'svelte/no-svelte-internal': 'error',
-      'svelte/no-target-blank': 'error',
-      // 'svelte/no-unused-class-name': 'error',
-      'svelte/no-useless-children-snippet': 'error',
-      'svelte/no-useless-mustaches': 'error',
-      'svelte/prefer-class-directive': 'error',
-      'svelte/prefer-const': 'error',
-      'svelte/require-each-key': 'error',
-      'svelte/require-store-reactive-access': 'error',
-      'svelte/sort-attributes': 'error',
-      'svelte/valid-each-key': 'error',
-
       // Import Sort Rules
       'simple-import-sort/imports': [
         'error',
@@ -213,16 +214,43 @@ export default eslintTS.config(
     },
   },
 
+  {
+    files: ['**/*.svelte'],
+    rules: {
+      'prefer-const': 'off',
+      'svelte/block-lang': [
+        'error',
+        {
+          script: 'ts',
+          style: 'scss',
+        },
+      ],
+      'svelte/button-has-type': 'error',
+      'svelte/no-inline-styles': 'error',
+      'svelte/no-target-blank': 'error',
+      'svelte/prefer-class-directive': 'error',
+      'svelte/prefer-const': 'error',
+      'svelte/prefer-style-directive': 'error',
+      'svelte/shorthand-attribute': 'error',
+      'svelte/shorthand-directive': 'error',
+      'svelte/sort-attributes': 'error',
+    },
+  },
+
   //
   // Other Tweaks
   //
 
   {
-    files: ['**/*.{js,ts}'],
+    files: ['**/*.{js,ts,svelte}'],
     languageOptions: {
       parserOptions: {
         projectService: true,
         parser: eslintTS.parser,
+        extraFileExtensions: ['.svelte'],
+      },
+      globals: {
+        ...globals.browser,
       },
     },
   },
@@ -232,12 +260,7 @@ export default eslintTS.config(
     languageOptions: {
       parser: svelteParser,
       parserOptions: {
-        projectService: true,
-        parser: eslintTS.parser,
-        extraFileExtensions: ['.svelte'],
-      },
-      globals: {
-        ...globals.browser,
+        svelteConfig,
       },
     },
   },

@@ -1,18 +1,24 @@
 {
-  "semi": false,
-  "singleQuote": true,
-  "trailingComma": "all",
   "arrowParens": "always",
-  "singleAttributePerLine": true,
+  "bracketSameLine": false,
+  "bracketSpacing": true,
+  "objectWrap": "preserve",
+  "overrides": [
+    {
+      "files": "*.svelte",
+      "options": {
+        "parser": "svelte"
+      }
+    }
+  ],
   "plugins": [
     "prettier-plugin-svelte"
   ],
-  "overrides": [
-		{
-			"files": "*.svelte",
-			"options": {
-				"parser": "svelte"
-			}
-		}
-	]
+  "printWidth": 80,
+  "semi": false,
+  "singleAttributePerLine": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "useTabs": false
 }

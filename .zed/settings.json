@@ -1,0 +1,88 @@
+{
+  // Input / Function
+  "format_on_save": "off",
+  "tab_size": 2,
+
+  // File Scan/Search
+  "file_scan_exclusions": [
+    ".git/",
+    ".DS_Store",
+    ".ruby-lsp/",
+    ".yarn/",
+    "log/",
+    "vendor/"
+  ],
+
+  // Extensions
+  "auto_install_extensions": {
+    "html": true,
+    "ruby": true,
+    "scss": true,
+    "svelte": true
+  },
+
+  // Language / LSP
+  "languages": {
+    "JavaScript": {
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "code_actions": {
+            "source.fixAll.eslint": true
+          }
+        },
+        {
+          "external": {
+            "command": "yarn",
+            "arguments": ["prettier", "--stdin-filepath", "{buffer_path}"]
+          }
+        }
+      ]
+    },
+    "Ruby": {
+      "language_servers": ["ruby-lsp", "rubocop", "!solargraph"],
+      "format_on_save": "on"
+    },
+    "Svelte": {
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "code_actions": {
+            "source.fixAll.eslint": true
+          }
+        },
+        {
+          "external": {
+            "command": "yarn",
+            "arguments": ["prettier", "--stdin-filepath", "{buffer_path}"]
+          }
+        }
+      ]
+    },
+    "TypeScript": {
+      "format_on_save": "on",
+      "formatter": [
+        {
+          "code_actions": {
+            "source.fixAll.eslint": true
+          }
+        },
+        {
+          "external": {
+            "command": "yarn",
+            "arguments": ["prettier", "--stdin-filepath", "{buffer_path}"]
+          }
+        }
+      ]
+    }
+  },
+  "lsp": {
+    "ruby-lsp": {
+      "initialization_options": {
+        "enabledFeatures": {
+          "diagnostics": false
+        }
+      }
+    }
+  }
+}
